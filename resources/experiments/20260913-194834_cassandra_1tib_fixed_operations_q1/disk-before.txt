@@ -1,0 +1,2 @@
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md0        7.3T  646G  6.3T  10% /work

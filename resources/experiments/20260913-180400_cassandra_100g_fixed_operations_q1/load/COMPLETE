@@ -1,0 +1,10 @@
+baseline_run=/work/vcomp-pebble-1tb/cassandra-vcomp-100g-fixedtrace-q1-20260913-160245/baseline/cassandra-baseline-100g-fixedtrace-q1-baseline-20260913-160344
+vcomp_run=/work/vcomp-pebble-1tb/cassandra-vcomp-100g-fixedtrace-q1-20260913-160245/vcomp/cassandra-vcomp-100g-fixedtrace-q1-vcomp-20260913-174119
+baseline_fingerprint_rows=66278498
+baseline_fingerprint_sha256=c5d601912136141d214d609f47caa31e90ae0247f3658596b6dd9183bd2eab45
+vcomp_fingerprint_rows=66549593
+vcomp_fingerprint_sha256=fd4ee37cfb132315889bfb7d1eca2c7995c630d6af2e3c5082fea5ed3c6f99dd
+cardinality_delta=271095
+cardinality_error_pct=0.4090
+exact_fingerprint_match=false
+figures=/work/vcomp-pebble-1tb/cassandra-vcomp-100g-fixedtrace-q1-20260913-160245/figures

@@ -258,3 +258,86 @@ the pre-run packaged-JAR audit. No other Cassandra benchmark was active and
 `/work` had approximately 6.3 TiB available at launch. The planned gate is load
 row/size/SST-shape fidelity followed by fixed-operation A-F/MixGraph; no
 100 GiB result should be reported until the paired load completes.
+
+## Cassandra 100 GiB ordered-partition fixed-trace result (2026-09-13)
+
+Completed the fresh 10,000-partition paired load with an audited runtime JAR.
+Native baseline versus VComp measured 5,558.277 versus 116.419 seconds, 422.153
+versus 71.066 GiB of device writes, 71.906 versus 70.979 GiB final physical
+size, 66,278,498 versus 66,549,593 live rows, and 184 versus 165 final SSTables.
+Thus final bytes differed by -1.29% and visible rows by +0.409%, while SST count
+remained 10.33% lower on VComp.
+
+Completed fixed-operation A-F and MixGraph with 48 workers and exactly 20,000
+operations per worker on each side. VComp throughput deltas were A +9.33%, B
++10.63%, C +12.40%, D +10.90%, E +3.70%, F +10.24%, and MixGraph -2.44%.
+Archived both graphs, all 14 JSON records, load metrics, configuration, and
+runtime provenance at
+`resources/experiments/20260913-180400_cassandra_100g_fixed_operations_q1/`.
+The result improves substantially on the rejected single-partition +55.13%
+read-only delta, but the read-heavy deltas and 184/165 SST mismatch require
+per-token/shard layout analysis before a 1 TiB campaign.
+
+Regenerated the workload figure as `paper_workloads.svg` using the same 2×2
+paper layout as the Pebble result: throughput, layered point-lookup
+p50/p95/p99 latency, disk reads, and disk writes. Corrected the I/O panel
+captions from the inapplicable five-minute label to the actual 960,000 fixed
+operations per system. `cassandra_workloads.svg` remains as an identical
+compatibility alias for older links.
+
+## Cassandra 1 TiB ordered-partition campaign launched (2026-09-13)
+
+At the user's request, removed the database payloads from the completed 100
+GiB ordered-partition campaign while retaining its logs, configuration, and
+the published `resources` bundle. This reduced the raw campaign root from 145
+GiB to 202 MiB and restored `/work` free space from 6.1 TiB to 6.3 TiB.
+
+Added `cassandra_check/run_ordered_partition_1tib_campaign.sh` and launched it
+in tmux session `cassandra_1tib_fixed_q1_20260913_194834`. The raw root is
+`/work/vcomp-pebble-1tb/cassandra-vcomp-1tib-fixedtrace-q1-20260913-194834`,
+and the small-result destination is
+`resources/experiments/20260913-194834_cassandra_1tib_fixed_operations_q1/`.
+The campaign uses 1,024 GiB, 1,073,741,824 logical key slots, 102,400
+Murmur3-token-ordered partitions, 24-byte keys, 1,000-byte values, UCS T4, and
+picker seed 20260909. It runs the native baseline and VComp serially, then A-F
+and MixGraph with exactly 20,000 operations on each of 48 clients per system.
+On successful completion it automatically archives the metrics and all 14
+JSON records and renders loading plus paper-style workload graphs. The runtime
+JAR audit passed, the native Cassandra node reached `Startup complete`, and
+the baseline entered its explicit 64 MiB flush/write loop; no result is claimed
+while `campaign.env` says `running`.
+
+## Cassandra 1 TiB campaign stopped and architecture audit (2026-09-13)
+
+Stopped the 1 TiB campaign at the user's request during the native baseline
+load. At exit status 130, the loader had completed 564,723,712 of 1,073,741,824
+writes (52.59%) and 8,617 explicit flushes. Confirmed that the wrapper, loader,
+Cassandra daemon, and tmux session had all exited. The approximately 634 GiB
+partial raw tree and its logs remain under `/work`; neither the VComp load nor
+the workload phase started, and no result or graph is reported.
+
+The audit found that the current Cassandra port does not yet implement the
+intended narrow substitution boundary of retaining Cassandra's native UCS
+selection, task lifecycle, scheduling, and sharded writer while replacing only
+the key/value compaction I/O with vSST descriptor operations. `VCompPipeline`
+explicitly runs as a standalone offline synthetic-load path. Although native
+UCS and `VCompUcsPlanner` call the same extracted `UnifiedCompactionPicker`
+kernel, VComp supplies a separate candidate adapter and policy, advances a
+synthetic shared-work clock with a fixed concurrency limit, and independently
+reconstructs native shard splitting before materializing each descriptor with
+`CQLSSTableWriter`. The latter creates simple SSTable writers with expected key
+count zero, so even final Bloom/filter metadata is not produced through the
+same path as a native compaction.
+
+This architecture explains why equal picker code and close final byte/row
+counts did not preserve the 100 GiB physical layout: native baseline selected
+329 compactions and ended with 184 SSTables, whereas VComp simulated 307
+compactions and ended with 165 SSTables. VComp then issued roughly 16--20% less
+disk read traffic in the read-heavy fixed-operation workloads, yielding the
+9--12% throughput separation. These figures are evidence of a layout confound,
+not a validated F2Load read-performance benefit. The Cassandra port should be
+restructured around native task scheduling and native output-boundary logic
+before another large campaign; learned-model/KMV descriptor merging and the
+ordered-partition representation remain legitimate paper mechanisms, but a
+VComp-only picker scheduler or corrective layout heuristic should not be used
+to tune the comparison.
