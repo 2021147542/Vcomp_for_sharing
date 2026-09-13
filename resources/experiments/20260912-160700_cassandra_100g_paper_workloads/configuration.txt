@@ -1,0 +1,13 @@
+baseline_source=/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare/baseline/cassandra-baseline-100g-audited-common-theta-logical-baseline-20260912-135643
+vcomp_source=/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare/vcomp/cassandra-vcomp-100g-audited-common-theta-logical-vcomp-20260912-154148
+duration_seconds=300
+threads=48
+workloads=A B C D E F MIXGRAPH
+key_space=104857600
+key_bytes=24
+value_bytes=1000
+seed=20260909
+disk_device=md0
+checkpoint_method=hardlink_immutable_sstables
+cache_start=scoped_posix_fadvise_dontneed
+started_at=2026-09-12T16:06:28+09:00

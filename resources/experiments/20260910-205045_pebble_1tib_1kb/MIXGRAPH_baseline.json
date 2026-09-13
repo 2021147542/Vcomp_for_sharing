@@ -1,0 +1,18 @@
+{
+  "db_root": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260910-205045",
+  "system": "baseline",
+  "workload": "MIXGRAPH",
+  "definition": "83% get / 14% put / 3% seek",
+  "key_distribution": "MixGraph power + two-term-exponential key ranges",
+  "requested_seconds": 300,
+  "wall_seconds": 302.037121878,
+  "concurrency": 48,
+  "block_cache_bytes": 34359738368,
+  "operations": 19348167,
+  "throughput_ops_per_second": 64058.90401715319,
+  "point_lookup_latency_p50_us": 72,
+  "point_lookup_latency_p95_us": 1171,
+  "point_lookup_latency_p99_us": 3869,
+  "disk_read_bytes": 446034186240,
+  "disk_write_bytes": 11412463616
+}

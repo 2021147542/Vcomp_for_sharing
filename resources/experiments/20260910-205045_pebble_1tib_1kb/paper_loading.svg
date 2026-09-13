@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.panel{font-size:17px;font-weight:700}.tick{font-size:12px;fill:#4b5563}.value{font-size:11px}.legend{font-size:13px}</style>
+<text class="title" x="600.0" y="30" text-anchor="middle">Pebble VComp — 1 TiB, 24 B key + 1000 B value</text>
+<text class="panel" x="305.0" y="73" text-anchor="middle">Loading time (hours)</text>
+<line x1="78" y1="326.0" x2="576" y2="326.0" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="330.0" text-anchor="end">0.0</text>
+<line x1="78" y1="287.2" x2="576" y2="287.2" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="291.2" text-anchor="end">0.5</text>
+<line x1="78" y1="248.3" x2="576" y2="248.3" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="252.3" text-anchor="end">1.0</text>
+<line x1="78" y1="209.5" x2="576" y2="209.5" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="213.5" text-anchor="end">1.5</text>
+<line x1="78" y1="170.7" x2="576" y2="170.7" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="174.7" text-anchor="end">2.0</text>
+<line x1="78" y1="131.8" x2="576" y2="131.8" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="135.8" text-anchor="end">2.5</text>
+<line x1="78" y1="93.0" x2="576" y2="93.0" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="97.0" text-anchor="end">3.0</text>
+<rect x="295.5" y="136.8" width="30.0" height="189.2" fill="#6b7280"/>
+<rect x="328.5" y="314.9" width="30.0" height="11.1" fill="#2563eb"/>
+<text class="tick" x="327.0" y="344" text-anchor="middle">1 TiB</text>
+<line x1="78" y1="326" x2="576" y2="326" stroke="#111827"/>
+<text class="panel" x="895.0" y="73" text-anchor="middle">Total SST write (TB)</text>
+<line x1="668" y1="326.0" x2="1166" y2="326.0" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="330.0" text-anchor="end">0.0</text>
+<line x1="668" y1="279.4" x2="1166" y2="279.4" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="283.4" text-anchor="end">5.0</text>
+<line x1="668" y1="232.8" x2="1166" y2="232.8" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="236.8" text-anchor="end">10.0</text>
+<line x1="668" y1="186.2" x2="1166" y2="186.2" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="190.2" text-anchor="end">15.0</text>
+<line x1="668" y1="139.6" x2="1166" y2="139.6" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="143.6" text-anchor="end">20.0</text>
+<line x1="668" y1="93.0" x2="1166" y2="93.0" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="97.0" text-anchor="end">25.0</text>
+<rect x="885.5" y="120.3" width="30.0" height="205.7" fill="#6b7280"/>
+<rect x="918.5" y="318.9" width="30.0" height="7.1" fill="#2563eb"/>
+<text class="tick" x="917.0" y="344" text-anchor="middle">1 TiB</text>
+<line x1="668" y1="326" x2="1166" y2="326" stroke="#111827"/>
+<text class="panel" x="305.0" y="413" text-anchor="middle">Write amplification (×)</text>
+<line x1="78" y1="666.0" x2="576" y2="666.0" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="670.0" text-anchor="end">0.0</text>
+<line x1="78" y1="632.7" x2="576" y2="632.7" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="636.7" text-anchor="end">5.0</text>
+<line x1="78" y1="599.4" x2="576" y2="599.4" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="603.4" text-anchor="end">10.0</text>
+<line x1="78" y1="566.1" x2="576" y2="566.1" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="570.1" text-anchor="end">15.0</text>
+<line x1="78" y1="532.9" x2="576" y2="532.9" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="536.9" text-anchor="end">20.0</text>
+<line x1="78" y1="499.6" x2="576" y2="499.6" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="503.6" text-anchor="end">25.0</text>
+<line x1="78" y1="466.3" x2="576" y2="466.3" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="470.3" text-anchor="end">30.0</text>
+<line x1="78" y1="433.0" x2="576" y2="433.0" stroke="#e5e7eb"/>
+<text class="tick" x="72" y="437.0" text-anchor="end">35.0</text>
+<rect x="295.5" y="469.4" width="30.0" height="196.6" fill="#6b7280"/>
+<rect x="328.5" y="659.3" width="30.0" height="6.7" fill="#2563eb"/>
+<text class="tick" x="327.0" y="684" text-anchor="middle">1 TiB</text>
+<line x1="78" y1="666" x2="576" y2="666" stroke="#111827"/>
+<text class="panel" x="895.0" y="413" text-anchor="middle">Final DB size (GB)</text>
+<line x1="668" y1="666.0" x2="1166" y2="666.0" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="670.0" text-anchor="end">0</text>
+<line x1="668" y1="619.4" x2="1166" y2="619.4" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="623.4" text-anchor="end">200</text>
+<line x1="668" y1="572.8" x2="1166" y2="572.8" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="576.8" text-anchor="end">400</text>
+<line x1="668" y1="526.2" x2="1166" y2="526.2" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="530.2" text-anchor="end">600</text>
+<line x1="668" y1="479.6" x2="1166" y2="479.6" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="483.6" text-anchor="end">800</text>
+<line x1="668" y1="433.0" x2="1166" y2="433.0" stroke="#e5e7eb"/>
+<text class="tick" x="662" y="437.0" text-anchor="end">1000</text>
+<rect x="885.5" y="491.9" width="30.0" height="174.1" fill="#6b7280"/>
+<rect x="918.5" y="487.4" width="30.0" height="178.6" fill="#2563eb"/>
+<text class="tick" x="917.0" y="684" text-anchor="middle">1 TiB</text>
+<line x1="668" y1="666" x2="1166" y2="666" stroke="#111827"/>
+<rect x="490" y="736" width="18" height="12" fill="#6b7280"/>
+<text class="legend" x="514" y="747">Baseline</text>
+<rect x="610" y="736" width="18" height="12" fill="#2563eb"/>
+<text class="legend" x="634" y="747">VComp</text>
+</svg>

@@ -1,0 +1,112 @@
+{
+  "db_root": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260910-205045",
+  "dataset_bytes": 1099511627776,
+  "writes": 1073741824,
+  "key_size": 24,
+  "value_size": 1000,
+  "configuration": {
+    "memtable_bytes": 67108864,
+    "flush_entries": 65536,
+    "target_sst_bytes": 67108864,
+    "max_background_jobs": 48,
+    "wal": false,
+    "compression": false
+  },
+  "baseline": {
+    "loading_seconds": 8769.529606236,
+    "total_disk_write_bytes": 22073153699834,
+    "write_amplification": 29.53555945426273,
+    "final_db_bytes": 747341648768,
+    "sst_count": 12733,
+    "average_sst_bytes": 58693288.99458101,
+    "levels": [
+      {
+        "level": 0,
+        "tables": 1,
+        "bytes": 2529017
+      },
+      {
+        "level": 1,
+        "tables": 2,
+        "bytes": 48443852
+      },
+      {
+        "level": 2,
+        "tables": 7,
+        "bytes": 385436259
+      },
+      {
+        "level": 3,
+        "tables": 50,
+        "bytes": 2152181955
+      },
+      {
+        "level": 4,
+        "tables": 138,
+        "bytes": 7414818728
+      },
+      {
+        "level": 5,
+        "tables": 1312,
+        "bytes": 67069660340
+      },
+      {
+        "level": 6,
+        "tables": 11223,
+        "bytes": 670268578617
+      }
+    ]
+  },
+  "vcomp": {
+    "loading_seconds": 515.769850776,
+    "total_disk_write_bytes": 766594640924,
+    "write_amplification": 1,
+    "final_db_bytes": 766594640924,
+    "sst_count": 13285,
+    "average_sst_bytes": 57703774.25095973,
+    "levels": [
+      {
+        "level": 0,
+        "tables": 1,
+        "bytes": 67765122
+      },
+      {
+        "level": 1,
+        "tables": 0,
+        "bytes": 0
+      },
+      {
+        "level": 2,
+        "tables": 7,
+        "bytes": 399252113
+      },
+      {
+        "level": 3,
+        "tables": 56,
+        "bytes": 2661253378
+      },
+      {
+        "level": 4,
+        "tables": 364,
+        "bytes": 17052788950
+      },
+      {
+        "level": 5,
+        "tables": 1588,
+        "bytes": 81758205712
+      },
+      {
+        "level": 6,
+        "tables": 11269,
+        "bytes": 664655375649
+      }
+    ]
+  },
+  "deduplication": {
+    "jobs": 79373,
+    "mean_abs_percent_error": 4.260555981198872,
+    "median_abs_percent_error": 3.535498602016441,
+    "p95_abs_percent_error": 10.44397544871919,
+    "max_abs_percent_error": 3100
+  }
+}

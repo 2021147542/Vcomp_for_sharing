@@ -1,0 +1,4 @@
+.runtime/
+runs/
+latest
+cassandra.logdir_IS_UNDEFINED/

@@ -1,0 +1,14 @@
+# Raw experiment outputs. Curated tables and figures belong in results/.
+/artifacts/
+
+# Python/cache artifacts.
+__pycache__/
+*.py[cod]
+
+# Local/editor noise.
+.DS_Store
+*.swp
+
+# Raw per-cell benchmark logs are evidence on the measurement host, not
+# published results (see README.md, Publishing results).
+/results/**/bench.log

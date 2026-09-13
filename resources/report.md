@@ -1,0 +1,167 @@
+# Pebble VComp Feasibility Prototype Report
+
+## Change log
+
+- 2026-09-03: Reconfigured the Pebble experiment from its small-scale feasibility settings to the paper's large-scale loading settings: 64 MiB memtables, 65,536 1 KiB writes per explicit 64 MiB flush, and 64 MiB target SSTs. Removed the baseline's per-flush compaction drain so normal Pebble loading can overlap foreground writes with background compactions; the final drain remains. WAL and compression remain disabled, and compaction/materialization concurrency remains dynamically bounded from one to 48 workers. This change was made before restarting the experiment at 100 GiB because extending the 4 MiB scale-down configuration to 1 TiB created excessive tiny SSTs and serialized compaction work.
+- 2026-09-03: A 100 GiB run with the 64 MiB configuration completed its work in about 13 minutes but failed the final descriptor-union check: the reopened DB iterator returned 2,521 more positions than the unique descriptor union. Descriptor compactions can propagate the same highest input sequence number to several outputs, and at this scale independently reconstructed tables produced a small number of identical internal keys across levels. Materialization now assigns every final table a unique synthetic sequence number while preserving the relative recency order carried by the virtual metadata. This changes neither reconstructed user keys nor cardinality estimates; it enforces Pebble's internal-key ordering requirement for direct table installation. Added a focused regression test for uniqueness and recency-order preservation.
+- 2026-09-03: Re-ran the corrected 100 GiB experiment successfully. The complete test took 933.6 s including independent accuracy tracing and iterator validation; baseline loading took 565.8 s, while measured VComp simulation plus materialization took 35.50 s (15.94x faster). The reopened materialized DB exactly matched the descriptor union and returned zero incorrect values.
+- 2026-09-01: Cloned the upstream Pebble repository into `pebble-vcomp/` as the isolated implementation and experiment target. No existing RocksDB/VComp source was modified.
+- 2026-09-02: Added `pebble-vcomp/vcomp/model.go`, a Go port of the paper prototype's vSST descriptor operations: piecewise-linear learned-index fitting/merge/inverse, global and eight range-local KMV sketches, KMV union estimation, descriptor slicing, and final key materialization. This module contains no compaction-picking policy; Pebble's existing picker and splitter are used by the integration harness.
+- 2026-09-02: Added `pebble-vcomp/vcomp/model_test.go` with focused checks for learned-index rank/inverse behavior, exact and sampled KMV union estimates, output slicing, and bounded/ordered materialization.
+- 2026-09-02: Added `pebble-vcomp/vcomp_experiment_test.go`, an opt-in end-to-end feasibility harness. It runs deterministic natural Pebble loading with WAL/compression disabled, drives descriptor-only compactions through Pebble's unmodified score picker and output splitter, records KMV error with a strictly separate truth trace, materializes final vSSTs once, installs them at the predicted levels, validates keys/values, and reports write amplification plus final-state accuracy. The scale-down constants and explicit deterministic flush boundary are experiment controls shared by both paths, not VComp optimizations.
+- 2026-09-02: Fixed the experiment harness for the current Pebble APIs by supplying compression as a profile callback and recording table counts with Pebble's unsigned metric type.
+- 2026-09-02: Added a fail-fast invariant to the experiment harness that reports any overlapping predicted output ranges before they can create an invalid Pebble level. This is diagnostic validation only and does not alter VComp output.
+- 2026-09-02: Expanded the ordering-failure diagnostic to print every simulated table's level, key range, entry estimate, and sequence range; no compaction decision or descriptor is modified.
+- 2026-09-02: Fixed fake Pebble table-metadata initialization: `HasPointKeys` is now left unset until `ExtendPointKeyBounds` initializes both bounds and the flag. Setting it early made Pebble preserve an empty smallest key and falsely report otherwise-disjoint vSSTs as overlapping.
+- 2026-09-02: Completed the materialization behavior already stated by the source prototype's “cap and deduplicate” comment: after inverse-rank rounding and `key_max` clamping, identical reconstructed integer keys are collapsed so Pebble can build a valid strictly ordered SST. No replacement keys are invented; the lost cardinality remains visible in accuracy metrics. Added a regression test for this boundary case.
+- 2026-09-02: Strengthened final-state validation by closing and reopening the materialized Pebble DB before measuring levels, iterating keys, and checking values. This verifies that predicted level placement is persisted in the MANIFEST rather than existing only in memory.
+- 2026-09-02: Replaced the remaining shorthand “PLR” in Go comments with the paper's own terminology, “piecewise-linear learned-index model.” Functionality is unchanged.
+- 2026-09-02: Review correction: replaced per-pick reconstruction of the entire fake Pebble `Version` with incremental in-memory `BulkVersionEdit` application and persistent `L0Organizer` state. This uses Pebble's existing version-update machinery and removes harness work that is not part of virtual compaction.
+- 2026-09-02: Review correction: made exact-key truth propagation conditional. Performance runs no longer allocate, merge, sort, or retain true key arrays; those operations are confined to a separate accuracy-trace run and never influence descriptor output.
+- 2026-09-02: Review correction: replaced rank-by-rank calls to Pebble's `OutputSplitter` with descriptor-level event evaluation. The implementation still applies Pebble's target-size, 2x hard-size, grandparent-start, no-split-user-key, and max-grandparent-overlap rules, but obtains boundary ranks from the learned index as required by the paper. The old rank scanner remains as an opt-in `VCOMP_VALIDATE_SPLITTER` oracle for small equivalence runs.
+- 2026-09-02: Review correction: split execution into two complete deterministic passes. The reported VComp loading time now comes from a descriptor-only pass with no truth map; KMV job errors come from a second accuracy-only pass and its entire wall time is reported separately.
+- 2026-09-02: Review correction: replaced sequential external-SST creation plus one-file-at-a-time ingest with the paper's materialization structure. Final SST objects are now built directly through Pebble's object provider with up to 48 workers, synchronized once, and installed at their predicted levels through one `VersionEdit`. This removes staging copies and intermediate ingest MANIFEST edits; it is the paper-specified parallel materialization and batched final state update, not a new optimization.
+- 2026-09-02: Fixed descriptor-level grandparent boundary placement after a 512 MiB invariant failure. `Predict(boundary)` is now used only as the initial rank guess, then aligned to the first inverse-mapped key that reaches the boundary. This reproduces the event Pebble's key scanner observes and prevents adjacent output metadata from sharing a rounded boundary key.
+- 2026-09-02: Fixed the event-based splitter after the 512 MiB reference oracle found an early split. The port now carries Pebble's exact dynamic grandparent threshold: 50% at the first observed boundary, increasing by 5 percentage points per crossed boundary up to 90%, with same-rank boundaries counted before one decision. The earlier constant-50% simplification was removed.
+- 2026-09-02: Corrected timing and materialization validation. Reported materialization time now stops after object sync and the single MANIFEST install, excluding close/reopen iterator verification. Separately, the union of keys reconstructed directly from all final descriptors is compared byte-for-byte with the reopened DB iterator output; a mismatch fails the experiment.
+- 2026-09-02: Fixed a Pebble correctness violation exposed by the descriptor-union check. Final SSTs now use each virtual table metadata record's existing highest sequence number instead of writing every internal key at sequence zero, and the direct-install path advances Pebble's visibility watermarks past those sequence numbers. This preserves the ordering information already carried through the virtual compactions; it is not a new estimator or compaction optimization. Without it, overlapping levels could contain identical internal keys and Pebble's user iterator exposed duplicates.
+- 2026-09-02: Corrected the parallel materializer's worker-count expression after renaming its input from descriptors to final tables; behavior is unchanged.
+- 2026-09-02: Corrected a benchmark-configuration asymmetry found during final review. Pebble's baseline compaction concurrency now has the paper's maximum of 48 background jobs, and final materialization reads the same configured maximum instead of embedding an independent constant. Pebble retains a normal lower concurrency of one and raises it through its existing debt/L0 heuristics.
+
+## Scope and fidelity rules
+
+This is a feasibility prototype against upstream Pebble commit `8ca7bf36e171f1f158a71f0f1ab5679daafdc988`. It intentionally implements only mechanisms stated in the F2Load paper:
+
+- in-memory vSST metadata (key range, entry count, estimated size, and level);
+- piecewise-linear learned-index fitting, model-level merging, splitting, and inverse materialization;
+- one global KMV sketch and eight key-range-local KMV sketches per vSST;
+- the original DB's compaction trigger/input selection and lower-level-overlap split behavior; and
+- one-time materialization after the virtual LSM state reaches quiescence.
+
+No new compaction policy, estimator, sketch correction, or performance optimization was added. Pebble-specific code is limited to encoding integer keys, adapting descriptors to `TableMetadata`, calling Pebble's existing score picker, applying the same output-split events as `internal/compact.OutputSplitter`, writing final SSTs, and installing their predicted levels through a manifest edit. The exact-key arrays retained by the experiment are accuracy tracing only and are never read by the virtual algorithm.
+
+The large-scale experiment configuration uses 24-byte keys, 1000-byte values, WAL and compression disabled, 64 MiB memtables and target SSTs, 65,536 writes per explicit 64 MiB flush, up to 48 background compactions/materialization workers, and `SplitMix64(seed+i) % writes`. The explicit flush boundary is shared by baseline and VComp so the two paths see identical initial batches, but the baseline waits for compactions only after loading completes so foreground writes and normal background compactions overlap. With `keyspace = writes`, about 63.2% of generated keys are unique, matching the paper's random-load shape.
+
+## Implementation map
+
+- `pebble-vcomp/vcomp/model.go`: paper descriptor algorithms only.
+- `pebble-vcomp/vcomp/model_test.go`: learned-index, KMV, slicing, and materialization unit tests.
+- `pebble-vcomp/vcomp_experiment_test.go`: Pebble integration, natural-load baseline, virtual picker loop, one-time materialization, durable level installation, and measurements.
+
+The experiment is opt-in so it does not run during ordinary Pebble tests:
+
+```sh
+VCOMP_EXPERIMENT=1 VCOMP_WRITES=1048576 go test . \
+  -run '^TestVCompExperiment$' -count=1 -v -timeout=30m
+```
+
+## Verification performed
+
+- `go test ./vcomp -count=1`: passed.
+- Paper-scale 64 MiB configuration smoke run at 512 MiB, including baseline, VComp, close/reopen validation, and descriptor-union validation: passed in 4.30 s. Baseline loading took 2.92 s and the measured VComp simulation-plus-materialization path took 0.243 s.
+- Corrected paper-scale 64 MiB configuration run at 100 GiB: passed in 933.6 s, including baseline validation, independent accuracy tracing, parallel materialization, close/reopen validation, descriptor-union equality, and value validation.
+- Root Pebble test package compilation with the experiment skipped: passed.
+- 64 MiB smoke experiment, including close/reopen validation: passed.
+- 512 MiB experiment, including close/reopen validation: passed.
+- 1 GiB experiment, including close/reopen validation: passed.
+- Descriptor-level split positions versus Pebble's record-by-record `OutputSplitter` oracle at 64 MiB and 512 MiB: exact match.
+- Reopened DB iterator versus the independently reconstructed union of all final vSST descriptors at every measured scale: exact match.
+- All baseline and VComp iterator value checks: zero errors.
+
+## Results
+
+### 100 GiB paper-scale configuration
+
+The corrected 100 GiB run used 24-byte keys, 1000-byte values, 64 MiB memtables and target SSTs, 65,536 writes per explicit flush, normal overlapping foreground/background baseline execution with only a final compaction drain, no WAL or compression, and up to 48 background/materialization workers.
+
+| Metric | Pebble baseline | Pebble VComp |
+|---|---:|---:|
+| Measured loading time | 565.751 s | 35.495 s |
+| Descriptor simulation | — | 23.455 s |
+| Final materialization | — | 12.040 s |
+| Total SST writes | 1.511 TB | 72.689 GB |
+| Final SST bytes | 73.062 GB | 72.689 GB |
+| SST rewrite factor | 20.679x | 1.000x |
+| Logical keys | 66,284,772 | 65,903,886 |
+| Incorrect values | 0 | 0 |
+
+The measured VComp path was 15.94x faster and reduced SST writes by 95.19%. Final SST bytes differed from baseline by -0.51%, and logical key count differed by -0.57%. The complete test took 933.6 s because it additionally performed baseline/VComp iterator validation and a separate 138.9 s exact-key accuracy trace; those costs are excluded from both loading-time columns. VComp executed 7,442 virtual compactions and 223 virtual moves. Its final level counts were L0/L4/L5/L6 = 1/13/127/1,094, compared with baseline L0/L3/L4/L5/L6 = 6/1/16/129/1,095.
+
+KMV mean, median, p95, and maximum absolute cardinality errors over virtual compaction jobs were 4.29%, 3.63%, 10.67%, and 47.18%. The exact reconstructed-key Jaccard similarity was 0.4605, consistent with the previously documented limitation of inverse materialization from an approximate learned index.
+
+### Earlier scale-down configuration
+
+These are single reviewed scale-down runs on the local host, not a reproduction of the paper's multi-TB hardware evaluation. They supersede the earlier harness timings: the earlier implementation rebuilt full Pebble versions per pick, enumerated every predicted rank through the splitter, performed exact-key tracing in the measured path, and used a sequential ingest path. Those were prototype artifacts rather than F2Load work. “SST rewrite factor” is `(flush output + compaction output) / final live SST bytes` for baseline and `materialization output / final live SST bytes` for VComp. Manifest traffic is excluded from both.
+
+| Requested input | Baseline SST writes | Baseline final SST | Baseline rewrite factor | VComp materialization | VComp rewrite factor | SST-write reduction | Baseline time | VComp time | Speedup |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 64 MiB | 269.4 MB | 45.3 MB | 5.94x | 43.1 MB | 1.00x | 84.0% | 0.348 s | 0.032 s | 10.71x |
+| 512 MiB | 5.225 GB | 381.3 MB | 13.70x | 378.6 MB | 1.00x | 92.8% | 6.451 s | 0.292 s | 22.10x |
+| 1 GiB | 12.970 GB | 727.4 MB | 17.83x | 727.7 MB | 1.00x | 94.4% | 15.356 s | 0.588 s | 26.13x |
+
+VComp time is descriptor simulation plus the paper-specified parallel, one-time materialization and one batched manifest install. It excludes the wholly separate exact-key accuracy pass and post-timing close/reopen iterator validation. Baseline time likewise stops before its iterator validation. At 1 GiB, descriptor simulation took 0.519 s and materialization took 0.068 s.
+
+At 1 GiB, baseline ended with 2/20/177 files in L0/L5/L6; VComp ended with 0/19/177. Final SST bytes differed by +0.039%, and logical key counts differed by +0.337%. At 512 MiB, final bytes differed by -0.688% and logical key counts by -0.496%. At 64 MiB the final-byte difference was larger (-4.88%) because this very small run has only 11 final VComp tables and is sensitive to the two baseline L0 tables.
+
+KMV cardinality accuracy over virtual compaction jobs was:
+
+| Requested input | Jobs | Mean absolute error | Median | p95 | Maximum |
+|---:|---:|---:|---:|---:|---:|
+| 64 MiB | 8 | 1.03% | 0.78% | 2.80% | 2.80% |
+| 512 MiB | 154 | 3.36% | 1.66% | 10.95% | 18.30% |
+| 1 GiB | 391 | 3.72% | 2.81% | 10.80% | 16.01% |
+
+The exact-key-set Jaccard similarity was only 0.467, 0.462, and 0.466 respectively. This does not contradict the close cardinality and level-size results: the learned index approximates ranks and its inverse often reconstructs a nearby integer rather than the original integer. The paper evaluates output sizes and subsequent workload/state behavior, not exact equality with the originally generated key set. Any application that requires byte-for-byte reproduction of the original generated keys would therefore need a stronger guarantee than this design provides.
+
+## Conclusions and limits
+
+The core claim is implementable on Pebble: its normal compaction picker can operate on synthetic `TableMetadata`, its output-splitting rules can be evaluated from descriptor boundary events, and final SSTs can be materialized once and durably installed at the predicted levels. At 1 GiB the reviewed prototype reduced measured SST writes by 94.4%, ran 26.13x faster than natural loading, and reproduced final size and lower-level file counts closely. The corrected result does not support a Pebble-specific inability to remove loading delay.
+
+The bad earlier latency result came from the harness, not Pebble: it rebuilt a complete version for every pick, ran exact-key truth propagation inside the timed pass, invoked the learned-index inverse once per predicted record through `OutputSplitter`, and staged then sequentially ingested every output SST. The reviewed path instead applies virtual version edits incrementally, evaluates only the splitter events named by Pebble's existing policy, isolates accuracy tracing in a second run, and follows the paper's parallel write-once materialization plus batched state update. An opt-in oracle compared the event-based split positions with Pebble's record-by-record `OutputSplitter` and passed.
+
+One real Pebble integration difference is internal sequence-number validity. Directly installed SSTs in overlapping levels cannot all contain sequence-zero internal keys: identical user key plus identical sequence number produces identical internal keys, and Pebble may expose duplicates. The fix does not change VComp's estimate; before materialization it stable-sorts final tables by their virtual metadata sequence number, assigns every table a distinct synthetic sequence number while preserving relative recency, and advances Pebble's visibility watermark past that range. The reopened DB's iterator is then exactly equal to the independently materialized descriptor union at all tested scales, with zero value errors. This synthetic experiment uses a deterministic value derived from the key. A general loader whose value changes on repeated writes would need to retain enough version information to reconstruct the winning value; neither this descriptor nor the paper's descriptor specifies that information.
+
+This remains an opt-in feasibility harness rather than a production Pebble loading mode. The remaining fidelity gaps are visible rather than corrected: VComp left no L0 tables where baseline left two, KMV tail error was materially higher than the paper's aggregate, and exact reconstructed key identity was poor even though cardinality and final bytes were close. The low key-set Jaccard follows from inverse materialization of an approximate learned index; no unreported correction keys were invented. Larger repeated runs and post-load YCSB behavior would be required before claiming paper-level final-state fidelity on Pebble.
+
+## YCSB-C integration for the 1 TiB run
+
+The end-to-end harness now reopens both the naturally loaded baseline DB and the VComp-materialized DB and runs a post-load YCSB-C-equivalent workload against each. The workload is 100% point reads, uses 48 workers and a scrambled Zipfian distribution with theta 0.99, and defaults to five minutes per DB. It reports operation count, throughput, p50/p95/p99 latency, exact key hits and misses, the DB's structural read amplification, and block-cache hits, misses, and hit rate. Baseline and VComp workers use identical deterministic PRNG seeds, so corresponding workers consume the same query-stream prefixes; a time-based benchmark may execute different prefix lengths because throughput differs.
+
+Pebble's stock `pebble bench ycsb` command was not used directly because it assumes CockroachDB MVCC-formatted keys and the Cockroach comparer, whereas this experiment creates fixed 24-byte numeric keys with Pebble's default byte comparer. Its read path also accepts the first key at or after the requested key, which would hide missing reconstructed keys. The integrated runner retains YCSB-C semantics but encodes queries in the experiment's key format and requires exact key equality, making hit-rate divergence visible.
+
+The paper provisions block cache at 5% of requested dataset size. The harness follows that rule up to a 32 GiB cap; the cap is required on the current 62 GiB machine so the 1 TiB experiment retains memory headroom for Pebble, Go, and the OS. `VCOMP_YCSB_DURATION`, `VCOMP_YCSB_CONCURRENCY`, and `VCOMP_YCSB_CACHE_BYTES` can override the defaults without changing the loading configuration. Before the workload starts, large exact-validation key arrays are released and garbage collection is requested. The 64 MiB smoke validation used a 64 MiB cache and 0.5 seconds per DB; both baseline and VComp YCSB phases completed and emitted all configured metrics.
+
+For the follow-up 1 TiB single-thread YCSB-C run, `VCOMP_YCSB_CACHE_BYTES=0` is supported as a true Pebble block-cache disable setting. A plain `Options.CacheSize=0` would silently select Pebble's 8 MiB default, so the runner instead constructs and supplies an explicit `NewCache(0)`. This disables only Pebble's block cache; the Linux filesystem page cache is not dropped. The loading configuration remains unchanged, while `VCOMP_YCSB_CONCURRENCY=1` changes only the post-load YCSB worker count.
+
+The experiment no longer uses `testing.T.TempDir`, because that deleted the roughly 747 GB baseline and 743 GB VComp databases at the end of each successful 1 TiB run and forced a complete reload for every YCSB variant. The default is now a persistent directory created with `os.MkdirTemp`; `VCOMP_DB_ROOT` may select an explicit persistent location. The chosen path is printed before loading begins and included in the final JSON as `db_root`. An explicitly configured directory must be empty, otherwise the harness fails rather than overwriting or mixing with retained data. No automatic cleanup is registered, on success or failure, so later read workloads may reopen `baseline/` and `virtual/` directly.
+
+`TestVCompYCSBExisting` is the post-load-only entry point for retained databases. It requires `VCOMP_EXISTING_DB_ROOT` and `VCOMP_WRITES`, reopens that root's `baseline/` and `virtual/` directories, and runs only the two YCSB-C phases. Cache size, concurrency, duration, and value size retain the same environment overrides as the full experiment. This turns subsequent YCSB configuration changes into minutes-long runs rather than repeating the multi-hour 1 TiB load.
+
+## Cassandra iteration graph export (2026-09-13)
+
+Added `resources/plot_cassandra_iteration_versions.py` and exported nine independent Cassandra implementation-version comparisons to `resources/experiments/20260913-124257_cassandra_iteration_versions/`. Each version has its own SVG and PNG, rather than combining implementation versions in one figure. Every graph shows load time, device writes, write amplification, final physical size, final SST count, and exact-version workload throughput deltas when such workload results exist. The accompanying `metrics.csv` and `metrics.json` retain the raw source paths and derived deltas.
+
+Workload measurements were not copied between versions: versions without an exact matching workload run are explicitly marked as having no workload result. No 1 TiB Cassandra graph was produced because no completed 1 TiB Cassandra result exists. The seeded 1 GiB and 100 GiB figures also disclose that the baseline daemon loaded the pre-seed JAR, even though the requested seed was recorded, so those runs are not presented as a fully seeded baseline/VComp pair.
+
+## Cassandra 100 GiB single-partition rerun (2026-09-13)
+
+Added `cassandra_check/run_single_partition_100g_campaign.sh` to execute the user-requested giant-partition control as one guarded sequence: rebuild the Cassandra runtime JAR, verify that its `Controller` bytecode contains the seeded UCS picker hook, run a fresh 100 GiB native baseline with one partition, run the matching one-partition VComp load, and then run YCSB A-F plus MixGraph for five minutes per system/workload. Both loads use 24 B keys, 1,000 B values, UCS T4, 48 compactors, and picker seed 20260909. The workload runner is given the exact newly produced baseline and VComp DB paths rather than historical defaults.
+
+The campaign was launched at 2026-09-13 13:00 KST in tmux session `cassandra_100g_single_20260913_125952`, with raw root `/work/vcomp-pebble-1tb/cassandra-100g-single-partition-20260913-125952`. At launch `/work` had approximately 6.3 TiB available and no other Cassandra benchmark was active. The rebuilt runtime JAR has SHA-256 `eb808c227f5a5dfc4b6e1aef3c36af6827b1a64c51104e2b2b35f085a71890a7`; `javap` confirmed that the daemon-loaded JAR contains `cassandra.ucs.picker_seed`, fixing the provenance defect in the preceding seeded runs. The baseline configuration records `partition_keys=1`, and at the 2026-09-13 13:02 KST status check it was actively loading, at 4,194,304 of 104,857,600 writes (64 explicit flushes). The campaign remains in progress; no result values should be reported until its `SUCCESS` marker and all fourteen workload JSON files exist.
+
+## Repository publication preparation (2026-09-13)
+
+Prepared the top-level `vcomp` tree for publication as one Git repository. The
+repository-local ignore rules now exclude the downloaded Go toolchain, Maven
+cache, plotting virtual environment, local agent metadata, nested-Git backup,
+and raw Cassandra pipeline runs. These are local or reproducible artifacts and
+are not required to build the source from a fresh clone. The separately checked
+out `/home/dongju/go` directory remains outside this repository; it is a Go
+module cache rather than required Pebble source.
+
+The embedded `pebble-vcomp` checkout was flattened so its modified Go source is
+tracked as normal files instead of an unresolved gitlink. Its upstream URL and
+base commit are recorded in `pebble-vcomp/UPSTREAM_PROVENANCE.md`, while its
+original nested Git metadata is retained only as an ignored local backup. This
+repository preparation does not alter the active Cassandra campaign or its
+database under `/work`.
