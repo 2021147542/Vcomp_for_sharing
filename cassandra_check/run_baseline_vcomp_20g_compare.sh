@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE_ROOT="$SCRIPT_DIR/../cassandra_vcomp"
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 DATASET_GIB="${DATASET_GIB:-20}"
 ROOT="${EXPERIMENT_ROOT:-/work/vcomp-pebble-1tb/cassandra-vcomp-${DATASET_GIB}g-compare}"
 BASELINE_TARGET_SSTABLE_SIZE="${BASELINE_TARGET_SSTABLE_SIZE:-64MiB}"
@@ -16,7 +19,25 @@ LOG="$ROOT/compare-$(date +%Y%m%d-%H%M%S).log"
 mkdir -p "$ROOT"
 exec > >(tee -a "$LOG") 2>&1
 
-echo '[1/3] Measuring vanilla Cassandra UCS baseline'
+echo '[1/4] Building and auditing the Cassandra runtime jar'
+export JAVA_HOME
+source "$SOURCE_ROOT/build-env.sh"
+ant -f "$SOURCE_ROOT/build.xml" jar >"$ROOT/build-jar.log" 2>&1
+RUNTIME_JAR=$(find "$SOURCE_ROOT/build" -maxdepth 1 -name 'apache-cassandra-*.jar' \
+  ! -name '*-sources.jar' ! -name '*-javadoc.jar' -print -quit)
+if [[ -z "$RUNTIME_JAR" ]]; then
+  echo 'Cassandra runtime jar was not produced' >&2
+  exit 1
+fi
+sha256sum "$RUNTIME_JAR" >"$ROOT/runtime-jar.sha256"
+"$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
+  org.apache.cassandra.db.compaction.unified.Controller >"$ROOT/controller-runtime.javap"
+if ! rg -q 'cassandra.ucs.picker_seed' "$ROOT/controller-runtime.javap"; then
+  echo 'runtime jar does not contain the seeded UCS Controller hook' >&2
+  exit 1
+fi
+
+echo '[2/4] Measuring vanilla Cassandra UCS baseline'
 env \
   DATASET_GIB="$DATASET_GIB" \
   RUN_TAG="$BASELINE_TAG" \
@@ -26,7 +47,7 @@ env \
   TARGET_SSTABLE_SIZE="$BASELINE_TARGET_SSTABLE_SIZE" \
   bash /home/dongju/vcomp/cassandra_check/run_baseline_20g.sh
 
-echo '[2/3] Measuring Cassandra VComp (starts only after baseline node exits)'
+echo '[3/4] Measuring Cassandra VComp (starts only after baseline node exits)'
 env \
   DATASET_GIB="$DATASET_GIB" \
   RUN_TAG="$VCOMP_TAG" \
@@ -56,7 +77,7 @@ if [[ "$baseline_hash" == "$vcomp_hash" ]]; then
 fi
 printf 'Approximate-key accuracy: baseline rows=%s, VComp rows=%s, delta=%+d (%s%%), exact fingerprint match=%s\n' \
   "$baseline_rows" "$vcomp_rows" "$cardinality_delta" "$cardinality_error_pct" "$fingerprint_match"
-echo '[3/3] Rendering measured comparison graph'
+echo '[4/4] Rendering measured comparison graph'
 python3 /home/dongju/vcomp/resources/plot_cassandra_baseline_compare.py "$baseline" "$vcomp" "$ROOT/figures"
 printf 'baseline_run=%s\nvcomp_run=%s\nbaseline_fingerprint_rows=%s\nbaseline_fingerprint_sha256=%s\nvcomp_fingerprint_rows=%s\nvcomp_fingerprint_sha256=%s\ncardinality_delta=%s\ncardinality_error_pct=%s\nexact_fingerprint_match=%s\nfigures=%s\n' \
   "$baseline" "$vcomp" "$baseline_rows" "$baseline_hash" "$vcomp_rows" "$vcomp_hash" \

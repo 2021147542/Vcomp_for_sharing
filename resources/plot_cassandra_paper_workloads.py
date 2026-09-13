@@ -25,12 +25,12 @@ def nice_axis(values):
     return math.ceil(maximum / step) * step, step
 
 
-def start_svg():
+def start_svg(title):
     return [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">',
         '<rect width="100%" height="100%" fill="white"/>',
         '<style>text{font-family:Arial,sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.panel{font-size:17px;font-weight:700}.tick{font-size:12px;fill:#4b5563}.legend{font-size:13px}</style>',
-        '<text class="title" x="700" y="30" text-anchor="middle">Cassandra — retained 100 GiB load, 48 clients × 5 minutes</text>',
+        f'<text class="title" x="700" y="30" text-anchor="middle">{esc(title)}</text>',
     ]
 
 
@@ -72,8 +72,32 @@ def load_records(root):
     return records
 
 
-def write_svg(root, records):
-    svg = start_svg()
+def read_configuration(root):
+    result = {}
+    path = root / "configuration.txt"
+    if path.exists():
+        for line in path.read_text().splitlines():
+            if "=" in line:
+                key, value = line.split("=", 1)
+                result[key] = value
+    return result
+
+
+def campaign_description(configuration):
+    threads = configuration.get("threads", "?")
+    operations = int(configuration.get("operations_per_thread", "0"))
+    key_space = int(configuration.get("key_space", "0"))
+    key_bytes = int(configuration.get("key_bytes", "0"))
+    value_bytes = int(configuration.get("value_bytes", "0"))
+    gib = key_space * (key_bytes + value_bytes) / 1024**3
+    size = f"{gib:.0f} GiB" if gib >= 0.95 else f"{gib:.2f} GiB"
+    execution = (f"{operations:,} operations/client" if operations > 0 else
+                 f"{configuration.get('duration_seconds', '?')} seconds")
+    return f"Cassandra — {size} requested load, {threads} clients × {execution}"
+
+
+def write_svg(root, records, configuration):
+    svg = start_svg(campaign_description(configuration))
     labels = ["mixg." if item == "MIXGRAPH" else item for item in ORDER]
     series = lambda field, scale=1: {
         system: [records[(workload, system)].get(field, 0) / scale for workload in ORDER]
@@ -98,14 +122,18 @@ def write_svg(root, records):
         svg.append(f'<rect x="{xx}" y="863" width="18" height="12" fill="{COLORS[system]}"/>')
         svg.append(f'<text class="legend" x="{xx+24}" y="874">{DISPLAY[system]}</text>')
     svg.append('</svg>')
-    (root / "cassandra_workloads_100g.svg").write_text("\n".join(svg))
+    (root / "cassandra_workloads.svg").write_text("\n".join(svg))
 
 
-def write_summary(root, records):
+def write_summary(root, records, configuration):
+    operations = int(configuration.get("operations_per_thread", "0"))
+    execution = (f"{operations:,} operations per client" if operations > 0 else
+                 f"{configuration.get('duration_seconds', '?')} seconds")
+    threads = configuration.get("threads", "?")
     lines = [
-        "# Cassandra 100 GiB YCSB / MixGraph comparison", "",
+        "# Cassandra YCSB / MixGraph comparison", "",
         "- Inputs: preserved baseline and VComp DBs; one isolated hard-linked checkpoint per workload",
-        "- Workload: 48 client threads, 300 seconds each; same seed for both systems",
+        f"- Workload: {threads} client threads, {execution}; same seed and operation count for both systems",
         "- Cache start: scoped `POSIX_FADV_DONTNEED` on each checkpoint before Cassandra startup",
         "- Disk I/O: `/proc/diskstats` delta for `md0` over the exact client interval", "",
         "| Workload | System | Throughput (ops/s) | Point p50 (µs) | Point p95 (µs) | Point p99 (µs) | Scan p99 (µs) | Read misses | Disk read (GB) | Disk write (MB) |", 
@@ -129,9 +157,10 @@ def main():
     parser.add_argument("campaign", type=Path)
     args = parser.parse_args()
     records = load_records(args.campaign)
-    write_svg(args.campaign, records)
-    write_summary(args.campaign, records)
-    print(args.campaign / "cassandra_workloads_100g.svg")
+    configuration = read_configuration(args.campaign)
+    write_svg(args.campaign, records, configuration)
+    write_summary(args.campaign, records, configuration)
+    print(args.campaign / "cassandra_workloads.svg")
 
 
 if __name__ == "__main__":

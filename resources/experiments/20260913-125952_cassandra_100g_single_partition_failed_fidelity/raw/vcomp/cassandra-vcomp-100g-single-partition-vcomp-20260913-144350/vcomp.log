@@ -1,0 +1,6 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x0000000840066440 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x0000000840066440
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+VCOMP_RESULT seconds=122.152 writes=104857600 flush_bytes=67108864 target_sst_bytes=67108864 size_model=logical materialized_keys=83895485 logical_bytes=85908976640 virtual_compactions=229 final_runs=3 final_sstables=3 estimated_final_bytes=85908976640 max_estimated_sstable_bytes=57312664576 max_estimated_run_bytes=57312664576 max_sstables_per_run=1 physical_sst_bytes=87596590861 max_physical_sst_bytes=58438647335 physical_sst_count=3

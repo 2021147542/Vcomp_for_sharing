@@ -1,0 +1,53 @@
+Buildfile: /home/dongju/vcomp/cassandra_vcomp/build.xml
+
+init:
+
+_resolver_download:
+
+resolver-init:
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+
+write-poms:
+
+resolver-retrieve-build:
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+    [unzip] Expanding: /home/dongju/vcomp/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8.jar into /home/dongju/vcomp/cassandra_vcomp/build/lib/jars
+
+check-gen-cql3-grammar:
+
+gen-cql3-grammar:
+
+generate-cql-html:
+
+generate-jflex-java:
+
+build-project:
+     [echo] apache-cassandra: /home/dongju/vcomp/cassandra_vcomp/build.xml
+
+_build_java:
+     [echo] Compiling for Java 11...
+
+_get-git-sha:
+     [echo] git.is-available=true
+     [echo] git.sha=7135c6e12f046e695c60837867f33d80a03a4079-dirty
+     [echo] Repository state is dirty
+     [echo]  resources/report.md | 20 ++++++++++++++++++++
+     [echo]  1 file changed, 20 insertions(+)
+     [echo] git.worktree.name=cassandra_vcomp
+     [echo] git.branch.name=main
+
+set-cqlsh-version:
+
+_createVersionPropFile:
+[propertyfile] Updating property file: /home/dongju/vcomp/cassandra_vcomp/src/resources/org/apache/cassandra/config/version.properties
+     [copy] Copying 1 file to /home/dongju/vcomp/cassandra_vcomp/build/classes/main
+
+build:
+
+BUILD SUCCESSFUL
+Total time: 1 second

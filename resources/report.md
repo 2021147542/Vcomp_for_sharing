@@ -165,3 +165,96 @@ base commit are recorded in `pebble-vcomp/UPSTREAM_PROVENANCE.md`, while its
 original nested Git metadata is retained only as an ignored local backup. This
 repository preparation does not alter the active Cassandra campaign or its
 database under `/work`.
+
+## Paper porting-evaluation draft (2026-09-13)
+
+Added `resources/paper_porting_evaluation_draft.md` as a manuscript insertion
+draft. It places the Pebble/Cassandra portability study after Evaluation
+Section 5.4 (Final State Fidelity) and before Memory Overhead, includes a short
+implementation bridge and conclusion sentence, uses the completed Pebble 1 TiB
+measurements, and leaves explicit tokens and graph placeholders for the ongoing
+Cassandra single-partition campaign. The draft distinguishes paired
+within-engine comparisons from cross-engine comparisons and preserves the
+Cassandra partition-atomicity and approximate-key-membership limitations.
+Added `resources/paper_porting_evaluation_draft_kor.md` as a separate Korean
+version with the same section structure, measured Pebble values, Cassandra
+tokens, graph placeholders, limitations, and post-campaign replacement
+checklist. The English draft remains unchanged.
+Revised both language versions to avoid implying that the Cassandra port solves
+general partitioned ordering. The introduction and summary now state directly
+that the implementation fixes one partition key and reduces the dataset to one
+clustering-key order; the result therefore does not establish general
+multi-partition Cassandra support.
+
+## Cassandra 100 GiB single-partition campaign rejected (2026-09-13)
+
+Stopped tmux campaign `cassandra_100g_single_20260913_125952` during the VComp
+side of workload E after the already completed results established a fidelity
+failure. Native baseline and VComp ended with 66,278,498 versus 68,890,595 live
+rows (+3.94%), 83.940 versus 87.597 GB of physical data (+4.36%), and 6 versus
+3 SSTables. The partial A-D workload throughput differences were +1.31%,
++29.28%, +55.13%, and +30.85%; those numbers are not accepted as performance
+results because the final key populations/layouts differ and the time-based
+runs execute different-length operation prefixes.
+
+Archived the small configuration, binary provenance, logs, fingerprints,
+metrics, SST TOC files, and nine completed workload JSON files under
+`resources/experiments/20260913-125952_cassandra_100g_single_partition_failed_fidelity/`.
+The corresponding `/work` database/checkpoint tree was then removed at the
+user's request. The next iteration starts again at 1 GiB and treats deterministic
+equal-trace workload replay plus final-state/physical-shape fidelity as gates
+before another 100 GiB campaign.
+
+## Cassandra fixed-operation workload mode (2026-09-13)
+
+Added an optional `operations-per-thread` argument to
+`CassandraPaperWorkload` and the matching `OPERATIONS_PER_THREAD` setting to
+`run_existing_100g_paper_workloads.sh`. A positive value makes every worker in
+both systems consume the same finite PRNG prefix; zero preserves the existing
+time-based mode. This removes the previous confound where the faster system
+performed more operations and mutations during a nominally equal 300-second
+interval. The fixed-operation mode is a measurement-control change only; it
+does not alter the F2Load descriptor, picker, merge, split, or materialization
+algorithms.
+
+Hardened `run_baseline_vcomp_20g_compare.sh` to build the Cassandra runtime JAR
+once before either side starts, record its SHA-256, disassemble the packaged
+UCS `Controller`, and refuse the campaign unless the packaged daemon code
+contains the seeded-picker hook. This closes the provenance hole in the prior
+"seeded" comparison where the baseline daemon silently loaded an older JAR.
+
+Generalized `resources/plot_cassandra_paper_workloads.py` so graph titles and
+summaries are derived from the campaign configuration instead of claiming that
+every input is a 100 GiB, five-minute run. New exports use the neutral
+`cassandra_workloads.svg` name and disclose whether the campaign is time- or
+fixed-operation based.
+
+## Cassandra 1 GiB ordered-partition fixed-trace qualification (2026-09-13)
+
+Completed a fresh paired 1 GiB load after rebuilding and auditing the actual
+Cassandra daemon JAR. Both paths used 100 Murmur3-token-ordered partitions,
+disjoint scalar clustering-key ranges, UCS T4, and picker seed 20260909. Native
+baseline versus VComp results were 48.747 versus 2.530 seconds, 2.541 versus
+0.676 GiB of device writes, 0.641 versus 0.672 GiB final physical size, 662,885
+versus 690,994 live rows, and exactly 8 versus 8 final SSTables.
+
+Ran A-F and MixGraph against independent hard-link checkpoints with 48 workers
+and exactly 20,000 operations per worker on both systems. Throughput deltas
+were A +1.48%, B +3.86%, C +1.95%, D +0.61%, E -0.00%, F -0.54%, and MixGraph
++2.61%. Archived graphs, configurations, load metrics, runtime-JAR hash, all 14
+workload JSON files, and interpretation limits under
+`resources/experiments/20260913-160100_cassandra_1g_fixed_operations_q1/`.
+The raw DB/checkpoint root remains under `/work/vcomp-pebble-1tb/` for follow-up
+validation and is not part of the Git-facing artifact.
+
+## Cassandra 100 GiB ordered-partition scale gate launched (2026-09-13)
+
+Launched a fresh 100 GiB paired load in tmux session
+`cassandra_100g_fixed_q1_20260913_160245`, with raw root
+`/work/vcomp-pebble-1tb/cassandra-vcomp-100g-fixedtrace-q1-20260913-160245`.
+It uses the qualified 10,000-partition token-ordered layout, 24-byte keys,
+1,000-byte values, UCS T4, 64 MiB flush/target size, common seed 20260909, and
+the pre-run packaged-JAR audit. No other Cassandra benchmark was active and
+`/work` had approximately 6.3 TiB available at launch. The planned gate is load
+row/size/SST-shape fidelity followed by fixed-operation A-F/MixGraph; no
+100 GiB result should be reported until the paired load completes.

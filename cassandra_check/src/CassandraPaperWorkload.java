@@ -43,10 +43,10 @@ public final class CassandraPaperWorkload
 
     public static void main(String[] args) throws Exception
     {
-        if (args.length != 11)
+        if (args.length != 11 && args.length != 12)
             throw new IllegalArgumentException("usage: CassandraPaperWorkload <keyspace> <table> <workload> "
                                                + "<seconds> <threads> <keyspace-size> <key-bytes> <value-bytes> "
-                                               + "<partition-count> <seed> <disk-device>");
+                                               + "<partition-count> <seed> <disk-device> [operations-per-thread]");
         String keyspace = identifier(args[0]);
         String table = identifier(args[1]);
         String workload = args[2].toUpperCase(Locale.ROOT);
@@ -58,9 +58,12 @@ public final class CassandraPaperWorkload
         int partitionCount = Integer.parseInt(args[8]);
         long seed = Long.parseLong(args[9]);
         String diskDevice = args[10];
+        long operationsPerThread = args.length == 12 ? Long.parseLong(args[11]) : 0;
         definition(workload);
         if (seconds <= 0 || threads <= 0 || keySpace <= 0 || valueBytes <= 0)
             throw new IllegalArgumentException("seconds, threads, keyspace-size, and value-bytes must be positive");
+        if (operationsPerThread < 0)
+            throw new IllegalArgumentException("operations-per-thread must be non-negative");
 
         SocketOptions socket = new SocketOptions().setReadTimeoutMillis(120_000).setConnectTimeoutMillis(30_000);
         try (Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").withPort(9042)
@@ -71,7 +74,7 @@ public final class CassandraPaperWorkload
                                                           keyBytes, valueBytes, partitionCount, seed, threads);
             DiskCounters before = diskCounters(diskDevice);
             long start = System.nanoTime();
-            context.run(seconds);
+            context.run(seconds, operationsPerThread);
             double wallSeconds = (System.nanoTime() - start) / 1_000_000_000.0;
             DiskCounters after = diskCounters(diskDevice);
             context.printResult(wallSeconds, after.readBytes - before.readBytes,
@@ -129,29 +132,27 @@ public final class CassandraPaperWorkload
             this.nextInsert = new AtomicLong(keySpace);
         }
 
-        private void run(int seconds) throws Exception
+        private void run(int seconds, long operationsPerThread) throws Exception
         {
             ExecutorService executor = Executors.newFixedThreadPool(threads);
             CountDownLatch ready = new CountDownLatch(threads);
             CountDownLatch start = new CountDownLatch(1);
+            CountDownLatch done = new CountDownLatch(threads);
             long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(seconds);
             for (int worker = 0; worker < threads; worker++)
             {
                 final int workerId = worker;
-                executor.execute(() -> runWorker(workerId, ready, start, deadline));
+                executor.execute(() -> runWorker(workerId, ready, start, done, deadline, operationsPerThread));
             }
             ready.await();
             start.countDown();
             long nextProgress = System.nanoTime() + TimeUnit.SECONDS.toNanos(30);
-            while (System.nanoTime() < deadline && failure.get() == null)
+            while (!done.await(1, TimeUnit.SECONDS) && failure.get() == null)
             {
-                long sleep = Math.min(TimeUnit.SECONDS.toNanos(1), deadline - System.nanoTime());
-                if (sleep > 0)
-                    TimeUnit.NANOSECONDS.sleep(sleep);
                 if (System.nanoTime() >= nextProgress)
                 {
-                    System.out.printf("WORKLOAD_PROGRESS workload=%s seconds=%d operations=%d%n",
-                                      workload, seconds - Math.max(0, TimeUnit.NANOSECONDS.toSeconds(deadline - System.nanoTime())),
+                    System.out.printf("WORKLOAD_PROGRESS workload=%s mode=%s operations=%d%n",
+                                      workload, operationsPerThread > 0 ? "fixed-operations" : "time",
                                       operations.sum());
                     nextProgress += TimeUnit.SECONDS.toNanos(30);
                 }
@@ -164,7 +165,8 @@ public final class CassandraPaperWorkload
                 throw new RuntimeException("workload failed", problem);
         }
 
-        private void runWorker(int worker, CountDownLatch ready, CountDownLatch start, long deadline)
+        private void runWorker(int worker, CountDownLatch ready, CountDownLatch start, CountDownLatch done,
+                               long deadline, long operationsPerThread)
         {
             SplittableRandom random = new SplittableRandom(seed + worker * 0x9e3779b97f4a7c15L);
             byte[] valuePool = valuePool(random);
@@ -172,7 +174,9 @@ public final class CassandraPaperWorkload
             try
             {
                 start.await();
-                while (System.nanoTime() < deadline && failure.get() == null)
+                long completed = 0;
+                while ((operationsPerThread > 0 ? completed < operationsPerThread : System.nanoTime() < deadline)
+                       && failure.get() == null)
                 {
                     long randomValue = random.nextLong();
                     int choice = (int) Long.remainderUnsigned(randomValue, 100);
@@ -230,11 +234,16 @@ public final class CassandraPaperWorkload
                     }
                     operationLatency.recordValue(Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started));
                     operations.increment();
+                    completed++;
                 }
             }
             catch (Throwable t)
             {
                 failure.compareAndSet(null, t);
+            }
+            finally
+            {
+                done.countDown();
             }
         }
 

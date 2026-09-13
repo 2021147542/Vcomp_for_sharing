@@ -1,0 +1,12 @@
+campaign_id=cassandra-100g-single-partition-20260913-130005
+dataset_gib=100
+partition_count=1
+key_bytes=24
+value_bytes=1000
+baseline_keyspace=baseline_100g_single_partition
+vcomp_keyspace=vcomp_100g_single_partition
+ucs_picker_seed=20260909
+workloads=A B C D E F MIXGRAPH
+workload_duration_seconds=300
+workload_threads=48
+started_at=2026-09-13T13:00:05+09:00

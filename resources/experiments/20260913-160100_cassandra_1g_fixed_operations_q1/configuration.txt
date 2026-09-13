@@ -1,0 +1,16 @@
+baseline_source=/work/vcomp-pebble-1tb/cassandra-vcomp-1g-fixedtrace-q1-20260913-154924/baseline/cassandra-baseline-1g-fixedtrace-q1-baseline-20260913-154941
+vcomp_source=/work/vcomp-pebble-1tb/cassandra-vcomp-1g-fixedtrace-q1-20260913-154924/vcomp/cassandra-vcomp-1g-fixedtrace-q1-vcomp-20260913-155133
+duration_seconds=300
+operations_per_thread=20000
+threads=48
+workloads=A B C D E F MIXGRAPH
+key_space=1048576
+key_bytes=24
+value_bytes=1000
+partition_count=100
+seed=20260909
+ucs_picker_seed=20260909
+disk_device=md0
+checkpoint_method=hardlink_immutable_sstables
+cache_start=scoped_posix_fadvise_dontneed
+started_at=2026-09-13T15:53:32+09:00

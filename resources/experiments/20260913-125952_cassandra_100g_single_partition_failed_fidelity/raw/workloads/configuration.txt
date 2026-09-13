@@ -1,0 +1,15 @@
+baseline_source=/work/vcomp-pebble-1tb/cassandra-100g-single-partition-20260913-125952/baseline/cassandra-baseline-100g-single-partition-baseline-20260913-130011
+vcomp_source=/work/vcomp-pebble-1tb/cassandra-100g-single-partition-20260913-125952/vcomp/cassandra-vcomp-100g-single-partition-vcomp-20260913-144350
+duration_seconds=300
+threads=48
+workloads=A B C D E F MIXGRAPH
+key_space=104857600
+key_bytes=24
+value_bytes=1000
+partition_count=1
+seed=20260909
+ucs_picker_seed=20260909
+disk_device=md0
+checkpoint_method=hardlink_immutable_sstables
+cache_start=scoped_posix_fadvise_dontneed
+started_at=2026-09-13T14:51:22+09:00

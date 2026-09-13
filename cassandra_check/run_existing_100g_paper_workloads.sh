@@ -16,6 +16,7 @@ BASELINE_KEYSPACE="${BASELINE_KEYSPACE:-baseline_100g}"
 VCOMP_KEYSPACE="${VCOMP_KEYSPACE:-vcomp_100g}"
 OUT_ROOT="${OUT_ROOT:-/work/vcomp-pebble-1tb/cassandra-paper-workloads-100g-$(date +%Y%m%d-%H%M%S)}"
 DURATION_SECONDS="${DURATION_SECONDS:-300}"
+OPERATIONS_PER_THREAD="${OPERATIONS_PER_THREAD:-0}"
 THREADS="${THREADS:-48}"
 WORKLOADS="${WORKLOADS:-A B C D E F MIXGRAPH}"
 KEY_SPACE="${KEY_SPACE:-104857600}"
@@ -59,8 +60,9 @@ if pgrep -f 'org[.]apache[.]cassandra[.]service[.]CassandraDaemon' >/dev/null; t
     echo 'another Cassandra daemon is already running; refusing to overlap benchmarks' >&2
     exit 2
 fi
-if [[ ! "$DURATION_SECONDS" =~ ^[1-9][0-9]*$ || ! "$THREADS" =~ ^[1-9][0-9]*$ ]]; then
-    echo 'DURATION_SECONDS and THREADS must be positive integers' >&2
+if [[ ! "$DURATION_SECONDS" =~ ^[1-9][0-9]*$ || ! "$THREADS" =~ ^[1-9][0-9]*$ \
+      || ! "$OPERATIONS_PER_THREAD" =~ ^[0-9]+$ ]]; then
+    echo 'DURATION_SECONDS and THREADS must be positive integers; OPERATIONS_PER_THREAD must be non-negative' >&2
     exit 2
 fi
 
@@ -68,7 +70,8 @@ mkdir -p "$OUT_ROOT"/{classes,results,runs}
 {
     printf 'baseline_source=%s\n' "$BASELINE_SOURCE"
     printf 'vcomp_source=%s\n' "$VCOMP_SOURCE"
-    printf 'duration_seconds=%s\nthreads=%s\nworkloads=%s\n' "$DURATION_SECONDS" "$THREADS" "$WORKLOADS"
+    printf 'duration_seconds=%s\noperations_per_thread=%s\nthreads=%s\nworkloads=%s\n' \
+        "$DURATION_SECONDS" "$OPERATIONS_PER_THREAD" "$THREADS" "$WORKLOADS"
     printf 'key_space=%s\nkey_bytes=%s\nvalue_bytes=%s\npartition_count=%s\nseed=%s\nucs_picker_seed=%s\n' "$KEY_SPACE" "$KEY_BYTES" "$VALUE_BYTES" "$PARTITION_COUNT" "$SEED" "$UCS_PICKER_SEED"
     printf 'disk_device=%s\ncheckpoint_method=hardlink_immutable_sstables\n' "$DISK_DEVICE"
     printf 'cache_start=scoped_posix_fadvise_dontneed\nstarted_at=%s\n' "$(date --iso-8601=seconds)"
@@ -165,13 +168,20 @@ run_one() {
 
     "$SOURCE_ROOT/bin/nodetool" tablestats "$keyspace.kv" >"$ACTIVE_RUN/tablestats-before.txt"
     "$SOURCE_ROOT/bin/nodetool" compactionstats >"$ACTIVE_RUN/compactionstats-before.txt"
-    echo "[$(date --iso-8601=seconds)] Running $workload $system (${THREADS} threads, ${DURATION_SECONDS}s)"
+    local workload_limit=()
+    local execution_label="${DURATION_SECONDS}s"
+    if (( OPERATIONS_PER_THREAD > 0 )); then
+        workload_limit=("$OPERATIONS_PER_THREAD")
+        execution_label="${OPERATIONS_PER_THREAD} operations/thread"
+    fi
+    echo "[$(date --iso-8601=seconds)] Running $workload $system (${THREADS} threads, ${execution_label})"
     set +e
     "$JAVA_HOME/bin/java" -Xms1G -Xmx2G @"$ACTIVE_RUN/conf/jvm11-clients.options" \
         -Dlogback.configurationFile="$SCRIPT_DIR/logback-smoke.xml" \
         -cp "$OUT_ROOT/classes:$SOURCE_ROOT/build/classes/main:$SOURCE_ROOT/lib/*" \
         CassandraPaperWorkload "$keyspace" kv "$workload" "$DURATION_SECONDS" "$THREADS" \
         "$KEY_SPACE" "$KEY_BYTES" "$VALUE_BYTES" "$PARTITION_COUNT" "$SEED" "$DISK_DEVICE" \
+        "${workload_limit[@]}" \
         2>&1 | tee "$ACTIVE_RUN/workload.log"
     local workload_status=${PIPESTATUS[0]}
     set -e
