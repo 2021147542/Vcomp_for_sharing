@@ -26,6 +26,16 @@ public class VCompOrderedPartitionLayoutTest
         assertEquals(layout.keySpace(), expectedMinimum);
     }
 
+    @Test
+    public void countsPartitionsTouchedByScalarRange()
+    {
+        VCompOrderedPartitionLayout layout = new VCompOrderedPartitionLayout(1003, 100);
+        VCompOrderedPartitionLayout.Partition first = layout.partitions().get(17);
+        VCompOrderedPartitionLayout.Partition last = layout.partitions().get(23);
+        assertEquals(1, layout.partitionCount(first.minimum(), first.maximum()));
+        assertEquals(7, layout.partitionCount(first.maximum(), last.minimum()));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void rejectsMorePartitionsThanCoordinates()
     {

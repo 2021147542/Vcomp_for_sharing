@@ -1,0 +1,16 @@
+baseline_source=/work/vcomp-pebble-1tb/cassandra-vcomp-faithful-v2-100g-20260914-010000/baseline/cassandra-baseline-faithful-v2-100g-baseline-20260914-005530
+vcomp_source=/work/vcomp-pebble-1tb/cassandra-vcomp-faithful-v2-100g-20260914-010000/vcomp/cassandra-vcomp-faithful-v2-100g-vcomp-20260914-023227
+duration_seconds=300
+operations_per_thread=0
+threads=48
+workloads=MIXGRAPH
+key_space=104857600
+key_bytes=24
+value_bytes=1000
+partition_count=10000
+seed=20260909
+ucs_picker_seed=20260909
+disk_device=md0
+checkpoint_method=hardlink_immutable_sstables
+cache_start=scoped_posix_fadvise_dontneed
+started_at=2026-09-14T10:05:43+09:00

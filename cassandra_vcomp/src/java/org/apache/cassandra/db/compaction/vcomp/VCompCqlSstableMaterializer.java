@@ -140,6 +140,9 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
                                                                   .using(insertStatement)
                                                                   .withPartitioner(Murmur3Partitioner.instance)
                                                                   .sorted();
+                if (partitionLayout != null)
+                    builder.withEstimatedPartitionCount(partitionLayout.partitionCount(descriptor.keyMin(),
+                                                                                        descriptor.keyMax()));
                 // The virtual compaction output has already been split at the
                 // exact UCS full-ring shard boundaries. Applying CQL writer's
                 // unrelated byte cap here would split those eight native

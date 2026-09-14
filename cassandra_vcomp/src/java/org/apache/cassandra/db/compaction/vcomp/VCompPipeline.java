@@ -37,7 +37,6 @@ import java.util.Optional;
 public final class VCompPipeline
 {
     private static final int MAX_VIRTUAL_COMPACTIONS = 1_000_000;
-    private static final int DEFAULT_CONCURRENT_COMPACTORS = 48;
 
     private final FlushVirtualizer flushVirtualizer;
     private final VirtualCompactionPlanner planner;
@@ -49,7 +48,6 @@ public final class VCompPipeline
     private final FinalMaterializer materializer;
     private final FinalStateInstaller installer;
     private final MaterializedStateVerifier verifier;
-    private final long compactionWorkQuantumBytes;
 
     public VCompPipeline(FlushVirtualizer flushVirtualizer,
                          VirtualCompactionPlanner planner,
@@ -62,22 +60,6 @@ public final class VCompPipeline
                          FinalStateInstaller installer,
                          MaterializedStateVerifier verifier)
     {
-        this(flushVirtualizer, planner, modelMerger, sketchMerger, deduplicationEstimator,
-             outputSplitter, layoutFreezer, materializer, installer, verifier, Long.MAX_VALUE);
-    }
-
-    private VCompPipeline(FlushVirtualizer flushVirtualizer,
-                          VirtualCompactionPlanner planner,
-                          ModelMerger modelMerger,
-                          SketchMerger sketchMerger,
-                          DeduplicationEstimator deduplicationEstimator,
-                          VirtualOutputSplitter outputSplitter,
-                          LayoutFreezer layoutFreezer,
-                          FinalMaterializer materializer,
-                          FinalStateInstaller installer,
-                          MaterializedStateVerifier verifier,
-                          long compactionWorkQuantumBytes)
-    {
         this.flushVirtualizer = Objects.requireNonNull(flushVirtualizer, "flushVirtualizer");
         this.planner = Objects.requireNonNull(planner, "planner");
         this.modelMerger = Objects.requireNonNull(modelMerger, "modelMerger");
@@ -88,12 +70,6 @@ public final class VCompPipeline
         this.materializer = Objects.requireNonNull(materializer, "materializer");
         this.installer = Objects.requireNonNull(installer, "installer");
         this.verifier = Objects.requireNonNull(verifier, "verifier");
-        if (compactionWorkQuantumBytes <= 0)
-            throw new IllegalArgumentException("compaction work quantum must be positive");
-        double workMultiplier = Double.parseDouble(System.getProperty("cassandra.vcomp.work_quantum_multiplier", "1.0"));
-        if (!(workMultiplier > 0) || !Double.isFinite(workMultiplier))
-            throw new IllegalArgumentException("compaction work quantum multiplier must be finite and positive");
-        this.compactionWorkQuantumBytes = Math.max(1, (long) Math.ceil(compactionWorkQuantumBytes * workMultiplier));
     }
 
     /** Build the complete restricted-mode descriptor pipeline with Cassandra T4 tiering. */
@@ -114,8 +90,34 @@ public final class VCompPipeline
                                               FinalStateInstaller installer,
                                               MaterializedStateVerifier verifier)
     {
+        return createDefault(flushSizeBytes,
+                             flushSizeBytes,
+                             targetSSTBytes,
+                             sizeModel,
+                             partitionLayout,
+                             materializer,
+                             installer,
+                             verifier);
+    }
+
+    /**
+     * Build the ordered multi-partition path with an independently measured
+     * encoded flush size. The first argument controls flush cadence; the
+     * second is the file-size metadata seen by the native UCS picker.
+     */
+    public static VCompPipeline createDefault(long flushSizeBytes,
+                                              long pickerFlushSizeBytes,
+                                              long targetSSTBytes,
+                                              VCompSSTSizeModel sizeModel,
+                                              VCompOrderedPartitionLayout partitionLayout,
+                                              FinalMaterializer materializer,
+                                              FinalStateInstaller installer,
+                                              MaterializedStateVerifier verifier)
+    {
         Objects.requireNonNull(sizeModel, "sizeModel");
         Objects.requireNonNull(partitionLayout, "partitionLayout");
+        if (pickerFlushSizeBytes <= 0)
+            throw new IllegalArgumentException("picker flush size must be positive");
         if (targetSSTBytes <= 0 || targetSSTBytes == Long.MAX_VALUE)
             throw new IllegalArgumentException("ordered multi-partition VComp requires a finite target SST size");
         DefaultVirtualCompaction compaction = new DefaultVirtualCompaction(VCompKmvSketch.DEFAULT_SAMPLES,
@@ -128,7 +130,7 @@ public final class VCompPipeline
                                                                            VCompKmvSketch.DEFAULT_RANGE_BUCKETS,
                                                                            sizeModel);
         return new VCompPipeline(virtualizer,
-                                 new VCompUcsPlanner(flushSizeBytes, partitionLayout),
+                                 new VCompUcsPlanner(pickerFlushSizeBytes, partitionLayout),
                                  compaction,
                                  compaction,
                                  compaction,
@@ -136,8 +138,7 @@ public final class VCompPipeline
                                  state -> new FrozenLayout(state.runs()),
                                  materializer,
                                  installer,
-                                 verifier,
-                                 flushSizeBytes);
+                                 verifier);
     }
 
     public static VCompPipeline createDefault(long flushSizeBytes,
@@ -191,8 +192,7 @@ public final class VCompPipeline
                                  state -> new FrozenLayout(state.runs()),
                                  materializer,
                                  installer,
-                                 verifier,
-                                 flushSizeBytes);
+                                 verifier);
     }
 
     /** Execute the complete load-time VComp pipeline. */
@@ -237,49 +237,40 @@ public final class VCompPipeline
     }
 
     /**
-     * Convert each physical-flush boundary into one virtual sorted run and notify the virtual
-     * background compaction scheduler.
-     *
-     * <p>Picked inputs remain reserved until their virtual I/O completion event. This is essential:
-     * native Cassandra excludes compacting SSTables from subsequent picks and does not expose the
-     * outputs immediately. One virtual clock tick is one flush-sized unit of compaction input work,
-     * matching the load's deterministic flush cadence without performing that I/O.</p>
+     * Convert each physical-flush boundary into one virtual sorted run and let
+     * the unchanged UCS picker reach quiescence. A virtual compaction has no
+     * synthetic disk service time: once its descriptor merge completes, its
+     * output is immediately visible just as a completed native task would be.
      */
     private VirtualLoadResult runVirtualLoad(LoadSource source) throws Exception
     {
         VirtualState state = new VirtualState();
-        VirtualBackgroundCompactions backgroundCompactions = new VirtualBackgroundCompactions(state);
+        int compactionCount = 0;
         for (FlushBatch flush : source.flushBatches())
         {
-            backgroundCompactions.advanceOneFlush();
             VirtualSortedRun run = flushVirtualizer.virtualize(flush);
             state.add(run);
-            backgroundCompactions.submitBackground();
-            backgroundCompactions.runAvailableChecks();
+            compactionCount = compactToQuiescence(state, compactionCount);
         }
-        backgroundCompactions.drain();
-        return new VirtualLoadResult(state, backgroundCompactions.compactionCount());
+        return new VirtualLoadResult(state, compactionCount);
     }
 
-    /** Perform one Cassandra-style background check against the latest virtual state. */
-    private Optional<PreparedVirtualCompaction> prepareBackgroundCompaction(VirtualState state,
-                                                                            int scheduledCompactions) throws Exception
+    private int compactToQuiescence(VirtualState state, int compactionCount) throws Exception
     {
-        Optional<VirtualCompactionPlan> next = planner.pick(state.snapshot());
-        if (!next.isPresent())
-            return Optional.empty();
+        while (true)
+        {
+            Optional<VirtualCompactionPlan> next = planner.pick(state.snapshot());
+            if (!next.isPresent())
+                return compactionCount;
+            if (compactionCount >= MAX_VIRTUAL_COMPACTIONS)
+                throw new IllegalStateException("virtual compaction did not converge");
 
-        if (scheduledCompactions >= MAX_VIRTUAL_COMPACTIONS)
-            throw new IllegalStateException("virtual compaction did not converge");
-
-        VirtualCompactionPlan plan = next.get();
-        VirtualSortedRun output = buildVirtualCompactionOutput(state, plan);
-        state.reserve(plan.inputs());
-        long inputBytes = 0;
-        for (VirtualSortedRun input : plan.inputs())
-            for (VirtualSSTable sstable : input.sstables())
-                inputBytes = saturatedAdd(inputBytes, sstable.estimatedBytes());
-        return Optional.of(new PreparedVirtualCompaction(output, Math.max(1, inputBytes)));
+            VirtualCompactionPlan plan = next.get();
+            VirtualSortedRun output = buildVirtualCompactionOutput(state, plan);
+            state.reserve(plan.inputs());
+            state.complete(output);
+            compactionCount++;
+        }
     }
 
     /** One virtual compaction: model merge, KMV merge, dedup estimate, then vSST split. */
@@ -298,11 +289,6 @@ public final class VCompPipeline
                                                        mergedSketch,
                                                        estimatedUniqueKeys);
         return output;
-    }
-
-    private static long saturatedAdd(long left, long right)
-    {
-        return right > Long.MAX_VALUE - left ? Long.MAX_VALUE : left + right;
     }
 
     private FrozenLayout freezeFinalLayout(VirtualState state) throws Exception
@@ -953,136 +939,6 @@ public final class VCompPipeline
                                              output.level(),
                                              Collections.singletonList(sstable)));
             }
-        }
-    }
-
-    /**
-     * Deterministic stand-in for Cassandra's background compaction executor.
-     *
-     * <p>A queued item represents a request to ask the picker whether a compaction is currently
-     * possible; it is not a preselected compaction plan. This distinction ensures that flushes
-     * committed after submission are visible when the picker eventually runs.</p>
-     */
-    private final class VirtualBackgroundCompactions
-    {
-        private final VirtualState state;
-        private final List<InFlightVirtualCompaction> inFlight = new ArrayList<>();
-        private long pendingChecks;
-        private long clock;
-        private int compactionCount;
-
-        private VirtualBackgroundCompactions(VirtualState state)
-        {
-            this.state = state;
-        }
-
-        private void submitBackground()
-        {
-            pendingChecks++;
-        }
-
-        private void advanceOneFlush() throws Exception
-        {
-            clock++;
-            performSharedWorkQuantum();
-            runAvailableChecks();
-        }
-
-        private void runAvailableChecks() throws Exception
-        {
-            while (pendingChecks > 0 && inFlight.size() < DEFAULT_CONCURRENT_COMPACTORS)
-            {
-                pendingChecks--;
-                Optional<PreparedVirtualCompaction> prepared = prepareBackgroundCompaction(state,
-                                                                                            compactionCount);
-                if (prepared.isPresent())
-                {
-                    PreparedVirtualCompaction compaction = prepared.get();
-                    inFlight.add(new InFlightVirtualCompaction(compaction.output,
-                                                               compaction.inputBytes));
-                    compactionCount++;
-                }
-            }
-        }
-
-        private void drain() throws Exception
-        {
-            runAvailableChecks();
-            while (!inFlight.isEmpty())
-            {
-                clock++;
-                performSharedWorkQuantum();
-                runAvailableChecks();
-            }
-            // Consume redundant notifications after convergence.
-            pendingChecks = 0;
-        }
-
-        private void performSharedWorkQuantum() throws Exception
-        {
-            double remainingBudget = compactionWorkQuantumBytes;
-            while (!inFlight.isEmpty() && remainingBudget > 0)
-            {
-                double minimumRemaining = Double.MAX_VALUE;
-                for (InFlightVirtualCompaction compaction : inFlight)
-                    minimumRemaining = Math.min(minimumRemaining, compaction.remainingInputBytes);
-                double workThroughNextCompletion = minimumRemaining * inFlight.size();
-                if (workThroughNextCompletion > remainingBudget)
-                {
-                    double share = remainingBudget / inFlight.size();
-                    for (InFlightVirtualCompaction compaction : inFlight)
-                        compaction.remainingInputBytes -= share;
-                    return;
-                }
-
-                for (InFlightVirtualCompaction compaction : inFlight)
-                    compaction.remainingInputBytes -= minimumRemaining;
-                remainingBudget -= workThroughNextCompletion;
-                for (int i = 0; i < inFlight.size(); )
-                {
-                    InFlightVirtualCompaction compaction = inFlight.get(i);
-                    if (compaction.remainingInputBytes > 0.5)
-                    {
-                        i++;
-                        continue;
-                    }
-                    inFlight.remove(i);
-                    state.complete(compaction.output);
-                    submitBackground();
-                }
-                // Native completion schedules another picker check immediately;
-                // newly selected work may consume the remainder of this interval.
-                runAvailableChecks();
-            }
-        }
-
-        private int compactionCount()
-        {
-            return compactionCount;
-        }
-    }
-
-    private static final class PreparedVirtualCompaction
-    {
-        private final VirtualSortedRun output;
-        private final long inputBytes;
-
-        private PreparedVirtualCompaction(VirtualSortedRun output, long inputBytes)
-        {
-            this.output = output;
-            this.inputBytes = inputBytes;
-        }
-    }
-
-    private static final class InFlightVirtualCompaction
-    {
-        private final VirtualSortedRun output;
-        private double remainingInputBytes;
-
-        private InFlightVirtualCompaction(VirtualSortedRun output, long remainingInputBytes)
-        {
-            this.output = output;
-            this.remainingInputBytes = remainingInputBytes;
         }
     }
 

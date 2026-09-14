@@ -20,8 +20,7 @@ ENTRY_BYTES=$((KEY_BYTES + VALUE_BYTES))
 FLUSH_BYTES=$((64 * 1024 * 1024))
 TARGET_SST_BYTES="${TARGET_SST_BYTES:-$((64 * 1024 * 1024))}"
 PARTITION_COUNT="${PARTITION_COUNT:-$((DATASET_GIB * 100))}"
-VCOMP_SST_SIZE_MODEL="${VCOMP_SST_SIZE_MODEL:-logical}"
-VCOMP_COMPACTION_WORK_PER_FLUSH="${VCOMP_COMPACTION_WORK_PER_FLUSH:-0.9}"
+VCOMP_SST_SIZE_MODEL="${VCOMP_SST_SIZE_MODEL:-calibrated}"
 UCS_PICKER_SEED="${UCS_PICKER_SEED:-20260909}"
 WRITES=$((DATASET_BYTES / ENTRY_BYTES))
 SEED=20260909
@@ -58,10 +57,6 @@ if [[ ! "$PARTITION_COUNT" =~ ^[1-9][0-9]*$ ]] || (( PARTITION_COUNT > WRITES ))
 fi
 if [[ "$VCOMP_SST_SIZE_MODEL" != logical && "$VCOMP_SST_SIZE_MODEL" != calibrated ]]; then
     echo "VCOMP_SST_SIZE_MODEL must be logical or calibrated" >&2
-    exit 2
-fi
-if [[ ! "$VCOMP_COMPACTION_WORK_PER_FLUSH" =~ ^(0\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(\.[0-9]+)?)$ ]]; then
-    echo "VCOMP_COMPACTION_WORK_PER_FLUSH must be positive" >&2
     exit 2
 fi
 if [[ ! "$COMPACTION_DRAIN_TIMEOUT_SECONDS" =~ ^[0-9]+$ ]] \
@@ -163,7 +158,7 @@ export MAX_HEAP_SIZE=4G
     printf 'compression=disabled\n'
     printf 'durable_writes=false\n'
     printf 'concurrent_compactors=48\n'
-    printf 'vcomp_compaction_work_per_flush=%s\n' "$VCOMP_COMPACTION_WORK_PER_FLUSH"
+    printf 'vcomp_scheduler=immediate_descriptor_completion\n'
     printf 'ucs_picker_seed=%s\n' "$UCS_PICKER_SEED"
     printf 'compaction_drain_timeout_seconds=%s\n' "$COMPACTION_DRAIN_TIMEOUT_SECONDS"
     printf 'disk_device=%s\n' "$DISK_DEVICE"
@@ -221,7 +216,6 @@ MONITOR_PID=$!
 
 set +e
 "$JAVA_HOME/bin/java" -Xms2G -Xmx12G @"$RUN_DIR/conf/jvm11-clients.options" \
-    -Dcassandra.vcomp.work_quantum_multiplier="$VCOMP_COMPACTION_WORK_PER_FLUSH" \
     -Dcassandra.ucs.picker_seed="$UCS_PICKER_SEED" \
     -Dlogback.configurationFile="$SCRIPT_DIR/logback-smoke.xml" \
     -cp "$RUN_DIR/conf:$SOURCE_ROOT/build/classes/main:$SOURCE_ROOT/lib/*" \

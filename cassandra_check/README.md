@@ -12,9 +12,10 @@ KEY_BYTES=48 VALUE_BYTES=43 ./run_pipeline_smoke.sh
 `cassandra_vcomp/build-env.sh` resolves Ant and the Maven cache from this
 repository's `.tools/` and `.m2/` directories; it does not depend on
 `vcomp_old`. The source pipeline uses Cassandra 5.0.9 and runs compaction
-selection after flushes. Paper-style logical KV bytes are the default picker
-metadata; physical SST calibration is an explicit
-`VCOMP_SST_SIZE_MODEL=calibrated` experiment.
+selection after flushes. The default picker metadata is a calibrated estimate
+of encoded SSTable file bytes, matching the file-size metadata used by native
+UCS. The logical-byte model remains an explicit diagnostic selected with
+`VCOMP_SST_SIZE_MODEL=logical`.
 Vanilla UCS and VComp now call the same metadata-only `UnifiedCompactionPicker`;
 only after it returns the selected inputs do they branch into Cassandra's
 physical compaction task or VComp's model/KMV merge. The restricted VComp path

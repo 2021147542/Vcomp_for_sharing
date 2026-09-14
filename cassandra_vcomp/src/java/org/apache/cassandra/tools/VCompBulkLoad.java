@@ -68,7 +68,7 @@ public final class VCompBulkLoad
         long requestedTargetSSTBytes = Long.parseLong(arguments[9]);
         int partitionCount = Integer.parseInt(arguments[10]);
         long seed = Long.parseLong(arguments[11]);
-        String sizeModelName = arguments.length == 13 ? arguments[12] : "logical";
+        String sizeModelName = arguments.length == 13 ? arguments[12] : "calibrated";
         if (!sizeModelName.equals("logical") && !sizeModelName.equals("calibrated"))
             throw new IllegalArgumentException("size model must be logical or calibrated");
         if (keyBytes + valueBytes != entryBytes)
@@ -118,6 +118,7 @@ public final class VCompBulkLoad
                                       ? materializer.calibrateSizeModel(4096, 8192)
                                       : VCompSSTSizeModel.logical(entryBytes);
         VCompPipeline pipeline = VCompPipeline.createDefault(flushBytes,
+                                                              sizeModel.estimate(writesPerFlush),
                                                               requestedTargetSSTBytes,
                                                               sizeModel,
                                                               partitionLayout,

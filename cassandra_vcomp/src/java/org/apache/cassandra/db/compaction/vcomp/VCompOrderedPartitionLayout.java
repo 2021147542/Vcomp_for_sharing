@@ -102,6 +102,16 @@ public final class VCompOrderedPartitionLayout
         return partitions.get(Math.toIntExact(index));
     }
 
+    /** Number of Cassandra partitions touched by an inclusive scalar range. */
+    public long partitionCount(long minimum, long maximum)
+    {
+        if (maximum < minimum)
+            throw new IllegalArgumentException("maximum must not precede minimum");
+        Partition first = partitionFor(minimum);
+        Partition last = partitionFor(maximum);
+        return (long) last.ordinal - first.ordinal + 1;
+    }
+
     /** Cassandra single-node token-space coverage for an inclusive scalar range. */
     public double tokenCoverage(long minimum, long maximum)
     {

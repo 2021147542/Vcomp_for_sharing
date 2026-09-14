@@ -48,6 +48,7 @@ def main() -> None:
     vcomp = vcomp_result(args.vcomp)
     vcomp_disk = env(args.vcomp / "load_metrics.env")
     dataset_gib = int(setting(args.baseline / "configuration.txt", "dataset_gib"))
+    partition_count = int(setting(args.baseline / "configuration.txt", "partition_keys"))
     baseline_rows = int(baseline["fingerprint_rows"])
     vcomp_rows = int(vcomp_disk["fingerprint_rows"])
     cardinality_delta = vcomp_rows - baseline_rows
@@ -101,10 +102,12 @@ def main() -> None:
     lines = [
         f"# Cassandra {dataset_gib} GiB: measured baseline vs VComp",
         "",
-        "- Schema: one partition key (`all`), one blob clustering key, one regular value column.",
+        f"- Schema: {partition_count:,} token-ordered partition buckets, one blob clustering key, "
+        "and one regular value column.",
         f"- Input: identical {dataset_gib} GiB synthetic stream (24 B key + 1,000 B value, seed 20260909).",
         "- Baseline: native CQL writes, 64 MiB explicit flushes, UCS T4 enabled, automatic compaction drain.",
-        "- VComp: descriptor simulation then materialization; no size-driven output split in this one-partition control.",
+        "- VComp: descriptor-only compaction with native UCS selection, partition-boundary output splitting, "
+        "then one final materialization/import.",
         f"- Approximate-key accuracy: baseline {baseline_rows:,} rows; VComp {vcomp_rows:,} rows; "
         f"delta {cardinality_delta:+,} ({cardinality_error:+.3f}%).",
         "",

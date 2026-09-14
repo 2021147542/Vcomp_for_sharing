@@ -441,6 +441,7 @@ public class CQLSSTableWriter implements Closeable
         private boolean buildIndexes = true;
         private Consumer<Collection<SSTableReader>> sstableProducedListener;
         private boolean openSSTableOnProduced = false;
+        private long estimatedPartitionCount = 0;
 
         protected Builder()
         {
@@ -643,6 +644,20 @@ public class CQLSSTableWriter implements Closeable
         }
 
         /**
+         * Supplies the expected number of distinct partition keys in each
+         * produced SSTable. The estimate affects only physical metadata sizing
+         * (for example, the Bloom filter); it does not cap or alter the rows
+         * written by this builder.
+         */
+        public Builder withEstimatedPartitionCount(long count)
+        {
+            if (count < 0)
+                throw new IllegalArgumentException("estimated partition count must be non-negative");
+            this.estimatedPartitionCount = count;
+            return this;
+        }
+
+        /**
          * Whether indexes should be built and serialized to disk along data. Defaults to true.
          *
          * @param buildIndexes true if indexes should be built, false otherwise
@@ -771,6 +786,7 @@ public class CQLSSTableWriter implements Closeable
                 AbstractSSTableSimpleWriter writer = sorted
                                                      ? new SSTableSimpleWriter(directory, ref, preparedModificationStatement.updatedColumns(), maxSSTableSizeInMiB)
                                                      : new SSTableSimpleUnsortedWriter(directory, ref, preparedModificationStatement.updatedColumns(), maxSSTableSizeInMiB);
+                writer.setEstimatedKeyCount(estimatedPartitionCount);
 
                 if (format != null)
                     writer.setSSTableFormatType(format);

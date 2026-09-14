@@ -266,6 +266,23 @@ public class Controller
      */
     public int getNumShards(double localDensity)
     {
+        return calculateNumShards(localDensity,
+                                  minSSTableSize,
+                                  baseShardCount,
+                                  targetSSTableSize,
+                                  sstableGrowthModifier);
+    }
+
+    /**
+     * Shared UCS shard-count calculation for native and metadata-only writers.
+     * Output adapters must call this method instead of copying the policy.
+     */
+    public static int calculateNumShards(double localDensity,
+                                         long minSSTableSize,
+                                         int baseShardCount,
+                                         double targetSSTableSize,
+                                         double sstableGrowthModifier)
+    {
         int shards;
         // Check the minimum size first.
         if (minSSTableSize > 0)
@@ -280,13 +297,6 @@ public class Controller
                 // Setting the bottom bit to 1 ensures the result is at least 1.
                 // If baseShardCount is not a power of 2, split only to powers of two that are divisors of baseShardCount so boundaries match higher levels
                 shards = Math.min(Integer.highestOneBit((int) count | 1), baseShardCount & -baseShardCount);
-                if (logger.isDebugEnabled())
-                    logger.debug("Shard count {} for density {}, {} times min size {}",
-                                 shards,
-                                 FBUtilities.prettyPrintBinary(localDensity, "B", " "),
-                                 localDensity / minSSTableSize,
-                                 FBUtilities.prettyPrintBinary(minSSTableSize, "B", " "));
-
                 return shards;
             }
         }
@@ -294,9 +304,6 @@ public class Controller
         if (sstableGrowthModifier == 1)
         {
             shards = baseShardCount;
-            logger.debug("Shard count {} for density {} in fixed shards mode",
-                         shards,
-                         FBUtilities.prettyPrintBinary(localDensity, "B", " "));
             return shards;
         }
         else if (sstableGrowthModifier == 0)
@@ -315,12 +322,6 @@ public class Controller
             // Setting the bottom bit to 1 ensures the result is at least baseShardCount.
             shards = baseShardCount * Integer.highestOneBit((int) count | 1);
 
-            if (logger.isDebugEnabled())
-                logger.debug("Shard count {} for density {}, {} times target {}",
-                             shards,
-                             FBUtilities.prettyPrintBinary(localDensity, "B", " "),
-                             localDensity / targetSSTableSize,
-                             FBUtilities.prettyPrintBinary(targetSSTableSize, "B", " "));
             return shards;
         }
         else
@@ -345,17 +346,14 @@ public class Controller
             else
                 shards = baseShardCount;    // this also covers the case of pow == NaN
 
-            if (logger.isDebugEnabled())
-            {
-                long targetSize = (long) (targetSSTableSize * Math.exp(countLog * sstableGrowthModifier));
-                logger.debug("Shard count {} for density {}, {} times target {}",
-                             shards,
-                             FBUtilities.prettyPrintBinary(localDensity, "B", " "),
-                             localDensity / targetSize,
-                             FBUtilities.prettyPrintBinary(targetSize, "B", " "));
-            }
             return shards;
         }
+    }
+
+    /** Default minimum SSTable size when the table does not override it. */
+    public static long defaultMinSSTableSizeBytes()
+    {
+        return FBUtilities.parseHumanReadableBytes(DEFAULT_MIN_SSTABLE_SIZE);
     }
 
     /**
@@ -461,6 +459,77 @@ public class Controller
                               targetSStableSize,
                               sstableGrowthModifier,
                               inclusionMethod);
+    }
+
+    /**
+     * Construct the same UCS policy object for an offline metadata producer.
+     * The caller supplies the flush-size observation that a live
+     * {@link ColumnFamilyStore} would normally provide.
+     */
+    public static Controller forOfflineTools(long flushSizeBytes,
+                                             int[] scalingParameters,
+                                             int maxSSTablesToCompact,
+                                             int baseShardCount,
+                                             long targetSSTableSize,
+                                             double sstableGrowthModifier)
+    {
+        if (flushSizeBytes <= 0 || targetSSTableSize <= 0)
+            throw new IllegalArgumentException("flush and target SSTable sizes must be positive");
+        return new Controller(null,
+                              MonotonicClock.Global.preciseTime,
+                              scalingParameters.clone(),
+                              DEFAULT_SURVIVAL_FACTORS,
+                              defaultMinSSTableSizeBytes(),
+                              flushSizeBytes,
+                              maxSSTablesToCompact,
+                              DEFAULT_EXPIRED_SSTABLE_CHECK_FREQUENCY_SECONDS,
+                              false,
+                              baseShardCount,
+                              targetSSTableSize,
+                              sstableGrowthModifier,
+                              DEFAULT_OVERLAP_INCLUSION_METHOD);
+    }
+
+    /** Policy view shared by native UCS and descriptor-only candidates. */
+    public UnifiedCompactionPicker.Policy pickerPolicy()
+    {
+        return new UnifiedCompactionPicker.Policy()
+        {
+            public int scalingParameter(int level)
+            {
+                return getScalingParameter(level);
+            }
+
+            public int fanout(int level)
+            {
+                return getFanout(level);
+            }
+
+            public int threshold(int level)
+            {
+                return getThreshold(level);
+            }
+
+            public double maximumLevelDensity(int level, double minimumDensity)
+            {
+                return getMaxLevelDensity(level, minimumDensity);
+            }
+
+            public int maximumSSTablesToCompact()
+            {
+                return maxSSTablesToCompact();
+            }
+
+            public Overlaps.InclusionMethod overlapInclusionMethod()
+            {
+                return Controller.this.overlapInclusionMethod();
+            }
+
+            public int randomInt(int bound)
+            {
+                return random().nextInt(bound);
+            }
+        };
     }
 
     public static Map<String, String> validateOptions(Map<String, String> options) throws ConfigurationException

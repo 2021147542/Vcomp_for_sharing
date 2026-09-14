@@ -57,6 +57,7 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
     protected final Collection<Index.Group> indexGroups;
     protected Consumer<Collection<SSTableReader>> sstableProducedListener;
     protected boolean openSSTableOnProduced = false;
+    protected long estimatedKeyCount = 0;
 
     protected AbstractSSTableSimpleWriter(File directory, TableMetadataRef metadata, RegularAndStaticColumns columns)
     {
@@ -92,6 +93,17 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
     }
 
     /**
+     * Set the expected number of partition keys in each produced SSTable.
+     * This is used to size partition-key metadata such as the Bloom filter.
+     */
+    protected void setEstimatedKeyCount(long estimatedKeyCount)
+    {
+        if (estimatedKeyCount < 0)
+            throw new IllegalArgumentException("estimated key count must be non-negative");
+        this.estimatedKeyCount = estimatedKeyCount;
+    }
+
+    /**
      * Indicate whether the produced sstable should be opened or not.
      */
     protected boolean shouldOpenSSTables()
@@ -112,11 +124,11 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
         SerializationHeader header = new SerializationHeader(true, metadata.get(), columns, EncodingStats.NO_STATS);
 
         if (makeRangeAware)
-            return SSTableTxnWriter.createRangeAware(metadata, 0, ActiveRepairService.UNREPAIRED_SSTABLE, ActiveRepairService.NO_PENDING_REPAIR, false, format, header);
+            return SSTableTxnWriter.createRangeAware(metadata, estimatedKeyCount, ActiveRepairService.UNREPAIRED_SSTABLE, ActiveRepairService.NO_PENDING_REPAIR, false, format, header);
 
         return SSTableTxnWriter.create(metadata,
                                        createDescriptor(directory, metadata.keyspace, metadata.name, format),
-                                       0,
+                                       estimatedKeyCount,
                                        ActiveRepairService.UNREPAIRED_SSTABLE,
                                        ActiveRepairService.NO_PENDING_REPAIR,
                                        false,
@@ -163,4 +175,3 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
      */
     abstract PartitionUpdate.Builder getUpdateFor(DecoratedKey key) throws IOException;
 }
-

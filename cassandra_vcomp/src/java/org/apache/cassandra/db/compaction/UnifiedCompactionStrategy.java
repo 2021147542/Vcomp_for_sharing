@@ -397,48 +397,11 @@ public class UnifiedCompactionStrategy extends AbstractCompactionStrategy
                 return candidate.getMaxTimestamp();
             }
         };
-        UnifiedCompactionPicker.Policy policy = new UnifiedCompactionPicker.Policy()
-        {
-            public int scalingParameter(int level)
-            {
-                return controller.getScalingParameter(level);
-            }
-
-            public int fanout(int level)
-            {
-                return controller.getFanout(level);
-            }
-
-            public int threshold(int level)
-            {
-                return controller.getThreshold(level);
-            }
-
-            public double maximumLevelDensity(int level, double minimumDensity)
-            {
-                return controller.getMaxLevelDensity(level, minimumDensity);
-            }
-
-            public int maximumSSTablesToCompact()
-            {
-                return controller.maxSSTablesToCompact();
-            }
-
-            public Overlaps.InclusionMethod overlapInclusionMethod()
-            {
-                return controller.overlapInclusionMethod();
-            }
-
-            public int randomInt(int bound)
-            {
-                return controller.random().nextInt(bound);
-            }
-        };
         double firstLevelMinimumDensity = controller.getBaseSstableSize(controller.getFanout(0))
                                           / shardManager.localSpaceCoverage();
         UnifiedCompactionPicker.Pick<SSTableReader> pick = UnifiedCompactionPicker.pick(suitable,
                                                                                         adapter,
-                                                                                        policy,
+                                                                                        controller.pickerPolicy(),
                                                                                         firstLevelMinimumDensity);
         context.estimatedRemainingTasks = pick == null ? 0 : pick.estimatedRemainingTasks();
         CompactionPick selected = pick == null ? null : new CompactionPick(pick.level(), pick.overlap(), pick.inputs());

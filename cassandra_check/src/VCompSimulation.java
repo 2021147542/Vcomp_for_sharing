@@ -19,9 +19,10 @@ public final class VCompSimulation
         long seed = Long.parseLong(args[3]);
         long flushBytes = 64L << 20;
         long targetBytes = 64L << 20;
+        int writesPerFlush = Math.toIntExact(flushBytes / entryBytes);
         VCompOrderedPartitionLayout layout = new VCompOrderedPartitionLayout(writes, partitions);
         SyntheticVCompLoadSource source = new SyntheticVCompLoadSource(writes,
-                                                                        Math.toIntExact(flushBytes / entryBytes),
+                                                                        writesPerFlush,
                                                                         writes,
                                                                         entryBytes,
                                                                         seed);
@@ -40,6 +41,7 @@ public final class VCompSimulation
             return new VCompPipeline.MaterializedState(ids, keys, bytes);
         };
         VCompPipeline pipeline = VCompPipeline.createDefault(flushBytes,
+                                                              sizeModel.estimate(writesPerFlush),
                                                               targetBytes,
                                                               VCompSSTSizeModel.logical(entryBytes),
                                                               layout,

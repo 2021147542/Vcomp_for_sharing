@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import org.apache.cassandra.db.compaction.unified.Controller;
+
 /** Implements descriptor-only merge, deduplication estimation, and output construction. */
 public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger,
                                                        VCompPipeline.SketchMerger,
@@ -189,7 +191,11 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
             inputMaximum = Math.max(inputMaximum, input.keyMax());
         }
         double combinedDensity = sumBytes(inputs) / partitionLayout.tokenCoverage(inputMinimum, inputMaximum);
-        int shardCount = nativeShardCount(combinedDensity, targetSSTBytes);
+        int shardCount = Controller.calculateNumShards(combinedDensity,
+                                                       Controller.defaultMinSSTableSizeBytes(),
+                                                       1,
+                                                       targetSSTBytes,
+                                                       0.333);
 
         List<PartitionSlice> slices = estimatePartitionSlices(inputs, model, estimatedUniqueKeys);
         List<VCompPipeline.VirtualSSTable> outputs = new ArrayList<>();
@@ -261,16 +267,6 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
             assigned = through;
         }
         return result;
-    }
-
-    /** Cassandra Controller.getNumShards for base_shard_count=1 and default growth=0.333. */
-    private static int nativeShardCount(double localDensity, long targetBytes)
-    {
-        double count = localDensity / targetBytes;
-        double pow = Math.log(count) / Math.log(2) * (1 - 0.333) + 0.5;
-        if (pow >= 20)
-            return 1 << 20;
-        return pow >= 0 ? 1 << (int) pow : 1;
     }
 
     private static List<VCompPipeline.VirtualSSTable> inputSSTables(VCompPipeline.VirtualCompactionPlan plan)

@@ -18,40 +18,28 @@
  */
 package org.apache.cassandra.db.compaction.vcomp;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Random;
 
-import org.apache.cassandra.db.compaction.UnifiedCompactionStrategy;
+import org.apache.cassandra.db.compaction.unified.Controller;
 import org.apache.cassandra.db.compaction.unified.UnifiedCompactionPicker;
-import org.apache.cassandra.utils.Overlaps;
 
 /**
  * Metadata-only UCS picker for the first, deliberately restricted VComp port.
  *
- * <p>Every row in this port has the same partition key. Cassandra therefore regards every
- * candidate SSTable as overlapping every other candidate in the same density level. It also
- * substitutes token-space coverage {@code 1.0} for a single-partition SSTable, making density
- * equal to on-disk size. This class implements that exact restricted case without pretending
- * that clustering-key coordinates are Cassandra token ranges.</p>
- *
- * <p>A sorted run may contain multiple non-overlapping vSST outputs. UCS selects runs in this
- * restricted tiered model, so density is the sum of their physical-size estimates and age is
- * the newest timestamp represented by any child.</p>
+ * <p>The candidate adapter exposes only the same size, token-range, timestamp,
+ * and ordering metadata that native UCS reads from {@code SSTableReader}. The
+ * policy object itself is Cassandra's {@link Controller} policy view; this
+ * class must not carry a second set of UCS thresholds or tie-breaking rules.</p>
  */
 public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPlanner
 {
     /** Cassandra 5.0's default T4 scaling parameter represented as W = 2. */
     public static final int DEFAULT_SCALING_PARAMETER = 2;
 
-    private static final long MINIMUM_BASE_SIZE_BYTES = 1L << 20;
-
     private final long flushSizeBytes;
     private final VCompOrderedPartitionLayout partitionLayout;
-    private final int[] scalingParameters;
-    private final int configuredMaxSSTablesToCompact;
-    private final Random bucketRandom = new Random(Long.getLong("cassandra.ucs.picker_seed", 20260909L));
+    private final Controller controller;
     private long nextPlanId;
 
     private final UnifiedCompactionPicker.CandidateAdapter<VCompPipeline.VirtualSortedRun> candidateAdapter =
@@ -140,10 +128,12 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
         }
         this.flushSizeBytes = flushSizeBytes;
         this.partitionLayout = partitionLayout;
-        this.scalingParameters = scalingParameters.clone();
-        this.configuredMaxSSTablesToCompact = maxSSTablesToCompact <= 0
-                                              ? Integer.MAX_VALUE
-                                              : maxSSTablesToCompact;
+        this.controller = Controller.forOfflineTools(flushSizeBytes,
+                                                     scalingParameters,
+                                                     maxSSTablesToCompact,
+                                                     1,
+                                                     64L << 20,
+                                                     0.333);
     }
 
     @Override
@@ -153,7 +143,7 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
         UnifiedCompactionPicker.Pick<VCompPipeline.VirtualSortedRun> pick =
         UnifiedCompactionPicker.pick(state.runs(),
                                      candidateAdapter,
-                                     new VCompPolicy(),
+                                     controller.pickerPolicy(),
                                      firstLevelMinimumDensity());
         if (pick == null)
             return Optional.empty();
@@ -171,25 +161,7 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
 
     private double firstLevelMinimumDensity()
     {
-        int fanout = fanout(0);
-        return Math.max(MINIMUM_BASE_SIZE_BYTES, flushSizeBytes) * (1.0 - 0.9 / fanout);
-    }
-
-    private int fanout(int levelIndex)
-    {
-        return UnifiedCompactionStrategy.fanoutFromScalingParameter(scalingParameter(levelIndex));
-    }
-
-    private int threshold(int levelIndex)
-    {
-        return UnifiedCompactionStrategy.thresholdFromScalingParameter(scalingParameter(levelIndex));
-    }
-
-    private int scalingParameter(int levelIndex)
-    {
-        return levelIndex < scalingParameters.length
-               ? scalingParameters[levelIndex]
-               : scalingParameters[scalingParameters.length - 1];
+        return controller.getBaseSstableSize(controller.getFanout(0));
     }
 
     @Override
@@ -197,49 +169,6 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
     {
         return "VCompUcsPlanner{" +
                "flushSizeBytes=" + flushSizeBytes +
-               ", scalingParameters=" + Arrays.toString(scalingParameters) +
-               ", maxSSTablesToCompact=" + configuredMaxSSTablesToCompact +
                '}';
-    }
-
-    private final class VCompPolicy implements UnifiedCompactionPicker.Policy
-    {
-        public int scalingParameter(int level)
-        {
-            return VCompUcsPlanner.this.scalingParameter(level);
-        }
-
-        public int fanout(int level)
-        {
-            return VCompUcsPlanner.this.fanout(level);
-        }
-
-        public int threshold(int level)
-        {
-            return VCompUcsPlanner.this.threshold(level);
-        }
-
-        public double maximumLevelDensity(int level, double minimumDensity)
-        {
-            // The restricted single-partition T4 schema has survival factor 1.0.
-            return Math.floor(minimumDensity * fanout(level));
-        }
-
-        public int maximumSSTablesToCompact()
-        {
-            return configuredMaxSSTablesToCompact;
-        }
-
-        public Overlaps.InclusionMethod overlapInclusionMethod()
-        {
-            return Overlaps.InclusionMethod.TRANSITIVE;
-        }
-
-        public int randomInt(int bound)
-        {
-            // Match Controller.random().nextInt(bound), while retaining a fixed
-            // experiment seed so paired VComp runs are reproducible.
-            return bucketRandom.nextInt(bound);
-        }
     }
 }

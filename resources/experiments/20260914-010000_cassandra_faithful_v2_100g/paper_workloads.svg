@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.panel{font-size:17px;font-weight:700}.tick{font-size:12px;fill:#4b5563}.legend{font-size:13px}</style>
+<text class="title" x="700" y="30" text-anchor="middle">Workload behavior on retained 100 GiB Cassandra databases</text>
+<text class="panel" x="355.0" y="73" text-anchor="middle">Throughput (M ops/sec)</text>
+<line x1="82" y1="381.0" x2="676" y2="381.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="385.0" text-anchor="end">0.00</text>
+<line x1="82" y1="323.4" x2="676" y2="323.4" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="327.4" text-anchor="end">0.02</text>
+<line x1="82" y1="265.8" x2="676" y2="265.8" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="269.8" text-anchor="end">0.04</text>
+<line x1="82" y1="208.2" x2="676" y2="208.2" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="212.2" text-anchor="end">0.06</text>
+<line x1="82" y1="150.6" x2="676" y2="150.6" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="154.6" text-anchor="end">0.08</text>
+<line x1="82" y1="93.0" x2="676" y2="93.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="97.0" text-anchor="end">0.10</text>
+<rect x="94.9" y="156.5" width="28.0" height="224.5" fill="#6b7280"/>
+<rect x="125.9" y="178.8" width="28.0" height="202.2" fill="#2563eb"/>
+<text class="tick" x="124.4" y="399" text-anchor="middle">A</text>
+<rect x="179.8" y="214.0" width="28.0" height="167.0" fill="#6b7280"/>
+<rect x="210.8" y="239.5" width="28.0" height="141.5" fill="#2563eb"/>
+<text class="tick" x="209.3" y="399" text-anchor="middle">B</text>
+<rect x="264.6" y="227.5" width="28.0" height="153.5" fill="#6b7280"/>
+<rect x="295.6" y="248.2" width="28.0" height="132.8" fill="#2563eb"/>
+<text class="tick" x="294.1" y="399" text-anchor="middle">C</text>
+<rect x="349.5" y="176.1" width="28.0" height="204.9" fill="#6b7280"/>
+<rect x="380.5" y="204.5" width="28.0" height="176.5" fill="#2563eb"/>
+<text class="tick" x="379.0" y="399" text-anchor="middle">D</text>
+<rect x="434.4" y="306.9" width="28.0" height="74.1" fill="#6b7280"/>
+<rect x="465.4" y="312.1" width="28.0" height="68.9" fill="#2563eb"/>
+<text class="tick" x="463.9" y="399" text-anchor="middle">E</text>
+<rect x="519.2" y="233.7" width="28.0" height="147.3" fill="#6b7280"/>
+<rect x="550.2" y="255.6" width="28.0" height="125.4" fill="#2563eb"/>
+<text class="tick" x="548.7" y="399" text-anchor="middle">F</text>
+<rect x="604.1" y="269.4" width="28.0" height="111.6" fill="#6b7280"/>
+<rect x="635.1" y="270.2" width="28.0" height="110.8" fill="#2563eb"/>
+<text class="tick" x="633.6" y="399" text-anchor="middle">mixg.</text>
+<line x1="82" y1="381" x2="676" y2="381" stroke="#111827"/>
+<text class="panel" x="1045.0" y="73" text-anchor="middle">Point-lookup latency (µs): p50 / p95 / p99</text>
+<line x1="772" y1="381.0" x2="1366" y2="381.0" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="385.0" text-anchor="end">0</text>
+<line x1="772" y1="323.4" x2="1366" y2="323.4" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="327.4" text-anchor="end">2000</text>
+<line x1="772" y1="265.8" x2="1366" y2="265.8" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="269.8" text-anchor="end">4000</text>
+<line x1="772" y1="208.2" x2="1366" y2="208.2" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="212.2" text-anchor="end">6000</text>
+<line x1="772" y1="150.6" x2="1366" y2="150.6" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="154.6" text-anchor="end">8000</text>
+<line x1="772" y1="93.0" x2="1366" y2="93.0" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="97.0" text-anchor="end">10000</text>
+<rect x="790.0" y="359.0" width="30.0" height="22.0" fill="#6b7280" fill-opacity="1.0"/>
+<rect x="790.0" y="320.7" width="30.0" height="38.3" fill="#6b7280" fill-opacity="0.65"/>
+<rect x="790.0" y="278.5" width="30.0" height="42.2" fill="#6b7280" fill-opacity="0.35"/>
+<rect x="823.0" y="351.1" width="30.0" height="29.9" fill="#2563eb" fill-opacity="1.0"/>
+<rect x="823.0" y="319.5" width="30.0" height="31.6" fill="#2563eb" fill-opacity="0.65"/>
+<rect x="823.0" y="278.7" width="30.0" height="40.9" fill="#2563eb" fill-opacity="0.35"/>
+<text class="tick" x="821.5" y="399" text-anchor="middle">A</text>
+<rect x="889.0" y="360.9" width="30.0" height="20.1" fill="#6b7280" fill-opacity="1.0"/>
+<rect x="889.0" y="328.3" width="30.0" height="32.6" fill="#6b7280" fill-opacity="0.65"/>
+<rect x="889.0" y="296.1" width="30.0" height="32.2" fill="#6b7280" fill-opacity="0.35"/>
+<rect x="922.0" y="354.1" width="30.0" height="26.9" fill="#2563eb" fill-opacity="1.0"/>
+<rect x="922.0" y="324.6" width="30.0" height="29.5" fill="#2563eb" fill-opacity="0.65"/>
+<rect x="922.0" y="294.9" width="30.0" height="29.8" fill="#2563eb" fill-opacity="0.35"/>
+<text class="tick" x="920.5" y="399" text-anchor="middle">B</text>
+<rect x="988.0" y="360.1" width="30.0" height="20.9" fill="#6b7280" fill-opacity="1.0"/>
+<rect x="988.0" y="328.6" width="30.0" height="31.5" fill="#6b7280" fill-opacity="0.65"/>
+<rect x="988.0" y="296.8" width="30.0" height="31.7" fill="#6b7280" fill-opacity="0.35"/>
+<rect x="1021.0" y="354.4" width="30.0" height="26.6" fill="#2563eb" fill-opacity="1.0"/>
+<rect x="1021.0" y="324.8" width="30.0" height="29.6" fill="#2563eb" fill-opacity="0.65"/>
+<rect x="1021.0" y="295.7" width="30.0" height="29.1" fill="#2563eb" fill-opacity="0.35"/>
+<text class="tick" x="1019.5" y="399" text-anchor="middle">C</text>
+<rect x="1087.0" y="369.8" width="30.0" height="11.2" fill="#6b7280" fill-opacity="1.0"/>
+<rect x="1087.0" y="318.5" width="30.0" height="51.3" fill="#6b7280" fill-opacity="0.65"/>
+<rect x="1087.0" y="286.6" width="30.0" height="31.9" fill="#6b7280" fill-opacity="0.35"/>
+<rect x="1120.0" y="368.0" width="30.0" height="13.0" fill="#2563eb" fill-opacity="1.0"/>
+<rect x="1120.0" y="314.2" width="30.0" height="53.7" fill="#2563eb" fill-opacity="0.65"/>
+<rect x="1120.0" y="282.3" width="30.0" height="31.9" fill="#2563eb" fill-opacity="0.35"/>
+<text class="tick" x="1118.5" y="399" text-anchor="middle">D</text>
+<rect x="1186.0" y="362.7" width="30.0" height="18.3" fill="#6b7280" fill-opacity="1.0"/>
+<rect x="1186.0" y="329.1" width="30.0" height="33.5" fill="#6b7280" fill-opacity="0.65"/>
+<rect x="1186.0" y="299.7" width="30.0" height="29.5" fill="#6b7280" fill-opacity="0.35"/>
+<rect x="1219.0" y="354.8" width="30.0" height="26.2" fill="#2563eb" fill-opacity="1.0"/>
+<rect x="1219.0" y="325.3" width="30.0" height="29.6" fill="#2563eb" fill-opacity="0.65"/>
+<rect x="1219.0" y="296.2" width="30.0" height="29.0" fill="#2563eb" fill-opacity="0.35"/>
+<text class="tick" x="1217.5" y="399" text-anchor="middle">F</text>
+<rect x="1285.0" y="362.2" width="30.0" height="18.8" fill="#6b7280" fill-opacity="1.0"/>
+<rect x="1285.0" y="308.4" width="30.0" height="53.8" fill="#6b7280" fill-opacity="0.65"/>
+<rect x="1285.0" y="129.3" width="30.0" height="179.1" fill="#6b7280" fill-opacity="0.35"/>
+<rect x="1318.0" y="363.7" width="30.0" height="17.3" fill="#2563eb" fill-opacity="1.0"/>
+<rect x="1318.0" y="315.3" width="30.0" height="48.4" fill="#2563eb" fill-opacity="0.65"/>
+<rect x="1318.0" y="114.4" width="30.0" height="200.9" fill="#2563eb" fill-opacity="0.35"/>
+<text class="tick" x="1316.5" y="399" text-anchor="middle">mixg.</text>
+<line x1="772" y1="381" x2="1366" y2="381" stroke="#111827"/>
+<text class="panel" x="355.0" y="473" text-anchor="middle">Disk read (GB, 960k fixed ops total)</text>
+<line x1="82" y1="781.0" x2="676" y2="781.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="785.0" text-anchor="end">0</text>
+<line x1="82" y1="733.0" x2="676" y2="733.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="737.0" text-anchor="end">5</text>
+<line x1="82" y1="685.0" x2="676" y2="685.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="689.0" text-anchor="end">10</text>
+<line x1="82" y1="637.0" x2="676" y2="637.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="641.0" text-anchor="end">15</text>
+<line x1="82" y1="589.0" x2="676" y2="589.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="593.0" text-anchor="end">20</text>
+<line x1="82" y1="541.0" x2="676" y2="541.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="545.0" text-anchor="end">25</text>
+<line x1="82" y1="493.0" x2="676" y2="493.0" stroke="#e5e7eb"/>
+<text class="tick" x="76" y="497.0" text-anchor="end">30</text>
+<rect x="94.9" y="690.5" width="28.0" height="90.5" fill="#6b7280"/>
+<rect x="125.9" y="679.3" width="28.0" height="101.7" fill="#2563eb"/>
+<text class="tick" x="124.4" y="799" text-anchor="middle">A</text>
+<rect x="179.8" y="637.4" width="28.0" height="143.6" fill="#6b7280"/>
+<rect x="210.8" y="606.7" width="28.0" height="174.3" fill="#2563eb"/>
+<text class="tick" x="209.3" y="799" text-anchor="middle">B</text>
+<rect x="264.6" y="632.9" width="28.0" height="148.1" fill="#6b7280"/>
+<rect x="295.6" y="599.2" width="28.0" height="181.8" fill="#2563eb"/>
+<text class="tick" x="294.1" y="799" text-anchor="middle">C</text>
+<rect x="349.5" y="742.7" width="28.0" height="38.3" fill="#6b7280"/>
+<rect x="380.5" y="735.3" width="28.0" height="45.7" fill="#2563eb"/>
+<text class="tick" x="379.0" y="799" text-anchor="middle">D</text>
+<rect x="434.4" y="564.7" width="28.0" height="216.3" fill="#6b7280"/>
+<rect x="465.4" y="534.9" width="28.0" height="246.1" fill="#2563eb"/>
+<text class="tick" x="463.9" y="799" text-anchor="middle">E</text>
+<rect x="519.2" y="633.0" width="28.0" height="148.0" fill="#6b7280"/>
+<rect x="550.2" y="599.3" width="28.0" height="181.7" fill="#2563eb"/>
+<text class="tick" x="548.7" y="799" text-anchor="middle">F</text>
+<rect x="604.1" y="708.7" width="28.0" height="72.3" fill="#6b7280"/>
+<rect x="635.1" y="699.4" width="28.0" height="81.6" fill="#2563eb"/>
+<text class="tick" x="633.6" y="799" text-anchor="middle">mixg.</text>
+<line x1="82" y1="781" x2="676" y2="781" stroke="#111827"/>
+<text class="panel" x="1045.0" y="473" text-anchor="middle">Disk write (MB, 960k fixed ops total)</text>
+<line x1="772" y1="781.0" x2="1366" y2="781.0" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="785.0" text-anchor="end">0</text>
+<line x1="772" y1="739.9" x2="1366" y2="739.9" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="743.9" text-anchor="end">2</text>
+<line x1="772" y1="698.7" x2="1366" y2="698.7" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="702.7" text-anchor="end">5</text>
+<line x1="772" y1="657.6" x2="1366" y2="657.6" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="661.6" text-anchor="end">8</text>
+<line x1="772" y1="616.4" x2="1366" y2="616.4" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="620.4" text-anchor="end">10</text>
+<line x1="772" y1="575.3" x2="1366" y2="575.3" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="579.3" text-anchor="end">12</text>
+<line x1="772" y1="534.1" x2="1366" y2="534.1" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="538.1" text-anchor="end">15</text>
+<line x1="772" y1="493.0" x2="1366" y2="493.0" stroke="#e5e7eb"/>
+<text class="tick" x="766" y="497.0" text-anchor="end">18</text>
+<rect x="784.9" y="553.4" width="28.0" height="227.6" fill="#6b7280"/>
+<rect x="815.9" y="552.0" width="28.0" height="229.0" fill="#2563eb"/>
+<text class="tick" x="814.4" y="799" text-anchor="middle">A</text>
+<rect x="869.8" y="771.0" width="28.0" height="10.0" fill="#6b7280"/>
+<rect x="900.8" y="770.7" width="28.0" height="10.3" fill="#2563eb"/>
+<text class="tick" x="899.3" y="799" text-anchor="middle">B</text>
+<rect x="954.6" y="771.1" width="28.0" height="9.9" fill="#6b7280"/>
+<rect x="985.6" y="746.8" width="28.0" height="34.2" fill="#2563eb"/>
+<text class="tick" x="984.1" y="799" text-anchor="middle">C</text>
+<rect x="1039.5" y="769.0" width="28.0" height="12.0" fill="#6b7280"/>
+<rect x="1070.5" y="768.8" width="28.0" height="12.2" fill="#2563eb"/>
+<text class="tick" x="1069.0" y="799" text-anchor="middle">D</text>
+<rect x="1124.4" y="618.3" width="28.0" height="162.7" fill="#6b7280"/>
+<rect x="1155.4" y="620.3" width="28.0" height="160.7" fill="#2563eb"/>
+<text class="tick" x="1153.9" y="799" text-anchor="middle">E</text>
+<rect x="1209.2" y="548.8" width="28.0" height="232.2" fill="#6b7280"/>
+<rect x="1240.2" y="523.3" width="28.0" height="257.7" fill="#2563eb"/>
+<text class="tick" x="1238.7" y="799" text-anchor="middle">F</text>
+<rect x="1294.1" y="744.5" width="28.0" height="36.5" fill="#6b7280"/>
+<rect x="1325.1" y="632.8" width="28.0" height="148.2" fill="#2563eb"/>
+<text class="tick" x="1323.6" y="799" text-anchor="middle">mixg.</text>
+<line x1="772" y1="781" x2="1366" y2="781" stroke="#111827"/>
+<rect x="590" y="863" width="18" height="12" fill="#6b7280"/>
+<text class="legend" x="614" y="874">Baseline</text>
+<rect x="710" y="863" width="18" height="12" fill="#2563eb"/>
+<text class="legend" x="734" y="874">VComp</text>
+</svg>
