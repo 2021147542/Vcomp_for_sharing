@@ -199,7 +199,8 @@ public class Controller
         this.targetSSTableSize = targetSStableSize;
         this.overlapInclusionMethod = overlapInclusionMethod;
         this.sstableGrowthModifier = sstableGrowthModifier;
-        Long experimentPickerSeed = Long.getLong("cassandra.ucs.picker_seed");
+        Long experimentPickerSeed = CassandraRelevantProperties.UCS_PICKER_SEED.isPresent()
+                                    ? CassandraRelevantProperties.UCS_PICKER_SEED.getLong() : null;
         this.experimentPickerRandom = experimentPickerSeed == null ? null : new Random(experimentPickerSeed);
 
         if (maxSSTablesToCompact <= 0)

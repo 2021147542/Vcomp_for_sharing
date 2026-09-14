@@ -1,0 +1,26 @@
+ M cassandra_check/README.md
+ M cassandra_check/run_baseline_vcomp_20g_compare.sh
+ M cassandra_check/run_pipeline_100g.sh
+ M cassandra_check/run_pipeline_smoke.sh
+ M cassandra_check/run_single_partition_100g_campaign.sh
+ M cassandra_check/src/CassandraPaperWorkload.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/config/CassandraRelevantProperties.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/Controller.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/AbstractSSTableSimpleWriter.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/CQLSSTableWriter.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/unified/ControllerTest.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompactionTest.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlannerTest.java
+ M resources/report.md
+ M resources/summary.md
+?? cassandra_check/test/
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializerTest.java
+?? experiments/analysis/CassandraWorkloadTraceAudit.java
+?? experiments/analysis/ModelSplitProbe.java
+?? experiments/scripts/cassandra/
+?? resources/experiments/20260914-104858_cassandra_fidelity_audit/
+?? resources/experiments/20260914-111023_cassandra_100g_fidelity_rerun/

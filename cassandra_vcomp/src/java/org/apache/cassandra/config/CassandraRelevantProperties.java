@@ -609,6 +609,8 @@ public enum CassandraRelevantProperties
     UCS_BASE_SHARD_COUNT("unified_compaction.base_shard_count", "4"),
     UCS_MIN_SSTABLE_SIZE("unified_compaction.min_sstable_size", "100MiB"),
     UCS_OVERLAP_INCLUSION_METHOD("unified_compaction.overlap_inclusion_method"),
+    /** Optional deterministic picker seed for paired loading experiments. */
+    UCS_PICKER_SEED("cassandra.ucs.picker_seed"),
     UCS_SCALING_PARAMETER("unified_compaction.scaling_parameters", "T4"),
     UCS_SSTABLE_GROWTH("unified_compaction.sstable_growth", "0.333"),
     UCS_SURVIVAL_FACTOR("unified_compaction.survival_factor", "1"),

@@ -197,7 +197,7 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
                                                        targetSSTBytes,
                                                        0.333);
 
-        List<PartitionSlice> slices = estimatePartitionSlices(inputs, model, estimatedUniqueKeys);
+        List<PartitionSlice> slices = estimatePartitionSlices(model, estimatedUniqueKeys);
         List<VCompPipeline.VirtualSSTable> outputs = new ArrayList<>();
         String runSuffix = Long.toString(nextOutputId++);
         for (int start = 0; start < slices.size(); )
@@ -215,7 +215,10 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
             {
                 long keyMin = slices.get(start).keyMin;
                 long keyMax = slices.get(end - 1).keyMax;
-                VCompLearnedModel child = model.sliceByKeyRange(keyMin, keyMax, count);
+                VCompLearnedModel child = keyMin == model.keyMin() && keyMax == model.keyMax()
+                                          ? model
+                                          : model.sliceByKeyRange(keyMin, keyMax,
+                                                                  slices.get(start).firstRank, count);
                 VCompKmvSketch childSketch = mergeSketches(inputs, keyMin, keyMax, kmvSamples);
                 List<VCompKmvSketch.Range> ranges = outputRanges(inputs, keyMin, keyMax, count, null);
                 long outputBytes = sizeModel == null ? saturatedMultiply(count, averageEntryBytes)
@@ -233,39 +236,35 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
                                                   plan.outputLevel(), outputs);
     }
 
-    private List<PartitionSlice> estimatePartitionSlices(List<VCompPipeline.VirtualSSTable> inputs,
-                                                          VCompLearnedModel model,
-                                                          long totalKeys)
+    private List<PartitionSlice> estimatePartitionSlices(VCompLearnedModel model,
+                                                         long totalKeys)
     {
         List<PartitionSlice> result = new ArrayList<>();
-        double totalWeight = 0;
+        long assigned = 0;
         for (VCompOrderedPartitionLayout.Partition partition : partitionLayout.partitions())
         {
             long minimum = Math.max(partition.minimum(), model.keyMin());
             long maximum = Math.min(partition.maximum(), model.keyMax());
             if (maximum < minimum)
                 continue;
-            long rangeEstimate = estimateUnionForRange(inputs, minimum, maximum);
-            double modelMass = Math.max(0, model.predict(maximum) - model.predict(minimum));
-            double weight = rangeEstimate > 0 ? rangeEstimate : modelMass;
-            result.add(new PartitionSlice(partition, minimum, maximum, weight));
-            totalWeight += weight;
-        }
-        if (!(totalWeight > 0))
-            throw new IllegalStateException("ordered partitions have no estimated key mass");
-
-        long assigned = 0;
-        double cumulative = 0;
-        for (int i = 0; i < result.size(); i++)
-        {
-            PartitionSlice slice = result.get(i);
-            cumulative += slice.weight;
-            long through = i + 1 == result.size()
+            // Deduplication has already corrected the parent rank function. A
+            // native partition boundary only cuts that function; estimating
+            // KMV cardinalities again here would change the corrected density.
+            long through = maximum == model.keyMax()
                            ? totalKeys
-                           : Math.min(totalKeys, (long) Math.floor(cumulative * totalKeys / totalWeight));
-            slice.estimatedKeys = Math.max(0, through - assigned);
+                           : model.ranksBeforeRoundedKey(maximum + 1, totalKeys);
+            // Integer rounding must not assign more distinct keys than this
+            // partition can contain, or leave an infeasible residual for the
+            // remaining key domain. This does not re-estimate deduplication.
+            long minimumThrough = Math.max(assigned, totalKeys - (model.keyMax() - maximum));
+            long maximumThrough = Math.min(totalKeys,
+                                           saturatedAdd(assigned, inclusiveCardinality(minimum, maximum)));
+            through = Math.max(minimumThrough, Math.min(maximumThrough, through));
+            result.add(new PartitionSlice(partition, minimum, maximum, assigned, through - assigned));
             assigned = through;
         }
+        if (result.isEmpty() || assigned != totalKeys)
+            throw new IllegalStateException("ordered partitions have no estimated key mass");
         return result;
     }
 
@@ -696,16 +695,17 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
         private final VCompOrderedPartitionLayout.Partition partition;
         private final long keyMin;
         private final long keyMax;
-        private final double weight;
-        private long estimatedKeys;
+        private final long firstRank;
+        private final long estimatedKeys;
 
         private PartitionSlice(VCompOrderedPartitionLayout.Partition partition,
-                               long keyMin, long keyMax, double weight)
+                               long keyMin, long keyMax, long firstRank, long estimatedKeys)
         {
             this.partition = partition;
             this.keyMin = keyMin;
             this.keyMax = keyMax;
-            this.weight = weight;
+            this.firstRank = firstRank;
+            this.estimatedKeys = estimatedKeys;
         }
     }
 }

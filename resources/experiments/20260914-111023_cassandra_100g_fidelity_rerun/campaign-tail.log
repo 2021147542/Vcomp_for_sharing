@@ -1,0 +1,1127 @@
+             kv              12                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.82/minute                                                             
+mean rate                            214.66/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1158620823 1254689214 bytes 92.34%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1981302861 2756814869 bytes 71.87%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    313894622  550989341  bytes 56.97%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2317036811 2756524563 bytes 84.06%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2446481825 2875720251 bytes 85.07%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1591406273 2816045753 bytes 56.51%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1449887289 2977401896 bytes 48.70%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    911186780  1091071806 bytes 83.51%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    128850478  2775976660 bytes 4.64%   
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    739231412  1151427221 bytes 64.20%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    101611821  2819521492 bytes 3.60%   
+active compaction remaining time     0h02m39s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        12                                                                      
+baseline_100g                        kv              12                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.80/minute                                                             
+mean rate                            214.43/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1169897513 1254689214 bytes 93.24%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2035858888 2756814869 bytes 73.85%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    316525079  550989341  bytes 57.45%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2371739147 2756524563 bytes 86.04%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2501236140 2875720251 bytes 86.98%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1645501820 2816045753 bytes 58.43%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1503785706 2977401896 bytes 50.51%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    911900599  1091071806 bytes 83.58%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    183892309  2775976660 bytes 6.62%   
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    749323241  1151427221 bytes 65.08%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    147251928  2819521492 bytes 5.22%   
+active compaction remaining time     0h02m33s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        12                                                                      
+baseline_100g                        kv              12                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.79/minute                                                             
+mean rate                            214.20/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1179409343 1254689214 bytes 94.00%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2090865326 2756814869 bytes 75.84%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    318630697  550989341  bytes 57.83%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2427037164 2756524563 bytes 88.05%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2555986336 2875720251 bytes 88.88%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1699680339 2816045753 bytes 60.36%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1557632187 2977401896 bytes 52.32%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    912430442  1091071806 bytes 83.63%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    230082502  2775976660 bytes 8.29%   
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    760776477  1151427221 bytes 66.07%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    202614444  2819521492 bytes 7.19%   
+active compaction remaining time     0h02m27s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        12                                                                      
+baseline_100g                        kv              12                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.76/minute                                                             
+mean rate                            213.97/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1190579209 1254689214 bytes 94.89%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2145521948 2756814869 bytes 77.83%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    321156401  550989341  bytes 58.29%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2472672059 2756524563 bytes 89.70%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2610893108 2875720251 bytes 90.79%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1754012789 2816045753 bytes 62.29%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1611656311 2977401896 bytes 54.13%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    913146319  1091071806 bytes 83.69%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    285718992  2775976660 bytes 10.29%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    772327149  1151427221 bytes 67.08%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    258089007  2819521492 bytes 9.15%   
+active compaction remaining time     0h02m21s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        12                                                                      
+baseline_100g                        kv              12                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.74/minute                                                             
+mean rate                            213.74/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1201969161 1254689214 bytes 95.80%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2190966840 2756814869 bytes 79.47%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    323789941  550989341  bytes 58.77%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2527243580 2756524563 bytes 91.68%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2666028244 2875720251 bytes 92.71%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1799156187 2816045753 bytes 63.89%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1665746776 2977401896 bytes 55.95%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    913773035  1091071806 bytes 83.75%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    341135506  2775976660 bytes 12.29%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    783847795  1151427221 bytes 68.08%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    313531410  2819521492 bytes 11.12%  
+active compaction remaining time     0h02m15s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        12                                                                      
+baseline_100g                        kv              12                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.73/minute                                                             
+mean rate                            213.52/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1213098517 1254689214 bytes 96.69%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2245489571 2756814869 bytes 81.45%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    326412103  550989341  bytes 59.24%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2582163853 2756524563 bytes 93.67%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2720682742 2875720251 bytes 94.61%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1853182307 2816045753 bytes 65.81%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1710577785 2977401896 bytes 57.45%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    914393539  1091071806 bytes 83.81%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    396903748  2775976660 bytes 14.30%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    795266781  1151427221 bytes 69.07%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    368410196  2819521492 bytes 13.07%  
+active compaction remaining time     0h02m09s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        11                                                                      
+baseline_100g                        kv              11                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.71/minute                                                             
+mean rate                            213.29/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1224582819 1254689214 bytes 97.60%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2300321646 2756814869 bytes 83.44%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    329039440  550989341  bytes 59.72%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2637253303 2756524563 bytes 95.67%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2766195216 2875720251 bytes 96.19%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1906991491 2816045753 bytes 67.72%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1764376585 2977401896 bytes 59.26%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    915113575  1091071806 bytes 83.87%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    452073151  2775976660 bytes 16.29%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    805019319  1151427221 bytes 69.91%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    423640824  2819521492 bytes 15.03%  
+active compaction remaining time     0h02m03s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        11                                                                      
+baseline_100g                        kv              11                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.70/minute                                                             
+mean rate                            213.06/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1235885539 1254689214 bytes 98.50%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2355459842 2756814869 bytes 85.44%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    331674033  550989341  bytes 60.20%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2692505720 2756524563 bytes 97.68%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2821028332 2875720251 bytes 98.10%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1960622284 2816045753 bytes 69.62%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1818357030 2977401896 bytes 61.07%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    915738211  1091071806 bytes 83.93%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    507262346  2775976660 bytes 18.27%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    816433006  1151427221 bytes 70.91%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    469889233  2819521492 bytes 16.67%  
+active compaction remaining time     0h01m57s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        11                                                                      
+baseline_100g                        kv              11                                                      
+compactions completed                329                                                                     
+data compacted                       354489932294                                                            
+compressed data compacted            354489898228                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.68/minute                                                             
+mean rate                            212.83/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+48d7a230-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1245267610 1254689214 bytes 99.25%  
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2409946212 2756814869 bytes 87.42%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    333864683  550989341  bytes 60.59%  
+8f385660-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2747438495 2756524563 bytes 99.67%  
+84d83d70-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2875638250 2875720251 bytes 100.00% 
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2014624520 2816045753 bytes 71.54%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1871817509 2977401896 bytes 62.87%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    916254604  1091071806 bytes 83.98%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    553285484  2775976660 bytes 19.93%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    827795917  1151427221 bytes 71.89%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    525082511  2819521492 bytes 18.62%  
+active compaction remaining time     0h01m51s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        8                                                                       
+baseline_100g                        kv              8                                                       
+compactions completed                332                                                                     
+data compacted                       361376866322                                                            
+compressed data compacted            361376832256                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.85/minute                                                             
+mean rate                            214.55/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2474140389 2756814869 bytes 89.75%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    337336342  550989341  bytes 61.22%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2077523047 2816045753 bytes 73.77%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1934955809 2977401896 bytes 64.99%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    917086424  1091071806 bytes 84.05%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    626958213  2775976660 bytes 22.59%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    841421833  1151427221 bytes 73.08%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    598368140  2819521492 bytes 21.22%  
+active compaction remaining time     0h01m46s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        8                                                                       
+baseline_100g                        kv              8                                                       
+compactions completed                332                                                                     
+data compacted                       361376866322                                                            
+compressed data compacted            361376832256                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.84/minute                                                             
+mean rate                            214.32/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2547601385 2756814869 bytes 92.41%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    340811082  550989341  bytes 61.85%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2149328303 2816045753 bytes 76.32%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2015859656 2977401896 bytes 67.71%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    918016737  1091071806 bytes 84.14%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    701245368  2775976660 bytes 25.26%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    858779092  1151427221 bytes 74.58%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    672327267  2819521492 bytes 23.85%  
+active compaction remaining time     0h01m40s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        8                                                                       
+baseline_100g                        kv              8                                                       
+compactions completed                332                                                                     
+data compacted                       361376866322                                                            
+compressed data compacted            361376832256                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.82/minute                                                             
+mean rate                            214.09/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2629229692 2756814869 bytes 95.37%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    344385395  550989341  bytes 62.50%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2230639947 2816045753 bytes 79.21%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2087859936 2977401896 bytes 70.12%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    918936696  1091071806 bytes 84.22%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    775065461  2775976660 bytes 27.92%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    874017515  1151427221 bytes 75.91%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    745838145  2819521492 bytes 26.45%  
+active compaction remaining time     0h01m34s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        8                                                                       
+baseline_100g                        kv              8                                                       
+compactions completed                332                                                                     
+data compacted                       361376866322                                                            
+compressed data compacted            361376832256                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.81/minute                                                             
+mean rate                            213.87/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ab659ff0-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2702172768 2756814869 bytes 98.02%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    348157879  550989341  bytes 63.19%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2302695181 2816045753 bytes 81.77%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2159533387 2977401896 bytes 72.53%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    919777229  1091071806 bytes 84.30%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    858441922  2775976660 bytes 30.92%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    888989363  1151427221 bytes 77.21%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    819366377  2819521492 bytes 29.06%  
+active compaction remaining time     0h01m28s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                333                                                                     
+data compacted                       364133681191                                                            
+compressed data compacted            364133647125                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.79/minute                                                             
+mean rate                            214.28/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    351736336  550989341  bytes 63.84%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2383350941 2816045753 bytes 84.63%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2239868317 2977401896 bytes 75.23%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    920706525  1091071806 bytes 84.39%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    932641821  2775976660 bytes 33.60%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    906146305  1151427221 bytes 78.70%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    902562057  2819521492 bytes 32.01%  
+active compaction remaining time     0h01m22s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                333                                                                     
+data compacted                       364133681191                                                            
+compressed data compacted            364133647125                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.82/minute                                                             
+mean rate                            214.06/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    356460980  550989341  bytes 64.69%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2473598349 2816045753 bytes 87.84%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2329781395 2977401896 bytes 78.25%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    921955388  1091071806 bytes 84.50%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1024658081 2775976660 bytes 36.91%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    925273766  1151427221 bytes 80.36%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    994565844  2819521492 bytes 35.27%  
+active compaction remaining time     0h01m16s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                333                                                                     
+data compacted                       364133681191                                                            
+compressed data compacted            364133647125                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.81/minute                                                             
+mean rate                            213.83/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    360775905  550989341  bytes 65.48%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2563479212 2816045753 bytes 91.03%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2419796285 2977401896 bytes 81.27%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    922995394  1091071806 bytes 84.60%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1125823627 2775976660 bytes 40.56%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    944550554  1151427221 bytes 82.03%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1086792725 2819521492 bytes 38.55%  
+active compaction remaining time     0h01m10s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                333                                                                     
+data compacted                       364133681191                                                            
+compressed data compacted            364133647125                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.79/minute                                                             
+mean rate                            213.61/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    365084621  550989341  bytes 66.26%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2653617566 2816045753 bytes 94.23%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2509775876 2977401896 bytes 84.29%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    924131860  1091071806 bytes 84.70%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1218182434 2775976660 bytes 43.88%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    964046170  1151427221 bytes 83.73%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1188339272 2819521492 bytes 42.15%  
+active compaction remaining time     0h01m04s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                333                                                                     
+data compacted                       364133681191                                                            
+compressed data compacted            364133647125                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.78/minute                                                             
+mean rate                            213.38/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    369395408  550989341  bytes 67.04%  
+ca536910-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2743778813 2816045753 bytes 97.43%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2608449368 2977401896 bytes 87.61%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    925270367  1091071806 bytes 84.80%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1310791316 2775976660 bytes 47.22%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    985060095  1151427221 bytes 85.55%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1280859830 2819521492 bytes 45.43%  
+active compaction remaining time     0h00m58s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        6                                                                       
+baseline_100g                        kv              6                                                       
+compactions completed                334                                                                     
+data compacted                       366949726944                                                            
+compressed data compacted            366949692878                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.76/minute                                                             
+mean rate                            213.80/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    374219620  550989341  bytes 67.92%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2698303404 2977401896 bytes 90.63%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    926512954  1091071806 bytes 84.92%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1412057598 2775976660 bytes 50.87%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1004190715 1151427221 bytes 87.21%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1382107387 2819521492 bytes 49.02%  
+active compaction remaining time     0h00m53s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        6                                                                       
+baseline_100g                        kv              6                                                       
+compactions completed                334                                                                     
+data compacted                       366949726944                                                            
+compressed data compacted            366949692878                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.81/minute                                                             
+mean rate                            213.57/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    379775120  550989341  bytes 68.93%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2815280053 2977401896 bytes 94.55%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    927960699  1091071806 bytes 85.05%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1531593567 2775976660 bytes 55.17%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1030957995 1151427221 bytes 89.54%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1501984919 2819521492 bytes 53.27%  
+active compaction remaining time     0h00m47s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        6                                                                       
+baseline_100g                        kv              6                                                       
+compactions completed                334                                                                     
+data compacted                       366949726944                                                            
+compressed data compacted            366949692878                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.78/minute                                                             
+mean rate                            213.35/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    385657259  550989341  bytes 69.99%  
+d6bf3080-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2941368508 2977401896 bytes 98.79%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    929415645  1091071806 bytes 85.18%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1651276925 2775976660 bytes 59.48%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1055651140 1151427221 bytes 91.68%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1621745148 2819521492 bytes 57.52%  
+active compaction remaining time     0h00m41s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        5                                                                       
+baseline_100g                        kv              5                                                       
+compactions completed                335                                                                     
+data compacted                       369927128840                                                            
+compressed data compacted            369927094774                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.83/minute                                                             
+mean rate                            213.76/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    393028957  550989341  bytes 71.33%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    931273612  1091071806 bytes 85.35%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1807440850 2775976660 bytes 65.11%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1086330363 1151427221 bytes 94.35%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1778025014 2819521492 bytes 63.06%  
+active compaction remaining time     0h00m35s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        5                                                                       
+baseline_100g                        kv              5                                                       
+compactions completed                335                                                                     
+data compacted                       369927128840                                                            
+compressed data compacted            369927094774                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.82/minute                                                             
+mean rate                            213.54/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    401416059  550989341  bytes 72.85%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    933247500  1091071806 bytes 85.53%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1982783706 2775976660 bytes 71.43%  
+24411130-afed-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1122790094 1151427221 bytes 97.51%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1953363662 2819521492 bytes 69.28%  
+active compaction remaining time     0h00m29s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                336                                                                     
+data compacted                       371078556061                                                            
+compressed data compacted            371078521995                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.80/minute                                                             
+mean rate                            213.95/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    409712936  550989341  bytes 74.36%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    27803255   2799758194 bytes 0.99%   
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    935422541  1091071806 bytes 85.73%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2157749515 2775976660 bytes 77.73%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2118813698 2819521492 bytes 75.15%  
+active compaction remaining time     0h01m05s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                336                                                                     
+data compacted                       371078556061                                                            
+compressed data compacted            371078521995                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.85/minute                                                             
+mean rate                            213.73/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    415810884  550989341  bytes 75.47%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    158380010  2799758194 bytes 5.66%   
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    936975396  1091071806 bytes 85.88%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2286886593 2775976660 bytes 82.38%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2248863929 2819521492 bytes 79.76%  
+active compaction remaining time     0h00m59s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                336                                                                     
+data compacted                       371078556061                                                            
+compressed data compacted            371078521995                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.82/minute                                                             
+mean rate                            213.50/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    421886021  550989341  bytes 76.57%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    289198528  2799758194 bytes 10.33%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    938528279  1091071806 bytes 86.02%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2416069071 2775976660 bytes 87.03%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2377429012 2819521492 bytes 84.32%  
+active compaction remaining time     0h00m53s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                336                                                                     
+data compacted                       371078556061                                                            
+compressed data compacted            371078521995                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.81/minute                                                             
+mean rate                            213.28/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    427966312  550989341  bytes 77.67%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    419846828  2799758194 bytes 15.00%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    940094627  1091071806 bytes 86.16%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2545147903 2775976660 bytes 91.68%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2506199422 2819521492 bytes 88.89%  
+active compaction remaining time     0h00m47s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                336                                                                     
+data compacted                       371078556061                                                            
+compressed data compacted            371078521995                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.79/minute                                                             
+mean rate                            213.06/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    92857075   2807348416 bytes 3.31%   
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    432794656  550989341  bytes 78.55%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    522798799  2799758194 bytes 18.67%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    941336201  1091071806 bytes 86.28%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2646376810 2775976660 bytes 95.33%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2607734573 2819521492 bytes 92.49%  
+active compaction remaining time     0h01m23s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        7                                                                       
+baseline_100g                        kv              7                                                       
+compactions completed                336                                                                     
+data compacted                       371078556061                                                            
+compressed data compacted            371078521995                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.78/minute                                                             
+mean rate                            212.84/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    186355529  2807348416 bytes 6.64%   
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    437104404  550989341  bytes 79.33%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    625268177  2799758194 bytes 22.33%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    942374120  1091071806 bytes 86.37%  
+493fef00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2738936801 2775976660 bytes 98.67%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2709076675 2819521492 bytes 96.08%  
+active compaction remaining time     0h01m17s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        5                                                                       
+baseline_100g                        kv              5                                                       
+compactions completed                337                                                                     
+data compacted                       373854532721                                                            
+compressed data compacted            373854498655                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.76/minute                                                             
+mean rate                            213.25/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    307570039  2807348416 bytes 10.96%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    442877676  550989341  bytes 80.38%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    737034307  2799758194 bytes 26.32%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    943821863  1091071806 bytes 86.50%  
+4b130150-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2819478933 2819521492 bytes 100.00% 
+active compaction remaining time     0h01m11s                                                                
+concurrent compactors                48                                                                     
+pending tasks                        4                                                                      
+baseline_100g                        kv              4                                                      
+compactions completed                338                                                                    
+data compacted                       376674054213                                                           
+compressed data compacted            376674020147                                                           
+compactions aborted                  0                                                                      
+compactions reduced                  0                                                                      
+sstables dropped from compaction     0                                                                      
+15 minute rate                       2.86/minute                                                            
+mean rate                            213.66/hour                                                            
+compaction throughput (MiB/s)        64.0                                                                   
+id                                   compaction type keyspace      table completed total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    494254217 2807348416 bytes 17.61%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    451594655 550989341  bytes 81.96%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    933021619 2799758194 bytes 33.33%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    945999339 1091071806 bytes 86.70%  
+active compaction remaining time     0h01m05s                                                               
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.85/minute                                                             
+mean rate                            213.44/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    689894084  2807348416 bytes 24.57%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    460840597  550989341  bytes 83.64%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1119704899 2799758194 bytes 39.99%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    948378422  1091071806 bytes 86.92%  
+active compaction remaining time     0h01m00s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.83/minute                                                             
+mean rate                            213.22/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    883562797  2807348416 bytes 31.47%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    469994247  550989341  bytes 85.30%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1315148412 2799758194 bytes 46.97%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    950652816  1091071806 bytes 87.13%  
+active compaction remaining time     0h00m54s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.81/minute                                                             
+mean rate                            213.00/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1071388092 2807348416 bytes 38.16%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    478806623  550989341  bytes 86.90%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1510970853 2799758194 bytes 53.97%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    952713776  1091071806 bytes 87.32%  
+active compaction remaining time     0h00m48s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.80/minute                                                             
+mean rate                            212.78/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1267594407 2807348416 bytes 45.15%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    487945773  550989341  bytes 88.56%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1697242268 2799758194 bytes 60.62%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    955096341  1091071806 bytes 87.54%  
+active compaction remaining time     0h00m42s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.78/minute                                                             
+mean rate                            212.56/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1463245831 2807348416 bytes 52.12%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    497170989  550989341  bytes 90.23%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1894041395 2799758194 bytes 67.65%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    957170200  1091071806 bytes 87.73%  
+active compaction remaining time     0h00m36s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.75/minute                                                             
+mean rate                            212.34/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1649689201 2807348416 bytes 58.76%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    505891064  550989341  bytes 91.82%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2089905449 2799758194 bytes 74.65%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    959551322  1091071806 bytes 87.95%  
+active compaction remaining time     0h00m30s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.74/minute                                                             
+mean rate                            212.12/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1845707815 2807348416 bytes 65.75%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    515020889  550989341  bytes 93.47%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2276244217 2799758194 bytes 81.30%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    961725699  1091071806 bytes 88.15%  
+active compaction remaining time     0h00m24s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.72/minute                                                             
+mean rate                            211.90/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2041623691 2807348416 bytes 72.72%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    524158997  550989341  bytes 95.13%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2472439346 2799758194 bytes 88.31%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    964008375  1091071806 bytes 88.35%  
+active compaction remaining time     0h00m18s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        4                                                                       
+baseline_100g                        kv              4                                                       
+compactions completed                338                                                                     
+data compacted                       376674054213                                                            
+compressed data compacted            376674020147                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.71/minute                                                             
+mean rate                            211.68/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2228513697 2807348416 bytes 79.38%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    532750476  550989341  bytes 96.69%  
+a1a7ec10-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2668643823 2799758194 bytes 95.32%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    966282754  1091071806 bytes 88.56%  
+active compaction remaining time     0h00m12s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        3                                                                       
+baseline_100g                        kv              3                                                       
+compactions completed                339                                                                     
+data compacted                       379473812407                                                            
+compressed data compacted            379473778341                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.69/minute                                                             
+mean rate                            212.09/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+ad540d00-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    2471183433 2807348416 bytes 88.03%  
+0e4101c0-afec-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    543993166  550989341  bytes 98.73%  
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    968880235  1091071806 bytes 88.80%  
+active compaction remaining time     0h00m06s                                                                
+concurrent compactors                48                                                                      
+pending tasks                        1                                                                       
+baseline_100g                        kv              1                                                       
+compactions completed                341                                                                     
+data compacted                       382832150164                                                            
+compressed data compacted            382832116098                                                            
+compactions aborted                  0                                                                       
+compactions reduced                  0                                                                       
+sstables dropped from compaction     0                                                                       
+15 minute rate                       2.86/minute                                                             
+mean rate                            213.12/hour                                                             
+compaction throughput (MiB/s)        64.0                                                                    
+id                                   compaction type keyspace      table completed  total      unit  progress
+65279db0-afe6-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    1008130151 1091071806 bytes 92.40%  
+active compaction remaining time     0h00m01s                                                                
+concurrent compactors                48                                                                    
+pending tasks                        3                                                                     
+baseline_100g                        kv              3                                                     
+compactions completed                342                                                                   
+data compacted                       383923221970                                                          
+compressed data compacted            383923187904                                                          
+compactions aborted                  0                                                                     
+compactions reduced                  0                                                                     
+sstables dropped from compaction     0                                                                     
+15 minute rate                       2.91/minute                                                           
+mean rate                            213.53/hour                                                           
+compaction throughput (MiB/s)        64.0                                                                  
+id                                   compaction type keyspace      table completed total     unit  progress
+e2bf6f70-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    313675038 538776615 bytes 58.22%  
+active compaction remaining time     0h00m03s                                                              
+concurrent compactors                48                                                                    
+pending tasks                        2                                                                     
+baseline_100g                        kv              2                                                     
+compactions completed                343                                                                   
+data compacted                       384461998585                                                          
+compressed data compacted            384461964519                                                          
+compactions aborted                  0                                                                     
+compactions reduced                  0                                                                     
+sstables dropped from compaction     0                                                                     
+15 minute rate                       2.96/minute                                                           
+mean rate                            213.93/hour                                                           
+compaction throughput (MiB/s)        64.0                                                                  
+id                                   compaction type keyspace      table completed total     unit  progress
+e75aa270-afee-11f1-85b8-a9aeb5d97330 Compaction      baseline_100g kv    171954241 550296045 bytes 31.25%  
+active compaction remaining time     0h00m05s                                                              
+concurrent compactors            48          
+pending tasks                    0           
+compactions completed            344         
+data compacted                   385012294630
+compressed data compacted        385012260564
+compactions aborted              0           
+compactions reduced              0           
+sstables dropped from compaction 0           
+15 minute rate                   2.95/minute 
+mean rate                        214.34/hour 
+compaction throughput (MiB/s)    64.0        
+concurrent compactors            48          
+pending tasks                    0           
+compactions completed            344         
+data compacted                   385012294630
+compressed data compacted        385012260564
+compactions aborted              0           
+compactions reduced              0           
+sstables dropped from compaction 0           
+15 minute rate                   3.00/minute 
+mean rate                        214.12/hour 
+compaction throughput (MiB/s)    64.0        
+concurrent compactors            48          
+pending tasks                    0           
+compactions completed            344         
+data compacted                   385012294630
+compressed data compacted        385012260564
+compactions aborted              0           
+compactions reduced              0           
+sstables dropped from compaction 0           
+15 minute rate                   2.98/minute 
+mean rate                        213.90/hour 
+compaction throughput (MiB/s)    64.0        
+[5/6] Verifying materialized Cassandra rows and collecting physical metrics
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+PASS: verified 1000 ascending rows and deterministic values
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+FINGERPRINT rows=66278498 sha256=c5d601912136141d214d609f47caa31e90ae0247f3658596b6dd9183bd2eab45 values_verified=true
+[6/6] Completed; preserving baseline DB, logs, and metrics
+Preserved run directory: /work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/baseline/cassandra-baseline-fidelity-100g-20260914-111023-baseline-20260914-111031
+[3/4] Measuring Cassandra VComp (starts only after baseline node exits)
+[1/8] Building Cassandra and verification client
+[2/8] Starting isolated Cassandra 5.0.9 node for 100 GiB
+[3/8] Creating 10000-partition ordered 24 B key / 1000 B value schema
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[4/8] Running 100 GiB virtual load and streaming materialization
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x0000000840066440 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x0000000840066440
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+VCOMP_RESULT seconds=121.132 writes=104857600 flush_bytes=67108864 target_sst_bytes=67108864 size_model=calibrated materialized_keys=82941757 logical_bytes=84932359168 virtual_compactions=918 final_runs=209 final_sstables=209 estimated_final_bytes=85937292193 max_estimated_sstable_bytes=580652917 max_estimated_run_bytes=580652917 max_sstables_per_run=1 physical_sst_bytes=85939506363 max_physical_sst_bytes=580664024 physical_sst_count=209
+[5/8] Re-enabling UCS and draining any post-import automatic compactions
+PASS: automatic UCS compaction enabled for vcomp_100g.kv
+PASS: automatic UCS compaction enabled for vcomp_100g.kv
+concurrent compactors            48         
+pending tasks                    0          
+compactions completed            4          
+data compacted                   47838      
+compressed data compacted        13769      
+compactions aborted              0          
+compactions reduced              0          
+sstables dropped from compaction 0          
+15 minute rate                   0.23/minute
+mean rate                        84.77/hour 
+compaction throughput (MiB/s)    64.0       
+concurrent compactors            48         
+pending tasks                    0          
+compactions completed            4          
+data compacted                   47838      
+compressed data compacted        13769      
+compactions aborted              0          
+compactions reduced              0          
+sstables dropped from compaction 0          
+15 minute rate                   0.23/minute
+mean rate                        82.13/hour 
+compaction throughput (MiB/s)    64.0       
+concurrent compactors            48         
+pending tasks                    0          
+compactions completed            4          
+data compacted                   47838      
+compressed data compacted        13769      
+compactions aborted              0          
+compactions reduced              0          
+sstables dropped from compaction 0          
+15 minute rate                   0.23/minute
+mean rate                        79.65/hour 
+compaction throughput (MiB/s)    64.0       
+PASS: automatic UCS compaction enabled for vcomp_100g.kv
+[6/8] Verifying imported rows through CQL
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+PASS: verified 1000 ascending rows and deterministic values
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+FINGERPRINT rows=66319628 sha256=ef3c271d267f545d39581a0297e88bb5d4b699082c04f3d73d542e8fffadbf27 values_verified=true
+[7/8] Collecting maximum SST and table metrics
+[8/8] Completed; preserving DB, materialized SSTables, and logs
+Preserved run directory: /work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/vcomp/cassandra-vcomp-fidelity-100g-20260914-111023-vcomp-20260914-125115
+Approximate-key accuracy: baseline rows=66278498, VComp rows=66319628, delta=+41130 (0.0621%), exact fingerprint match=false
+[4/4] Rendering measured comparison graph
+[2026-09-14T12:58:40+09:00] Running A-F/MixGraph, 48 workers x 20,000 operations
+[2026-09-14T12:58:41+09:00] Preparing A baseline checkpoint
+[2026-09-14T12:58:51+09:00] Running A baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"A","definition":"50% read / 50% update","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":10.896938,"threads":48,"operations":960000,"throughput_ops_per_second":88098.139242,"point_reads":480192,"writes":479808,"scans":0,"read_misses":105080,"point_read_hits":375112,"point_read_misses":105080,"operation_latency_p50_us":392.447,"operation_latency_p95_us":1158.143,"operation_latency_p99_us":2885.631,"point_lookup_latency_p50_us":513.535,"point_lookup_latency_p95_us":1382.399,"point_lookup_latency_p99_us":3819.519,"point_lookup_hit_latency_p50_us":462.079,"point_lookup_hit_latency_p95_us":1286.143,"point_lookup_hit_latency_p99_us":3428.351,"point_lookup_miss_latency_p50_us":680.447,"point_lookup_miss_latency_p95_us":1679.359,"point_lookup_miss_latency_p99_us":4853.759,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":57097068544,"disk_write_bytes":196501504}
+[2026-09-14T12:59:16+09:00] Preparing A vcomp checkpoint
+[2026-09-14T12:59:25+09:00] Running A vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"A","definition":"50% read / 50% update","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":15.011505,"threads":48,"operations":960000,"throughput_ops_per_second":63950.948288,"point_reads":480192,"writes":479808,"scans":0,"read_misses":105047,"point_read_hits":375145,"point_read_misses":105047,"operation_latency_p50_us":482.815,"operation_latency_p95_us":1757.183,"operation_latency_p99_us":4186.111,"point_lookup_latency_p50_us":668.671,"point_lookup_latency_p95_us":2160.639,"point_lookup_latency_p99_us":5349.375,"point_lookup_hit_latency_p50_us":564.735,"point_lookup_hit_latency_p95_us":1947.647,"point_lookup_hit_latency_p99_us":4726.783,"point_lookup_miss_latency_p50_us":1056.767,"point_lookup_miss_latency_p95_us":2777.087,"point_lookup_miss_latency_p99_us":6909.951,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":91404623872,"disk_write_bytes":197013504}
+[2026-09-14T12:59:54+09:00] Preparing B baseline checkpoint
+[2026-09-14T13:00:04+09:00] Running B baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"B","definition":"95% read / 5% update","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":17.137489,"threads":48,"operations":960000,"throughput_ops_per_second":56017.539900,"point_reads":911944,"writes":48056,"scans":0,"read_misses":231859,"point_read_hits":680085,"point_read_misses":231859,"operation_latency_p50_us":689.663,"operation_latency_p95_us":1684.479,"operation_latency_p99_us":3964.927,"point_lookup_latency_p50_us":694.783,"point_lookup_latency_p95_us":1696.767,"point_lookup_latency_p99_us":3997.695,"point_lookup_hit_latency_p50_us":653.311,"point_lookup_hit_latency_p95_us":1613.823,"point_lookup_hit_latency_p99_us":3756.031,"point_lookup_miss_latency_p50_us":821.759,"point_lookup_miss_latency_p95_us":1908.735,"point_lookup_miss_latency_p99_us":4694.015,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":99345661952,"disk_write_bytes":3698688}
+[2026-09-14T13:00:35+09:00] Preparing B vcomp checkpoint
+[2026-09-14T13:00:45+09:00] Running B vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"B","definition":"95% read / 5% update","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":20.559712,"threads":48,"operations":960000,"throughput_ops_per_second":46693.260707,"point_reads":911944,"writes":48056,"scans":0,"read_misses":231957,"point_read_hits":679987,"point_read_misses":231957,"operation_latency_p50_us":795.647,"operation_latency_p95_us":2258.943,"operation_latency_p99_us":4440.063,"point_lookup_latency_p50_us":802.815,"point_lookup_latency_p95_us":2285.567,"point_lookup_latency_p99_us":4489.215,"point_lookup_hit_latency_p50_us":736.767,"point_lookup_hit_latency_p95_us":2096.127,"point_lookup_hit_latency_p99_us":4104.191,"point_lookup_miss_latency_p50_us":1031.167,"point_lookup_miss_latency_p95_us":2701.311,"point_lookup_miss_latency_p99_us":5386.239,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":126752038912,"disk_write_bytes":4108288}
+[2026-09-14T13:01:19+09:00] Preparing C baseline checkpoint
+[2026-09-14T13:01:29+09:00] Running C baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"C","definition":"100% read","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":19.759989,"threads":48,"operations":960000,"throughput_ops_per_second":48583.021974,"point_reads":960000,"writes":0,"scans":0,"read_misses":408765,"point_read_hits":551235,"point_read_misses":408765,"operation_latency_p50_us":798.719,"operation_latency_p95_us":1846.271,"operation_latency_p99_us":3825.663,"point_lookup_latency_p50_us":798.207,"point_lookup_latency_p95_us":1845.247,"point_lookup_latency_p99_us":3823.615,"point_lookup_hit_latency_p50_us":809.983,"point_lookup_hit_latency_p95_us":1870.847,"point_lookup_hit_latency_p99_us":3932.159,"point_lookup_miss_latency_p50_us":782.335,"point_lookup_miss_latency_p95_us":1808.383,"point_lookup_miss_latency_p99_us":3680.255,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":106198355968,"disk_write_bytes":4136960}
+[2026-09-14T13:02:03+09:00] Preparing C vcomp checkpoint
+[2026-09-14T13:02:14+09:00] Running C vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"C","definition":"100% read","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":26.173665,"threads":48,"operations":960000,"throughput_ops_per_second":36678.088355,"point_reads":960000,"writes":0,"scans":0,"read_misses":328858,"point_read_hits":631142,"point_read_misses":328858,"operation_latency_p50_us":1017.343,"operation_latency_p95_us":2512.895,"operation_latency_p99_us":4976.639,"point_lookup_latency_p50_us":1016.319,"point_lookup_latency_p95_us":2510.847,"point_lookup_latency_p99_us":4976.639,"point_lookup_hit_latency_p50_us":980.991,"point_lookup_hit_latency_p95_us":2410.495,"point_lookup_hit_latency_p99_us":4771.839,"point_lookup_miss_latency_p50_us":1092.607,"point_lookup_miss_latency_p95_us":2678.783,"point_lookup_miss_latency_p99_us":5357.567,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":131205754880,"disk_write_bytes":4354048}
+[2026-09-14T13:02:54+09:00] Preparing D baseline checkpoint
+[2026-09-14T13:03:05+09:00] Running D baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"D","definition":"95% read / 5% insert","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"latest theta=0.99","wall_seconds":10.874580,"threads":48,"operations":960000,"throughput_ops_per_second":88279.272425,"point_reads":912006,"writes":47994,"scans":0,"read_misses":179001,"point_read_hits":733005,"point_read_misses":179001,"operation_latency_p50_us":408.575,"operation_latency_p95_us":1191.935,"operation_latency_p99_us":2977.791,"point_lookup_latency_p50_us":407.807,"point_lookup_latency_p95_us":1197.055,"point_lookup_latency_p99_us":2977.791,"point_lookup_hit_latency_p50_us":390.399,"point_lookup_hit_latency_p95_us":1115.135,"point_lookup_hit_latency_p99_us":2686.975,"point_lookup_miss_latency_p50_us":490.495,"point_lookup_miss_latency_p95_us":1490.943,"point_lookup_miss_latency_p99_us":4077.567,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":44008947712,"disk_write_bytes":3489792}
+[2026-09-14T13:03:30+09:00] Preparing D vcomp checkpoint
+[2026-09-14T13:03:43+09:00] Running D vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"D","definition":"95% read / 5% insert","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"latest theta=0.99","wall_seconds":14.324860,"threads":48,"operations":960000,"throughput_ops_per_second":67016.364044,"point_reads":912006,"writes":47994,"scans":0,"read_misses":173245,"point_read_hits":738761,"point_read_misses":173245,"operation_latency_p50_us":570.879,"operation_latency_p95_us":1575.935,"operation_latency_p99_us":3454.975,"point_lookup_latency_p50_us":571.391,"point_lookup_latency_p95_us":1584.127,"point_lookup_latency_p99_us":3467.263,"point_lookup_hit_latency_p50_us":542.207,"point_lookup_hit_latency_p95_us":1445.887,"point_lookup_hit_latency_p99_us":3098.623,"point_lookup_miss_latency_p50_us":701.951,"point_lookup_miss_latency_p95_us":2035.711,"point_lookup_miss_latency_p99_us":4603.903,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":47216558080,"disk_write_bytes":3584000}
+[2026-09-14T13:04:12+09:00] Preparing E baseline checkpoint
+[2026-09-14T13:04:22+09:00] Running E baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=E mode=fixed-operations operations=663193
+WORKLOAD_RESULT {"workload":"E","definition":"95% scan / 5% insert","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":41.875111,"threads":48,"operations":960000,"throughput_ops_per_second":22925.312441,"point_reads":0,"writes":48056,"scans":911944,"read_misses":0,"point_read_hits":0,"point_read_misses":0,"operation_latency_p50_us":1866.751,"operation_latency_p95_us":3719.167,"operation_latency_p99_us":6078.463,"point_lookup_latency_p50_us":0.000,"point_lookup_latency_p95_us":0.000,"point_lookup_latency_p99_us":0.000,"point_lookup_hit_latency_p50_us":0.000,"point_lookup_hit_latency_p95_us":0.000,"point_lookup_hit_latency_p99_us":0.000,"point_lookup_miss_latency_p50_us":0.000,"point_lookup_miss_latency_p95_us":0.000,"point_lookup_miss_latency_p99_us":0.000,"scan_latency_p50_us":1879.039,"scan_latency_p95_us":3737.599,"scan_latency_p99_us":6115.327,"disk_device":"md0","disk_read_bytes":145795764224,"disk_write_bytes":15425536}
+[2026-09-14T13:05:18+09:00] Preparing E vcomp checkpoint
+[2026-09-14T13:05:28+09:00] Running E vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=E mode=fixed-operations operations=480818
+WORKLOAD_RESULT {"workload":"E","definition":"95% scan / 5% insert","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":54.943597,"threads":48,"operations":960000,"throughput_ops_per_second":17472.463475,"point_reads":0,"writes":48056,"scans":911944,"read_misses":0,"point_read_hits":0,"point_read_misses":0,"operation_latency_p50_us":2342.911,"operation_latency_p95_us":5079.039,"operation_latency_p99_us":8822.783,"point_lookup_latency_p50_us":0.000,"point_lookup_latency_p95_us":0.000,"point_lookup_latency_p99_us":0.000,"point_lookup_hit_latency_p50_us":0.000,"point_lookup_hit_latency_p95_us":0.000,"point_lookup_hit_latency_p99_us":0.000,"point_lookup_miss_latency_p50_us":0.000,"point_lookup_miss_latency_p95_us":0.000,"point_lookup_miss_latency_p99_us":0.000,"scan_latency_p50_us":2369.535,"scan_latency_p95_us":5128.191,"scan_latency_p99_us":8904.703,"disk_device":"md0","disk_read_bytes":236800057344,"disk_write_bytes":15761408}
+[2026-09-14T13:06:38+09:00] Preparing F baseline checkpoint
+[2026-09-14T13:06:49+09:00] Running F baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"F","definition":"50% read / 50% read-modify-write","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":20.307847,"threads":48,"operations":960000,"throughput_ops_per_second":47272.366707,"point_reads":960000,"writes":479808,"scans":0,"read_misses":210176,"point_read_hits":749824,"point_read_misses":210176,"operation_latency_p50_us":816.639,"operation_latency_p95_us":2013.183,"operation_latency_p99_us":4853.759,"point_lookup_latency_p50_us":584.703,"point_lookup_latency_p95_us":1557.503,"point_lookup_latency_p99_us":3735.551,"point_lookup_hit_latency_p50_us":532.991,"point_lookup_hit_latency_p95_us":1455.103,"point_lookup_hit_latency_p99_us":3360.767,"point_lookup_miss_latency_p50_us":768.511,"point_lookup_miss_latency_p95_us":1875.967,"point_lookup_miss_latency_p99_us":4857.855,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":104825372672,"disk_write_bytes":197500928}
+[2026-09-14T13:07:23+09:00] Preparing F vcomp checkpoint
+[2026-09-14T13:07:35+09:00] Running F vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"F","definition":"50% read / 50% read-modify-write","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":22.956624,"threads":48,"operations":960000,"throughput_ops_per_second":41817.994990,"point_reads":960000,"writes":479808,"scans":0,"read_misses":210148,"point_read_hits":749852,"point_read_misses":210148,"operation_latency_p50_us":910.847,"operation_latency_p95_us":2500.607,"operation_latency_p99_us":4882.431,"point_lookup_latency_p50_us":640.511,"point_lookup_latency_p95_us":1998.847,"point_lookup_latency_p99_us":3971.071,"point_lookup_hit_latency_p50_us":577.023,"point_lookup_hit_latency_p95_us":1805.311,"point_lookup_hit_latency_p99_us":3547.135,"point_lookup_miss_latency_p50_us":914.943,"point_lookup_miss_latency_p95_us":2531.327,"point_lookup_miss_latency_p99_us":5177.343,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":126192721920,"disk_write_bytes":197459968}
+[2026-09-14T13:08:12+09:00] Preparing MIXGRAPH baseline checkpoint
+[2026-09-14T13:08:22+09:00] Running MIXGRAPH baseline (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"MIXGRAPH","definition":"83% get / 14% put / 3% seek","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"MixGraph power + two-term-exponential key ranges","wall_seconds":25.979639,"threads":48,"operations":960000,"throughput_ops_per_second":36952.014114,"point_reads":796810,"writes":134564,"scans":28626,"read_misses":280213,"point_read_hits":516597,"point_read_misses":280213,"operation_latency_p50_us":888.319,"operation_latency_p95_us":3371.007,"operation_latency_p99_us":6537.215,"point_lookup_latency_p50_us":894.975,"point_lookup_latency_p95_us":3282.943,"point_lookup_latency_p99_us":6000.639,"point_lookup_hit_latency_p50_us":890.367,"point_lookup_hit_latency_p95_us":3254.271,"point_lookup_hit_latency_p99_us":5955.583,"point_lookup_miss_latency_p50_us":903.167,"point_lookup_miss_latency_p95_us":3334.143,"point_lookup_miss_latency_p99_us":6074.367,"scan_latency_p50_us":1296.383,"scan_latency_p95_us":15179.775,"scan_latency_p99_us":29736.959,"disk_device":"md0","disk_read_bytes":42037764096,"disk_write_bytes":7368704}
+[2026-09-14T13:09:02+09:00] Preparing MIXGRAPH vcomp checkpoint
+[2026-09-14T13:09:15+09:00] Running MIXGRAPH vcomp (48 threads, 20000 operations/thread)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_RESULT {"workload":"MIXGRAPH","definition":"83% get / 14% put / 3% seek","generator_version":"split-streams-v2","seed":20260909,"key_distribution":"MixGraph power + two-term-exponential key ranges","wall_seconds":29.057627,"threads":48,"operations":960000,"throughput_ops_per_second":33037.797098,"point_reads":796810,"writes":134564,"scans":28626,"read_misses":276386,"point_read_hits":520424,"point_read_misses":276386,"operation_latency_p50_us":998.399,"operation_latency_p95_us":3717.119,"operation_latency_p99_us":7274.495,"point_lookup_latency_p50_us":1004.543,"point_lookup_latency_p95_us":3592.191,"point_lookup_latency_p99_us":6615.039,"point_lookup_hit_latency_p50_us":989.183,"point_lookup_hit_latency_p95_us":3532.799,"point_lookup_hit_latency_p99_us":6508.543,"point_lookup_miss_latency_p50_us":1035.263,"point_lookup_miss_latency_p95_us":3715.071,"point_lookup_miss_latency_p99_us":6791.167,"scan_latency_p50_us":1518.591,"scan_latency_p95_us":18661.375,"scan_latency_p99_us":36306.943,"disk_device":"md0","disk_read_bytes":47635537920,"disk_write_bytes":7430144}
+Completed Cassandra paper workloads: /work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/workloads-fixed-20k
+/home/dongju/vcomp/resources/experiments/20260914-111023_cassandra_100g_fidelity_rerun/paper_workloads.svg

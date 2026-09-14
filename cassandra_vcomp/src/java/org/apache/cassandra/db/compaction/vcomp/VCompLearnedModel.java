@@ -157,6 +157,11 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
     {
         if (discrete != null)
             return discrete.countLessThan(key);
+        return predictContinuous(key, 0);
+    }
+
+    private double predictContinuous(long key, double offset)
+    {
         if (segments.isEmpty())
             return 0;
 
@@ -178,14 +183,14 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
         }
 
         Segment segment = segments.get(low);
-        if (key < segment.keyStart())
+        if (key < segment.keyStart() || (key == segment.keyStart() && offset < 0))
         {
             if (low == 0)
                 return 0;
             Segment previous = segments.get(low - 1);
             return previous.evaluate(previous.keyEnd());
         }
-        return segment.evaluate(key);
+        return segment.evaluate(key) + segment.slope() * offset;
     }
 
     /** Estimate the key at a zero-based rank. Used later by final materialization. */
@@ -254,21 +259,21 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
 
     /**
      * Restrict a continuous rank model to an inclusive key range and rebase
-     * its rank origin to zero.  This is deliberately a continuous operation:
+     * its first assigned integer rank to zero, preserving the corrected slope.
+     * This is deliberately a continuous operation:
      * output sharding must not introduce the post-paper discrete certificate.
      */
-    VCompLearnedModel sliceByKeyRange(long minimum, long maximum, long estimatedCount)
+    VCompLearnedModel sliceByKeyRange(long minimum, long maximum, long firstRank, long estimatedCount)
     {
         if (minimum < keyMin() || maximum > keyMax() || maximum < minimum)
             throw new IllegalArgumentException("invalid continuous model slice");
         if (estimatedCount <= 0)
             throw new IllegalArgumentException("continuous model slice count must be positive");
+        if (firstRank < 0)
+            throw new IllegalArgumentException("continuous model slice first rank must be non-negative");
         if (discrete != null)
             throw new IllegalStateException("continuous key-range slicing does not accept a discrete certificate");
 
-        double origin = predict(minimum);
-        double mass = Math.max(0, predict(maximum) - origin);
-        double scale = mass > 0 ? estimatedCount / mass : 1.0;
         ArrayList<Segment> result = new ArrayList<>();
         for (Segment segment : segments)
         {
@@ -280,21 +285,34 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
             long end = Math.min(segment.keyEnd(), maximum);
             result.add(new Segment(start,
                                    end,
-                                   segment.slope() * scale,
-                                   (segment.intercept() - origin) * scale));
+                                   segment.slope(),
+                                   segment.intercept() - firstRank));
         }
         if (result.isEmpty())
-            result.add(new Segment(minimum, maximum, 0, 0));
+            result.add(new Segment(minimum, maximum, 0, predict(minimum) - firstRank));
         else
         {
             Segment first = result.get(0);
             if (first.keyStart() != minimum)
-                result.add(0, new Segment(minimum, first.keyStart(), 0, 0));
+                result.add(0, new Segment(minimum, first.keyStart(), 0, predict(minimum) - firstRank));
             Segment last = result.get(result.size() - 1);
             if (last.keyEnd() != maximum)
                 result.add(new Segment(last.keyEnd(), maximum, 0, last.evaluate(last.keyEnd())));
         }
         return new VCompLearnedModel(result);
+    }
+
+    /** Number of integer ranks whose rounded inverse lies below an exclusive key boundary. */
+    long ranksBeforeRoundedKey(long key, long totalRanks)
+    {
+        if (discrete != null)
+            throw new IllegalStateException("continuous rank cuts do not accept a discrete certificate");
+        // Math.round(x) enters key k at x = k - 0.5. Ceil converts that
+        // continuous cut to the first integer rank owned by the next output.
+        // Using one cumulative cut also conserves fractional mass across all
+        // outputs instead of rounding each partition's mass independently.
+        double rank = Math.ceil(predictContinuous(key, -0.5));
+        return Math.max(0, Math.min(totalRanks, (long) rank));
     }
 
     private static void validateKeys(long[] sortedKeys)

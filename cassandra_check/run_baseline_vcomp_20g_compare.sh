@@ -32,7 +32,10 @@ fi
 sha256sum "$RUNTIME_JAR" >"$ROOT/runtime-jar.sha256"
 "$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
   org.apache.cassandra.db.compaction.unified.Controller >"$ROOT/controller-runtime.javap"
-if ! rg -q 'cassandra.ucs.picker_seed' "$ROOT/controller-runtime.javap"; then
+"$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
+  org.apache.cassandra.config.CassandraRelevantProperties >"$ROOT/properties-runtime.javap"
+if ! rg -q 'CassandraRelevantProperties.UCS_PICKER_SEED' "$ROOT/controller-runtime.javap" \
+   || ! rg -q 'cassandra.ucs.picker_seed' "$ROOT/properties-runtime.javap"; then
   echo 'runtime jar does not contain the seeded UCS Controller hook' >&2
   exit 1
 fi

@@ -27,6 +27,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 public class DefaultVirtualCompactionTest
@@ -230,6 +231,68 @@ public class DefaultVirtualCompactionTest
             outputCount += sstable.estimatedUniqueKeys();
         }
         assertEquals(count, outputCount);
+    }
+
+    @Test
+    public void oneNativeShardPreservesTheCorrectedModel()
+    throws Exception
+    {
+        assertNativeSplitPreservesCorrectedRanks(1, 1);
+    }
+
+    @Test
+    public void nativeShardsPreserveCorrectedDensityAndRoundedInverseKeys()
+    throws Exception
+    {
+        assertNativeSplitPreservesCorrectedRanks(4, 2);
+    }
+
+    private static void assertNativeSplitPreservesCorrectedRanks(int inputCount, int expectedShards)
+    throws Exception
+    {
+        long mib = 1L << 20;
+        long[] keys = new long[1000];
+        for (int i = 0; i < keys.length; i++)
+            keys[i] = i;
+        VCompSSTSizeModel sizes = VCompSSTSizeModel.logical((64 * mib) / keys.length);
+        DefaultFlushVirtualizer virtualizer = new DefaultFlushVirtualizer(0, 32, 8, sizes);
+        List<VCompPipeline.VirtualSortedRun> inputs = new ArrayList<>();
+        for (int i = 0; i < inputCount; i++)
+            inputs.add(virtualizer.virtualize(new VCompPipeline.FlushBatch("density-" + i,
+                                                                           keys, 64 * mib, i + 1)));
+        VCompPipeline.VirtualCompactionPlan plan = new VCompPipeline.VirtualCompactionPlan("density",
+                                                                                           inputs, 1);
+        DefaultVirtualCompaction compaction = new DefaultVirtualCompaction(32, 8, 64 * mib,
+                                                                            sizes,
+                                                                            new VCompOrderedPartitionLayout(1000, 100));
+        VCompKmvSketch sketch = compaction.mergeAndDeduplicate(plan);
+        assertFalse(sketch.isComplete());
+
+        // The corrected model deliberately differs from the uniform sketch's
+        // density. Splitting must inherit this result of the merge correction,
+        // not recompute that correction from the input KMV a second time.
+        VCompLearnedModel corrected = new VCompLearnedModel(Arrays.asList(
+        new VCompLearnedModel.Segment(0, 500, 0.25, 0),
+        new VCompLearnedModel.Segment(500, 999, 0.5, -125)));
+        long count = 375;
+        VCompPipeline.VirtualSSTable parent = new VCompPipeline.VirtualSSTable("corrected",
+                                                                               0, 999, count, sizes.estimate(count),
+                                                                               corrected, sketch, new ArrayList<>());
+        VCompPipeline.VirtualSortedRun output = compaction.split(plan, corrected, sketch, count);
+        assertEquals(expectedShards, output.sstables().size());
+        if (expectedShards == 1)
+            assertSame(corrected, output.sstables().get(0).model());
+
+        long outputCount = 0;
+        List<Long> outputKeys = new ArrayList<>();
+        for (VCompPipeline.VirtualSSTable child : output.sstables())
+        {
+            outputCount += child.estimatedUniqueKeys();
+            assertTrue(child.model().discreteModel() == null);
+            outputKeys.addAll(materialize(child));
+        }
+        assertEquals(count, outputCount);
+        assertEquals("native output boundaries must only slice the corrected inverse", materialize(parent), outputKeys);
     }
 
     private static List<Long> materialize(VCompPipeline.VirtualSSTable sstable)

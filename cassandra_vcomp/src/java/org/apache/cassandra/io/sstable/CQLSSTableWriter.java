@@ -55,6 +55,7 @@ import org.apache.cassandra.db.Directories.DataDirectory;
 import org.apache.cassandra.db.Keyspace;
 import org.apache.cassandra.db.Slice;
 import org.apache.cassandra.db.Slices;
+import org.apache.cassandra.db.rows.EncodingStats;
 import org.apache.cassandra.db.rows.UnfilteredRowIterator;
 import org.apache.cassandra.db.marshal.AbstractType;
 import org.apache.cassandra.dht.IPartitioner;
@@ -442,6 +443,7 @@ public class CQLSSTableWriter implements Closeable
         private Consumer<Collection<SSTableReader>> sstableProducedListener;
         private boolean openSSTableOnProduced = false;
         private long estimatedPartitionCount = 0;
+        private EncodingStats encodingStats = EncodingStats.NO_STATS;
 
         protected Builder()
         {
@@ -658,6 +660,17 @@ public class CQLSSTableWriter implements Closeable
         }
 
         /**
+         * Supply known encoding minima for a streaming input. Native flush and
+         * compaction writers obtain these from their inputs; an offline writer
+         * otherwise has to use the default epoch for timestamp delta encoding.
+         */
+        public Builder withEncodingStats(EncodingStats stats)
+        {
+            this.encodingStats = java.util.Objects.requireNonNull(stats, "stats");
+            return this;
+        }
+
+        /**
          * Whether indexes should be built and serialized to disk along data. Defaults to true.
          *
          * @param buildIndexes true if indexes should be built, false otherwise
@@ -787,6 +800,7 @@ public class CQLSSTableWriter implements Closeable
                                                      ? new SSTableSimpleWriter(directory, ref, preparedModificationStatement.updatedColumns(), maxSSTableSizeInMiB)
                                                      : new SSTableSimpleUnsortedWriter(directory, ref, preparedModificationStatement.updatedColumns(), maxSSTableSizeInMiB);
                 writer.setEstimatedKeyCount(estimatedPartitionCount);
+                writer.setEncodingStats(encodingStats);
 
                 if (format != null)
                     writer.setSSTableFormatType(format);

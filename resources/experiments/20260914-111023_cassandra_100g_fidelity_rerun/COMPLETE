@@ -1,0 +1,8 @@
+status=complete
+phase=complete
+exit_status=0
+updated_at=2026-09-14T13:09:58+09:00
+raw_root=/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023
+result_root=/home/dongju/vcomp/resources/experiments/20260914-111023_cassandra_100g_fidelity_rerun
+baseline_source=/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/baseline/cassandra-baseline-fidelity-100g-20260914-111023-baseline-20260914-111031
+vcomp_source=/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/vcomp/cassandra-vcomp-fidelity-100g-20260914-111023-vcomp-20260914-125115

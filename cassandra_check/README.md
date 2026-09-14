@@ -19,11 +19,23 @@ UCS. The logical-byte model remains an explicit diagnostic selected with
 Vanilla UCS and VComp now call the same metadata-only `UnifiedCompactionPicker`;
 only after it returns the selected inputs do they branch into Cassandra's
 physical compaction task or VComp's model/KMV merge. The restricted VComp path
-uses the paper's common-theta KMV estimator and an exact discrete count/select certificate,
-keeps each single-partition compaction output partition-atomic, materializes the
-final SSTables, imports them, and verifies rows through CQL. When calibration
-is explicitly enabled, its files are retained under `.vcomp-calibration` but
+uses the paper's common-theta KMV estimator and continuous PLR inverse materialization.
+The current load runner maps scalar keys to token-ordered partitions, splits
+corrected models at partition/shard boundaries, materializes the final SSTables,
+imports them, and verifies rows through CQL. Calibration
+files are retained under `.vcomp-calibration` but
 are not imported or included in the reported final SST metrics.
+
+The smoke runner uses 64 writes, four ordered partitions, and the logical size
+model. It builds the daemon JAR and verifies data before and after enabling UCS.
+The current implementation still schedules descriptor compactions in a standalone
+process; shared selection does not imply native task/lifecycle integration.
+The September 14 audit and validation are recorded in
+[`resources/experiments/20260914-104858_cassandra_fidelity_audit/`](../resources/experiments/20260914-104858_cassandra_fidelity_audit/README.md).
+New workload results use `generator_version=split-streams-v2`, independent
+worker RNG streams, preparation outside the timed interval, and separate point
+hit/miss latency fields. Both systems must be rerun with that generator; old
+workload results must not be mixed with new measurements.
 
 The older Cassandra 4.1.12 feasibility probe described below remains available
 as `run_smoke.sh`; it is not the implementation-validation path.

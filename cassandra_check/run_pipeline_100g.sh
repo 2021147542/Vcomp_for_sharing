@@ -138,6 +138,7 @@ export CASSANDRA_CONF="$RUN_DIR/conf"
 export CASSANDRA_LOG_DIR="$RUN_DIR/logs"
 export CASSANDRA_LIBJEMALLOC=-
 export MAX_HEAP_SIZE=4G
+export JVM_OPTS="${JVM_OPTS:-} -Dcassandra.ucs.picker_seed=$UCS_PICKER_SEED"
 
 {
     printf 'run_id=%s\n' "$RUN_ID"

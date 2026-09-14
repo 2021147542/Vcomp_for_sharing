@@ -18,6 +18,7 @@
  */
 package org.apache.cassandra.db.compaction.vcomp;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +27,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
+
+import org.apache.cassandra.db.DecoratedKey;
+import org.apache.cassandra.dht.Murmur3Partitioner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -141,6 +145,46 @@ public class VCompUcsPlannerTest
         new VCompUcsPlanner(64 * MIB, new int[]{ -2 }, 32);
     }
 
+    @Test
+    public void disjointClusteringRangesInSamePartitionOverlapLikeNativeEndpoints()
+    {
+        VCompOrderedPartitionLayout layout = new VCompOrderedPartitionLayout(400, 4);
+        List<VCompPipeline.VirtualSortedRun> runs = new ArrayList<>();
+        for (int i = 0; i < 4; ++i)
+        {
+            runs.add(run(Integer.toString(i), 64, i, i * 10));
+            // Native UCS compares SSTableReader first/last DecoratedKeys, so
+            // every one of these disjoint clustering ranges has equal endpoints.
+            assertEquals(0, decoratedKey(layout, i * 10).compareTo(decoratedKey(layout, 9)));
+        }
+
+        VCompPipeline.VirtualCompactionPlan plan = new VCompUcsPlanner(64 * MIB, layout)
+                                                   .pick(new VCompPipeline.VirtualStateSnapshot(runs)).get();
+
+        assertEquals(Arrays.asList("run-3", "run-2", "run-1", "run-0"), ids(plan));
+    }
+
+    @Test
+    public void distinctPartitionRangesRemainDisjointLikeNativeEndpoints()
+    {
+        VCompOrderedPartitionLayout layout = new VCompOrderedPartitionLayout(400, 4);
+        List<VCompPipeline.VirtualSortedRun> runs = new ArrayList<>();
+        for (int i = 0; i < 4; ++i)
+        {
+            runs.add(run(Integer.toString(i), 64, i, i * 100));
+            if (i > 0)
+                assertTrue(decoratedKey(layout, i * 100).compareTo(decoratedKey(layout, (i - 1) * 100 + 9)) > 0);
+        }
+
+        assertFalse(new VCompUcsPlanner(64 * MIB, layout)
+                    .pick(new VCompPipeline.VirtualStateSnapshot(runs)).isPresent());
+    }
+
+    private static DecoratedKey decoratedKey(VCompOrderedPartitionLayout layout, long coordinate)
+    {
+        return Murmur3Partitioner.instance.decorateKey(ByteBuffer.wrap(layout.partitionFor(coordinate).encodedKey()));
+    }
+
     private static VCompPipeline.VirtualStateSnapshot snapshot(VCompPipeline.VirtualSortedRun... runs)
     {
         return new VCompPipeline.VirtualStateSnapshot(Arrays.asList(runs));
@@ -148,10 +192,17 @@ public class VCompUcsPlannerTest
 
     private static VCompPipeline.VirtualSortedRun run(String id, long sizeMiB, long maximumTimestamp)
     {
+        return run(id, sizeMiB, maximumTimestamp, 0);
+    }
+
+    private static VCompPipeline.VirtualSortedRun run(String id, long sizeMiB, long maximumTimestamp, long minimum)
+    {
         long[] keys = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        for (int i = 0; i < keys.length; ++i)
+            keys[i] += minimum;
         VCompPipeline.VirtualSSTable sstable = new VCompPipeline.VirtualSSTable("vsst-" + id,
-                                                                               0,
-                                                                               9,
+                                                                               minimum,
+                                                                               minimum + 9,
                                                                                10,
                                                                                sizeMiB * MIB,
                                                                                maximumTimestamp,

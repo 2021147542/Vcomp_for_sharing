@@ -1,0 +1,186 @@
+Buildfile: /home/dongju/vcomp/cassandra_vcomp/build.xml
+
+init:
+
+_resolver_download:
+
+resolver-init:
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+
+write-poms:
+
+resolver-retrieve-build:
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+    [unzip] Expanding: /home/dongju/vcomp/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8.jar into /home/dongju/vcomp/cassandra_vcomp/build/lib/jars
+
+check-gen-cql3-grammar:
+
+gen-cql3-grammar:
+
+generate-cql-html:
+
+generate-jflex-java:
+
+build-project:
+     [echo] apache-cassandra: /home/dongju/vcomp/cassandra_vcomp/build.xml
+
+_build_java:
+     [echo] Compiling for Java 11...
+    [javac] Compiling 2 source files to /home/dongju/vcomp/cassandra_vcomp/build/classes/main
+
+_get-git-sha:
+     [echo] git.is-available=true
+     [echo] git.sha=301dcd92e04bd7f93dea2d7fcea5ff9f07001382-dirty
+     [echo] Repository state is dirty
+     [echo]  cassandra_check/README.md                          |  20 ++-
+     [echo]  cassandra_check/run_baseline_vcomp_20g_compare.sh  |   5 +-
+     [echo]  cassandra_check/run_pipeline_smoke.sh              |  46 ++++++-
+     [echo]  .../run_single_partition_100g_campaign.sh          |   6 +-
+     [echo]  cassandra_check/src/CassandraPaperWorkload.java    | 150 +++++++++++++++------
+     [echo]  .../config/CassandraRelevantProperties.java        |   2 +
+     [echo]  .../db/compaction/unified/Controller.java          |   3 +-
+     [echo]  .../compaction/vcomp/DefaultVirtualCompaction.java |  56 ++++----
+     [echo]  .../vcomp/VCompCqlSstableMaterializer.java         |  15 ++-
+     [echo]  .../db/compaction/vcomp/VCompLearnedModel.java     |  40 ++++--
+     [echo]  .../db/compaction/vcomp/VCompUcsPlanner.java       |  15 ++-
+     [echo]  .../io/sstable/AbstractSSTableSimpleWriter.java    |   8 +-
+     [echo]  .../cassandra/io/sstable/CQLSSTableWriter.java     |  14 ++
+     [echo]  .../db/compaction/unified/ControllerTest.java      |  34 ++++-
+     [echo]  .../vcomp/DefaultVirtualCompactionTest.java        |  63 +++++++++
+     [echo]  .../db/compaction/vcomp/VCompUcsPlannerTest.java   |  55 +++++++-
+     [echo]  resources/report.md                                |  12 ++
+     [echo]  resources/summary.md                               |  25 +++-
+     [echo]  18 files changed, 465 insertions(+), 104 deletions(-)
+     [echo] git.worktree.name=cassandra_vcomp
+     [echo] git.branch.name=Vcomp-ssh
+
+set-cqlsh-version:
+
+_createVersionPropFile:
+[propertyfile] Updating property file: /home/dongju/vcomp/cassandra_vcomp/src/resources/org/apache/cassandra/config/version.properties
+     [copy] Copying 1 file to /home/dongju/vcomp/cassandra_vcomp/build/classes/main
+
+build:
+
+_main-jar:
+      [jar] Building jar: /home/dongju/vcomp/cassandra_vcomp/build/apache-cassandra-5.0.9-SNAPSHOT.jar
+
+stress-build:
+
+_stress_build:
+
+stress-build-test:
+
+fqltool-build:
+
+_fqltool_build:
+
+resolver-dist-lib:
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+
+_resolver-dist-lib_get_files:
+   [delete] Deleting: /home/dongju/vcomp/cassandra_vcomp/lib/netty-tcnative-boringssl-static-2.0.70.Final-windows-x86_64.jar
+   [delete] Deleting: /home/dongju/vcomp/cassandra_vcomp/build/lib/jars/netty-tcnative-boringssl-static-2.0.70.Final-windows-x86_64.jar
+
+simulator-asm-build:
+
+_simulator-asm_build:
+
+simulator-bootstrap-build:
+
+_simulator-bootstrap_build:
+
+simulator-jars:
+
+build-test:
+
+_build-test:
+    [javac] Compiling 1 source file to /home/dongju/vcomp/cassandra_vcomp/build/test/classes
+    [javac] Note: /home/dongju/vcomp/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/unified/ControllerTest.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+
+_check-test-names:
+[check-test-names] OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+[check-test-names] 11:03:53.721 [main] INFO org.reflections.Reflections -- Reflections took 322 ms to scan 3 urls, producing 1035 keys and 13583 values
+[check-test-names] OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+[check-test-names] 11:03:55.002 [main] INFO org.reflections.Reflections -- Reflections took 324 ms to scan 3 urls, producing 1035 keys and 13583 values
+
+stress-jar:
+
+fqltool-jar:
+
+jar:
+
+init:
+
+_resolver_download:
+
+resolver-init:
+
+write-poms:
+
+resolver-retrieve-build:
+[resolver:resolve] Resolving artifacts
+[resolver:resolve] Resolving artifacts
+    [unzip] Expanding: /home/dongju/vcomp/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8.jar into /home/dongju/vcomp/cassandra_vcomp/build/lib/jars
+
+check-gen-cql3-grammar:
+
+gen-cql3-grammar:
+
+generate-cql-html:
+
+generate-jflex-java:
+
+build-project:
+     [echo] apache-cassandra: /home/dongju/vcomp/cassandra_vcomp/build.xml
+
+_build_java:
+     [echo] Compiling for Java 11...
+
+_get-git-sha:
+     [echo] git.is-available=true
+     [echo] git.sha=301dcd92e04bd7f93dea2d7fcea5ff9f07001382-dirty
+     [echo] Repository state is dirty
+     [echo]  cassandra_check/README.md                          |  20 ++-
+     [echo]  cassandra_check/run_baseline_vcomp_20g_compare.sh  |   5 +-
+     [echo]  cassandra_check/run_pipeline_smoke.sh              |  46 ++++++-
+     [echo]  .../run_single_partition_100g_campaign.sh          |   6 +-
+     [echo]  cassandra_check/src/CassandraPaperWorkload.java    | 150 +++++++++++++++------
+     [echo]  .../config/CassandraRelevantProperties.java        |   2 +
+     [echo]  .../db/compaction/unified/Controller.java          |   3 +-
+     [echo]  .../compaction/vcomp/DefaultVirtualCompaction.java |  56 ++++----
+     [echo]  .../vcomp/VCompCqlSstableMaterializer.java         |  15 ++-
+     [echo]  .../db/compaction/vcomp/VCompLearnedModel.java     |  40 ++++--
+     [echo]  .../db/compaction/vcomp/VCompUcsPlanner.java       |  15 ++-
+     [echo]  .../io/sstable/AbstractSSTableSimpleWriter.java    |   8 +-
+     [echo]  .../cassandra/io/sstable/CQLSSTableWriter.java     |  14 ++
+     [echo]  .../db/compaction/unified/ControllerTest.java      |  34 ++++-
+     [echo]  .../vcomp/DefaultVirtualCompactionTest.java        |  63 +++++++++
+     [echo]  .../db/compaction/vcomp/VCompUcsPlannerTest.java   |  55 +++++++-
+     [echo]  resources/report.md                                |  12 ++
+     [echo]  resources/summary.md                               |  25 +++-
+     [echo]  18 files changed, 465 insertions(+), 104 deletions(-)
+     [echo] git.worktree.name=cassandra_vcomp
+     [echo] git.branch.name=Vcomp-ssh
+
+set-cqlsh-version:
+
+_createVersionPropFile:
+[propertyfile] Updating property file: /home/dongju/vcomp/cassandra_vcomp/src/resources/org/apache/cassandra/config/version.properties
+     [copy] Copying 1 file to /home/dongju/vcomp/cassandra_vcomp/build/classes/main
+
+init-checkstyle:
+
+checkstyle:
+[checkstyle] Running Checkstyle 10.26.1 on 2550 files
+
+BUILD SUCCESSFUL
+Total time: 5 seconds

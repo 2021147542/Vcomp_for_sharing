@@ -34,6 +34,7 @@ import java.util.stream.Stream;
 import org.apache.cassandra.db.Clustering;
 import org.apache.cassandra.db.DecoratedKey;
 import org.apache.cassandra.db.DeletionTime;
+import org.apache.cassandra.db.LivenessInfo;
 import org.apache.cassandra.db.rows.AbstractUnfilteredRowIterator;
 import org.apache.cassandra.db.rows.BTreeRow;
 import org.apache.cassandra.db.rows.BufferCell;
@@ -139,6 +140,8 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
                                                                   .forTable(tableSchema)
                                                                   .using(insertStatement)
                                                                   .withPartitioner(Murmur3Partitioner.instance)
+                                                                  .withEncodingStats(encodingStats(timestamp))
+                                                                  .withEstimatedPartitionCount(1)
                                                                   .sorted();
                 if (partitionLayout != null)
                     builder.withEstimatedPartitionCount(partitionLayout.partitionCount(descriptor.keyMin(),
@@ -240,7 +243,7 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
                                                  metadata.regularAndStaticColumns(),
                                                  Rows.EMPTY_STATIC_ROW,
                                                  false,
-                                                 EncodingStats.NO_STATS)
+                                                 encodingStats(timestamp))
         {
             @Override
             protected Unfiltered computeNext()
@@ -254,10 +257,20 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
                 fillValue(key, value);
                 Row.Builder builder = BTreeRow.sortedBuilder();
                 builder.newRow(Clustering.make(keyCodec.decode(key)));
+                // Match the native CQL INSERT used by the baseline. A live
+                // value cell alone has UPDATE semantics and a different row
+                // encoding (the cell cannot reuse a missing row timestamp).
+                builder.addPrimaryKeyLivenessInfo(LivenessInfo.create(timestamp, 0));
                 builder.addCell(BufferCell.live(valueColumn, timestamp, ByteBuffer.wrap(value)));
                 return builder.build();
             }
         };
+    }
+
+    private static EncodingStats encodingStats(long timestamp)
+    {
+        return new EncodingStats(timestamp, EncodingStats.NO_STATS.minLocalDeletionTime,
+                                 EncodingStats.NO_STATS.minTTL);
     }
 
     private static final class CoordinateCursor

@@ -1,0 +1,10 @@
+baseline_run=/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/baseline/cassandra-baseline-fidelity-100g-20260914-111023-baseline-20260914-111031
+vcomp_run=/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/vcomp/cassandra-vcomp-fidelity-100g-20260914-111023-vcomp-20260914-125115
+baseline_fingerprint_rows=66278498
+baseline_fingerprint_sha256=c5d601912136141d214d609f47caa31e90ae0247f3658596b6dd9183bd2eab45
+vcomp_fingerprint_rows=66319628
+vcomp_fingerprint_sha256=ef3c271d267f545d39581a0297e88bb5d4b699082c04f3d73d542e8fffadbf27
+cardinality_delta=41130
+cardinality_error_pct=0.0621
+exact_fingerprint_match=false
+figures=/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023/figures

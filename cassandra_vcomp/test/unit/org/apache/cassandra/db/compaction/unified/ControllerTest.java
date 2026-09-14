@@ -21,6 +21,8 @@ package org.apache.cassandra.db.compaction.unified;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -32,6 +34,7 @@ import org.junit.Test;
 
 import org.apache.cassandra.Util;
 import org.apache.cassandra.config.DatabaseDescriptor;
+import org.apache.cassandra.config.CassandraRelevantProperties;
 import org.apache.cassandra.db.ColumnFamilyStore;
 import org.apache.cassandra.db.DiskBoundaries;
 import org.apache.cassandra.db.PartitionPosition;
@@ -105,6 +108,35 @@ public class ControllerTest
         assertEquals(Overlaps.InclusionMethod.SINGLE, controller.overlapInclusionMethod());
 
         return controller;
+    }
+
+    @Test
+    public void testOptionalPickerSeed()
+    {
+        CassandraRelevantProperties property = CassandraRelevantProperties.UCS_PICKER_SEED;
+        String previous = property.getString();
+        try
+        {
+            property.clearValue();
+            assertTrue(testFromOptions(new HashMap<>()).random() instanceof ThreadLocalRandom);
+
+            property.setLong(20260909L);
+            Controller controller = testFromOptions(new HashMap<>());
+            Random expected = new Random(20260909L);
+            for (int i = 0; i < 16; i++)
+                assertEquals(expected.nextInt(1000), controller.random().nextInt(1000));
+
+            property.setString("invalid-seed");
+            assertThatExceptionOfType(ConfigurationException.class)
+            .isThrownBy(() -> testFromOptions(new HashMap<>()));
+        }
+        finally
+        {
+            if (previous == null)
+                property.clearValue();
+            else
+                property.setString(previous);
+        }
     }
 
     @Test

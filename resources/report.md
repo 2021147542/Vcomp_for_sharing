@@ -1,5 +1,58 @@
 # Pebble VComp Feasibility Prototype Report
 
+## Cassandra workload-setting correction and E audit (2026-09-14)
+
+The latest 100 GiB run does not reproduce the paper's five-minute workloads and
+dataset-relative 5% block cache. The positive operation limit overrides 300 seconds;
+the daemon heap and initial fadvise do not implement that cache budget. E device
+reads are 145.796/236.800 decimal GB (+62.42%), with no plotting conversion error.
+CPU-only replay finds 26,839/518,805 distinct E scan starts before/after the worker
+RNG fix, but cannot attribute the within-pair I/O gap. E also reuses the operation
+choice for its scan length, restricting scans to 1..95 rather than the local
+RocksDB reference's uniform 1..100. This audit preserves measurements and code;
+it does not establish an I/O root cause or a corrected benchmark result.
+See [the setting and E audit](experiments/20260914-133300_cassandra_e_settings_audit/README.md).
+
+## Cassandra 100 GiB rerun completed (2026-09-14 13:09:58 KST)
+
+The paired load and all 14 fixed-operation workload runs completed with exit
+status 0; the total campaign took approximately two hours. Fidelity did not
+pass: 28 of 33 primary comparisons exceeded the symmetric ±10% criterion.
+Throughput deltas for A/B/C/D/E/F/MixGraph were −27.41/−16.65/−24.50/−24.09/
+−23.79/−11.54/−10.59%. C point p50/p95/p99 deltas were +27.33/+36.07/+30.16%.
+Final visible row counts were close (+0.0621%), but live SST counts were
+164 versus 209 (+27.44%), and final component bytes differed by +14.92%.
+Both sides' final-state figures use actual files after natural compaction drain.
+The unfavorable result, configuration, provenance and original databases are
+preserved in the [completed bundle](experiments/20260914-111023_cassandra_100g_fidelity_rerun/README.md).
+One repetition and a changed workload generator preclude attributing differences
+from historical runs to any individual code fix.
+
+## Cassandra 100 GiB rerun launched (2026-09-14 11:10 KST)
+
+Registered the optional picker seed in CassandraRelevantProperties and updated
+both runtime-JAR audits. The full source Checkstyle now passes; Controller's
+24 tests and a real seeded 24 B/1000 B smoke pass. VComp's daemon also receives
+the shared picker seed. Launched the requested fresh paired 100 GiB load and
+fixed-operation A–F/MixGraph campaign in tmux
+`cassandra_fidelity_100g_20260914_111023`. Raw databases and logs are preserved at
+`/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023`; status, preflight
+evidence and automatic final publication live in
+[the new result bundle](experiments/20260914-111023_cassandra_100g_fidelity_rerun/README.md).
+No completed 100 GiB results are claimed at launch.
+
+## Cassandra fidelity audit update (2026-09-14)
+
+The latest review compares `VComp_0913.pdf` sections 4.1–4.4 with the actual
+Cassandra source and faithful-v2 results. It fixes partition endpoint semantics
+in the UCS adapter, redundant KMV correction during output splitting, missing
+INSERT row liveness and encoding minima, and correlated workload worker RNG
+streams. Workload timing now starts after preparation and reports hit/miss
+latencies separately. The current standalone scheduler is still not integrated
+with the native task lifecycle. New 100 GiB workload parity is not established.
+See [the audit and validation bundle](experiments/20260914-104858_cassandra_fidelity_audit/README.md)
+for evidence and limits. Earlier sections below describe historical versions.
+
 ## Change log
 
 - 2026-09-03: Reconfigured the Pebble experiment from its small-scale feasibility settings to the paper's large-scale loading settings: 64 MiB memtables, 65,536 1 KiB writes per explicit 64 MiB flush, and 64 MiB target SSTs. Removed the baseline's per-flush compaction drain so normal Pebble loading can overlap foreground writes with background compactions; the final drain remains. WAL and compression remain disabled, and compaction/materialization concurrency remains dynamically bounded from one to 48 workers. This change was made before restarting the experiment at 100 GiB because extending the 4 MiB scale-down configuration to 1 TiB created excessive tiny SSTs and serialized compaction work.

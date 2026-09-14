@@ -63,17 +63,26 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
 
         public int compareFirst(VCompPipeline.VirtualSortedRun left, VCompPipeline.VirtualSortedRun right)
         {
-            return partitionLayout == null ? 0 : Long.compare(first(left).keyMin(), first(right).keyMin());
+            return comparePartitionKeys(first(left).keyMin(), first(right).keyMin());
         }
 
         public int compareLast(VCompPipeline.VirtualSortedRun left, VCompPipeline.VirtualSortedRun right)
         {
-            return partitionLayout == null ? 0 : Long.compare(last(left).keyMax(), last(right).keyMax());
+            return comparePartitionKeys(last(left).keyMax(), last(right).keyMax());
         }
 
         public boolean startsAfter(VCompPipeline.VirtualSortedRun left, VCompPipeline.VirtualSortedRun right)
         {
-            return partitionLayout != null && first(left).keyMin() > last(right).keyMax();
+            return comparePartitionKeys(first(left).keyMin(), last(right).keyMax()) > 0;
+        }
+
+        private int comparePartitionKeys(long left, long right)
+        {
+            // Native SSTable endpoints are DecoratedKeys, which omit clustering
+            // coordinates. Disjoint row ranges in the same partition still overlap.
+            return partitionLayout == null ? 0
+                                           : Integer.compare(partitionLayout.partitionFor(left).ordinal(),
+                                                             partitionLayout.partitionFor(right).ordinal());
         }
 
         public long maximumTimestamp(VCompPipeline.VirtualSortedRun run)

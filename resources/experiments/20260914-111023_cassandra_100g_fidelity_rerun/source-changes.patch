@@ -1,0 +1,1063 @@
+diff --git a/cassandra_check/README.md b/cassandra_check/README.md
+index a85fd56f..29fbd258 100644
+--- a/cassandra_check/README.md
++++ b/cassandra_check/README.md
+@@ -19,12 +19,24 @@ UCS. The logical-byte model remains an explicit diagnostic selected with
+ Vanilla UCS and VComp now call the same metadata-only `UnifiedCompactionPicker`;
+ only after it returns the selected inputs do they branch into Cassandra's
+ physical compaction task or VComp's model/KMV merge. The restricted VComp path
+-uses the paper's common-theta KMV estimator and an exact discrete count/select certificate,
+-keeps each single-partition compaction output partition-atomic, materializes the
+-final SSTables, imports them, and verifies rows through CQL. When calibration
+-is explicitly enabled, its files are retained under `.vcomp-calibration` but
++uses the paper's common-theta KMV estimator and continuous PLR inverse materialization.
++The current load runner maps scalar keys to token-ordered partitions, splits
++corrected models at partition/shard boundaries, materializes the final SSTables,
++imports them, and verifies rows through CQL. Calibration
++files are retained under `.vcomp-calibration` but
+ are not imported or included in the reported final SST metrics.
+ 
++The smoke runner uses 64 writes, four ordered partitions, and the logical size
++model. It builds the daemon JAR and verifies data before and after enabling UCS.
++The current implementation still schedules descriptor compactions in a standalone
++process; shared selection does not imply native task/lifecycle integration.
++The September 14 audit and validation are recorded in
++[`resources/experiments/20260914-104858_cassandra_fidelity_audit/`](../resources/experiments/20260914-104858_cassandra_fidelity_audit/README.md).
++New workload results use `generator_version=split-streams-v2`, independent
++worker RNG streams, preparation outside the timed interval, and separate point
++hit/miss latency fields. Both systems must be rerun with that generator; old
++workload results must not be mixed with new measurements.
++
+ The older Cassandra 4.1.12 feasibility probe described below remains available
+ as `run_smoke.sh`; it is not the implementation-validation path.
+ 
+diff --git a/cassandra_check/run_baseline_vcomp_20g_compare.sh b/cassandra_check/run_baseline_vcomp_20g_compare.sh
+index 4c2d1753..da758d95 100644
+--- a/cassandra_check/run_baseline_vcomp_20g_compare.sh
++++ b/cassandra_check/run_baseline_vcomp_20g_compare.sh
+@@ -32,7 +32,10 @@ fi
+ sha256sum "$RUNTIME_JAR" >"$ROOT/runtime-jar.sha256"
+ "$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
+   org.apache.cassandra.db.compaction.unified.Controller >"$ROOT/controller-runtime.javap"
+-if ! rg -q 'cassandra.ucs.picker_seed' "$ROOT/controller-runtime.javap"; then
++"$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
++  org.apache.cassandra.config.CassandraRelevantProperties >"$ROOT/properties-runtime.javap"
++if ! rg -q 'CassandraRelevantProperties.UCS_PICKER_SEED' "$ROOT/controller-runtime.javap" \
++   || ! rg -q 'cassandra.ucs.picker_seed' "$ROOT/properties-runtime.javap"; then
+   echo 'runtime jar does not contain the seeded UCS Controller hook' >&2
+   exit 1
+ fi
+diff --git a/cassandra_check/run_pipeline_100g.sh b/cassandra_check/run_pipeline_100g.sh
+index bf1e3403..7e847835 100755
+--- a/cassandra_check/run_pipeline_100g.sh
++++ b/cassandra_check/run_pipeline_100g.sh
+@@ -138,6 +138,7 @@ export CASSANDRA_CONF="$RUN_DIR/conf"
+ export CASSANDRA_LOG_DIR="$RUN_DIR/logs"
+ export CASSANDRA_LIBJEMALLOC=-
+ export MAX_HEAP_SIZE=4G
++export JVM_OPTS="${JVM_OPTS:-} -Dcassandra.ucs.picker_seed=$UCS_PICKER_SEED"
+ 
+ {
+     printf 'run_id=%s\n' "$RUN_ID"
+diff --git a/cassandra_check/run_pipeline_smoke.sh b/cassandra_check/run_pipeline_smoke.sh
+index 5a6f8528..ec396960 100755
+--- a/cassandra_check/run_pipeline_smoke.sh
++++ b/cassandra_check/run_pipeline_smoke.sh
+@@ -10,6 +10,8 @@ ENTRY_BYTES=$((KEY_BYTES + VALUE_BYTES))
+ WRITES=64
+ FLUSH_WRITES=4
+ FLUSH_BYTES=$((ENTRY_BYTES * FLUSH_WRITES))
++PARTITION_COUNT=4
++TARGET_SST_BYTES=$((64 * 1024 * 1024))
+ RUN_ID="${KEY_BYTES}b-$(date +%Y%m%d-%H%M%S)-$$"
+ RUN_DIR="$SCRIPT_DIR/pipeline-runs/$RUN_ID"
+ KEYSPACE="vcomp_pipeline_smoke_${KEY_BYTES}b"
+@@ -34,12 +36,27 @@ java_client() {
+ 
+ stop_server() {
+     if [[ -n "$SERVER_PID" ]] && kill -0 "$SERVER_PID" 2>/dev/null; then
+-        "$SOURCE_ROOT/bin/nodetool" stopdaemon >/dev/null 2>&1 || kill "$SERVER_PID"
++        kill "$SERVER_PID"
+         wait "$SERVER_PID" 2>/dev/null || true
+     fi
+ }
+ trap stop_server EXIT
+ 
++# The client and nodetool use fixed local ports. Refuse to touch an existing
++# instance, and fail closed when the host's listeners cannot be inspected.
++if pgrep -f '[o]rg.apache.cassandra.service.CassandraDaemon' >/dev/null; then
++    echo "An existing Cassandra daemon is running; refusing smoke startup" >&2
++    exit 1
++fi
++if ! EXISTING_LISTENERS=$(ss -H -ltn '( sport = :9042 or sport = :7199 or sport = :7000 )'); then
++    echo "Cannot inspect Cassandra listener ports; refusing smoke startup" >&2
++    exit 1
++fi
++if [[ -n "$EXISTING_LISTENERS" ]]; then
++    echo "A Cassandra smoke port is already in use; refusing smoke startup" >&2
++    exit 1
++fi
++
+ mkdir -p "$RUN_DIR"/{classes,conf,data,sstables,logs}
+ cp -a "$SOURCE_ROOT/conf/." "$RUN_DIR/conf/"
+ sed -i \
+@@ -62,9 +79,15 @@ export MAX_HEAP_SIZE=2G
+ 
+ echo "[1/6] Compiling Cassandra source and verification client"
+ source "$SOURCE_ROOT/build-env.sh"
+-ant -f "$SOURCE_ROOT/build.xml" build >/dev/null
++ant -f "$SOURCE_ROOT/build.xml" jar >"$RUN_DIR/build.log" 2>&1
+ "$JAVA_HOME/bin/javac" -cp "$SOURCE_ROOT/build/classes/main:$SOURCE_ROOT/lib/*" \
+     -d "$RUN_DIR/classes" "$SCRIPT_DIR/src/CassandraVCompPipelineClient.java"
++sha256sum "$SOURCE_ROOT/build/apache-cassandra-5.0.9-SNAPSHOT.jar" >"$RUN_DIR/daemon-jar.sha256"
++git -C "$SOURCE_ROOT" rev-parse HEAD >"$RUN_DIR/source-revision.txt"
++git -C "$SOURCE_ROOT" diff --binary >"$RUN_DIR/source.patch"
++printf 'writes=%s\nkey_bytes=%s\nvalue_bytes=%s\nflush_bytes=%s\npartition_count=%s\ntarget_sst_bytes=%s\nsize_model=logical\n' \
++    "$WRITES" "$KEY_BYTES" "$VALUE_BYTES" "$FLUSH_BYTES" "$PARTITION_COUNT" "$TARGET_SST_BYTES" \
++    >"$RUN_DIR/config.txt"
+ 
+ echo "[2/6] Starting isolated Cassandra 5.0.9 source build"
+ "$SOURCE_ROOT/bin/cassandra" -f >"$RUN_DIR/cassandra.stdout.log" 2>&1 &
+@@ -87,8 +110,8 @@ if [[ "$ready" != true ]]; then
+     exit 1
+ fi
+ 
+-echo "[3/6] Creating restricted single-partition schema"
+-java_client schema "$KEYSPACE" "$TABLE" "$KEY_BYTES"
++echo "[3/6] Creating ordered multi-partition schema"
++java_client schema "$KEYSPACE" "$TABLE" "$KEY_BYTES" "$WRITES" "$PARTITION_COUNT" "$TARGET_SST_BYTES"
+ 
+ echo "[4/6] Running virtual load, materialization, and nodetool import"
+ "$JAVA_HOME/bin/java" @"$RUN_DIR/conf/jvm11-clients.options" \
+@@ -96,11 +119,20 @@ echo "[4/6] Running virtual load, materialization, and nodetool import"
+     -cp "$RUN_DIR/conf:$SOURCE_ROOT/build/classes/main:$SOURCE_ROOT/lib/*" \
+     org.apache.cassandra.tools.VCompBulkLoad \
+     "$RUN_DIR/sstables" "$SOURCE_ROOT/bin/nodetool" "$KEYSPACE" "$TABLE" \
+-    "$WRITES" "$ENTRY_BYTES" "$KEY_BYTES" "$VALUE_BYTES" "$FLUSH_BYTES" 0 20260909 | tee "$RUN_DIR/vcomp.log"
++    "$WRITES" "$ENTRY_BYTES" "$KEY_BYTES" "$VALUE_BYTES" "$FLUSH_BYTES" \
++    "$TARGET_SST_BYTES" "$PARTITION_COUNT" 20260909 logical | tee "$RUN_DIR/vcomp.log"
+ 
+ echo "[5/6] Verifying imported data through Cassandra"
+-java_client verify "$KEYSPACE" "$TABLE" "$KEY_BYTES" "$VALUE_BYTES" 1000 | tee "$RUN_DIR/verification.log"
+-java_client fingerprint "$KEYSPACE" "$TABLE" "$KEY_BYTES" "$VALUE_BYTES" | tee "$RUN_DIR/fingerprint.log"
++java_client verify "$KEYSPACE" "$TABLE" "$KEY_BYTES" "$VALUE_BYTES" 1000 \
++    "$WRITES" "$PARTITION_COUNT" | tee "$RUN_DIR/verification.log"
++java_client fingerprint "$KEYSPACE" "$TABLE" "$KEY_BYTES" "$VALUE_BYTES" \
++    "$WRITES" "$PARTITION_COUNT" | tee "$RUN_DIR/fingerprint.log"
++java_client enable-compaction "$KEYSPACE" "$TABLE" "$TARGET_SST_BYTES" | tee "$RUN_DIR/enable-compaction.log"
++java_client assert-compaction-enabled "$KEYSPACE" "$TABLE" | tee "$RUN_DIR/compaction-enabled.log"
++java_client fingerprint "$KEYSPACE" "$TABLE" "$KEY_BYTES" "$VALUE_BYTES" \
++    "$WRITES" "$PARTITION_COUNT" | tee "$RUN_DIR/fingerprint-compaction-enabled.log"
++diff <(rg '^FINGERPRINT ' "$RUN_DIR/fingerprint.log") \
++     <(rg '^FINGERPRINT ' "$RUN_DIR/fingerprint-compaction-enabled.log")
+ 
+ echo "[6/6] Preserving database and table statistics"
+ "$SOURCE_ROOT/bin/nodetool" tablestats "$KEYSPACE.$TABLE" >"$RUN_DIR/tablestats.txt"
+diff --git a/cassandra_check/run_single_partition_100g_campaign.sh b/cassandra_check/run_single_partition_100g_campaign.sh
+index 1c5253da..5ef0fcde 100755
+--- a/cassandra_check/run_single_partition_100g_campaign.sh
++++ b/cassandra_check/run_single_partition_100g_campaign.sh
+@@ -58,7 +58,11 @@ sha256sum "$RUNTIME_JAR" >"$CAMPAIGN_ROOT/runtime-jar.sha256"
+ "$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
+     org.apache.cassandra.db.compaction.unified.Controller \
+     >"$CAMPAIGN_ROOT/controller-runtime.javap"
+-if ! rg -q 'cassandra.ucs.picker_seed' "$CAMPAIGN_ROOT/controller-runtime.javap"; then
++"$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
++    org.apache.cassandra.config.CassandraRelevantProperties \
++    >"$CAMPAIGN_ROOT/properties-runtime.javap"
++if ! rg -q 'CassandraRelevantProperties.UCS_PICKER_SEED' "$CAMPAIGN_ROOT/controller-runtime.javap" \
++   || ! rg -q 'cassandra.ucs.picker_seed' "$CAMPAIGN_ROOT/properties-runtime.javap"; then
+     echo 'runtime jar does not contain the requested seeded UCS Controller' >&2
+     exit 1
+ fi
+diff --git a/cassandra_check/src/CassandraPaperWorkload.java b/cassandra_check/src/CassandraPaperWorkload.java
+index d643bca0..61f39cd5 100644
+--- a/cassandra_check/src/CassandraPaperWorkload.java
++++ b/cassandra_check/src/CassandraPaperWorkload.java
+@@ -36,6 +36,7 @@ public final class CassandraPaperWorkload
+     private static final double DEFAULT_ZETA = 26.46902820178302;
+     private static final long FNV_OFFSET = -3750763034362895579L;
+     private static final long FNV_PRIME = 1099511628211L;
++    private static final String GENERATOR_VERSION = "split-streams-v2";
+ 
+     private CassandraPaperWorkload()
+     {
+@@ -72,13 +73,9 @@ public final class CassandraPaperWorkload
+         {
+             WorkloadContext context = new WorkloadContext(session, keyspace, table, workload, keySpace,
+                                                           keyBytes, valueBytes, partitionCount, seed, threads);
+-            DiskCounters before = diskCounters(diskDevice);
+-            long start = System.nanoTime();
+-            context.run(seconds, operationsPerThread);
+-            double wallSeconds = (System.nanoTime() - start) / 1_000_000_000.0;
+-            DiskCounters after = diskCounters(diskDevice);
+-            context.printResult(wallSeconds, after.readBytes - before.readBytes,
+-                                after.writeBytes - before.writeBytes, diskDevice);
++            Measurement measurement = context.run(seconds, operationsPerThread, diskDevice);
++            context.printResult(measurement.wallSeconds, measurement.diskReadBytes,
++                                measurement.diskWriteBytes, diskDevice);
+         }
+     }
+ 
+@@ -106,6 +103,8 @@ public final class CassandraPaperWorkload
+         private final LongAdder misses = new LongAdder();
+         private final Recorder operationLatency = new Recorder(MAX_LATENCY_NANOS, 3);
+         private final Recorder pointLatency = new Recorder(MAX_LATENCY_NANOS, 3);
++        private final Recorder pointHitLatency = new Recorder(MAX_LATENCY_NANOS, 3);
++        private final Recorder pointMissLatency = new Recorder(MAX_LATENCY_NANOS, 3);
+         private final Recorder scanLatency = new Recorder(MAX_LATENCY_NANOS, 3);
+         private final AtomicReference<Throwable> failure = new AtomicReference<>();
+ 
+@@ -132,48 +131,72 @@ public final class CassandraPaperWorkload
+             this.nextInsert = new AtomicLong(keySpace);
+         }
+ 
+-        private void run(int seconds, long operationsPerThread) throws Exception
++        private Measurement run(int seconds, long operationsPerThread, String diskDevice) throws Exception
+         {
+             ExecutorService executor = Executors.newFixedThreadPool(threads);
+             CountDownLatch ready = new CountDownLatch(threads);
+             CountDownLatch start = new CountDownLatch(1);
+             CountDownLatch done = new CountDownLatch(threads);
+-            long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(seconds);
+-            for (int worker = 0; worker < threads; worker++)
+-            {
+-                final int workerId = worker;
+-                executor.execute(() -> runWorker(workerId, ready, start, done, deadline, operationsPerThread));
+-            }
+-            ready.await();
+-            start.countDown();
+-            long nextProgress = System.nanoTime() + TimeUnit.SECONDS.toNanos(30);
+-            while (!done.await(1, TimeUnit.SECONDS) && failure.get() == null)
++            AtomicLong deadline = new AtomicLong();
++            try
+             {
+-                if (System.nanoTime() >= nextProgress)
++                SplittableRandom[] randoms = workerRandoms(seed, threads);
++                for (int worker = 0; worker < threads; worker++)
+                 {
+-                    System.out.printf("WORKLOAD_PROGRESS workload=%s mode=%s operations=%d%n",
+-                                      workload, operationsPerThread > 0 ? "fixed-operations" : "time",
+-                                      operations.sum());
+-                    nextProgress += TimeUnit.SECONDS.toNanos(30);
++                    SplittableRandom random = randoms[worker];
++                    executor.execute(() -> runWorker(random, ready, start, done, deadline, operationsPerThread));
++                }
++                ready.await();
++                if (failure.get() != null)
++                    throw new RuntimeException("workload preparation failed", failure.get());
++                // Thread creation and random value-pool generation are preparation, not workload I/O.
++                DiskCounters before = diskCounters(diskDevice);
++                long started = System.nanoTime();
++                deadline.set(started + TimeUnit.SECONDS.toNanos(seconds));
++                start.countDown();
++                long nextProgress = started + TimeUnit.SECONDS.toNanos(30);
++                while (!done.await(1, TimeUnit.SECONDS))
++                {
++                    if (System.nanoTime() >= nextProgress)
++                    {
++                        System.out.printf("WORKLOAD_PROGRESS workload=%s mode=%s operations=%d%n",
++                                          workload, operationsPerThread > 0 ? "fixed-operations" : "time",
++                                          operations.sum());
++                        nextProgress += TimeUnit.SECONDS.toNanos(30);
++                    }
+                 }
++                long finished = System.nanoTime();
++                DiskCounters after = diskCounters(diskDevice);
++                Throwable problem = failure.get();
++                if (problem != null)
++                    throw new RuntimeException("workload failed", problem);
++                return new Measurement((finished - started) / 1_000_000_000.0,
++                                       after.readBytes - before.readBytes,
++                                       after.writeBytes - before.writeBytes);
++            }
++            finally
++            {
++                // Also release/cancel workers if preparation, counter collection, or waiting fails.
++                if (done.getCount() != 0)
++                    failure.compareAndSet(null, new IllegalStateException("workload stopped"));
++                start.countDown();
++                executor.shutdownNow();
++                if (!executor.awaitTermination(5, TimeUnit.MINUTES))
++                    throw new IllegalStateException("workload workers did not stop");
+             }
+-            executor.shutdown();
+-            if (!executor.awaitTermination(5, TimeUnit.MINUTES))
+-                throw new IllegalStateException("workload workers did not stop");
+-            Throwable problem = failure.get();
+-            if (problem != null)
+-                throw new RuntimeException("workload failed", problem);
+         }
+ 
+-        private void runWorker(int worker, CountDownLatch ready, CountDownLatch start, CountDownLatch done,
+-                               long deadline, long operationsPerThread)
++        private void runWorker(SplittableRandom random, CountDownLatch ready, CountDownLatch start, CountDownLatch done,
++                               AtomicLong deadlineNanos, long operationsPerThread)
+         {
+-            SplittableRandom random = new SplittableRandom(seed + worker * 0x9e3779b97f4a7c15L);
+-            byte[] valuePool = valuePool(random);
+-            ready.countDown();
++            boolean announcedReady = false;
+             try
+             {
++                byte[] valuePool = valuePool(random);
++                announcedReady = true;
++                ready.countDown();
+                 start.await();
++                long deadline = deadlineNanos.get();
+                 long completed = 0;
+                 while ((operationsPerThread > 0 ? completed < operationsPerThread : System.nanoTime() < deadline)
+                        && failure.get() == null)
+@@ -243,6 +266,8 @@ public final class CassandraPaperWorkload
+             }
+             finally
+             {
++                if (!announcedReady)
++                    ready.countDown();
+                 done.countDown();
+             }
+         }
+@@ -256,12 +281,19 @@ public final class CassandraPaperWorkload
+         {
+             long started = System.nanoTime();
+             Row row = session.execute(read.bind(partitionKey(key), codec.decode(key))).one();
+-            pointLatency.recordValue(Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started));
++            recordPointRead(started, row == null);
++            if (row != null)
++                row.getBytes("value").remaining();
++        }
++
++        private void recordPointRead(long started, boolean missing)
++        {
++            long elapsed = Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started);
++            pointLatency.recordValue(elapsed);
++            (missing ? pointMissLatency : pointHitLatency).recordValue(elapsed);
+             pointReads.increment();
+-            if (row == null)
++            if (missing)
+                 misses.increment();
+-            else
+-                row.getBytes("value").remaining();
+         }
+ 
+         private void put(long key, byte[] pool, long random, int size)
+@@ -274,12 +306,10 @@ public final class CassandraPaperWorkload
+         {
+             long started = System.nanoTime();
+             Row row = session.execute(read.bind(partitionKey(key), codec.decode(key))).one();
+-            pointLatency.recordValue(Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started));
+-            pointReads.increment();
++            recordPointRead(started, row == null);
+             byte[] value;
+             if (row == null)
+             {
+-                misses.increment();
+                 value = copyValue(pool, random, valueBytes);
+             }
+             else
+@@ -339,28 +369,50 @@ public final class CassandraPaperWorkload
+         {
+             Histogram all = operationLatency.getIntervalHistogram();
+             Histogram points = pointLatency.getIntervalHistogram();
++            Histogram hits = pointHitLatency.getIntervalHistogram();
++            Histogram missing = pointMissLatency.getIntervalHistogram();
+             Histogram range = scanLatency.getIntervalHistogram();
+             long count = operations.sum();
+             System.out.printf(Locale.ROOT,
+                               "WORKLOAD_RESULT {\"workload\":\"%s\",\"definition\":\"%s\","
++                              + "\"generator_version\":\"%s\",\"seed\":%d,"
+                               + "\"key_distribution\":\"%s\",\"wall_seconds\":%.6f,\"threads\":%d,"
+                               + "\"operations\":%d,\"throughput_ops_per_second\":%.6f,"
+                               + "\"point_reads\":%d,\"writes\":%d,\"scans\":%d,\"read_misses\":%d,"
++                              + "\"point_read_hits\":%d,\"point_read_misses\":%d,"
+                               + "\"operation_latency_p50_us\":%.3f,\"operation_latency_p95_us\":%.3f,"
+                               + "\"operation_latency_p99_us\":%.3f,\"point_lookup_latency_p50_us\":%.3f,"
+                               + "\"point_lookup_latency_p95_us\":%.3f,\"point_lookup_latency_p99_us\":%.3f,"
++                              + "\"point_lookup_hit_latency_p50_us\":%.3f,"
++                              + "\"point_lookup_hit_latency_p95_us\":%.3f,\"point_lookup_hit_latency_p99_us\":%.3f,"
++                              + "\"point_lookup_miss_latency_p50_us\":%.3f,"
++                              + "\"point_lookup_miss_latency_p95_us\":%.3f,\"point_lookup_miss_latency_p99_us\":%.3f,"
+                               + "\"scan_latency_p50_us\":%.3f,\"scan_latency_p95_us\":%.3f,"
+                               + "\"scan_latency_p99_us\":%.3f,\"disk_device\":\"%s\","
+                               + "\"disk_read_bytes\":%d,\"disk_write_bytes\":%d}%n",
+-                              workload, definition(workload), distribution(workload), wallSeconds, threads,
++                              workload, definition(workload), GENERATOR_VERSION, seed, distribution(workload), wallSeconds, threads,
+                               count, count / wallSeconds, pointReads.sum(), writes.sum(), scans.sum(), misses.sum(),
++                              hits.getTotalCount(), missing.getTotalCount(),
+                               micros(all, 50), micros(all, 95), micros(all, 99),
+                               micros(points, 50), micros(points, 95), micros(points, 99),
++                              micros(hits, 50), micros(hits, 95), micros(hits, 99),
++                              micros(missing, 50), micros(missing, 95), micros(missing, 99),
+                               micros(range, 50), micros(range, 95), micros(range, 99),
+                               device, diskReadBytes, diskWriteBytes);
+         }
+     }
+ 
++    private static SplittableRandom[] workerRandoms(long seed, int threads)
++    {
++        // Adding SplittableRandom's gamma to a seed merely shifts the same stream.
++        // Split serially so each worker gets a distinct, reproducible stream before scheduling.
++        SplittableRandom root = new SplittableRandom(seed);
++        SplittableRandom[] randoms = new SplittableRandom[threads];
++        for (int worker = 0; worker < threads; worker++)
++            randoms[worker] = root.split();
++        return randoms;
++    }
++
+     private static double micros(Histogram histogram, double percentile)
+     {
+         return histogram.getTotalCount() == 0 ? 0 : histogram.getValueAtPercentile(percentile) / 1000.0;
+@@ -539,6 +591,20 @@ public final class CassandraPaperWorkload
+         return value ^ (value >>> 31);
+     }
+ 
++    private static final class Measurement
++    {
++        private final double wallSeconds;
++        private final long diskReadBytes;
++        private final long diskWriteBytes;
++
++        private Measurement(double wallSeconds, long diskReadBytes, long diskWriteBytes)
++        {
++            this.wallSeconds = wallSeconds;
++            this.diskReadBytes = diskReadBytes;
++            this.diskWriteBytes = diskWriteBytes;
++        }
++    }
++
+     private static final class DiskCounters
+     {
+         private final long readBytes;
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/config/CassandraRelevantProperties.java b/cassandra_vcomp/src/java/org/apache/cassandra/config/CassandraRelevantProperties.java
+index 8b8fac92..2198e517 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/config/CassandraRelevantProperties.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/config/CassandraRelevantProperties.java
+@@ -609,6 +609,8 @@ public enum CassandraRelevantProperties
+     UCS_BASE_SHARD_COUNT("unified_compaction.base_shard_count", "4"),
+     UCS_MIN_SSTABLE_SIZE("unified_compaction.min_sstable_size", "100MiB"),
+     UCS_OVERLAP_INCLUSION_METHOD("unified_compaction.overlap_inclusion_method"),
++    /** Optional deterministic picker seed for paired loading experiments. */
++    UCS_PICKER_SEED("cassandra.ucs.picker_seed"),
+     UCS_SCALING_PARAMETER("unified_compaction.scaling_parameters", "T4"),
+     UCS_SSTABLE_GROWTH("unified_compaction.sstable_growth", "0.333"),
+     UCS_SURVIVAL_FACTOR("unified_compaction.survival_factor", "1"),
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/Controller.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/Controller.java
+index 09c4778e..726c168e 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/Controller.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/Controller.java
+@@ -199,7 +199,8 @@ public class Controller
+         this.targetSSTableSize = targetSStableSize;
+         this.overlapInclusionMethod = overlapInclusionMethod;
+         this.sstableGrowthModifier = sstableGrowthModifier;
+-        Long experimentPickerSeed = Long.getLong("cassandra.ucs.picker_seed");
++        Long experimentPickerSeed = CassandraRelevantProperties.UCS_PICKER_SEED.isPresent()
++                                    ? CassandraRelevantProperties.UCS_PICKER_SEED.getLong() : null;
+         this.experimentPickerRandom = experimentPickerSeed == null ? null : new Random(experimentPickerSeed);
+ 
+         if (maxSSTablesToCompact <= 0)
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
+index 7a54f0d8..fc41f195 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
+@@ -197,7 +197,7 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
+                                                        targetSSTBytes,
+                                                        0.333);
+ 
+-        List<PartitionSlice> slices = estimatePartitionSlices(inputs, model, estimatedUniqueKeys);
++        List<PartitionSlice> slices = estimatePartitionSlices(model, estimatedUniqueKeys);
+         List<VCompPipeline.VirtualSSTable> outputs = new ArrayList<>();
+         String runSuffix = Long.toString(nextOutputId++);
+         for (int start = 0; start < slices.size(); )
+@@ -215,7 +215,10 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
+             {
+                 long keyMin = slices.get(start).keyMin;
+                 long keyMax = slices.get(end - 1).keyMax;
+-                VCompLearnedModel child = model.sliceByKeyRange(keyMin, keyMax, count);
++                VCompLearnedModel child = keyMin == model.keyMin() && keyMax == model.keyMax()
++                                          ? model
++                                          : model.sliceByKeyRange(keyMin, keyMax,
++                                                                  slices.get(start).firstRank, count);
+                 VCompKmvSketch childSketch = mergeSketches(inputs, keyMin, keyMax, kmvSamples);
+                 List<VCompKmvSketch.Range> ranges = outputRanges(inputs, keyMin, keyMax, count, null);
+                 long outputBytes = sizeModel == null ? saturatedMultiply(count, averageEntryBytes)
+@@ -233,39 +236,35 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
+                                                   plan.outputLevel(), outputs);
+     }
+ 
+-    private List<PartitionSlice> estimatePartitionSlices(List<VCompPipeline.VirtualSSTable> inputs,
+-                                                          VCompLearnedModel model,
+-                                                          long totalKeys)
++    private List<PartitionSlice> estimatePartitionSlices(VCompLearnedModel model,
++                                                         long totalKeys)
+     {
+         List<PartitionSlice> result = new ArrayList<>();
+-        double totalWeight = 0;
++        long assigned = 0;
+         for (VCompOrderedPartitionLayout.Partition partition : partitionLayout.partitions())
+         {
+             long minimum = Math.max(partition.minimum(), model.keyMin());
+             long maximum = Math.min(partition.maximum(), model.keyMax());
+             if (maximum < minimum)
+                 continue;
+-            long rangeEstimate = estimateUnionForRange(inputs, minimum, maximum);
+-            double modelMass = Math.max(0, model.predict(maximum) - model.predict(minimum));
+-            double weight = rangeEstimate > 0 ? rangeEstimate : modelMass;
+-            result.add(new PartitionSlice(partition, minimum, maximum, weight));
+-            totalWeight += weight;
+-        }
+-        if (!(totalWeight > 0))
+-            throw new IllegalStateException("ordered partitions have no estimated key mass");
+-
+-        long assigned = 0;
+-        double cumulative = 0;
+-        for (int i = 0; i < result.size(); i++)
+-        {
+-            PartitionSlice slice = result.get(i);
+-            cumulative += slice.weight;
+-            long through = i + 1 == result.size()
++            // Deduplication has already corrected the parent rank function. A
++            // native partition boundary only cuts that function; estimating
++            // KMV cardinalities again here would change the corrected density.
++            long through = maximum == model.keyMax()
+                            ? totalKeys
+-                           : Math.min(totalKeys, (long) Math.floor(cumulative * totalKeys / totalWeight));
+-            slice.estimatedKeys = Math.max(0, through - assigned);
++                           : model.ranksBeforeRoundedKey(maximum + 1, totalKeys);
++            // Integer rounding must not assign more distinct keys than this
++            // partition can contain, or leave an infeasible residual for the
++            // remaining key domain. This does not re-estimate deduplication.
++            long minimumThrough = Math.max(assigned, totalKeys - (model.keyMax() - maximum));
++            long maximumThrough = Math.min(totalKeys,
++                                           saturatedAdd(assigned, inclusiveCardinality(minimum, maximum)));
++            through = Math.max(minimumThrough, Math.min(maximumThrough, through));
++            result.add(new PartitionSlice(partition, minimum, maximum, assigned, through - assigned));
+             assigned = through;
+         }
++        if (result.isEmpty() || assigned != totalKeys)
++            throw new IllegalStateException("ordered partitions have no estimated key mass");
+         return result;
+     }
+ 
+@@ -696,16 +695,17 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
+         private final VCompOrderedPartitionLayout.Partition partition;
+         private final long keyMin;
+         private final long keyMax;
+-        private final double weight;
+-        private long estimatedKeys;
++        private final long firstRank;
++        private final long estimatedKeys;
+ 
+         private PartitionSlice(VCompOrderedPartitionLayout.Partition partition,
+-                               long keyMin, long keyMax, double weight)
++                               long keyMin, long keyMax, long firstRank, long estimatedKeys)
+         {
+             this.partition = partition;
+             this.keyMin = keyMin;
+             this.keyMax = keyMax;
+-            this.weight = weight;
++            this.firstRank = firstRank;
++            this.estimatedKeys = estimatedKeys;
+         }
+     }
+ }
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+index 8b6f0bb8..4046a54b 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+@@ -34,6 +34,7 @@ import java.util.stream.Stream;
+ import org.apache.cassandra.db.Clustering;
+ import org.apache.cassandra.db.DecoratedKey;
+ import org.apache.cassandra.db.DeletionTime;
++import org.apache.cassandra.db.LivenessInfo;
+ import org.apache.cassandra.db.rows.AbstractUnfilteredRowIterator;
+ import org.apache.cassandra.db.rows.BTreeRow;
+ import org.apache.cassandra.db.rows.BufferCell;
+@@ -139,6 +140,8 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
+                                                                   .forTable(tableSchema)
+                                                                   .using(insertStatement)
+                                                                   .withPartitioner(Murmur3Partitioner.instance)
++                                                                  .withEncodingStats(encodingStats(timestamp))
++                                                                  .withEstimatedPartitionCount(1)
+                                                                   .sorted();
+                 if (partitionLayout != null)
+                     builder.withEstimatedPartitionCount(partitionLayout.partitionCount(descriptor.keyMin(),
+@@ -240,7 +243,7 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
+                                                  metadata.regularAndStaticColumns(),
+                                                  Rows.EMPTY_STATIC_ROW,
+                                                  false,
+-                                                 EncodingStats.NO_STATS)
++                                                 encodingStats(timestamp))
+         {
+             @Override
+             protected Unfiltered computeNext()
+@@ -254,12 +257,22 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
+                 fillValue(key, value);
+                 Row.Builder builder = BTreeRow.sortedBuilder();
+                 builder.newRow(Clustering.make(keyCodec.decode(key)));
++                // Match the native CQL INSERT used by the baseline. A live
++                // value cell alone has UPDATE semantics and a different row
++                // encoding (the cell cannot reuse a missing row timestamp).
++                builder.addPrimaryKeyLivenessInfo(LivenessInfo.create(timestamp, 0));
+                 builder.addCell(BufferCell.live(valueColumn, timestamp, ByteBuffer.wrap(value)));
+                 return builder.build();
+             }
+         };
+     }
+ 
++    private static EncodingStats encodingStats(long timestamp)
++    {
++        return new EncodingStats(timestamp, EncodingStats.NO_STATS.minLocalDeletionTime,
++                                 EncodingStats.NO_STATS.minTTL);
++    }
++
+     private static final class CoordinateCursor
+     {
+         private final PrimitiveIterator.OfLong source;
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
+index e88f90eb..45bb4284 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
+@@ -157,6 +157,11 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+     {
+         if (discrete != null)
+             return discrete.countLessThan(key);
++        return predictContinuous(key, 0);
++    }
++
++    private double predictContinuous(long key, double offset)
++    {
+         if (segments.isEmpty())
+             return 0;
+ 
+@@ -178,14 +183,14 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+         }
+ 
+         Segment segment = segments.get(low);
+-        if (key < segment.keyStart())
++        if (key < segment.keyStart() || (key == segment.keyStart() && offset < 0))
+         {
+             if (low == 0)
+                 return 0;
+             Segment previous = segments.get(low - 1);
+             return previous.evaluate(previous.keyEnd());
+         }
+-        return segment.evaluate(key);
++        return segment.evaluate(key) + segment.slope() * offset;
+     }
+ 
+     /** Estimate the key at a zero-based rank. Used later by final materialization. */
+@@ -254,21 +259,21 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+ 
+     /**
+      * Restrict a continuous rank model to an inclusive key range and rebase
+-     * its rank origin to zero.  This is deliberately a continuous operation:
++     * its first assigned integer rank to zero, preserving the corrected slope.
++     * This is deliberately a continuous operation:
+      * output sharding must not introduce the post-paper discrete certificate.
+      */
+-    VCompLearnedModel sliceByKeyRange(long minimum, long maximum, long estimatedCount)
++    VCompLearnedModel sliceByKeyRange(long minimum, long maximum, long firstRank, long estimatedCount)
+     {
+         if (minimum < keyMin() || maximum > keyMax() || maximum < minimum)
+             throw new IllegalArgumentException("invalid continuous model slice");
+         if (estimatedCount <= 0)
+             throw new IllegalArgumentException("continuous model slice count must be positive");
++        if (firstRank < 0)
++            throw new IllegalArgumentException("continuous model slice first rank must be non-negative");
+         if (discrete != null)
+             throw new IllegalStateException("continuous key-range slicing does not accept a discrete certificate");
+ 
+-        double origin = predict(minimum);
+-        double mass = Math.max(0, predict(maximum) - origin);
+-        double scale = mass > 0 ? estimatedCount / mass : 1.0;
+         ArrayList<Segment> result = new ArrayList<>();
+         for (Segment segment : segments)
+         {
+@@ -280,16 +285,16 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+             long end = Math.min(segment.keyEnd(), maximum);
+             result.add(new Segment(start,
+                                    end,
+-                                   segment.slope() * scale,
+-                                   (segment.intercept() - origin) * scale));
++                                   segment.slope(),
++                                   segment.intercept() - firstRank));
+         }
+         if (result.isEmpty())
+-            result.add(new Segment(minimum, maximum, 0, 0));
++            result.add(new Segment(minimum, maximum, 0, predict(minimum) - firstRank));
+         else
+         {
+             Segment first = result.get(0);
+             if (first.keyStart() != minimum)
+-                result.add(0, new Segment(minimum, first.keyStart(), 0, 0));
++                result.add(0, new Segment(minimum, first.keyStart(), 0, predict(minimum) - firstRank));
+             Segment last = result.get(result.size() - 1);
+             if (last.keyEnd() != maximum)
+                 result.add(new Segment(last.keyEnd(), maximum, 0, last.evaluate(last.keyEnd())));
+@@ -297,6 +302,19 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+         return new VCompLearnedModel(result);
+     }
+ 
++    /** Number of integer ranks whose rounded inverse lies below an exclusive key boundary. */
++    long ranksBeforeRoundedKey(long key, long totalRanks)
++    {
++        if (discrete != null)
++            throw new IllegalStateException("continuous rank cuts do not accept a discrete certificate");
++        // Math.round(x) enters key k at x = k - 0.5. Ceil converts that
++        // continuous cut to the first integer rank owned by the next output.
++        // Using one cumulative cut also conserves fractional mass across all
++        // outputs instead of rounding each partition's mass independently.
++        double rank = Math.ceil(predictContinuous(key, -0.5));
++        return Math.max(0, Math.min(totalRanks, (long) rank));
++    }
++
+     private static void validateKeys(long[] sortedKeys)
+     {
+         if (sortedKeys == null)
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java
+index 406a1325..61b3c0be 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java
+@@ -63,17 +63,26 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
+ 
+         public int compareFirst(VCompPipeline.VirtualSortedRun left, VCompPipeline.VirtualSortedRun right)
+         {
+-            return partitionLayout == null ? 0 : Long.compare(first(left).keyMin(), first(right).keyMin());
++            return comparePartitionKeys(first(left).keyMin(), first(right).keyMin());
+         }
+ 
+         public int compareLast(VCompPipeline.VirtualSortedRun left, VCompPipeline.VirtualSortedRun right)
+         {
+-            return partitionLayout == null ? 0 : Long.compare(last(left).keyMax(), last(right).keyMax());
++            return comparePartitionKeys(last(left).keyMax(), last(right).keyMax());
+         }
+ 
+         public boolean startsAfter(VCompPipeline.VirtualSortedRun left, VCompPipeline.VirtualSortedRun right)
+         {
+-            return partitionLayout != null && first(left).keyMin() > last(right).keyMax();
++            return comparePartitionKeys(first(left).keyMin(), last(right).keyMax()) > 0;
++        }
++
++        private int comparePartitionKeys(long left, long right)
++        {
++            // Native SSTable endpoints are DecoratedKeys, which omit clustering
++            // coordinates. Disjoint row ranges in the same partition still overlap.
++            return partitionLayout == null ? 0
++                                           : Integer.compare(partitionLayout.partitionFor(left).ordinal(),
++                                                             partitionLayout.partitionFor(right).ordinal());
+         }
+ 
+         public long maximumTimestamp(VCompPipeline.VirtualSortedRun run)
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/AbstractSSTableSimpleWriter.java b/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/AbstractSSTableSimpleWriter.java
+index 72b9a555..e90fbdcd 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/AbstractSSTableSimpleWriter.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/AbstractSSTableSimpleWriter.java
+@@ -58,6 +58,7 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
+     protected Consumer<Collection<SSTableReader>> sstableProducedListener;
+     protected boolean openSSTableOnProduced = false;
+     protected long estimatedKeyCount = 0;
++    protected EncodingStats encodingStats = EncodingStats.NO_STATS;
+ 
+     protected AbstractSSTableSimpleWriter(File directory, TableMetadataRef metadata, RegularAndStaticColumns columns)
+     {
+@@ -103,6 +104,11 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
+         this.estimatedKeyCount = estimatedKeyCount;
+     }
+ 
++    protected void setEncodingStats(EncodingStats encodingStats)
++    {
++        this.encodingStats = Objects.requireNonNull(encodingStats, "encodingStats");
++    }
++
+     /**
+      * Indicate whether the produced sstable should be opened or not.
+      */
+@@ -121,7 +127,7 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
+ 
+     protected SSTableTxnWriter createWriter(SSTable.Owner owner) throws IOException
+     {
+-        SerializationHeader header = new SerializationHeader(true, metadata.get(), columns, EncodingStats.NO_STATS);
++        SerializationHeader header = new SerializationHeader(true, metadata.get(), columns, encodingStats);
+ 
+         if (makeRangeAware)
+             return SSTableTxnWriter.createRangeAware(metadata, estimatedKeyCount, ActiveRepairService.UNREPAIRED_SSTABLE, ActiveRepairService.NO_PENDING_REPAIR, false, format, header);
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/CQLSSTableWriter.java b/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/CQLSSTableWriter.java
+index c0215993..57c11320 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/CQLSSTableWriter.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/CQLSSTableWriter.java
+@@ -55,6 +55,7 @@ import org.apache.cassandra.db.Directories.DataDirectory;
+ import org.apache.cassandra.db.Keyspace;
+ import org.apache.cassandra.db.Slice;
+ import org.apache.cassandra.db.Slices;
++import org.apache.cassandra.db.rows.EncodingStats;
+ import org.apache.cassandra.db.rows.UnfilteredRowIterator;
+ import org.apache.cassandra.db.marshal.AbstractType;
+ import org.apache.cassandra.dht.IPartitioner;
+@@ -442,6 +443,7 @@ public class CQLSSTableWriter implements Closeable
+         private Consumer<Collection<SSTableReader>> sstableProducedListener;
+         private boolean openSSTableOnProduced = false;
+         private long estimatedPartitionCount = 0;
++        private EncodingStats encodingStats = EncodingStats.NO_STATS;
+ 
+         protected Builder()
+         {
+@@ -657,6 +659,17 @@ public class CQLSSTableWriter implements Closeable
+             return this;
+         }
+ 
++        /**
++         * Supply known encoding minima for a streaming input. Native flush and
++         * compaction writers obtain these from their inputs; an offline writer
++         * otherwise has to use the default epoch for timestamp delta encoding.
++         */
++        public Builder withEncodingStats(EncodingStats stats)
++        {
++            this.encodingStats = java.util.Objects.requireNonNull(stats, "stats");
++            return this;
++        }
++
+         /**
+          * Whether indexes should be built and serialized to disk along data. Defaults to true.
+          *
+@@ -787,6 +800,7 @@ public class CQLSSTableWriter implements Closeable
+                                                      ? new SSTableSimpleWriter(directory, ref, preparedModificationStatement.updatedColumns(), maxSSTableSizeInMiB)
+                                                      : new SSTableSimpleUnsortedWriter(directory, ref, preparedModificationStatement.updatedColumns(), maxSSTableSizeInMiB);
+                 writer.setEstimatedKeyCount(estimatedPartitionCount);
++                writer.setEncodingStats(encodingStats);
+ 
+                 if (format != null)
+                     writer.setSSTableFormatType(format);
+diff --git a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/unified/ControllerTest.java b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/unified/ControllerTest.java
+index b25a1851..1653c1d2 100644
+--- a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/unified/ControllerTest.java
++++ b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/unified/ControllerTest.java
+@@ -21,6 +21,8 @@ package org.apache.cassandra.db.compaction.unified;
+ import java.util.Arrays;
+ import java.util.HashMap;
+ import java.util.Map;
++import java.util.Random;
++import java.util.concurrent.ThreadLocalRandom;
+ import java.util.concurrent.TimeUnit;
+ import java.util.stream.Collectors;
+ 
+@@ -32,6 +34,7 @@ import org.junit.Test;
+ 
+ import org.apache.cassandra.Util;
+ import org.apache.cassandra.config.DatabaseDescriptor;
++import org.apache.cassandra.config.CassandraRelevantProperties;
+ import org.apache.cassandra.db.ColumnFamilyStore;
+ import org.apache.cassandra.db.DiskBoundaries;
+ import org.apache.cassandra.db.PartitionPosition;
+@@ -107,6 +110,35 @@ public class ControllerTest
+         return controller;
+     }
+ 
++    @Test
++    public void testOptionalPickerSeed()
++    {
++        CassandraRelevantProperties property = CassandraRelevantProperties.UCS_PICKER_SEED;
++        String previous = property.getString();
++        try
++        {
++            property.clearValue();
++            assertTrue(testFromOptions(new HashMap<>()).random() instanceof ThreadLocalRandom);
++
++            property.setLong(20260909L);
++            Controller controller = testFromOptions(new HashMap<>());
++            Random expected = new Random(20260909L);
++            for (int i = 0; i < 16; i++)
++                assertEquals(expected.nextInt(1000), controller.random().nextInt(1000));
++
++            property.setString("invalid-seed");
++            assertThatExceptionOfType(ConfigurationException.class)
++            .isThrownBy(() -> testFromOptions(new HashMap<>()));
++        }
++        finally
++        {
++            if (previous == null)
++                property.clearValue();
++            else
++                property.setString(previous);
++        }
++    }
++
+     @Test
+     public void testValidateOptions()
+     {
+@@ -647,4 +679,4 @@ public class ControllerTest
+         .isThrownBy(() -> Controller.validateOptions(options))
+         .withMessageContaining(format("Invalid configuration, %s (%s) should be less than 70%% of the targetSSTableSize (%s)", Controller.MIN_SSTABLE_SIZE_OPTION, FBUtilities.prettyPrintMemory(limit + 1), FBUtilities.prettyPrintMemory(Controller.MIN_TARGET_SSTABLE_SIZE * 2)));
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompactionTest.java b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompactionTest.java
+index c12a7ae6..0c0a7f2f 100644
+--- a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompactionTest.java
++++ b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompactionTest.java
+@@ -27,6 +27,7 @@ import org.junit.Test;
+ 
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertFalse;
++import static org.junit.Assert.assertSame;
+ import static org.junit.Assert.assertTrue;
+ 
+ public class DefaultVirtualCompactionTest
+@@ -232,6 +233,68 @@ public class DefaultVirtualCompactionTest
+         assertEquals(count, outputCount);
+     }
+ 
++    @Test
++    public void oneNativeShardPreservesTheCorrectedModel()
++    throws Exception
++    {
++        assertNativeSplitPreservesCorrectedRanks(1, 1);
++    }
++
++    @Test
++    public void nativeShardsPreserveCorrectedDensityAndRoundedInverseKeys()
++    throws Exception
++    {
++        assertNativeSplitPreservesCorrectedRanks(4, 2);
++    }
++
++    private static void assertNativeSplitPreservesCorrectedRanks(int inputCount, int expectedShards)
++    throws Exception
++    {
++        long mib = 1L << 20;
++        long[] keys = new long[1000];
++        for (int i = 0; i < keys.length; i++)
++            keys[i] = i;
++        VCompSSTSizeModel sizes = VCompSSTSizeModel.logical((64 * mib) / keys.length);
++        DefaultFlushVirtualizer virtualizer = new DefaultFlushVirtualizer(0, 32, 8, sizes);
++        List<VCompPipeline.VirtualSortedRun> inputs = new ArrayList<>();
++        for (int i = 0; i < inputCount; i++)
++            inputs.add(virtualizer.virtualize(new VCompPipeline.FlushBatch("density-" + i,
++                                                                           keys, 64 * mib, i + 1)));
++        VCompPipeline.VirtualCompactionPlan plan = new VCompPipeline.VirtualCompactionPlan("density",
++                                                                                           inputs, 1);
++        DefaultVirtualCompaction compaction = new DefaultVirtualCompaction(32, 8, 64 * mib,
++                                                                            sizes,
++                                                                            new VCompOrderedPartitionLayout(1000, 100));
++        VCompKmvSketch sketch = compaction.mergeAndDeduplicate(plan);
++        assertFalse(sketch.isComplete());
++
++        // The corrected model deliberately differs from the uniform sketch's
++        // density. Splitting must inherit this result of the merge correction,
++        // not recompute that correction from the input KMV a second time.
++        VCompLearnedModel corrected = new VCompLearnedModel(Arrays.asList(
++        new VCompLearnedModel.Segment(0, 500, 0.25, 0),
++        new VCompLearnedModel.Segment(500, 999, 0.5, -125)));
++        long count = 375;
++        VCompPipeline.VirtualSSTable parent = new VCompPipeline.VirtualSSTable("corrected",
++                                                                               0, 999, count, sizes.estimate(count),
++                                                                               corrected, sketch, new ArrayList<>());
++        VCompPipeline.VirtualSortedRun output = compaction.split(plan, corrected, sketch, count);
++        assertEquals(expectedShards, output.sstables().size());
++        if (expectedShards == 1)
++            assertSame(corrected, output.sstables().get(0).model());
++
++        long outputCount = 0;
++        List<Long> outputKeys = new ArrayList<>();
++        for (VCompPipeline.VirtualSSTable child : output.sstables())
++        {
++            outputCount += child.estimatedUniqueKeys();
++            assertTrue(child.model().discreteModel() == null);
++            outputKeys.addAll(materialize(child));
++        }
++        assertEquals(count, outputCount);
++        assertEquals("native output boundaries must only slice the corrected inverse", materialize(parent), outputKeys);
++    }
++
+     private static List<Long> materialize(VCompPipeline.VirtualSSTable sstable)
+     {
+         List<Long> keys = new ArrayList<>();
+diff --git a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlannerTest.java b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlannerTest.java
+index 43afeda9..d4bb0d27 100644
+--- a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlannerTest.java
++++ b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlannerTest.java
+@@ -18,6 +18,7 @@
+  */
+ package org.apache.cassandra.db.compaction.vcomp;
+ 
++import java.nio.ByteBuffer;
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.Collections;
+@@ -27,6 +28,9 @@ import java.util.stream.Collectors;
+ 
+ import org.junit.Test;
+ 
++import org.apache.cassandra.db.DecoratedKey;
++import org.apache.cassandra.dht.Murmur3Partitioner;
++
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertFalse;
+ import static org.junit.Assert.assertTrue;
+@@ -141,17 +145,64 @@ public class VCompUcsPlannerTest
+         new VCompUcsPlanner(64 * MIB, new int[]{ -2 }, 32);
+     }
+ 
++    @Test
++    public void disjointClusteringRangesInSamePartitionOverlapLikeNativeEndpoints()
++    {
++        VCompOrderedPartitionLayout layout = new VCompOrderedPartitionLayout(400, 4);
++        List<VCompPipeline.VirtualSortedRun> runs = new ArrayList<>();
++        for (int i = 0; i < 4; ++i)
++        {
++            runs.add(run(Integer.toString(i), 64, i, i * 10));
++            // Native UCS compares SSTableReader first/last DecoratedKeys, so
++            // every one of these disjoint clustering ranges has equal endpoints.
++            assertEquals(0, decoratedKey(layout, i * 10).compareTo(decoratedKey(layout, 9)));
++        }
++
++        VCompPipeline.VirtualCompactionPlan plan = new VCompUcsPlanner(64 * MIB, layout)
++                                                   .pick(new VCompPipeline.VirtualStateSnapshot(runs)).get();
++
++        assertEquals(Arrays.asList("run-3", "run-2", "run-1", "run-0"), ids(plan));
++    }
++
++    @Test
++    public void distinctPartitionRangesRemainDisjointLikeNativeEndpoints()
++    {
++        VCompOrderedPartitionLayout layout = new VCompOrderedPartitionLayout(400, 4);
++        List<VCompPipeline.VirtualSortedRun> runs = new ArrayList<>();
++        for (int i = 0; i < 4; ++i)
++        {
++            runs.add(run(Integer.toString(i), 64, i, i * 100));
++            if (i > 0)
++                assertTrue(decoratedKey(layout, i * 100).compareTo(decoratedKey(layout, (i - 1) * 100 + 9)) > 0);
++        }
++
++        assertFalse(new VCompUcsPlanner(64 * MIB, layout)
++                    .pick(new VCompPipeline.VirtualStateSnapshot(runs)).isPresent());
++    }
++
++    private static DecoratedKey decoratedKey(VCompOrderedPartitionLayout layout, long coordinate)
++    {
++        return Murmur3Partitioner.instance.decorateKey(ByteBuffer.wrap(layout.partitionFor(coordinate).encodedKey()));
++    }
++
+     private static VCompPipeline.VirtualStateSnapshot snapshot(VCompPipeline.VirtualSortedRun... runs)
+     {
+         return new VCompPipeline.VirtualStateSnapshot(Arrays.asList(runs));
+     }
+ 
+     private static VCompPipeline.VirtualSortedRun run(String id, long sizeMiB, long maximumTimestamp)
++    {
++        return run(id, sizeMiB, maximumTimestamp, 0);
++    }
++
++    private static VCompPipeline.VirtualSortedRun run(String id, long sizeMiB, long maximumTimestamp, long minimum)
+     {
+         long[] keys = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
++        for (int i = 0; i < keys.length; ++i)
++            keys[i] += minimum;
+         VCompPipeline.VirtualSSTable sstable = new VCompPipeline.VirtualSSTable("vsst-" + id,
+-                                                                               0,
+-                                                                               9,
++                                                                               minimum,
++                                                                               minimum + 9,
+                                                                                10,
+                                                                                sizeMiB * MIB,
+                                                                                maximumTimestamp,

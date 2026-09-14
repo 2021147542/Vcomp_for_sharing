@@ -36,6 +36,7 @@ public final class CassandraPaperWorkload
     private static final double DEFAULT_ZETA = 26.46902820178302;
     private static final long FNV_OFFSET = -3750763034362895579L;
     private static final long FNV_PRIME = 1099511628211L;
+    private static final String GENERATOR_VERSION = "split-streams-v2";
 
     private CassandraPaperWorkload()
     {
@@ -72,13 +73,9 @@ public final class CassandraPaperWorkload
         {
             WorkloadContext context = new WorkloadContext(session, keyspace, table, workload, keySpace,
                                                           keyBytes, valueBytes, partitionCount, seed, threads);
-            DiskCounters before = diskCounters(diskDevice);
-            long start = System.nanoTime();
-            context.run(seconds, operationsPerThread);
-            double wallSeconds = (System.nanoTime() - start) / 1_000_000_000.0;
-            DiskCounters after = diskCounters(diskDevice);
-            context.printResult(wallSeconds, after.readBytes - before.readBytes,
-                                after.writeBytes - before.writeBytes, diskDevice);
+            Measurement measurement = context.run(seconds, operationsPerThread, diskDevice);
+            context.printResult(measurement.wallSeconds, measurement.diskReadBytes,
+                                measurement.diskWriteBytes, diskDevice);
         }
     }
 
@@ -106,6 +103,8 @@ public final class CassandraPaperWorkload
         private final LongAdder misses = new LongAdder();
         private final Recorder operationLatency = new Recorder(MAX_LATENCY_NANOS, 3);
         private final Recorder pointLatency = new Recorder(MAX_LATENCY_NANOS, 3);
+        private final Recorder pointHitLatency = new Recorder(MAX_LATENCY_NANOS, 3);
+        private final Recorder pointMissLatency = new Recorder(MAX_LATENCY_NANOS, 3);
         private final Recorder scanLatency = new Recorder(MAX_LATENCY_NANOS, 3);
         private final AtomicReference<Throwable> failure = new AtomicReference<>();
 
@@ -132,48 +131,72 @@ public final class CassandraPaperWorkload
             this.nextInsert = new AtomicLong(keySpace);
         }
 
-        private void run(int seconds, long operationsPerThread) throws Exception
+        private Measurement run(int seconds, long operationsPerThread, String diskDevice) throws Exception
         {
             ExecutorService executor = Executors.newFixedThreadPool(threads);
             CountDownLatch ready = new CountDownLatch(threads);
             CountDownLatch start = new CountDownLatch(1);
             CountDownLatch done = new CountDownLatch(threads);
-            long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(seconds);
-            for (int worker = 0; worker < threads; worker++)
-            {
-                final int workerId = worker;
-                executor.execute(() -> runWorker(workerId, ready, start, done, deadline, operationsPerThread));
-            }
-            ready.await();
-            start.countDown();
-            long nextProgress = System.nanoTime() + TimeUnit.SECONDS.toNanos(30);
-            while (!done.await(1, TimeUnit.SECONDS) && failure.get() == null)
-            {
-                if (System.nanoTime() >= nextProgress)
-                {
-                    System.out.printf("WORKLOAD_PROGRESS workload=%s mode=%s operations=%d%n",
-                                      workload, operationsPerThread > 0 ? "fixed-operations" : "time",
-                                      operations.sum());
-                    nextProgress += TimeUnit.SECONDS.toNanos(30);
-                }
-            }
-            executor.shutdown();
-            if (!executor.awaitTermination(5, TimeUnit.MINUTES))
-                throw new IllegalStateException("workload workers did not stop");
-            Throwable problem = failure.get();
-            if (problem != null)
-                throw new RuntimeException("workload failed", problem);
-        }
-
-        private void runWorker(int worker, CountDownLatch ready, CountDownLatch start, CountDownLatch done,
-                               long deadline, long operationsPerThread)
-        {
-            SplittableRandom random = new SplittableRandom(seed + worker * 0x9e3779b97f4a7c15L);
-            byte[] valuePool = valuePool(random);
-            ready.countDown();
+            AtomicLong deadline = new AtomicLong();
             try
             {
+                SplittableRandom[] randoms = workerRandoms(seed, threads);
+                for (int worker = 0; worker < threads; worker++)
+                {
+                    SplittableRandom random = randoms[worker];
+                    executor.execute(() -> runWorker(random, ready, start, done, deadline, operationsPerThread));
+                }
+                ready.await();
+                if (failure.get() != null)
+                    throw new RuntimeException("workload preparation failed", failure.get());
+                // Thread creation and random value-pool generation are preparation, not workload I/O.
+                DiskCounters before = diskCounters(diskDevice);
+                long started = System.nanoTime();
+                deadline.set(started + TimeUnit.SECONDS.toNanos(seconds));
+                start.countDown();
+                long nextProgress = started + TimeUnit.SECONDS.toNanos(30);
+                while (!done.await(1, TimeUnit.SECONDS))
+                {
+                    if (System.nanoTime() >= nextProgress)
+                    {
+                        System.out.printf("WORKLOAD_PROGRESS workload=%s mode=%s operations=%d%n",
+                                          workload, operationsPerThread > 0 ? "fixed-operations" : "time",
+                                          operations.sum());
+                        nextProgress += TimeUnit.SECONDS.toNanos(30);
+                    }
+                }
+                long finished = System.nanoTime();
+                DiskCounters after = diskCounters(diskDevice);
+                Throwable problem = failure.get();
+                if (problem != null)
+                    throw new RuntimeException("workload failed", problem);
+                return new Measurement((finished - started) / 1_000_000_000.0,
+                                       after.readBytes - before.readBytes,
+                                       after.writeBytes - before.writeBytes);
+            }
+            finally
+            {
+                // Also release/cancel workers if preparation, counter collection, or waiting fails.
+                if (done.getCount() != 0)
+                    failure.compareAndSet(null, new IllegalStateException("workload stopped"));
+                start.countDown();
+                executor.shutdownNow();
+                if (!executor.awaitTermination(5, TimeUnit.MINUTES))
+                    throw new IllegalStateException("workload workers did not stop");
+            }
+        }
+
+        private void runWorker(SplittableRandom random, CountDownLatch ready, CountDownLatch start, CountDownLatch done,
+                               AtomicLong deadlineNanos, long operationsPerThread)
+        {
+            boolean announcedReady = false;
+            try
+            {
+                byte[] valuePool = valuePool(random);
+                announcedReady = true;
+                ready.countDown();
                 start.await();
+                long deadline = deadlineNanos.get();
                 long completed = 0;
                 while ((operationsPerThread > 0 ? completed < operationsPerThread : System.nanoTime() < deadline)
                        && failure.get() == null)
@@ -243,6 +266,8 @@ public final class CassandraPaperWorkload
             }
             finally
             {
+                if (!announcedReady)
+                    ready.countDown();
                 done.countDown();
             }
         }
@@ -256,12 +281,19 @@ public final class CassandraPaperWorkload
         {
             long started = System.nanoTime();
             Row row = session.execute(read.bind(partitionKey(key), codec.decode(key))).one();
-            pointLatency.recordValue(Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started));
-            pointReads.increment();
-            if (row == null)
-                misses.increment();
-            else
+            recordPointRead(started, row == null);
+            if (row != null)
                 row.getBytes("value").remaining();
+        }
+
+        private void recordPointRead(long started, boolean missing)
+        {
+            long elapsed = Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started);
+            pointLatency.recordValue(elapsed);
+            (missing ? pointMissLatency : pointHitLatency).recordValue(elapsed);
+            pointReads.increment();
+            if (missing)
+                misses.increment();
         }
 
         private void put(long key, byte[] pool, long random, int size)
@@ -274,12 +306,10 @@ public final class CassandraPaperWorkload
         {
             long started = System.nanoTime();
             Row row = session.execute(read.bind(partitionKey(key), codec.decode(key))).one();
-            pointLatency.recordValue(Math.min(MAX_LATENCY_NANOS, System.nanoTime() - started));
-            pointReads.increment();
+            recordPointRead(started, row == null);
             byte[] value;
             if (row == null)
             {
-                misses.increment();
                 value = copyValue(pool, random, valueBytes);
             }
             else
@@ -339,26 +369,48 @@ public final class CassandraPaperWorkload
         {
             Histogram all = operationLatency.getIntervalHistogram();
             Histogram points = pointLatency.getIntervalHistogram();
+            Histogram hits = pointHitLatency.getIntervalHistogram();
+            Histogram missing = pointMissLatency.getIntervalHistogram();
             Histogram range = scanLatency.getIntervalHistogram();
             long count = operations.sum();
             System.out.printf(Locale.ROOT,
                               "WORKLOAD_RESULT {\"workload\":\"%s\",\"definition\":\"%s\","
+                              + "\"generator_version\":\"%s\",\"seed\":%d,"
                               + "\"key_distribution\":\"%s\",\"wall_seconds\":%.6f,\"threads\":%d,"
                               + "\"operations\":%d,\"throughput_ops_per_second\":%.6f,"
                               + "\"point_reads\":%d,\"writes\":%d,\"scans\":%d,\"read_misses\":%d,"
+                              + "\"point_read_hits\":%d,\"point_read_misses\":%d,"
                               + "\"operation_latency_p50_us\":%.3f,\"operation_latency_p95_us\":%.3f,"
                               + "\"operation_latency_p99_us\":%.3f,\"point_lookup_latency_p50_us\":%.3f,"
                               + "\"point_lookup_latency_p95_us\":%.3f,\"point_lookup_latency_p99_us\":%.3f,"
+                              + "\"point_lookup_hit_latency_p50_us\":%.3f,"
+                              + "\"point_lookup_hit_latency_p95_us\":%.3f,\"point_lookup_hit_latency_p99_us\":%.3f,"
+                              + "\"point_lookup_miss_latency_p50_us\":%.3f,"
+                              + "\"point_lookup_miss_latency_p95_us\":%.3f,\"point_lookup_miss_latency_p99_us\":%.3f,"
                               + "\"scan_latency_p50_us\":%.3f,\"scan_latency_p95_us\":%.3f,"
                               + "\"scan_latency_p99_us\":%.3f,\"disk_device\":\"%s\","
                               + "\"disk_read_bytes\":%d,\"disk_write_bytes\":%d}%n",
-                              workload, definition(workload), distribution(workload), wallSeconds, threads,
+                              workload, definition(workload), GENERATOR_VERSION, seed, distribution(workload), wallSeconds, threads,
                               count, count / wallSeconds, pointReads.sum(), writes.sum(), scans.sum(), misses.sum(),
+                              hits.getTotalCount(), missing.getTotalCount(),
                               micros(all, 50), micros(all, 95), micros(all, 99),
                               micros(points, 50), micros(points, 95), micros(points, 99),
+                              micros(hits, 50), micros(hits, 95), micros(hits, 99),
+                              micros(missing, 50), micros(missing, 95), micros(missing, 99),
                               micros(range, 50), micros(range, 95), micros(range, 99),
                               device, diskReadBytes, diskWriteBytes);
         }
+    }
+
+    private static SplittableRandom[] workerRandoms(long seed, int threads)
+    {
+        // Adding SplittableRandom's gamma to a seed merely shifts the same stream.
+        // Split serially so each worker gets a distinct, reproducible stream before scheduling.
+        SplittableRandom root = new SplittableRandom(seed);
+        SplittableRandom[] randoms = new SplittableRandom[threads];
+        for (int worker = 0; worker < threads; worker++)
+            randoms[worker] = root.split();
+        return randoms;
     }
 
     private static double micros(Histogram histogram, double percentile)
@@ -537,6 +589,20 @@ public final class CassandraPaperWorkload
         value = (value ^ (value >>> 30)) * 0xbf58476d1ce4e5b9L;
         value = (value ^ (value >>> 27)) * 0x94d049bb133111ebL;
         return value ^ (value >>> 31);
+    }
+
+    private static final class Measurement
+    {
+        private final double wallSeconds;
+        private final long diskReadBytes;
+        private final long diskWriteBytes;
+
+        private Measurement(double wallSeconds, long diskReadBytes, long diskWriteBytes)
+        {
+            this.wallSeconds = wallSeconds;
+            this.diskReadBytes = diskReadBytes;
+            this.diskWriteBytes = diskWriteBytes;
+        }
     }
 
     private static final class DiskCounters

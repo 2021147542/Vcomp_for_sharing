@@ -1,0 +1,2 @@
+{"generator":"legacy-gamma-v1","scans":913715,"inserts":46285,"distinct_scan_starts":26839,"distinct_start_length_pairs":33722,"requested_rows":43856739,"mean_scan_length":47.998269701,"min_scan_length":1,"max_scan_length":95}
+{"generator":"split-streams-v2","scans":911944,"inserts":48056,"distinct_scan_starts":518805,"distinct_start_length_pairs":689738,"requested_rows":43764049,"mean_scan_length":47.989842578,"min_scan_length":1,"max_scan_length":95}

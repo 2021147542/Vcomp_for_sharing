@@ -1,0 +1,1819 @@
+{
+  "fidelity_rule": "abs(vcomp / baseline - 1) <= 0.10",
+  "repetitions": 1,
+  "primary_within_10pct": false,
+  "primary_violations": [
+    {
+      "scope": "A",
+      "metric": "throughput_ops_per_second",
+      "baseline": 88098.139242,
+      "vcomp": 63950.948288,
+      "delta_percent": -27.409422221358394,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 513.535,
+      "vcomp": 668.671,
+      "delta_percent": 30.209430710662378,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1382.399,
+      "vcomp": 2160.639,
+      "delta_percent": 56.29633701991974,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3819.519,
+      "vcomp": 5349.375,
+      "delta_percent": 40.05362978951015,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "throughput_ops_per_second",
+      "baseline": 56017.5399,
+      "vcomp": 46693.260707,
+      "delta_percent": -16.645285047585613,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 694.783,
+      "vcomp": 802.815,
+      "delta_percent": 15.54902753809464,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1696.767,
+      "vcomp": 2285.567,
+      "delta_percent": 34.701287802037626,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3997.695,
+      "vcomp": 4489.215,
+      "delta_percent": 12.295085042755893,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "throughput_ops_per_second",
+      "baseline": 48583.021974,
+      "vcomp": 36678.088355,
+      "delta_percent": -24.50430857382878,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 798.207,
+      "vcomp": 1016.319,
+      "delta_percent": 27.325242700201823,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1845.247,
+      "vcomp": 2510.847,
+      "delta_percent": 36.07105173453744,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3823.615,
+      "vcomp": 4976.639,
+      "delta_percent": 30.155337292065234,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "throughput_ops_per_second",
+      "baseline": 88279.272425,
+      "vcomp": 67016.364044,
+      "delta_percent": -24.085957888998767,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 407.807,
+      "vcomp": 571.391,
+      "delta_percent": 40.1130927129745,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1197.055,
+      "vcomp": 1584.127,
+      "delta_percent": 32.33535635371807,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 2977.791,
+      "vcomp": 3467.263,
+      "delta_percent": 16.43741955026392,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "throughput_ops_per_second",
+      "baseline": 22925.312441,
+      "vcomp": 17472.463475,
+      "delta_percent": -23.78527655853464,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "scan_latency_p50_us",
+      "baseline": 1879.039,
+      "vcomp": 2369.535,
+      "delta_percent": 26.103556126296468,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "scan_latency_p95_us",
+      "baseline": 3737.599,
+      "vcomp": 5128.191,
+      "delta_percent": 37.205489406434445,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "scan_latency_p99_us",
+      "baseline": 6115.327,
+      "vcomp": 8904.703,
+      "delta_percent": 45.612867472172766,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "throughput_ops_per_second",
+      "baseline": 47272.366707,
+      "vcomp": 41817.99499,
+      "delta_percent": -11.538182022505616,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1557.503,
+      "vcomp": 1998.847,
+      "delta_percent": 28.336638837934824,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "throughput_ops_per_second",
+      "baseline": 36952.014114,
+      "vcomp": 33037.797098,
+      "delta_percent": -10.59270275207277,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 894.975,
+      "vcomp": 1004.543,
+      "delta_percent": 12.242576608285137,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 6000.639,
+      "vcomp": 6615.039,
+      "delta_percent": 10.23890955613227,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "sstable_count",
+      "baseline": 164,
+      "vcomp": 209,
+      "delta_percent": 27.439024390243905,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "data_bytes",
+      "baseline": 74702475961,
+      "vcomp": 85846202847,
+      "delta_percent": 14.917479966551328,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "component_bytes",
+      "baseline": 74783176316,
+      "vcomp": 85939525123,
+      "delta_percent": 14.918260171055442,
+      "verdict": "outside_10pct",
+      "primary": true
+    }
+  ],
+  "zero_baseline_rule": "relative difference undefined; never mark as passing",
+  "comparisons": [
+    {
+      "scope": "A",
+      "metric": "throughput_ops_per_second",
+      "baseline": 88098.139242,
+      "vcomp": 63950.948288,
+      "delta_percent": -27.409422221358394,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_reads",
+      "baseline": 480192,
+      "vcomp": 480192,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "writes",
+      "baseline": 479808,
+      "vcomp": 479808,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "scans",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_read_hits",
+      "baseline": 375112,
+      "vcomp": 375145,
+      "delta_percent": 0.008797372518065671,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_read_misses",
+      "baseline": 105080,
+      "vcomp": 105047,
+      "delta_percent": -0.03140464408070143,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_hit_fraction",
+      "baseline": 0.7811708649873383,
+      "vcomp": 0.781239587498334,
+      "delta_percent": 0.008797372518087876,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "disk_read_bytes",
+      "baseline": 57097068544,
+      "vcomp": 91404623872,
+      "delta_percent": 60.08636906036953,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "disk_write_bytes",
+      "baseline": 196501504,
+      "vcomp": 197013504,
+      "delta_percent": 0.26055780214282453,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "operation_latency_p50_us",
+      "baseline": 392.447,
+      "vcomp": 482.815,
+      "delta_percent": 23.026803619342218,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "operation_latency_p95_us",
+      "baseline": 1158.143,
+      "vcomp": 1757.183,
+      "delta_percent": 51.72418259230509,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "operation_latency_p99_us",
+      "baseline": 2885.631,
+      "vcomp": 4186.111,
+      "delta_percent": 45.06743932262995,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 513.535,
+      "vcomp": 668.671,
+      "delta_percent": 30.209430710662378,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1382.399,
+      "vcomp": 2160.639,
+      "delta_percent": 56.29633701991974,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3819.519,
+      "vcomp": 5349.375,
+      "delta_percent": 40.05362978951015,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 462.079,
+      "vcomp": 564.735,
+      "delta_percent": 22.216114560497235,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 1286.143,
+      "vcomp": 1947.647,
+      "delta_percent": 51.43316100931232,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 3428.351,
+      "vcomp": 4726.783,
+      "delta_percent": 37.873368275302035,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 680.447,
+      "vcomp": 1056.767,
+      "delta_percent": 55.30482168339341,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 1679.359,
+      "vcomp": 2777.087,
+      "delta_percent": 65.36589258163383,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 4853.759,
+      "vcomp": 6909.951,
+      "delta_percent": 42.36287792615991,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "scan_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "scan_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "A",
+      "metric": "scan_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "throughput_ops_per_second",
+      "baseline": 56017.5399,
+      "vcomp": 46693.260707,
+      "delta_percent": -16.645285047585613,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_reads",
+      "baseline": 911944,
+      "vcomp": 911944,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "writes",
+      "baseline": 48056,
+      "vcomp": 48056,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "scans",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_read_hits",
+      "baseline": 680085,
+      "vcomp": 679987,
+      "delta_percent": -0.014409963460448871,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_read_misses",
+      "baseline": 231859,
+      "vcomp": 231957,
+      "delta_percent": 0.0422670674849801,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_hit_fraction",
+      "baseline": 0.7457530286947445,
+      "vcomp": 0.7456455659558043,
+      "delta_percent": -0.014409963460448871,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "disk_read_bytes",
+      "baseline": 99345661952,
+      "vcomp": 126752038912,
+      "delta_percent": 27.58688846750219,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "disk_write_bytes",
+      "baseline": 3698688,
+      "vcomp": 4108288,
+      "delta_percent": 11.074197120708739,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "operation_latency_p50_us",
+      "baseline": 689.663,
+      "vcomp": 795.647,
+      "delta_percent": 15.36750557881168,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "operation_latency_p95_us",
+      "baseline": 1684.479,
+      "vcomp": 2258.943,
+      "delta_percent": 34.1033637106785,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "operation_latency_p99_us",
+      "baseline": 3964.927,
+      "vcomp": 4440.063,
+      "delta_percent": 11.983474096748825,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 694.783,
+      "vcomp": 802.815,
+      "delta_percent": 15.54902753809464,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1696.767,
+      "vcomp": 2285.567,
+      "delta_percent": 34.701287802037626,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3997.695,
+      "vcomp": 4489.215,
+      "delta_percent": 12.295085042755893,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 653.311,
+      "vcomp": 736.767,
+      "delta_percent": 12.774314224006634,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 1613.823,
+      "vcomp": 2096.127,
+      "delta_percent": 29.88580532065783,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 3756.031,
+      "vcomp": 4104.191,
+      "delta_percent": 9.269359065460314,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 821.759,
+      "vcomp": 1031.167,
+      "delta_percent": 25.482897053759057,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 1908.735,
+      "vcomp": 2701.311,
+      "delta_percent": 41.52362690473011,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 4694.015,
+      "vcomp": 5386.239,
+      "delta_percent": 14.746949040426994,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "scan_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "scan_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "B",
+      "metric": "scan_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "throughput_ops_per_second",
+      "baseline": 48583.021974,
+      "vcomp": 36678.088355,
+      "delta_percent": -24.50430857382878,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_reads",
+      "baseline": 960000,
+      "vcomp": 960000,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "writes",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "scans",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_read_hits",
+      "baseline": 551235,
+      "vcomp": 631142,
+      "delta_percent": 14.495995355882707,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_read_misses",
+      "baseline": 408765,
+      "vcomp": 328858,
+      "delta_percent": -19.548395777524984,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_hit_fraction",
+      "baseline": 0.574203125,
+      "vcomp": 0.6574395833333333,
+      "delta_percent": 14.495995355882684,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "disk_read_bytes",
+      "baseline": 106198355968,
+      "vcomp": 131205754880,
+      "delta_percent": 23.547821135324632,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "disk_write_bytes",
+      "baseline": 4136960,
+      "vcomp": 4354048,
+      "delta_percent": 5.247524752475252,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "operation_latency_p50_us",
+      "baseline": 798.719,
+      "vcomp": 1017.343,
+      "delta_percent": 27.371829141412675,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "operation_latency_p95_us",
+      "baseline": 1846.271,
+      "vcomp": 2512.895,
+      "delta_percent": 36.106508741132814,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "operation_latency_p99_us",
+      "baseline": 3825.663,
+      "vcomp": 4976.639,
+      "delta_percent": 30.085660969092153,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 798.207,
+      "vcomp": 1016.319,
+      "delta_percent": 27.325242700201823,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1845.247,
+      "vcomp": 2510.847,
+      "delta_percent": 36.07105173453744,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3823.615,
+      "vcomp": 4976.639,
+      "delta_percent": 30.155337292065234,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 809.983,
+      "vcomp": 980.991,
+      "delta_percent": 21.112541868162673,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 1870.847,
+      "vcomp": 2410.495,
+      "delta_percent": 28.84511667709866,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 3932.159,
+      "vcomp": 4771.839,
+      "delta_percent": 21.35417209731345,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 782.335,
+      "vcomp": 1092.607,
+      "delta_percent": 39.65973655786843,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 1808.383,
+      "vcomp": 2678.783,
+      "delta_percent": 48.13139694412079,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 3680.255,
+      "vcomp": 5357.567,
+      "delta_percent": 45.57597231713564,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "scan_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "scan_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "C",
+      "metric": "scan_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "throughput_ops_per_second",
+      "baseline": 88279.272425,
+      "vcomp": 67016.364044,
+      "delta_percent": -24.085957888998767,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_reads",
+      "baseline": 912006,
+      "vcomp": 912006,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "writes",
+      "baseline": 47994,
+      "vcomp": 47994,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "scans",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_read_hits",
+      "baseline": 733005,
+      "vcomp": 738761,
+      "delta_percent": 0.7852606735288203,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_read_misses",
+      "baseline": 179001,
+      "vcomp": 173245,
+      "delta_percent": -3.215624493717917,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_hit_fraction",
+      "baseline": 0.8037282649456253,
+      "vcomp": 0.8100396269322789,
+      "delta_percent": 0.7852606735288203,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "disk_read_bytes",
+      "baseline": 44008947712,
+      "vcomp": 47216558080,
+      "delta_percent": 7.288541387062919,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "disk_write_bytes",
+      "baseline": 3489792,
+      "vcomp": 3584000,
+      "delta_percent": 2.699530516431925,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "operation_latency_p50_us",
+      "baseline": 408.575,
+      "vcomp": 570.879,
+      "delta_percent": 39.72440800342656,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "operation_latency_p95_us",
+      "baseline": 1191.935,
+      "vcomp": 1575.935,
+      "delta_percent": 32.21652187409549,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "operation_latency_p99_us",
+      "baseline": 2977.791,
+      "vcomp": 3454.975,
+      "delta_percent": 16.024764666156877,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 407.807,
+      "vcomp": 571.391,
+      "delta_percent": 40.1130927129745,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1197.055,
+      "vcomp": 1584.127,
+      "delta_percent": 32.33535635371807,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 2977.791,
+      "vcomp": 3467.263,
+      "delta_percent": 16.43741955026392,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 390.399,
+      "vcomp": 542.207,
+      "delta_percent": 38.88534550549565,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 1115.135,
+      "vcomp": 1445.887,
+      "delta_percent": 29.66026534903845,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 2686.975,
+      "vcomp": 3098.623,
+      "delta_percent": 15.320127652843807,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 490.495,
+      "vcomp": 701.951,
+      "delta_percent": 43.110735073752025,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 1490.943,
+      "vcomp": 2035.711,
+      "delta_percent": 36.53848604540886,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 4077.567,
+      "vcomp": 4603.903,
+      "delta_percent": 12.908089554383784,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "scan_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "scan_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "D",
+      "metric": "scan_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "throughput_ops_per_second",
+      "baseline": 22925.312441,
+      "vcomp": 17472.463475,
+      "delta_percent": -23.78527655853464,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "point_reads",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "writes",
+      "baseline": 48056,
+      "vcomp": 48056,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "scans",
+      "baseline": 911944,
+      "vcomp": 911944,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_read_hits",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_read_misses",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_hit_fraction",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "disk_read_bytes",
+      "baseline": 145795764224,
+      "vcomp": 236800057344,
+      "delta_percent": 62.419024039807766,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "disk_write_bytes",
+      "baseline": 15425536,
+      "vcomp": 15761408,
+      "delta_percent": 2.1773765268189083,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "operation_latency_p50_us",
+      "baseline": 1866.751,
+      "vcomp": 2342.911,
+      "delta_percent": 25.50741903981839,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "operation_latency_p95_us",
+      "baseline": 3719.167,
+      "vcomp": 5079.039,
+      "delta_percent": 36.56388648318292,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "operation_latency_p99_us",
+      "baseline": 6078.463,
+      "vcomp": 8822.783,
+      "delta_percent": 45.14825540601299,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "E",
+      "metric": "scan_latency_p50_us",
+      "baseline": 1879.039,
+      "vcomp": 2369.535,
+      "delta_percent": 26.103556126296468,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "scan_latency_p95_us",
+      "baseline": 3737.599,
+      "vcomp": 5128.191,
+      "delta_percent": 37.205489406434445,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "E",
+      "metric": "scan_latency_p99_us",
+      "baseline": 6115.327,
+      "vcomp": 8904.703,
+      "delta_percent": 45.612867472172766,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "throughput_ops_per_second",
+      "baseline": 47272.366707,
+      "vcomp": 41817.99499,
+      "delta_percent": -11.538182022505616,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "point_reads",
+      "baseline": 960000,
+      "vcomp": 960000,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "writes",
+      "baseline": 479808,
+      "vcomp": 479808,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "scans",
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_read_hits",
+      "baseline": 749824,
+      "vcomp": 749852,
+      "delta_percent": 0.0037342096278702996,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_read_misses",
+      "baseline": 210176,
+      "vcomp": 210148,
+      "delta_percent": -0.01332216808769271,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_hit_fraction",
+      "baseline": 0.7810666666666667,
+      "vcomp": 0.7810958333333333,
+      "delta_percent": 0.003734209627848095,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "disk_read_bytes",
+      "baseline": 104825372672,
+      "vcomp": 126192721920,
+      "delta_percent": 20.38375700781787,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "disk_write_bytes",
+      "baseline": 197500928,
+      "vcomp": 197459968,
+      "delta_percent": -0.020739143058612353,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "operation_latency_p50_us",
+      "baseline": 816.639,
+      "vcomp": 910.847,
+      "delta_percent": 11.536064282994074,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "operation_latency_p95_us",
+      "baseline": 2013.183,
+      "vcomp": 2500.607,
+      "delta_percent": 24.211609178102545,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "operation_latency_p99_us",
+      "baseline": 4853.759,
+      "vcomp": 4882.431,
+      "delta_percent": 0.5907174212810951,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 584.703,
+      "vcomp": 640.511,
+      "delta_percent": 9.544674817813492,
+      "verdict": "within_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 1557.503,
+      "vcomp": 1998.847,
+      "delta_percent": 28.336638837934824,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 3735.551,
+      "vcomp": 3971.071,
+      "delta_percent": 6.304826249193218,
+      "verdict": "within_10pct",
+      "primary": true
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 532.991,
+      "vcomp": 577.023,
+      "delta_percent": 8.26130272368577,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 1455.103,
+      "vcomp": 1805.311,
+      "delta_percent": 24.06757459781197,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 3360.767,
+      "vcomp": 3547.135,
+      "delta_percent": 5.545400796901423,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 768.511,
+      "vcomp": 914.943,
+      "delta_percent": 19.053988817336375,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 1875.967,
+      "vcomp": 2531.327,
+      "delta_percent": 34.93451643872201,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 4857.855,
+      "vcomp": 5177.343,
+      "delta_percent": 6.57672985299067,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "scan_latency_p50_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "scan_latency_p95_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "F",
+      "metric": "scan_latency_p99_us",
+      "baseline": 0.0,
+      "vcomp": 0.0,
+      "delta_percent": null,
+      "verdict": "undefined_zero_baseline",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "throughput_ops_per_second",
+      "baseline": 36952.014114,
+      "vcomp": 33037.797098,
+      "delta_percent": -10.59270275207277,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_reads",
+      "baseline": 796810,
+      "vcomp": 796810,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "writes",
+      "baseline": 134564,
+      "vcomp": 134564,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "scans",
+      "baseline": 28626,
+      "vcomp": 28626,
+      "delta_percent": 0.0,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_read_hits",
+      "baseline": 516597,
+      "vcomp": 520424,
+      "delta_percent": 0.7408095672255088,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_read_misses",
+      "baseline": 280213,
+      "vcomp": 276386,
+      "delta_percent": -1.3657467712061888,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_hit_fraction",
+      "baseline": 0.6483314717435775,
+      "vcomp": 0.6531343733135879,
+      "delta_percent": 0.7408095672255088,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "disk_read_bytes",
+      "baseline": 42037764096,
+      "vcomp": 47635537920,
+      "delta_percent": 13.316059843755212,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "disk_write_bytes",
+      "baseline": 7368704,
+      "vcomp": 7430144,
+      "delta_percent": 0.8337965536409087,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "operation_latency_p50_us",
+      "baseline": 888.319,
+      "vcomp": 998.399,
+      "delta_percent": 12.391944785600684,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "operation_latency_p95_us",
+      "baseline": 3371.007,
+      "vcomp": 3717.119,
+      "delta_percent": 10.26731774807943,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "operation_latency_p99_us",
+      "baseline": 6537.215,
+      "vcomp": 7274.495,
+      "delta_percent": 11.278197213951202,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_latency_p50_us",
+      "baseline": 894.975,
+      "vcomp": 1004.543,
+      "delta_percent": 12.242576608285137,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_latency_p95_us",
+      "baseline": 3282.943,
+      "vcomp": 3592.191,
+      "delta_percent": 9.419840673444524,
+      "verdict": "within_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_latency_p99_us",
+      "baseline": 6000.639,
+      "vcomp": 6615.039,
+      "delta_percent": 10.23890955613227,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_hit_latency_p50_us",
+      "baseline": 890.367,
+      "vcomp": 989.183,
+      "delta_percent": 11.098344839824481,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_hit_latency_p95_us",
+      "baseline": 3254.271,
+      "vcomp": 3532.799,
+      "delta_percent": 8.558844669051835,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_hit_latency_p99_us",
+      "baseline": 5955.583,
+      "vcomp": 6508.543,
+      "delta_percent": 9.284733333411687,
+      "verdict": "within_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_miss_latency_p50_us",
+      "baseline": 903.167,
+      "vcomp": 1035.263,
+      "delta_percent": 14.625866534096122,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_miss_latency_p95_us",
+      "baseline": 3334.143,
+      "vcomp": 3715.071,
+      "delta_percent": 11.425064851747502,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "point_lookup_miss_latency_p99_us",
+      "baseline": 6074.367,
+      "vcomp": 6791.167,
+      "delta_percent": 11.800406527955909,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "scan_latency_p50_us",
+      "baseline": 1296.383,
+      "vcomp": 1518.591,
+      "delta_percent": 17.140613537820215,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "scan_latency_p95_us",
+      "baseline": 15179.775,
+      "vcomp": 18661.375,
+      "delta_percent": 22.935781327457107,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "MIXGRAPH",
+      "metric": "scan_latency_p99_us",
+      "baseline": 29736.959,
+      "vcomp": 36306.943,
+      "delta_percent": 22.09366465481557,
+      "verdict": "outside_10pct",
+      "primary": false
+    },
+    {
+      "scope": "final_state",
+      "metric": "fingerprint_rows",
+      "baseline": 66278498,
+      "vcomp": 66319628,
+      "delta_percent": 0.062056324812909125,
+      "verdict": "within_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "sstable_count",
+      "baseline": 164,
+      "vcomp": 209,
+      "delta_percent": 27.439024390243905,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "data_bytes",
+      "baseline": 74702475961,
+      "vcomp": 85846202847,
+      "delta_percent": 14.917479966551328,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "component_bytes",
+      "baseline": 74783176316,
+      "vcomp": 85939525123,
+      "delta_percent": 14.918260171055442,
+      "verdict": "outside_10pct",
+      "primary": true
+    },
+    {
+      "scope": "final_state",
+      "metric": "max_sstable_bytes",
+      "baseline": 631035132,
+      "vcomp": 580038732,
+      "delta_percent": -8.081388406755142,
+      "verdict": "within_10pct",
+      "primary": true
+    }
+  ]
+}

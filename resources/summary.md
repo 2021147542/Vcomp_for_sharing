@@ -1,6 +1,75 @@
 # VComp 작업 요약
 
-최종 갱신: 2026-09-13 (KST)
+최종 갱신: 2026-09-14 (KST)
+
+## 2026-09-14 — E 읽기량 및 논문 설정 설명 정정
+
+최근 100 GiB 실행은 논문과 동일한 workload 설정의 재현이 아니다. 논문은 5분 실행과
+dataset 5% block cache를 명시하지만 이번에는 48 × 20,000회 제한이 300초 설정을
+대체했고 runtime 데이터 cache 비율을 통제하지 않았다. 100 GiB 축소는 사용자 요청이다.
+E read는 baseline 145.796 GB / VComp 236.800 GB(+62.42%)로 원본과 그래프가 일치한다.
+CPU-only E 재생에서 worker RNG 수정 전후 서로 다른 scan 시작점이 26,839→518,805로
+늘었지만, 이것만으로 두 DB 사이 read 차이를 설명했다고 볼 수 없다. 또한 E가 같은
+난수 나머지를 연산 선택/scan 길이에 재사용해 실제 길이가 1..95인 기존 오류를 확인했다.
+이 감사에서는 원본 측정·DB·코드를 변경하거나 새 DB 실험을 실행하지 않았다.
+근거와 한계: [설정 및 E 감사](experiments/20260914-133300_cassandra_e_settings_audit/README.md).
+
+## 2026-09-14 13:09 — 수정 후 100 GiB 비교 완료, fidelity 미통과
+
+사용자 요청에 따라 `cassandra.ucs.picker_seed`를 `CassandraRelevantProperties`에
+등록했다. 전체 Checkstyle(2,550 files), Controller 24 tests, seed를 켠 실제
+24 B/1,000 B smoke가 통과했다. Runtime JAR의 seed 연결 검사도 새 접근 방식에
+맞췄으며 VComp daemon에도 같은 seed를 전달하도록 정리했다.
+
+새 캠페인을 tmux `cassandra_fidelity_100g_20260914_111023`에서 시작했다.
+100 GiB = 104,857,600 writes × 1,024 B, 10,000 ordered partitions,
+64 MiB flush/SST, calibrated size model, seed 20260909를 사용한다.
+Native baseline → VComp를 순차 적재한 뒤 A–F/MixGraph를 양쪽 각각
+48 workers × 20,000 operations로 실행한다. 새 `split-streams-v2`를 양쪽에
+사용하며, 원본 DB는 보존하고 workload마다 별도 checkpoint를 만든다.
+
+- Raw root: `/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023`
+- 결과와 현재 상태: `resources/experiments/20260914-111023_cassandra_100g_fidelity_rerun/`
+- Runner: `experiments/scripts/cassandra/run_fidelity_100g_campaign.sh`
+
+13:09:58 KST에 exit status 0으로 완료했다(시작 11:10:24, 약 2시간).
+적재 두 경로와 workload JSON 14개, 결과·그래프·`fidelity.csv/json`이 보존되어 있다.
+다만 주요 비교 33개 중 28개가 ±10% 범위 밖이어서 fidelity는 미통과다.
+
+VComp throughput 차이는 A −27.41%, B −16.65%, C −24.50%, D −24.09%,
+E −23.79%, F −11.54%, MixGraph −10.59%였다. C point p50/p95/p99는
+각각 +27.33%/+36.07%/+30.16%다. 최종 visible rows는 baseline/VComp
+66,278,498/66,319,628(+0.0621%)로 가깝지만, drain 후 live SST 수는
+164/209(+27.44%), 전체 component bytes는 74,783,176,316/85,939,525,123
+(+14.92%)로 다르다. 기준은 양쪽의 실제 final live files이며, VComp
+materialization 직후 수치를 쓰는 기존 loading figure와 구분한다.
+
+실행 완료를 성능 유사성 달성으로 해석하지 않는다. 수정 전 실험과 workload
+generator가 다르고 반복도 1회이므로, 과거 수치와의 차이를 특정 수정의 인과적
+효과로 단정하지 않는다. 이번 불리한 결과도 seed·설정·원시 자료와 함께 유지한다.
+
+## 2026-09-14 Cassandra 재점검 — 현재 상태
+
+최신 논문 `VComp_0913.pdf` §4.1–4.4와 현재 소스를 대조했다. 목표는 적재 비용을
+제외한 baseline과의 양방향 유사성이며, 읽기 throughput 증가도 큰 차이면 실패다.
+Pebble과 원본 RocksDB는 이번 작업에서 수정하지 않았다.
+
+`faithful_v2` 100 GiB는 visible rows가 +0.021%로 가까워도 SST 수 181/210,
+최종 크기 72.255/82.404 GiB, C throughput −13.49%, C miss 비율
+42.59%/33.39%로 여전히 fidelity를 통과하지 못했다.
+
+이번 수정은 Cassandra partition 경계를 clustering scalar로 잘못 비교하던 UCS
+adapter, split 때 KMV density를 다시 보정하던 경로, native INSERT와 달랐던
+materialized row metadata를 교정한다. Workload worker들이 동일 난수열의 이동본을
+재생하던 문제와 준비 시간이 측정에 들어가던 문제도 수정하고 hit/miss별 latency를
+추가한다. 상세 근거와 검증은
+`resources/experiments/20260914-104858_cassandra_fidelity_audit/README.md`에 기록한다.
+
+Standalone flush→quiescence scheduler와 CQL SST materialization은 아직 native
+task/lifecycle/writer 경로 전체에 통합되지 않았다. 이번 변경을 새 100 GiB 성능
+개선 또는 ±10% 달성으로 해석하면 안 된다. 아래 과거 연대기의 single-partition,
+재귀/final-only certificate, 별도 simulated-clock 설명은 해당 시점의 기록이며,
+현재 faithful_v2는 ordered partitions와 continuous inverse 경로를 사용한다.
 
 ## 목적과 범위
 

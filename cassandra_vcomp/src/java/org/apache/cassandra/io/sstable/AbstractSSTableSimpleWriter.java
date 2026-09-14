@@ -58,6 +58,7 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
     protected Consumer<Collection<SSTableReader>> sstableProducedListener;
     protected boolean openSSTableOnProduced = false;
     protected long estimatedKeyCount = 0;
+    protected EncodingStats encodingStats = EncodingStats.NO_STATS;
 
     protected AbstractSSTableSimpleWriter(File directory, TableMetadataRef metadata, RegularAndStaticColumns columns)
     {
@@ -103,6 +104,11 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
         this.estimatedKeyCount = estimatedKeyCount;
     }
 
+    protected void setEncodingStats(EncodingStats encodingStats)
+    {
+        this.encodingStats = Objects.requireNonNull(encodingStats, "encodingStats");
+    }
+
     /**
      * Indicate whether the produced sstable should be opened or not.
      */
@@ -121,7 +127,7 @@ abstract class AbstractSSTableSimpleWriter implements Closeable
 
     protected SSTableTxnWriter createWriter(SSTable.Owner owner) throws IOException
     {
-        SerializationHeader header = new SerializationHeader(true, metadata.get(), columns, EncodingStats.NO_STATS);
+        SerializationHeader header = new SerializationHeader(true, metadata.get(), columns, encodingStats);
 
         if (makeRangeAware)
             return SSTableTxnWriter.createRangeAware(metadata, estimatedKeyCount, ActiveRepairService.UNREPAIRED_SSTABLE, ActiveRepairService.NO_PENDING_REPAIR, false, format, header);

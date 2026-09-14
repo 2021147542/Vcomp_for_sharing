@@ -58,7 +58,11 @@ sha256sum "$RUNTIME_JAR" >"$CAMPAIGN_ROOT/runtime-jar.sha256"
 "$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
     org.apache.cassandra.db.compaction.unified.Controller \
     >"$CAMPAIGN_ROOT/controller-runtime.javap"
-if ! rg -q 'cassandra.ucs.picker_seed' "$CAMPAIGN_ROOT/controller-runtime.javap"; then
+"$JAVA_HOME/bin/javap" -classpath "$RUNTIME_JAR" -c -private \
+    org.apache.cassandra.config.CassandraRelevantProperties \
+    >"$CAMPAIGN_ROOT/properties-runtime.javap"
+if ! rg -q 'CassandraRelevantProperties.UCS_PICKER_SEED' "$CAMPAIGN_ROOT/controller-runtime.javap" \
+   || ! rg -q 'cassandra.ucs.picker_seed' "$CAMPAIGN_ROOT/properties-runtime.javap"; then
     echo 'runtime jar does not contain the requested seeded UCS Controller' >&2
     exit 1
 fi
