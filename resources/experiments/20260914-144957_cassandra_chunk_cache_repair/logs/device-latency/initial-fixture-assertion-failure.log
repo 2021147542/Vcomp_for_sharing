@@ -1,0 +1,15 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x0000000840089040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x0000000840089040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at CassandraPaperWorkloadTest.checkScanAccounting(CassandraPaperWorkloadTest.java:238)
+	at CassandraPaperWorkloadTest.main(CassandraPaperWorkloadTest.java:40)
+Caused by: java.lang.AssertionError
+	at com.datastax.driver.core.PreparedId.<init>(PreparedId.java:40)
+	... 6 more

@@ -1,5 +1,50 @@
 # Pebble VComp Feasibility Prototype Report
 
+## Result layout completed; 100 GiB workloads resumed (15:30 KST)
+
+Timestamp bundles now expose only figures/, logs/, results.md; the three SVGs and tables use the same source values. Incomplete attempts were removed from the overview while preserving completed unfavorable cells and required load provenance under logs/. Historical device latency is unavailable. The resumed run adds device-level mean request latency from existing diskstats boundaries; the 47 primary comparisons, seed 20260909 and 48 workers × 300 seconds are unchanged. Canonical loads are reused and all fourteen workload checkpoints restart.
+
+[현재 결과 / current results](experiments/20260914-152956_cassandra_100g_organized_resume/results.md).
+
+## User-requested pause and result layout (2026-09-14 15:11 KST)
+
+The Cassandra workload run was paused at the user's request and has not restarted.
+Result bundles now use `figures/loading.svg`, `figures/workload.svg`,
+`figures/io_latency.svg`, `logs/`, and `results.md`; figures are being verified.
+Latency figures use recorded DB/API measurements with their actual scope. Physical
+disk I/O latency and unrecorded write-only latency remain unavailable, not zero or
+substituted point-read latency. Failed attempts are retained under the repair
+bundle's `logs/attempts/`; completed measurements outside ±10% remain reportable.
+
+## Native chunk-cache repair qualified; 100 GiB workloads restarted (15:01 KST)
+
+Native cache keys omitted reader chunk geometry and growing-tail length. Two actual-file reproducers failed against the old cache and pass after repair; all five regression controls and build/Checkstyle passed. Both 100GiB A pilot cells (48 workers, 60 seconds) passed with zero server errors/OOM. The successful original loads are reused; all 14 workload cells restart with separate load/reader binary provenance and canonical SST byte hashes before/after.
+
+[수정 검증 / repair evidence](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/README.md) · [일시 중단한 재실행 / paused attempt](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/attempts/20260914-150117_cassandra_100g_cachefixed/README.md).
+
+## Cassandra 100 GiB attempt failed during first workload (14:48 KST)
+
+Both complete loads passed full-table value verification. The first A baseline cell failed with Index.db EOF and RandomAccessReader buffer-position errors during native compaction. Zero workload cells completed; this attempt is not performance evidence. Logs and canonical loaded databases are preserved while the root cause is investigated.
+
+[실패 기록 / failed attempt](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/attempts/20260914-141045_cassandra_100g_comprehensive/README.md).
+
+## Cassandra comprehensive qualification and new campaign (2026-09-14 14:10 KST)
+
+The audit corrected complete-KMV replay during materialization, native Data.db
+calibration and flush-size rounding, workload E/D/MixGraph semantics, compaction
+default handling, symmetric measurement boundaries, and inherited rate/memtable
+controls. Core/UCS 77 tests, full Checkstyle, workload regressions and real daemon
+pilots passed. An initial schema-assertion failure was retained and corrected.
+See [qualification evidence](experiments/20260914-134200_cassandra_comprehensive_preflight/logs/README.md).
+
+The new [100 GiB campaign](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/attempts/20260914-141045_cassandra_100g_comprehensive/README.md)
+started at 14:10:45 KST: fixed seed 20260909, 48 threads, 300 seconds per workload,
+native 5 GiB chunk cache and shared 20 GiB memory cgroup without swap. There are
+47 preregistered similarity comparisons, including workload device reads/writes.
+Additional OS cache and incomplete native virtual-task lifecycle integration are
+disclosed limitations. Qualification does not establish absence of every bug or
+fidelity success; no completed measurement is claimed at launch.
+
 ## Cassandra workload-setting correction and E audit (2026-09-14)
 
 The latest 100 GiB run does not reproduce the paper's five-minute workloads and
@@ -11,7 +56,7 @@ RNG fix, but cannot attribute the within-pair I/O gap. E also reuses the operati
 choice for its scan length, restricting scans to 1..95 rather than the local
 RocksDB reference's uniform 1..100. This audit preserves measurements and code;
 it does not establish an I/O root cause or a corrected benchmark result.
-See [the setting and E audit](experiments/20260914-133300_cassandra_e_settings_audit/README.md).
+See [the setting and E audit](experiments/20260914-133300_cassandra_e_settings_audit/logs/README.md).
 
 ## Cassandra 100 GiB rerun completed (2026-09-14 13:09:58 KST)
 
@@ -24,7 +69,7 @@ Final visible row counts were close (+0.0621%), but live SST counts were
 164 versus 209 (+27.44%), and final component bytes differed by +14.92%.
 Both sides' final-state figures use actual files after natural compaction drain.
 The unfavorable result, configuration, provenance and original databases are
-preserved in the [completed bundle](experiments/20260914-111023_cassandra_100g_fidelity_rerun/README.md).
+preserved in the [completed bundle](experiments/20260914-111023_cassandra_100g_fidelity_rerun/results.md).
 One repetition and a changed workload generator preclude attributing differences
 from historical runs to any individual code fix.
 
@@ -38,7 +83,7 @@ fixed-operation A–F/MixGraph campaign in tmux
 `cassandra_fidelity_100g_20260914_111023`. Raw databases and logs are preserved at
 `/work/vcomp-pebble-1tb/cassandra-fidelity-100g-20260914-111023`; status, preflight
 evidence and automatic final publication live in
-[the new result bundle](experiments/20260914-111023_cassandra_100g_fidelity_rerun/README.md).
+[the new result bundle](experiments/20260914-111023_cassandra_100g_fidelity_rerun/results.md).
 No completed 100 GiB results are claimed at launch.
 
 ## Cassandra fidelity audit update (2026-09-14)
@@ -50,7 +95,7 @@ INSERT row liveness and encoding minima, and correlated workload worker RNG
 streams. Workload timing now starts after preparation and reports hit/miss
 latencies separately. The current standalone scheduler is still not integrated
 with the native task lifecycle. New 100 GiB workload parity is not established.
-See [the audit and validation bundle](experiments/20260914-104858_cassandra_fidelity_audit/README.md)
+See [the audit and validation bundle](experiments/20260914-104858_cassandra_fidelity_audit/logs/README.md)
 for evidence and limits. Earlier sections below describe historical versions.
 
 ## Change log
@@ -192,7 +237,7 @@ The experiment no longer uses `testing.T.TempDir`, because that deleted the roug
 
 ## Cassandra iteration graph export (2026-09-13)
 
-Added `resources/plot_cassandra_iteration_versions.py` and exported nine independent Cassandra implementation-version comparisons to `resources/experiments/20260913-124257_cassandra_iteration_versions/`. Each version has its own SVG and PNG, rather than combining implementation versions in one figure. Every graph shows load time, device writes, write amplification, final physical size, final SST count, and exact-version workload throughput deltas when such workload results exist. The accompanying `metrics.csv` and `metrics.json` retain the raw source paths and derived deltas.
+Added `resources/plot_cassandra_iteration_versions.py` and exported nine independent Cassandra implementation-version comparisons to `resources/experiments/20260913-124257_cassandra_iteration_versions/`. The original per-version SVG/PNG files are now archived under that bundle’s `logs/`; its current entry points are `results.md` and `figures/`. Every original graph shows load time, device writes, write amplification, final physical size, final SST count, and exact-version workload throughput deltas when such workload results exist. The accompanying `logs/metrics.csv` and `logs/metrics.json` retain the raw source paths and derived deltas.
 
 Workload measurements were not copied between versions: versions without an exact matching workload run are explicitly marked as having no workload result. No 1 TiB Cassandra graph was produced because no completed 1 TiB Cassandra result exists. The seeded 1 GiB and 100 GiB figures also disclose that the baseline daemon loaded the pre-seed JAR, even though the requested seed was recorded, so those runs are not presented as a fully seeded baseline/VComp pair.
 
@@ -252,7 +297,7 @@ runs execute different-length operation prefixes.
 
 Archived the small configuration, binary provenance, logs, fingerprints,
 metrics, SST TOC files, and nine completed workload JSON files under
-`resources/experiments/20260913-125952_cassandra_100g_single_partition_failed_fidelity/`.
+`resources/experiments/20260913-124257_cassandra_iteration_versions/logs/partial-attempts/20260913-125952_cassandra_100g_single_partition_failed_fidelity/`.
 The corresponding `/work` database/checkpoint tree was then removed at the
 user's request. The next iteration starts again at 1 GiB and treats deterministic
 equal-trace workload replay plus final-state/physical-shape fidelity as gates
@@ -347,9 +392,10 @@ GiB to 202 MiB and restored `/work` free space from 6.1 TiB to 6.3 TiB.
 
 Added `cassandra_check/run_ordered_partition_1tib_campaign.sh` and launched it
 in tmux session `cassandra_1tib_fixed_q1_20260913_194834`. The raw root is
-`/work/vcomp-pebble-1tb/cassandra-vcomp-1tib-fixedtrace-q1-20260913-194834`,
-and the small-result destination is
-`resources/experiments/20260913-194834_cassandra_1tib_fixed_operations_q1/`.
+`/work/vcomp-pebble-1tb/cassandra-vcomp-1tib-fixedtrace-q1-20260913-194834`.
+The user stopped this run during baseline loading. Its incomplete small-result
+folder was removed during the September 14 reorganization; the raw path is
+retained as the historical source reference.
 The campaign uses 1,024 GiB, 1,073,741,824 logical key slots, 102,400
 Murmur3-token-ordered partitions, 24-byte keys, 1,000-byte values, UCS T4, and
 picker seed 20260909. It runs the native baseline and VComp serially, then A-F

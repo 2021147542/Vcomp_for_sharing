@@ -199,7 +199,9 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
 		long bytes1 = calibration.writeCalibration("calibration-small", firstEntries, 0);
 		long bytes2 = calibration.writeCalibration("calibration-large", secondEntries,
 		                                           Math.multiplyExact((long) firstEntries, 4));
-		VCompSSTSizeModel model = VCompSSTSizeModel.logical(logicalEntryBytes);
+		// UCS density uses SSTableReader.onDiskLength(), i.e. Data.db only.
+		// Logical KV bytes are a flush-cadence input, not a physical-size floor.
+		VCompSSTSizeModel model = new VCompSSTSizeModel();
 		if (!model.addCalibration(firstEntries, bytes1, secondEntries, bytes2))
 			throw new IllegalStateException("invalid physical SST calibration samples: "
 			                                + firstEntries + '/' + bytes1 + ", "
@@ -221,7 +223,8 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
 			try (Stream<Path> paths = Files.walk(java.nio.file.Paths.get(directory)))
 			{
 				for (Path path : (Iterable<Path>) paths::iterator)
-					if (Files.isRegularFile(path)) bytes = saturatedAdd(bytes, Files.size(path));
+					if (Files.isRegularFile(path) && path.getFileName().toString().endsWith("-Data.db"))
+						bytes = saturatedAdd(bytes, Files.size(path));
 			}
 		}
 		return bytes;

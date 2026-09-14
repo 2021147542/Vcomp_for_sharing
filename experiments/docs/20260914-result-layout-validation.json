@@ -1,0 +1,89 @@
+{
+  "bundles": [
+    {
+      "bundle": "20260910-205045_pebble_1tib_1kb",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260911-115100_pebble_1tib_shape_diagnosis",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260912-135643_cassandra_100g_audited_common_theta_logical",
+      "loading_rows": 2,
+      "measured_workload_cells": 0
+    },
+    {
+      "bundle": "20260912-160700_cassandra_100g_paper_workloads",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260912-190636_cassandra_1g_final_only_certificate",
+      "loading_rows": 3,
+      "measured_workload_cells": 0
+    },
+    {
+      "bundle": "20260913-124257_cassandra_iteration_versions",
+      "loading_rows": 18,
+      "measured_workload_cells": 0
+    },
+    {
+      "bundle": "20260913-160100_cassandra_1g_fixed_operations_q1",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260913-180400_cassandra_100g_fixed_operations_q1",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260913-225200_cassandra_faithful_v2_1g",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260914-010000_cassandra_faithful_v2_100g",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260914-100000_cassandra_mixgraph_100g_5min_rerun",
+      "loading_rows": 2,
+      "measured_workload_cells": 2
+    },
+    {
+      "bundle": "20260914-104858_cassandra_fidelity_audit",
+      "loading_rows": 0,
+      "measured_workload_cells": 0
+    },
+    {
+      "bundle": "20260914-111023_cassandra_100g_fidelity_rerun",
+      "loading_rows": 2,
+      "measured_workload_cells": 14
+    },
+    {
+      "bundle": "20260914-133300_cassandra_e_settings_audit",
+      "loading_rows": 0,
+      "measured_workload_cells": 0
+    },
+    {
+      "bundle": "20260914-134200_cassandra_comprehensive_preflight",
+      "loading_rows": 0,
+      "measured_workload_cells": 0
+    },
+    {
+      "bundle": "20260914-144957_cassandra_chunk_cache_repair",
+      "loading_rows": 0,
+      "measured_workload_cells": 0
+    }
+  ],
+  "top_level_structure": "figures/, logs/, results.md only",
+  "svg_files": 48,
+  "original_non_markdown_hashes_unchanged": 1204,
+  "raw_workload_values": "match",
+  "synthetic_publication_fixture": "both runners preserve 47 primary comparisons and handle null device latency"
+}

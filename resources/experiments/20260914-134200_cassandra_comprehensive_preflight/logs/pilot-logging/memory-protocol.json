@@ -1,0 +1,26 @@
+{
+  "cgroup": "/sys/fs/cgroup/user.slice/user-1008.slice/user@1008.service/app.slice/vcomp-workloads-20260914-140810-4021768.service",
+  "memory_max_bytes": 21474836480,
+  "swap_max_bytes": 0,
+  "scope": "Cassandra daemon and workload clients together",
+  "interpretation": "Total memory cap; additional OS page cache is not an exact 5% cache",
+  "memory_events_before": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "live_memory_trace": "/tmp/vcomp-workload-memory-d4td_r85.jsonl",
+  "logging": "Temporary trace outside DB filesystem; archived after all measured clients exit",
+  "memory_events_after": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "runner_exit_status": 0
+}

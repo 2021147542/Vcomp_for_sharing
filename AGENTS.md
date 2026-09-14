@@ -43,6 +43,12 @@ conventions without the original server's workspace-level instructions.
   multi-terabyte database, SSTables, traces, and large raw logs under `/work`,
   and record that source run path in the timestamped result directory. Do not
   place new experiment outputs loose at the top of `resources/`.
+- Each timestamped result directory exposes exactly `figures/`, `logs/`, and
+  `results.md`. Put exactly `loading.svg`, `workload.svg`, and `io_latency.svg`
+  in `figures/`; retain original measurements, configurations, provenance and
+  supporting documents under `logs/`. Generate figures and tables from the same
+  values with `experiments/analysis/publish_experiment_bundle.py`. Explicitly
+  label unavailable measurements; client DB latency is not physical disk latency.
 - Use a new run ID for new measurements. Do not overwrite historical bundles
   or present a rebuilt executable as the previously measured binary.
 - Generic shell runners use `experiments/lib/common.sh` for configurable

@@ -1,0 +1,216 @@
+{
+  "status": {},
+  "bundle": "20260913-125952_cassandra_100g_single_partition_failed_fidelity",
+  "audit_only": false,
+  "loading": [
+    {
+      "group": "Primary",
+      "system": "baseline",
+      "seconds": 5922.127,
+      "write_amplification": null,
+      "write_gb": 482.946781184,
+      "final_gb": 83.939715369,
+      "sst_count": 6.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/raw/baseline/cassandra-baseline-100g-single-partition-baseline-20260913-130011/baseline_metrics.env",
+      "note": ""
+    },
+    {
+      "group": "Primary",
+      "system": "vcomp",
+      "seconds": 122.152,
+      "write_amplification": null,
+      "write_gb": 87.6059648,
+      "final_gb": 87.596590861,
+      "sst_count": 3.0,
+      "visible_rows": 68890595.0,
+      "source": "logs/raw/vcomp/cassandra-vcomp-100g-single-partition-vcomp-20260913-144350/load_metrics.env; logs/raw/vcomp/cassandra-vcomp-100g-single-partition-vcomp-20260913-144350/vcomp.log",
+      "note": ""
+    }
+  ],
+  "workloads": [
+    {
+      "workload": "A",
+      "system": "baseline",
+      "throughput": 77224.213064,
+      "read_gb": 73.768267776,
+      "write_gb": 1.20512512,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/a_baseline.json",
+      "wall_seconds": 300.003148,
+      "operations": 23167507.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 585.215,
+      "p95": 1425.407,
+      "p99": 2447.359
+    },
+    {
+      "workload": "A",
+      "system": "vcomp",
+      "throughput": 78239.178073,
+      "read_gb": 74.6484736,
+      "write_gb": 1.067966464,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/a_vcomp.json",
+      "wall_seconds": 300.175316,
+      "operations": 23485470.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 496.383,
+      "p95": 1184.767,
+      "p99": 1886.207
+    },
+    {
+      "workload": "B",
+      "system": "baseline",
+      "throughput": 63709.716798,
+      "read_gb": 94.472003584,
+      "write_gb": 0.075259904,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/b_baseline.json",
+      "wall_seconds": 300.002731,
+      "operations": 19113089.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 708.095,
+      "p95": 1434.623,
+      "p99": 2334.719
+    },
+    {
+      "workload": "B",
+      "system": "vcomp",
+      "throughput": 82360.769705,
+      "read_gb": 114.441433088,
+      "write_gb": 0.09019392,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/b_vcomp.json",
+      "wall_seconds": 300.003534,
+      "operations": 24708522.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 543.743,
+      "p95": 1106.943,
+      "p99": 1579.007
+    },
+    {
+      "workload": "C",
+      "system": "baseline",
+      "throughput": 54212.113919,
+      "read_gb": 89.839017984,
+      "write_gb": 0.055365632,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/c_baseline.json",
+      "wall_seconds": 300.00197,
+      "operations": 16263741.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 823.807,
+      "p95": 1545.215,
+      "p99": 2402.303
+    },
+    {
+      "workload": "C",
+      "system": "vcomp",
+      "throughput": 84099.407879,
+      "read_gb": 118.371487744,
+      "write_gb": 0.059244544,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/c_vcomp.json",
+      "wall_seconds": 300.001767,
+      "operations": 25229971.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 521.983,
+      "p95": 1023.999,
+      "p99": 1361.919
+    },
+    {
+      "workload": "D",
+      "system": "baseline",
+      "throughput": 107563.449295,
+      "read_gb": 310.000009216,
+      "write_gb": 2.451849216,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/d_baseline.json",
+      "wall_seconds": 300.043753,
+      "operations": 32273741.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 349.951,
+      "p95": 970.239,
+      "p99": 1776.639
+    },
+    {
+      "workload": "D",
+      "system": "vcomp",
+      "throughput": 140746.815986,
+      "read_gb": 404.821200896,
+      "write_gb": 3.695325184,
+      "latency_kind": "point lookup",
+      "source": "logs/raw/workloads/results/d_vcomp.json",
+      "wall_seconds": 300.07692,
+      "operations": 42234871.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 273.151,
+      "p95": 749.567,
+      "p99": 1296.383
+    },
+    {
+      "workload": "E",
+      "system": "baseline",
+      "throughput": 26148.665668,
+      "read_gb": 91.889393664,
+      "write_gb": 6.619774976,
+      "latency_kind": "scan",
+      "source": "logs/raw/workloads/results/e_baseline.json",
+      "wall_seconds": 300.0033,
+      "operations": 7844686.0,
+      "measurement_mode": "not recorded",
+      "generator_version": "not recorded",
+      "p50": 1716.223,
+      "p95": 3266.559,
+      "p99": 4866.047
+    },
+    {
+      "workload": "E",
+      "system": "vcomp",
+      "latency_kind": "scan",
+      "source": "N/A (no primary result)"
+    },
+    {
+      "workload": "F",
+      "system": "baseline",
+      "latency_kind": "point lookup",
+      "source": "N/A (no primary result)"
+    },
+    {
+      "workload": "F",
+      "system": "vcomp",
+      "latency_kind": "point lookup",
+      "source": "N/A (no primary result)"
+    },
+    {
+      "workload": "MIXGRAPH",
+      "system": "baseline",
+      "latency_kind": "point lookup",
+      "source": "N/A (no primary result)"
+    },
+    {
+      "workload": "MIXGRAPH",
+      "system": "vcomp",
+      "latency_kind": "point lookup",
+      "source": "N/A (no primary result)"
+    }
+  ],
+  "notes": [
+    "Cassandra historical load windows can differ: baseline may include drain, while VComp loader timing/write bytes may end before import/settling. Consult the preserved README/configuration; these values are not silently converted into symmetric windows."
+  ],
+  "physical_io_latency": null,
+  "physical_io_latency_note": "Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.",
+  "units": {
+    "volume": "GB = 10^9 bytes",
+    "latency": "microseconds"
+  }
+}

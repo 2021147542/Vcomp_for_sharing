@@ -1,0 +1,10 @@
+{
+  "reason": "User requested experiment-folder organization before continuing benchmarks",
+  "interrupted_at": "2026-09-14T15:14:44.335153",
+  "completed_cells": [
+    "A baseline"
+  ],
+  "partial_cell": "A VComp",
+  "canonical_loads_preserved": true,
+  "not_a_performance_comparison": true
+}

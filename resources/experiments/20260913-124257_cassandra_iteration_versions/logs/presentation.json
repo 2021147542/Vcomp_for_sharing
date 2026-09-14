@@ -1,0 +1,219 @@
+{
+  "fidelity_summary": null,
+  "status": {},
+  "bundle": "20260913-124257_cassandra_iteration_versions",
+  "audit_only": false,
+  "loading": [
+    {
+      "group": "01_1g_ordered_multi_partition",
+      "system": "baseline",
+      "seconds": 48.879,
+      "write_gb": 2.728861696,
+      "final_gb": 0.688169327,
+      "sst_count": 8.0,
+      "visible_rows": 662885.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "01_1g_ordered_multi_partition",
+      "system": "vcomp",
+      "seconds": 2.763,
+      "write_gb": 0.742572032,
+      "final_gb": 0.737058632,
+      "sst_count": 1.0,
+      "visible_rows": 705870.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "02_1g_ucs_shard_fidelity_v1",
+      "system": "baseline",
+      "seconds": 48.704,
+      "write_gb": 2.728419328,
+      "final_gb": 0.688169327,
+      "sst_count": 8.0,
+      "visible_rows": 662885.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "02_1g_ucs_shard_fidelity_v1",
+      "system": "vcomp",
+      "seconds": 3.004,
+      "write_gb": 0.728539136,
+      "final_gb": 0.72154113,
+      "sst_count": 14.0,
+      "visible_rows": 690994.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "03_1g_ucs_shard_fidelity_v2",
+      "system": "baseline",
+      "seconds": 48.704,
+      "write_gb": 2.728419328,
+      "final_gb": 0.688169327,
+      "sst_count": 8.0,
+      "visible_rows": 662885.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "03_1g_ucs_shard_fidelity_v2",
+      "system": "vcomp",
+      "seconds": 2.547,
+      "write_gb": 0.725622784,
+      "final_gb": 0.721510671,
+      "sst_count": 8.0,
+      "visible_rows": 690994.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "04_1g_seeded_common_scheduler",
+      "system": "baseline",
+      "seconds": 49.865,
+      "write_gb": 2.728701952,
+      "final_gb": 0.688169327,
+      "sst_count": 8.0,
+      "visible_rows": 662885.0,
+      "source": "logs/metrics.json",
+      "note": "Seed requested, but baseline jar did not contain seeded Controller"
+    },
+    {
+      "group": "04_1g_seeded_common_scheduler",
+      "system": "vcomp",
+      "seconds": 2.673,
+      "write_gb": 0.725622784,
+      "final_gb": 0.721510671,
+      "sst_count": 8.0,
+      "visible_rows": 690994.0,
+      "source": "logs/metrics.json",
+      "note": "Seed requested, but baseline jar did not contain seeded Controller"
+    },
+    {
+      "group": "05_100g_ucs_shard_fidelity_v1",
+      "system": "baseline",
+      "seconds": 5602.441,
+      "write_gb": 455.918891008,
+      "final_gb": 76.903451522,
+      "sst_count": 176.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "05_100g_ucs_shard_fidelity_v1",
+      "system": "vcomp",
+      "seconds": 129.427,
+      "write_gb": 88.59797504,
+      "final_gb": 88.480242284,
+      "sst_count": 210.0,
+      "visible_rows": 66292349.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "06_100g_shared_scheduler_v2",
+      "system": "baseline",
+      "seconds": 5602.441,
+      "write_gb": 455.918891008,
+      "final_gb": 76.903451522,
+      "sst_count": 176.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "06_100g_shared_scheduler_v2",
+      "system": "vcomp",
+      "seconds": 118.157,
+      "write_gb": 75.260715008,
+      "final_gb": 75.164425008,
+      "sst_count": 171.0,
+      "visible_rows": 66478158.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "07_100g_shared_scheduler_unbiased_v3",
+      "system": "baseline",
+      "seconds": 5602.441,
+      "write_gb": 455.918891008,
+      "final_gb": 76.903451522,
+      "sst_count": 176.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/metrics.json",
+      "note": "A and MixGraph completed; A–F campaign was interrupted before B"
+    },
+    {
+      "group": "07_100g_shared_scheduler_unbiased_v3",
+      "system": "vcomp",
+      "seconds": 116.748,
+      "write_gb": 72.732839936,
+      "final_gb": 72.647159044,
+      "sst_count": 151.0,
+      "visible_rows": 66386836.0,
+      "source": "logs/metrics.json",
+      "note": "A and MixGraph completed; A–F campaign was interrupted before B"
+    },
+    {
+      "group": "08_100g_continuous_scheduler_v4",
+      "system": "baseline",
+      "seconds": 5602.441,
+      "write_gb": 455.918891008,
+      "final_gb": 76.903451522,
+      "sst_count": 176.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "08_100g_continuous_scheduler_v4",
+      "system": "vcomp",
+      "seconds": 119.658,
+      "write_gb": 76.305657856,
+      "final_gb": 76.213429088,
+      "sst_count": 165.0,
+      "visible_rows": 66549593.0,
+      "source": "logs/metrics.json",
+      "note": ""
+    },
+    {
+      "group": "09_100g_seeded_common_scheduler",
+      "system": "baseline",
+      "seconds": 5549.421,
+      "write_gb": 452.29211648,
+      "final_gb": 76.929678085,
+      "sst_count": 175.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/metrics.json",
+      "note": "Seed requested, but baseline jar did not contain seeded Controller"
+    },
+    {
+      "group": "09_100g_seeded_common_scheduler",
+      "system": "vcomp",
+      "seconds": 119.558,
+      "write_gb": 76.307968,
+      "final_gb": 76.213429088,
+      "sst_count": 165.0,
+      "visible_rows": 66549593.0,
+      "source": "logs/metrics.json",
+      "note": "Seed requested, but baseline jar did not contain seeded Controller"
+    }
+  ],
+  "workloads": [],
+  "notes": [
+    "Iteration versions have different configurations/scales; each row retains its version and original caveat."
+  ],
+  "physical_io_latency": null,
+  "physical_io_latency_note": "Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.",
+  "device_latency_available": false,
+  "device_latency_note": "Device-layer averages = diskstats accumulated milliseconds / completed requests; includes all processes and in-flight boundary effects. Not NVMe physical latency percentiles.",
+  "units": {
+    "volume": "GB = 10^9 bytes",
+    "client_latency": "microseconds",
+    "device_average_latency": "milliseconds"
+  }
+}

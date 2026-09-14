@@ -1,0 +1,695 @@
+[
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/runtime-jar.sha256",
+    "archive": "raw/runtime-jar.sha256",
+    "bytes": 162,
+    "sha256": "b4b9a339f9c8a0fc78cbe9861cffe15725e4856b74753230c7d37a3927a48669",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/controller-runtime.javap",
+    "archive": "raw/controller-runtime.javap",
+    "bytes": 63374,
+    "sha256": "8ffd7ca3e98444d6c1182cf16a0260feff851085724df094e19fa22d24fc1ff7",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/COMPLETE",
+    "archive": "raw/COMPLETE",
+    "bytes": 734,
+    "sha256": "e207279cb224fcdbd5ed698614e4179c786fb6ad477a9fbf07a54fa0478e2839",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/build-jar.log",
+    "archive": "raw/build-jar.log",
+    "bytes": 4089,
+    "sha256": "c43166a1510b33a4f99f6b1d2641161a9df090e7718bd08f14bd7b93cf43dd66",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/properties-runtime.javap",
+    "archive": "raw/properties-runtime.javap",
+    "bytes": 341091,
+    "sha256": "4dfc334588e618ce740d3ac8402e098b361fbc2f9a5577a9a98a90cc8100ecba",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/baseline_metrics.env",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/baseline_metrics.env",
+    "bytes": 300,
+    "sha256": "acb16de67187f1da54fac7209482056d81b3f4abe2ecdc411f2a28bdf684ee09",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/disk-after.txt",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/disk-after.txt",
+    "bytes": 93,
+    "sha256": "d2245fd9977705ff8fabd3768b42b2dc971915a4d63c50f51cf1f891b08f36ac",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/sstable-sizes.tsv",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/sstable-sizes.tsv",
+    "bytes": 49164,
+    "sha256": "6796d6f90706c0a01f1bb29cf29efdf1946bb61f772ca95897a41adbf6ccdf9f",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/verification.log",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/verification.log",
+    "bytes": 60,
+    "sha256": "d6b1b28108092a46be2feb0d44626b2dfe668005531a15123d30a64c5a178b69",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/SUCCESS",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/SUCCESS",
+    "bytes": 39,
+    "sha256": "1b0ffbfbb49b295a76171055f0971e5dba059dca3e4ec8ba34e630a0246a156c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/configuration.txt",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/configuration.txt",
+    "bytes": 581,
+    "sha256": "75112cdf796351897b42f6776970db7bec84d0b969dd7f0ea773ed659ba9c2c5",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/tablestats.txt",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/tablestats.txt",
+    "bytes": 1581,
+    "sha256": "9ff4564201ff424f9f71260daf234d3b3b9292b4c742ece1ab8f0978e547c6dc",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/cassandra.stdout.log",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/cassandra.stdout.log",
+    "bytes": 4633680,
+    "sha256": "38bf91290ac3738fa637b96fccb24010dc9e66d3300764990480ba74ff0511cd",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/disk-before.txt",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/disk-before.txt",
+    "bytes": 93,
+    "sha256": "045e62afce2fca6f2f3039e5f537d0dd680921eb8a186e5307d1b21e5f85687b",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/build.log",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/build.log",
+    "bytes": 2644,
+    "sha256": "5df45eeaa05c3f88e82bba37e90515d34ed5d84ff47269f51386be4af08d222e",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/fingerprint.log",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/fingerprint.log",
+    "bytes": 119,
+    "sha256": "47cfd61bf6d60bf97e4f9a8be08adea5ed348f1a32c4b25f6b88010bb1f44140",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/commitlog_archiving.properties",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/commitlog_archiving.properties",
+    "bytes": 2867,
+    "sha256": "f874d976b7b75072f61d264a6503b98878c4c0c929689c4d54e59985bfc6b43f",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/logback-tools.xml",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/logback-tools.xml",
+    "bytes": 1195,
+    "sha256": "f45f53b3a11cca7f8a3d7044bff241878749317e7c32793e1bebb371cf368dff",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm11-server.options",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm11-server.options",
+    "bytes": 5984,
+    "sha256": "03d6659166f9bb0aaa6f9bafde7b814d956a716fbafc502c34110207d3b3c921",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/cassandra-rackdc.properties",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/cassandra-rackdc.properties",
+    "bytes": 3114,
+    "sha256": "4514086df1282bdec253ea24d16c33e30ac6fce871ce68d39e784252db3a1d04",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm17-clients.options",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm17-clients.options",
+    "bytes": 2405,
+    "sha256": "759f8ce8324e3ccd33a0dc1990e77d2158c5ea70c5f21f0b15bdbf75c6f02f6b",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/README.txt",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/README.txt",
+    "bytes": 291,
+    "sha256": "69b1eb8704c591bd41ec10daea2c720135c5461334cc50810f6a4067f335ea6e",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm17-server.options",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm17-server.options",
+    "bytes": 5405,
+    "sha256": "4727839aa86756b17a18436d69f72f3a3fd6a6a71d6b9456dcf0a63d6f788f60",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm-clients.options",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm-clients.options",
+    "bytes": 1324,
+    "sha256": "feaca110b9a9265ea1bdf5d551a9b00a006bd1830b2eea8e9c6d1d5671ae492c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/cassandra_latest.yaml",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/cassandra_latest.yaml",
+    "bytes": 122954,
+    "sha256": "488e667a9722c950a19e0c87c01fba97961bcc08f1ae0d8f093badab322e3a45",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm11-clients.options",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm11-clients.options",
+    "bytes": 2186,
+    "sha256": "84cd1d3aa1b8bca34faf55a1bbc4b050c24cee6225938c5688a39fdc01f1ecc0",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/logback.xml",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/logback.xml",
+    "bytes": 5586,
+    "sha256": "e0921fca481368ef9568bab57626aa9a2066714988e56b6e36990b20a78060c3",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/cassandra.yaml",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/cassandra.yaml",
+    "bytes": 125880,
+    "sha256": "ac3874e4e981c300783a7d15f74ceaa8601fc1e62663ebe80424a32c8dfa2872",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm-server.options",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/jvm-server.options",
+    "bytes": 7943,
+    "sha256": "a111e2a14f5f9c6164e3f5aa8be07573a4c1512bc6ac3b0c36baaf261ee64487",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/triggers/README.txt",
+    "archive": "raw/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/conf/triggers/README.txt",
+    "bytes": 61,
+    "sha256": "2c29e3cb4991590490fc59fd79562d86538a00d0818cd49b790d817f3b827ef1",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s-control/protocol.json",
+    "archive": "raw/workloads-300s-control/protocol.json",
+    "bytes": 807,
+    "sha256": "6b2697dde0d2738e424f9a7a5aafbf9bc624550d5e1dc195af9af63de15f6fe5",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s-control/unit.txt",
+    "archive": "raw/workloads-300s-control/unit.txt",
+    "bytes": 40,
+    "sha256": "9f0906f847b55f10c44b6c4bc274a5e54bed8c6a950c5a393486b85852b0354f",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s-control/memory.jsonl",
+    "archive": "raw/workloads-300s-control/memory.jsonl",
+    "bytes": 13378,
+    "sha256": "a50a3524778143eb9ff8c360e30c71358f0f8a46c2a461d40c55931303624375",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/figures/cassandra_baseline_vcomp_100g.md",
+    "archive": "raw/figures/cassandra_baseline_vcomp_100g.md",
+    "bytes": 970,
+    "sha256": "2f5e9691f64e11146527f31883d3002c711cf1a33669625a477c32be3515b907",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/figures/cassandra_baseline_vcomp_100g.png",
+    "archive": "raw/figures/cassandra_baseline_vcomp_100g.png",
+    "bytes": 123129,
+    "sha256": "a6f7d8e7422cf1be5505668b0a84fb66eca4507c92bf00e3727ac7e2ea38cf1e",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/figures/cassandra_baseline_vcomp_100g.svg",
+    "archive": "raw/figures/cassandra_baseline_vcomp_100g.svg",
+    "bytes": 71974,
+    "sha256": "a1b9517c7946d41a1440e9a93b3bbdfe0a2c38702490c5b26d8f195299252311",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runtime-jar.sha256",
+    "archive": "raw/workloads-300s/runtime-jar.sha256",
+    "bytes": 162,
+    "sha256": "b4b9a339f9c8a0fc78cbe9861cffe15725e4856b74753230c7d37a3927a48669",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/configuration.txt",
+    "archive": "raw/workloads-300s/configuration.txt",
+    "bytes": 1022,
+    "sha256": "36fdde39df139028e0d2cc8e7fa90ada95eec02fcf596ac717de9de7c27f38fc",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/FAILED",
+    "archive": "raw/workloads-300s/FAILED",
+    "bytes": 160,
+    "sha256": "312d7a919ec2d8c714b235b534738e32bd4df0bab1ddc3bf62f33c0353f26380",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/tablestats-before.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/tablestats-before.txt",
+    "bytes": 1511,
+    "sha256": "f4966f106669e0a88239c853dc566d05ca6a3af337bda4e0332907669913984b",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/compactionstats-before.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/compactionstats-before.txt",
+    "bytes": 627,
+    "sha256": "08f727a02496d08a4571366476cf2e5e2fd8f1df0f8c0cfbb4bed7cbae12cfd8",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/workload.log",
+    "archive": "raw/workloads-300s/runs/a/baseline/workload.log",
+    "bytes": 7265,
+    "sha256": "c225cc063c53bb71235c1015743adf0354c0a8791950ceccdeb2b4d129a3ae4c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/daemon-io-before.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/daemon-io-before.txt",
+    "bytes": 128,
+    "sha256": "895f3267c883f476b1ce81a28220b08e54483fe60a427ab7f4cf39f431ff9754",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/node-info-before.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/node-info-before.txt",
+    "bytes": 1271,
+    "sha256": "6fa3aa3ba6599f12014d4da1704da50200aad644bb7bc1a9e5e4ba099b60c2df",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/compaction-enabled.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/compaction-enabled.txt",
+    "bytes": 60,
+    "sha256": "f343f8ea276176f154779bc67a5e01961d92d99948d7e733a23fb0a7240f0122",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/tablehistograms-before.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/tablehistograms-before.txt",
+    "bytes": 938,
+    "sha256": "a95f6e62543a366d38b57d30befa2fa79f166e7ee11c29c10e1d4dc637722b2c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/runtime-metrics-before.env",
+    "archive": "raw/workloads-300s/runs/a/baseline/runtime-metrics-before.env",
+    "bytes": 197,
+    "sha256": "7b4c119dbf6f9c97b1e937f1a2d35e07478e5825cfb00b1080738332d26669bf",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/workload-live-path.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/workload-live-path.txt",
+    "bytes": 41,
+    "sha256": "22e70ed175f90ab7c0ae78cbbab2c48428cca8ab38a81e13b27dbe3998a7ca31",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/compaction-runtime.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/compaction-runtime.txt",
+    "bytes": 8,
+    "sha256": "a4ecc5c87d811bbff7a118c17ef8cf83318cb623a103c15b8549089aa2a7f0ac",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/cassandra.stdout.log",
+    "archive": "raw/workloads-300s/runs/a/baseline/cassandra.stdout.log",
+    "bytes": 161838,
+    "sha256": "3ebbd0f084859187e44c8aba473b452564943eddc9d03cc748ebe3fc1a9811a6",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/commitlog_archiving.properties",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/commitlog_archiving.properties",
+    "bytes": 2867,
+    "sha256": "f874d976b7b75072f61d264a6503b98878c4c0c929689c4d54e59985bfc6b43f",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/logback-tools.xml",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/logback-tools.xml",
+    "bytes": 1195,
+    "sha256": "f45f53b3a11cca7f8a3d7044bff241878749317e7c32793e1bebb371cf368dff",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/jvm11-server.options",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/jvm11-server.options",
+    "bytes": 5984,
+    "sha256": "03d6659166f9bb0aaa6f9bafde7b814d956a716fbafc502c34110207d3b3c921",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/cassandra-rackdc.properties",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/cassandra-rackdc.properties",
+    "bytes": 3114,
+    "sha256": "4514086df1282bdec253ea24d16c33e30ac6fce871ce68d39e784252db3a1d04",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/jvm17-clients.options",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/jvm17-clients.options",
+    "bytes": 2405,
+    "sha256": "759f8ce8324e3ccd33a0dc1990e77d2158c5ea70c5f21f0b15bdbf75c6f02f6b",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/README.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/README.txt",
+    "bytes": 291,
+    "sha256": "69b1eb8704c591bd41ec10daea2c720135c5461334cc50810f6a4067f335ea6e",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/jvm17-server.options",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/jvm17-server.options",
+    "bytes": 5405,
+    "sha256": "4727839aa86756b17a18436d69f72f3a3fd6a6a71d6b9456dcf0a63d6f788f60",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/jvm-clients.options",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/jvm-clients.options",
+    "bytes": 1324,
+    "sha256": "feaca110b9a9265ea1bdf5d551a9b00a006bd1830b2eea8e9c6d1d5671ae492c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/cassandra_latest.yaml",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/cassandra_latest.yaml",
+    "bytes": 122954,
+    "sha256": "488e667a9722c950a19e0c87c01fba97961bcc08f1ae0d8f093badab322e3a45",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/jvm11-clients.options",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/jvm11-clients.options",
+    "bytes": 2186,
+    "sha256": "84cd1d3aa1b8bca34faf55a1bbc4b050c24cee6225938c5688a39fdc01f1ecc0",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/logback.xml",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/logback.xml",
+    "bytes": 5586,
+    "sha256": "e0921fca481368ef9568bab57626aa9a2066714988e56b6e36990b20a78060c3",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/cassandra.yaml",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/cassandra.yaml",
+    "bytes": 125873,
+    "sha256": "d429277c1560d228b24a94f92530b1a97c5caec38540e18540c1964ba4e752d0",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/jvm-server.options",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/jvm-server.options",
+    "bytes": 7943,
+    "sha256": "a111e2a14f5f9c6164e3f5aa8be07573a4c1512bc6ac3b0c36baaf261ee64487",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/workloads-300s/runs/a/baseline/conf/triggers/README.txt",
+    "archive": "raw/workloads-300s/runs/a/baseline/conf/triggers/README.txt",
+    "bytes": 61,
+    "sha256": "2c29e3cb4991590490fc59fd79562d86538a00d0818cd49b790d817f3b827ef1",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/memory-after.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/memory-after.txt",
+    "bytes": 207,
+    "sha256": "3159422fff4f95fa290139e3565305fd681fe8473eb84a066c82d914e415d0b3",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/load_metrics.env",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/load_metrics.env",
+    "bytes": 298,
+    "sha256": "c7e8a8beb7d98c2771aa796ab1e93def789034e4efb8b1e0ff9624b8b1dd89d2",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/status.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/status.txt",
+    "bytes": 319,
+    "sha256": "87c3628d2a93cf153fef3781a2849f6fca6a52bde1fd25f81638983d4cc4b5f8",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/post_load_compaction_metrics.env",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/post_load_compaction_metrics.env",
+    "bytes": 57,
+    "sha256": "cbc6b2effb277fc93eecea6fae7582dca21a79dbea6f097b849fea687c3be093",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/disk-after.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/disk-after.txt",
+    "bytes": 93,
+    "sha256": "a4184346296080ca8cb37962993fd743efc32316116b18125f232b62da3a1524",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/sstable-sizes.tsv",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/sstable-sizes.tsv",
+    "bytes": 42302,
+    "sha256": "be554bf9fa6b78122ded2dd2a8ab898ba8edca4e0883f0aff5c9520e4d950ffc",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/vcomp.log",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/vcomp.log",
+    "bytes": 1096,
+    "sha256": "bbb637b32c28594f06e7704930ca5757fcdaa91d4e28fcb0bb8c926e1870be9e",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/verification.log",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/verification.log",
+    "bytes": 60,
+    "sha256": "d6b1b28108092a46be2feb0d44626b2dfe668005531a15123d30a64c5a178b69",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/SUCCESS",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/SUCCESS",
+    "bytes": 39,
+    "sha256": "d351c093184355b93a9275031ed99ff0a615a123edb0f2272fcfbeb6f8dedbaa",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/materialized-sstable-sizes.tsv",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/materialized-sstable-sizes.tsv",
+    "bytes": 42573,
+    "sha256": "f89aee4c2717f62f7ce5db7174aa03ecb8058e493827d33e18a3d83a8ef85b59",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/configuration.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/configuration.txt",
+    "bytes": 825,
+    "sha256": "1576b8516c1ba872c904739ea9a11674d0a01a2b0dcc245d5cabb538d0e56a52",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/memory-before.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/memory-before.txt",
+    "bytes": 207,
+    "sha256": "93640fafb1a44f58661925f8b8f30f7fc49b49bfe99c464a441bf8bdcd7be5e3",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/tablestats.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/tablestats.txt",
+    "bytes": 1549,
+    "sha256": "73b24cc76b1e56994f634a8143a10179c56f0abcfc0601d29b80a52448ec08e6",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/progress.tsv",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/progress.tsv",
+    "bytes": 137,
+    "sha256": "fe69d39da22110444b451c99e5ddd235ae53556fef4dd1fe50c5fed0cd0b1451",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/compaction-enable.log",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/compaction-enable.log",
+    "bytes": 171,
+    "sha256": "6851051ce57fccc54c5335a1b1d046a16d7ea60b03f2f746a9cc22186f0121a2",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/materialization_metrics.env",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/materialization_metrics.env",
+    "bytes": 29,
+    "sha256": "119d0e4eb5fc72d9fea9327fb0620c21a7a49b7502de4fa6cad8420f3237dd61",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/cassandra.stdout.log",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/cassandra.stdout.log",
+    "bytes": 694868,
+    "sha256": "8724e95844e362ac1bf3bbd13316205debb0ea4a7ede8001eeb006005c8914f8",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/disk-before.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/disk-before.txt",
+    "bytes": 93,
+    "sha256": "d2245fd9977705ff8fabd3768b42b2dc971915a4d63c50f51cf1f891b08f36ac",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/directory-sizes.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/directory-sizes.txt",
+    "bytes": 146,
+    "sha256": "39dd8a0b24467973e07702a820a9d5568923e81a12912b67b4052dfd504fbea5",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/build.log",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/build.log",
+    "bytes": 2789,
+    "sha256": "dc15a7dd6d5fa9a331fc140d7aa4dd14df06d0c3787b52ceea43af77ddae3b49",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/fingerprint.log",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/fingerprint.log",
+    "bytes": 119,
+    "sha256": "fd312de25e22e1d0726ec8fe9ef542e0072cbe4afb607d3693191a75eb8d9eb0",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/commitlog_archiving.properties",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/commitlog_archiving.properties",
+    "bytes": 2867,
+    "sha256": "f874d976b7b75072f61d264a6503b98878c4c0c929689c4d54e59985bfc6b43f",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/logback-tools.xml",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/logback-tools.xml",
+    "bytes": 1195,
+    "sha256": "f45f53b3a11cca7f8a3d7044bff241878749317e7c32793e1bebb371cf368dff",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm11-server.options",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm11-server.options",
+    "bytes": 5984,
+    "sha256": "03d6659166f9bb0aaa6f9bafde7b814d956a716fbafc502c34110207d3b3c921",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/cassandra-rackdc.properties",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/cassandra-rackdc.properties",
+    "bytes": 3114,
+    "sha256": "4514086df1282bdec253ea24d16c33e30ac6fce871ce68d39e784252db3a1d04",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm17-clients.options",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm17-clients.options",
+    "bytes": 2405,
+    "sha256": "759f8ce8324e3ccd33a0dc1990e77d2158c5ea70c5f21f0b15bdbf75c6f02f6b",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/README.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/README.txt",
+    "bytes": 291,
+    "sha256": "69b1eb8704c591bd41ec10daea2c720135c5461334cc50810f6a4067f335ea6e",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm17-server.options",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm17-server.options",
+    "bytes": 5405,
+    "sha256": "4727839aa86756b17a18436d69f72f3a3fd6a6a71d6b9456dcf0a63d6f788f60",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm-clients.options",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm-clients.options",
+    "bytes": 1324,
+    "sha256": "feaca110b9a9265ea1bdf5d551a9b00a006bd1830b2eea8e9c6d1d5671ae492c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/cassandra_latest.yaml",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/cassandra_latest.yaml",
+    "bytes": 122954,
+    "sha256": "488e667a9722c950a19e0c87c01fba97961bcc08f1ae0d8f093badab322e3a45",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm11-clients.options",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm11-clients.options",
+    "bytes": 2186,
+    "sha256": "84cd1d3aa1b8bca34faf55a1bbc4b050c24cee6225938c5688a39fdc01f1ecc0",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/logback.xml",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/logback.xml",
+    "bytes": 5586,
+    "sha256": "e0921fca481368ef9568bab57626aa9a2066714988e56b6e36990b20a78060c3",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/cassandra.yaml",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/cassandra.yaml",
+    "bytes": 125835,
+    "sha256": "ff7518df4899b55fed04b6f808bc7ec5349bdd25a93c0e65d4dc39f1363c1087",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm-server.options",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/jvm-server.options",
+    "bytes": 7943,
+    "sha256": "a111e2a14f5f9c6164e3f5aa8be07573a4c1512bc6ac3b0c36baaf261ee64487",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/triggers/README.txt",
+    "archive": "raw/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011/conf/triggers/README.txt",
+    "bytes": 61,
+    "sha256": "2c29e3cb4991590490fc59fd79562d86538a00d0818cd49b790d817f3b827ef1",
+    "archived": true
+  }
+]

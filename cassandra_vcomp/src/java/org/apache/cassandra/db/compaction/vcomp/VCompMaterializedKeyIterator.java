@@ -18,21 +18,22 @@
  */
 package org.apache.cassandra.db.compaction.vcomp;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.PrimitiveIterator;
 
-/** Streams reconstructed keys from a final vSST without allocating the complete key list. */
+/**
+ * Streams reconstructed keys from each final rank model. KMV samples are only
+ * compaction metadata; even a complete sketch must not replace PLR inversion
+ * with original-key replay during materialization (paper section 4.3).
+ */
 public final class VCompMaterializedKeyIterator implements PrimitiveIterator.OfLong
 {
     private static final double MIN_SLOPE = 1e-15;
 
     private final VCompPipeline.VirtualSSTable descriptor;
     private final List<VCompLearnedModel.Segment> segments;
-    private final long[] exactKeys;
     private final VCompDiscreteCdf.Cursor discreteCursor;
-    private int exactKeyIndex;
     private long position;
     private int segmentIndex;
     private boolean havePrevious;
@@ -55,22 +56,10 @@ public final class VCompMaterializedKeyIterator implements PrimitiveIterator.OfL
             if (descriptor.model().discreteModel().count() != descriptor.estimatedUniqueKeys())
                 throw new IllegalArgumentException("discrete certificate count differs from descriptor key count");
             discreteCursor = descriptor.model().discreteModel().cursor();
-            exactKeys = null;
-        }
-        else if (descriptor.sketch() != null && descriptor.sketch().isComplete())
-        {
-            discreteCursor = null;
-            exactKeys = new long[descriptor.sketch().samples().size()];
-            for (int i = 0; i < exactKeys.length; i++)
-                exactKeys[i] = descriptor.sketch().samples().get(i).key();
-            Arrays.sort(exactKeys);
-            if (exactKeys.length != descriptor.estimatedUniqueKeys())
-                throw new IllegalArgumentException("complete KMV cardinality differs from descriptor key count");
         }
         else
         {
             discreteCursor = null;
-            exactKeys = null;
         }
     }
 
@@ -111,18 +100,6 @@ public final class VCompMaterializedKeyIterator implements PrimitiveIterator.OfL
             if (havePrevious && next <= previous)
                 throw new IllegalStateException("discrete materialization emitted unordered keys");
             emitted++;
-            prepared = true;
-            return;
-        }
-
-        if (exactKeys != null)
-        {
-            if (exactKeyIndex == exactKeys.length)
-            {
-                exhausted = true;
-                return;
-            }
-            next = exactKeys[exactKeyIndex++];
             prepared = true;
             return;
         }

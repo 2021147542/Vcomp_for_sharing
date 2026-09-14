@@ -1,0 +1,22 @@
+NAME                        SIZE TYPE  MOUNTPOINTS
+loop1                      63.8M loop  /snap/core20/2866
+loop2                      66.8M loop  /snap/core24/1643
+loop3                      50.3M loop  /snap/snapd/27738
+loop4                      92.2M loop  /snap/lxd/40364
+loop5                      66.8M loop  /snap/core24/2124
+loop6                      50.1M loop  /snap/snapd/27710
+loop7                      92.2M loop  /snap/lxd/40526
+loop8                      63.8M loop  /snap/core20/2922
+sda                       931.5G disk  
+├─sda1                        1G part  /boot/efi
+├─sda2                        2G part  /boot
+└─sda3                    928.5G part  
+  └─ubuntu--vg-ubuntu--lv 928.5G lvm   /
+nvme3n1                     1.8T disk  
+└─md0                       7.3T raid0 /work
+nvme0n1                     1.8T disk  
+└─md0                       7.3T raid0 /work
+nvme2n1                     1.8T disk  
+└─md0                       7.3T raid0 /work
+nvme1n1                     1.8T disk  
+└─md0                       7.3T raid0 /work

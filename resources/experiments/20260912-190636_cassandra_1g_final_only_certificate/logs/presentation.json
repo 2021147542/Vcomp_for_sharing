@@ -1,0 +1,54 @@
+{
+  "fidelity_summary": null,
+  "status": {},
+  "bundle": "20260912-190636_cassandra_1g_final_only_certificate",
+  "audit_only": false,
+  "loading": [
+    {
+      "group": "Final-only certificate",
+      "system": "baseline",
+      "seconds": null,
+      "write_gb": null,
+      "final_gb": 0.688132263,
+      "sst_count": 1,
+      "visible_rows": 662885,
+      "source": "logs/README.md",
+      "note": "Published final-state values; loading time and workload latency unavailable."
+    },
+    {
+      "group": "Final-only certificate",
+      "system": "vcomp-old",
+      "seconds": null,
+      "write_gb": null,
+      "final_gb": 0.737007837,
+      "sst_count": 1,
+      "visible_rows": 705870,
+      "source": "logs/README.md",
+      "note": "Published final-state values; loading time and workload latency unavailable."
+    },
+    {
+      "group": "Final-only certificate",
+      "system": "vcomp-new",
+      "seconds": null,
+      "write_gb": null,
+      "final_gb": 0.737007839,
+      "sst_count": 1,
+      "visible_rows": 705870,
+      "source": "logs/README.md",
+      "note": "Published final-state values; loading time and workload latency unavailable."
+    }
+  ],
+  "workloads": [],
+  "notes": [
+    "Transcribed from the retained README result table. Physical final-state bytes, not a new benchmark."
+  ],
+  "physical_io_latency": null,
+  "physical_io_latency_note": "Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.",
+  "device_latency_available": false,
+  "device_latency_note": "Device-layer averages = diskstats accumulated milliseconds / completed requests; includes all processes and in-flight boundary effects. Not NVMe physical latency percentiles.",
+  "units": {
+    "volume": "GB = 10^9 bytes",
+    "client_latency": "microseconds",
+    "device_average_latency": "milliseconds"
+  }
+}

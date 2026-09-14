@@ -1,0 +1,40 @@
+[1/6] Compiling Cassandra source and verification client
+[2/6] Starting isolated Cassandra 5.0.9 source build
+[3/6] Creating ordered multi-partition schema
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[4/6] Running virtual load, materialization, and nodetool import
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x0000000840066440 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x0000000840066440
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+VCOMP_SIZING estimated_flush_bytes=364 picker_flush_size_bytes=1048576 size_basis=logical_kv
+VCOMP_RESULT seconds=0.846 writes=64 flush_bytes=364 target_sst_bytes=67108864 size_model=logical materialized_keys=43 logical_bytes=3913 virtual_compactions=5 final_runs=1 final_sstables=1 estimated_final_bytes=3913 max_estimated_sstable_bytes=3913 max_estimated_run_bytes=3913 max_sstables_per_run=1 physical_sst_bytes=9634 max_physical_sst_bytes=9634 physical_sst_count=1
+[5/6] Verifying imported data through Cassandra
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+PASS: verified 43 ascending rows and deterministic values
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+FINGERPRINT rows=43 sha256=85e0ae6f79e6865031f67be2287327974c9eb991d863494c420a04ab10b82b12 values_verified=true
+PASS: automatic UCS compaction enabled for vcomp_pipeline_smoke_48b.kv
+PASS: automatic UCS compaction enabled for vcomp_pipeline_smoke_48b.kv
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+FINGERPRINT rows=43 sha256=85e0ae6f79e6865031f67be2287327974c9eb991d863494c420a04ab10b82b12 values_verified=true
+[6/6] Preserving database and table statistics
+Smoke test completed successfully.
+Preserved run directory: /home/dongju/vcomp/cassandra_check/pipeline-runs/48b-20260914-135824-4005507

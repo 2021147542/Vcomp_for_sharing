@@ -1,0 +1,18 @@
+[
+  {
+    "document": "/home/dongju/vcomp/resources/experiments/20260914-133300_cassandra_e_settings_audit/logs/README.md",
+    "original": "/home/dongju/vcomp/resources/experiments/20260914-133300_cassandra_e_settings_audit/logs/original-documents/README.md"
+  },
+  {
+    "document": "/home/dongju/vcomp/resources/experiments/20260914-134200_cassandra_comprehensive_preflight/logs/workload-audit.md",
+    "original": "/home/dongju/vcomp/resources/experiments/20260914-134200_cassandra_comprehensive_preflight/logs/original-documents/workload-audit.md"
+  },
+  {
+    "document": "/home/dongju/vcomp/resources/experiments/20260914-134200_cassandra_comprehensive_preflight/logs/README.md",
+    "original": "/home/dongju/vcomp/resources/experiments/20260914-134200_cassandra_comprehensive_preflight/logs/original-documents/README.md"
+  },
+  {
+    "document": "/home/dongju/vcomp/resources/experiments/20260914-144957_cassandra_chunk_cache_repair/logs/README.md",
+    "original": "/home/dongju/vcomp/resources/experiments/20260914-144957_cassandra_chunk_cache_repair/logs/original-documents/README.md"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "qualification_bundle": "/home/dongju/vcomp/resources/experiments/20260914-134200_cassandra_comprehensive_preflight",
+  "core_picker_tests": 53,
+  "controller_tests": 24,
+  "checkstyle_source_files": 2550,
+  "real_workload_cells_passed": 14,
+  "controls_pilot_cells_passed": 4,
+  "logging_pilot_cells_passed": 2,
+  "seed": 20260909,
+  "runtime_jar_sha256_file": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/runtime-jar.sha256",
+  "status": "qualification_passed_measurement_running",
+  "limitations": "Native lifecycle incomplete; additional OS cache; one repetition; no proof of absence of every bug or fidelity."
+}

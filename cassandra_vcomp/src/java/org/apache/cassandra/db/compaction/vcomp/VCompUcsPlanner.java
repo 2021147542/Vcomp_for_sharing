@@ -145,6 +145,15 @@ public final class VCompUcsPlanner implements VCompPipeline.VirtualCompactionPla
                                                      0.333);
     }
 
+    /** Match native Controller.getFlushSizeBytes()'s whole-MiB observation rounding. */
+    public static long roundObservedFlushSize(long dataBytes)
+    {
+        if (dataBytes <= 0)
+            throw new IllegalArgumentException("observed flush Data.db bytes must be positive");
+        long mib = 1L << 20;
+        return Math.multiplyExact((dataBytes - 1) / mib + 1, mib);
+    }
+
     @Override
     public Optional<VCompPipeline.VirtualCompactionPlan> pick(VCompPipeline.VirtualStateSnapshot state)
     {

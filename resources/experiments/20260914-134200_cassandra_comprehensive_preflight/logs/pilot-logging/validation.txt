@@ -1,0 +1,1 @@
+PASS: both read-only cells >=5s; client logs and memory trace stored on a different filesystem and archived byte-identically; no OOM. Native/shared device background writes are retained, not forced to zero.

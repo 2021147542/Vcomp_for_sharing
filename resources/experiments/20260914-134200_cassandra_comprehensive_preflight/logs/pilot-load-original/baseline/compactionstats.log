@@ -1,0 +1,78 @@
+concurrent compactors                48                                                                            
+pending tasks                        1                                                                             
+baseline_preflight_v3                kv              1                                                             
+compactions completed                7                                                                             
+data compacted                       790573092                                                                     
+compressed data compacted            790539028                                                                     
+compactions aborted                  0                                                                             
+compactions reduced                  0                                                                             
+sstables dropped from compaction     0                                                                             
+15 minute rate                       0.46/minute                                                                   
+mean rate                            409.89/hour                                                                   
+compaction throughput (MiB/s)        64.0                                                                          
+id                                   compaction type keyspace              table completed total     unit  progress
+f71f3830-aff6-11f1-86eb-d3953ae89632 Compaction      baseline_preflight_v3 kv    195062771 263557762 bytes 74.01%  
+active compaction remaining time     0h00m01s                                                                      
+concurrent compactors                48                                                                            
+pending tasks                        3                                                                             
+baseline_preflight_v3                kv              3                                                             
+compactions completed                8                                                                             
+data compacted                       1054130854                                                                    
+compressed data compacted            1054096790                                                                    
+compactions aborted                  0                                                                             
+compactions reduced                  0                                                                             
+sstables dropped from compaction     0                                                                             
+15 minute rate                       0.52/minute                                                                   
+mean rate                            430.26/hour                                                                   
+compaction throughput (MiB/s)        64.0                                                                          
+id                                   compaction type keyspace              table completed total     unit  progress
+f9998700-aff6-11f1-86eb-d3953ae89632 Compaction      baseline_preflight_v3 kv    307871139 452278770 bytes 68.07%  
+active compaction remaining time     0h00m02s                                                                      
+concurrent compactors                48                                                                            
+pending tasks                        2                                                                             
+baseline_preflight_v3                kv              2                                                             
+compactions completed                9                                                                             
+data compacted                       1506409624                                                                    
+compressed data compacted            1506375560                                                                    
+compactions aborted                  0                                                                             
+compactions reduced                  0                                                                             
+sstables dropped from compaction     0                                                                             
+15 minute rate                       0.59/minute                                                                   
+mean rate                            447.58/hour                                                                   
+compaction throughput (MiB/s)        64.0                                                                          
+id                                   compaction type keyspace              table completed total     unit  progress
+fd9a27b0-aff6-11f1-86eb-d3953ae89632 Compaction      baseline_preflight_v3 kv    221600198 509973494 bytes 43.45%  
+active compaction remaining time     0h00m04s                                                                      
+concurrent compactors            48         
+pending tasks                    0          
+compactions completed            10         
+data compacted                   2016383118 
+compressed data compacted        2016349054 
+compactions aborted              0          
+compactions reduced              0          
+sstables dropped from compaction 0          
+15 minute rate                   0.58/minute
+mean rate                        462.47/hour
+compaction throughput (MiB/s)    64.0       
+concurrent compactors            48         
+pending tasks                    0          
+compactions completed            10         
+data compacted                   2016383118 
+compressed data compacted        2016349054 
+compactions aborted              0          
+compactions reduced              0          
+sstables dropped from compaction 0          
+15 minute rate                   0.65/minute
+mean rate                        432.23/hour
+compaction throughput (MiB/s)    64.0       
+concurrent compactors            48         
+pending tasks                    0          
+compactions completed            10         
+data compacted                   2016383118 
+compressed data compacted        2016349054 
+compactions aborted              0          
+compactions reduced              0          
+sstables dropped from compaction 0          
+15 minute rate                   0.64/minute
+mean rate                        405.66/hour
+compaction throughput (MiB/s)    64.0       

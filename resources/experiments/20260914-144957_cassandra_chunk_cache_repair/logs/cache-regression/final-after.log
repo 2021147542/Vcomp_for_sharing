@@ -1,0 +1,8 @@
+JUnit version 4.12
+WARN o.a.c.config.YamlConfigurationLoader - [scripted_user_defined_functions_enabled] parameters have been deprecated. They have new names and/or value format; For more information, please refer to NEWS.txt
+WARN o.a.c.config.YamlConfigurationLoader - [scripted_user_defined_functions_enabled] parameters have been deprecated. They have new names and/or value format; For more information, please refer to NEWS.txt
+.....
+Time: 0.555
+
+OK (5 tests)
+

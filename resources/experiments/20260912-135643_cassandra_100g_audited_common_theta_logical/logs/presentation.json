@@ -1,0 +1,45 @@
+{
+  "fidelity_summary": null,
+  "status": {},
+  "bundle": "20260912-135643_cassandra_100g_audited_common_theta_logical",
+  "audit_only": false,
+  "loading": [
+    {
+      "group": "Primary",
+      "system": "baseline",
+      "seconds": 6009.799,
+      "write_amplification": 5.915,
+      "write_gb": 487.660642304,
+      "final_gb": 82.451667173,
+      "sst_count": 4.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/baseline_metrics.env; logs/cassandra_baseline_vcomp_100g.md",
+      "note": "Missing fields filled from preserved rounded loading table."
+    },
+    {
+      "group": "Primary",
+      "system": "vcomp",
+      "seconds": 112.63,
+      "write_amplification": 1.0,
+      "write_gb": 90.833801216,
+      "final_gb": 90.823525924864,
+      "sst_count": 4.0,
+      "visible_rows": 67768639.0,
+      "source": "logs/vcomp_load_metrics.env; logs/README.md; logs/cassandra_baseline_vcomp_100g.md",
+      "note": "Missing fields filled from preserved rounded loading table."
+    }
+  ],
+  "workloads": [],
+  "notes": [
+    "Cassandra historical load windows can differ: baseline may include drain, while VComp loader timing/write bytes may end before import/settling. Consult the preserved README/configuration; these values are not silently converted into symmetric windows."
+  ],
+  "physical_io_latency": null,
+  "physical_io_latency_note": "Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.",
+  "device_latency_available": false,
+  "device_latency_note": "Device-layer averages = diskstats accumulated milliseconds / completed requests; includes all processes and in-flight boundary effects. Not NVMe physical latency percentiles.",
+  "units": {
+    "volume": "GB = 10^9 bytes",
+    "client_latency": "microseconds",
+    "device_average_latency": "milliseconds"
+  }
+}

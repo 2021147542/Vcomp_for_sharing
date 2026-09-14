@@ -34,6 +34,7 @@ import org.apache.cassandra.db.compaction.vcomp.VCompNodetoolInstaller;
 import org.apache.cassandra.db.compaction.vcomp.VCompOrderedPartitionLayout;
 import org.apache.cassandra.db.compaction.vcomp.VCompPipeline;
 import org.apache.cassandra.db.compaction.vcomp.VCompSSTSizeModel;
+import org.apache.cassandra.db.compaction.vcomp.VCompUcsPlanner;
 import org.apache.cassandra.io.util.File;
 import org.apache.cassandra.utils.Clock;
 
@@ -117,8 +118,13 @@ public final class VCompBulkLoad
         VCompSSTSizeModel sizeModel = sizeModelName.equals("calibrated")
                                       ? materializer.calibrateSizeModel(4096, 8192)
                                       : VCompSSTSizeModel.logical(entryBytes);
+        long estimatedFlushDataBytes = sizeModel.estimate(writesPerFlush);
+        long pickerFlushSizeBytes = VCompUcsPlanner.roundObservedFlushSize(estimatedFlushDataBytes);
+        System.out.printf("VCOMP_SIZING estimated_flush_bytes=%d picker_flush_size_bytes=%d size_basis=%s%n",
+                          estimatedFlushDataBytes, pickerFlushSizeBytes,
+                          sizeModelName.equals("calibrated") ? "data_component" : "logical_kv");
         VCompPipeline pipeline = VCompPipeline.createDefault(flushBytes,
-                                                              sizeModel.estimate(writesPerFlush),
+                                                              pickerFlushSizeBytes,
                                                               requestedTargetSSTBytes,
                                                               sizeModel,
                                                               partitionLayout,

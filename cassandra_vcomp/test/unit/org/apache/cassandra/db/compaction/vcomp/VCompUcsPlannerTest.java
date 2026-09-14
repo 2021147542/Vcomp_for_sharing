@@ -40,6 +40,14 @@ public class VCompUcsPlannerTest
     private static final long MIB = 1L << 20;
 
     @Test
+    public void observedFlushSizeUsesNativeWholeMibRounding()
+    {
+        assertEquals(MIB, VCompUcsPlanner.roundObservedFlushSize(1));
+        assertEquals(64 * MIB, VCompUcsPlanner.roundObservedFlushSize(64 * MIB));
+        assertEquals(65 * MIB, VCompUcsPlanner.roundObservedFlushSize(64 * MIB + 1));
+    }
+
+    @Test
     public void waitsForTieredThreshold()
     {
         VCompUcsPlanner planner = new VCompUcsPlanner(64 * MIB);

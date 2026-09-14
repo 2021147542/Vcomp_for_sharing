@@ -1,6 +1,57 @@
 # VComp 작업 요약
 
+## 2026-09-14 15:30 — 결과 폴더 정리 완료, 100 GiB workload 재개
+
+각 시간별 폴더는 figures/ · logs/ · results.md로 통일했다. 그래프는 loading.svg · workload.svg · io_latency.svg 세 개이며 표와 동일한 원본 값을 사용한다. 실패·중단 폴더는 목록에서 정리하되 완료된 불리한 측정과 필요한 적재 출처는 logs/에 보존했다. 과거 물리 disk latency는 미측정으로 표시한다. 새 실행은 md0 요청 수·누적 시간을 추가 기록해 장치 평균 latency를 별도로 표시한다. 기존 47개 비교 기준과 seed 20260909, 48 threads × 300초는 유지한다. 적재 DB를 재사용하고 모든 workload checkpoint는 새로 만든다.
+
+[현재 결과 / current results](experiments/20260914-152956_cassandra_100g_organized_resume/results.md).
+
+## 2026-09-14 15:11 — 사용자 요청으로 일시 중단, 결과 폴더 정리
+
+진행 중이던 Cassandra workload를 사용자 요청으로 일시 중단했고 아직 재시작하지 않았다.
+결과는 `figures/loading.svg`, `figures/workload.svg`, `figures/io_latency.svg`,
+`logs/`, `results.md` 구조로 정리하며 그래프를 검증 중이다. 지연 그래프는 실제로
+기록된 DB/API 수준의 읽기·쓰기 지연만 표시한다. 물리 디스크 I/O 지연과 기록되지 않은
+쓰기 전용 지연은 측정값이 없으며, 이를 다른 지연이나 0으로 대체하지 않는다.
+실행 오류가 난 시도는 수정 검증 bundle의 `logs/attempts/`에 보존하고, 단순히
+baseline과 ±10% 이상 차이 나는 정상 측정 결과는 유지한다.
+
+## 2026-09-14 15:01 — native cache 수정 검증 후 100 GiB workload 재실행
+
+Native chunk cache에서 서로 다른 크기의 블록과 성장 중인 파일 끝부분이 충돌하는 오류를 재현·수정했다. 수정 전 5개 중 2개 실패, 수정 후 5개 모두 통과했다. 실제 100GiB A 양쪽 48 threads × 60초 검증도 server ERROR/OOM 없이 통과했다. 검증된 원본 적재 DB를 보존하고, 새 읽기 바이너리로 14개 workload 전체를 다시 시작했다. 적재·읽기 바이너리 출처를 분리하고 원본 SST의 전후 SHA256을 확인한다.
+
+[수정 검증 / repair evidence](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/README.md) · [일시 중단한 재실행 / paused attempt](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/attempts/20260914-150117_cassandra_100g_cachefixed/README.md).
+
+## 2026-09-14 14:48 — 새 100 GiB 적재 검증 완료, 첫 workload 실패
+
+양쪽 전체 값 검증은 통과했지만 A baseline에서 native compaction 중 Index.db 읽기 예외가 발생했다. 정상 workload 결과는 0개이며, 이 실행을 완료된 성능 비교로 사용하지 않는다. 실패 로그와 검증된 원본 DB를 보존하고 원인을 수정·재검증 중이다.
+
+[실패 기록 / failed attempt](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/attempts/20260914-141045_cassandra_100g_comprehensive/README.md).
+
 최종 갱신: 2026-09-14 (KST)
+
+## 2026-09-14 14:10 — 전면 점검 후 새 100 GiB 실행 시작
+
+Cassandra 포팅·workload·runner를 점검해 complete-KMV 원본 키 재생 경로,
+UCS 크기 보정 기준, flush 크기 반올림, E scan 길이, D insert 완료 추적,
+MixGraph 참조 의미, 측정 구간과 compaction 기본값 검증을 수정했다.
+코어/UCS 77 tests, 전체 Checkstyle, workload 회귀 검사, 48 B/43 B smoke,
+실제 A–F/MixGraph 14개 pilot과 마지막 메모리/flush·로그 분리 검증이 통과했다.
+실패했던 초기 schema 검증 pilot도 보존했다.
+
+새 실행은 seed 20260909, 100 GiB, 10,000 partitions, 24 B/1,000 B,
+각 workload **48 threads × 실제 300초**, operation 제한 없음으로 고정했다.
+Native chunk cache 5 GiB, daemon/client cgroup 20 GiB·swap 0,
+compaction throttle 0, workload nominal memtable heap flush 기준 64 MiB다.
+OS page cache·CQL·native lifecycle 차이까지 논문과 같다고 주장하지 않는다.
+47개 비교 기준에 workload disk read/write도 포함하고 불리한 결과를 선별하지 않는다.
+
+- [수정·검증 근거](experiments/20260914-134200_cassandra_comprehensive_preflight/logs/README.md)
+- [진행 상태 및 결과](experiments/20260914-144957_cassandra_chunk_cache_repair/logs/attempts/20260914-141045_cassandra_100g_comprehensive/README.md)
+- Raw: `/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045`
+- tmux: `cassandra_comprehensive_100g_20260914_141045`
+
+14:10:45 KST에 시작했다. 현재 실행 완료 또는 fidelity 통과를 주장하지 않는다.
 
 ## 2026-09-14 — E 읽기량 및 논문 설정 설명 정정
 
@@ -12,7 +63,7 @@ CPU-only E 재생에서 worker RNG 수정 전후 서로 다른 scan 시작점이
 늘었지만, 이것만으로 두 DB 사이 read 차이를 설명했다고 볼 수 없다. 또한 E가 같은
 난수 나머지를 연산 선택/scan 길이에 재사용해 실제 길이가 1..95인 기존 오류를 확인했다.
 이 감사에서는 원본 측정·DB·코드를 변경하거나 새 DB 실험을 실행하지 않았다.
-근거와 한계: [설정 및 E 감사](experiments/20260914-133300_cassandra_e_settings_audit/README.md).
+근거와 한계: [설정 및 E 감사](experiments/20260914-133300_cassandra_e_settings_audit/logs/README.md).
 
 ## 2026-09-14 13:09 — 수정 후 100 GiB 비교 완료, fidelity 미통과
 
@@ -63,7 +114,7 @@ adapter, split 때 KMV density를 다시 보정하던 경로, native INSERT와 �
 materialized row metadata를 교정한다. Workload worker들이 동일 난수열의 이동본을
 재생하던 문제와 준비 시간이 측정에 들어가던 문제도 수정하고 hit/miss별 latency를
 추가한다. 상세 근거와 검증은
-`resources/experiments/20260914-104858_cassandra_fidelity_audit/README.md`에 기록한다.
+`resources/experiments/20260914-104858_cassandra_fidelity_audit/logs/README.md`에 기록한다.
 
 Standalone flush→quiescence scheduler와 CQL SST materialization은 아직 native
 task/lifecycle/writer 경로 전체에 통합되지 않았다. 이번 변경을 새 100 GiB 성능
@@ -130,7 +181,7 @@ KMV + calibrated-size 조합은 baseline 대비 L4/L5를 138/1,312개에서
 L4/L5 123/1,306개를 만들었다. 최종 materialization 직전에만 discrete
 certificate를 붙여 continuous inverse의 count loss를 막으며, 8 GiB full
 smoke에서 descriptor union/reopen iterator와 value 검증을 통과했다. 근거는
-`resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/README.md`에
+`resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/README.md`에
 있다. 기존 1 TiB DB는 바뀌지 않았으므로 workload 개선 수치는 fresh full
 run 전에는 주장하지 않는다.
 
@@ -195,7 +246,7 @@ multi-SST 검증에서는 compaction schedule/lineage와 cross-run overlap을 �
 2026-09-13까지 완료된 Cassandra 구현 iteration은 버전별 독립 그래프로 다시
 정리했다. 1 GiB 4개와 100 GiB 5개 버전에 대해 각각 SVG/PNG 한 쌍을 만들었고,
 정확히 같은 버전에서 수행한 workload만 해당 그래프에 넣었다. 원시 출처와 계산값은
-`resources/experiments/20260913-124257_cassandra_iteration_versions/metrics.{csv,json}`에
+`resources/experiments/20260913-124257_cassandra_iteration_versions/logs/metrics.{csv,json}`에
 보존한다. 완료된 Cassandra 1 TiB 결과는 아직 없으므로 1 TiB 그래프는 없다.
 Seeded 1 GiB/100 GiB run은 baseline daemon이 seed 변경 전 JAR를 사용한 provenance
 문제가 있어 그래프에도 이 제한을 표시했다.

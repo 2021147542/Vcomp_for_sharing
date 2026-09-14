@@ -59,7 +59,22 @@ public class DefaultVirtualCompactionTest
         assertEquals(600, sstable.estimatedBytes());
         assertEquals(2, sstable.maximumTimestamp());
         assertTrue(sstable.model().discreteModel() == null);
-        assertEquals(Arrays.asList(0L, 10L, 20L, 30L, 40L, 50L), materialize(sstable));
+        // Local masses 3, 2, 3 are normalized to six ranks, then inverted.
+        // Complete KMV samples must not substitute the original union here.
+        assertEquals(Arrays.asList(0L, 9L, 18L, 25L, 32L, 41L), materialize(sstable));
+    }
+
+    @Test
+    public void completeSketchDoesNotOverrideMaterializedRankModel()
+    {
+        VCompLearnedModel model = new VCompLearnedModel(Arrays.asList(
+        new VCompLearnedModel.Segment(0, 20, 0.1, 0)));
+        VCompPipeline.VirtualSSTable descriptor = new VCompPipeline.VirtualSSTable(
+        "complete-sketch", 0, 20, 3, 300, model,
+        VCompKmvSketch.build(new long[]{ 0, 1, 20 }, 64), new ArrayList<>());
+
+        assertTrue(descriptor.sketch().isComplete());
+        assertEquals(Arrays.asList(0L, 10L, 20L), materialize(descriptor));
     }
 
     @Test

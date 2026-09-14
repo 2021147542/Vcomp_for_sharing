@@ -1,0 +1,54 @@
+{
+  "fidelity_summary": null,
+  "status": {
+    "status": "running",
+    "phase": "validate_reused_loads",
+    "exit_status": "0",
+    "updated_at": "2026-09-14T15:30:11+09:00",
+    "raw_root": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956",
+    "result_root": "/home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs",
+    "baseline_source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052",
+    "vcomp_source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011"
+  },
+  "bundle": "20260914-152956_cassandra_100g_organized_resume",
+  "audit_only": false,
+  "loading": [
+    {
+      "group": "Primary",
+      "system": "baseline",
+      "seconds": 1448.974,
+      "write_amplification": null,
+      "write_gb": 584.300519424,
+      "final_gb": 87.990345878,
+      "sst_count": 204.0,
+      "visible_rows": 66278498.0,
+      "source": "logs/baseline_metrics.env; logs/final_state.json",
+      "note": ""
+    },
+    {
+      "group": "Primary",
+      "system": "vcomp",
+      "seconds": 141.191,
+      "write_amplification": null,
+      "write_gb": 82.646106112,
+      "final_gb": 81.913819477,
+      "sst_count": 186.0,
+      "visible_rows": 66389271.0,
+      "source": "logs/vcomp_metrics.env; logs/final_state.json",
+      "note": ""
+    }
+  ],
+  "workloads": [],
+  "notes": [
+    "Cassandra historical load windows can differ: baseline may include drain, while VComp loader timing/write bytes may end before import/settling. Consult the preserved README/configuration; these values are not silently converted into symmetric windows."
+  ],
+  "physical_io_latency": null,
+  "physical_io_latency_note": "Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.",
+  "device_latency_available": false,
+  "device_latency_note": "Device-layer averages = diskstats accumulated milliseconds / completed requests; includes all processes and in-flight boundary effects. Not NVMe physical latency percentiles.",
+  "units": {
+    "volume": "GB = 10^9 bytes",
+    "client_latency": "microseconds",
+    "device_average_latency": "milliseconds"
+  }
+}

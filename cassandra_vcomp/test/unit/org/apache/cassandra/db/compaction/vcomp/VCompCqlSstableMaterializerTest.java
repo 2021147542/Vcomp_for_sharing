@@ -21,6 +21,7 @@ import org.apache.cassandra.utils.ByteBufferUtil;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class VCompCqlSstableMaterializerTest
 {
@@ -32,6 +33,44 @@ public class VCompCqlSstableMaterializerTest
     {
         roundTrip(24, 1000, 1);
         roundTrip(48, 43, 4);
+    }
+
+    @Test
+    public void calibrationUsesNativeDataComponentBytes() throws Exception
+    {
+        String keyspace = "vcomp_materializer_test";
+        String table = "calibration_bytes";
+        String schema = "CREATE TABLE " + keyspace + '.' + table
+                        + " (partition_id text, ck blob, value blob, PRIMARY KEY ((partition_id), ck))"
+                        + " WITH compression = {'enabled': 'false'}";
+        String insert = "INSERT INTO " + keyspace + '.' + table
+                        + " (partition_id, ck, value) VALUES (?, ?, ?) USING TIMESTAMP ?";
+        Path output = temporaryFolder.newFolder(table).toPath();
+        VCompCqlSstableMaterializer materializer = new VCompCqlSstableMaterializer(
+        output, schema, insert, keyspace, table, new VCompOrderedPartitionLayout(4096, 1),
+        64, 1024, new DeterministicFixedWidthKeyCodec(24), 1000);
+        VCompSSTSizeModel model = materializer.calibrateSizeModel(32, 64);
+        java.util.List<Long> dataSizes = new java.util.ArrayList<>();
+        long componentBytes = 0;
+        try (Stream<Path> files = Files.walk(output.resolve(".vcomp-calibration")))
+        {
+            for (Path path : (Iterable<Path>) files::iterator)
+            {
+                if (!Files.isRegularFile(path))
+                    continue;
+                componentBytes += Files.size(path);
+                if (path.getFileName().toString().endsWith("-Data.db"))
+                    dataSizes.add(Files.size(path));
+            }
+        }
+        Collections.sort(dataSizes);
+        assertEquals(2, dataSizes.size());
+        assertTrue("calibration has non-data components that must be excluded",
+                   componentBytes > dataSizes.get(0) + dataSizes.get(1));
+        // With one partition the same fixed row/partition framing applies to
+        // both probes. The affine estimate should recover their Data.db bytes.
+        assertEquals(dataSizes.get(0).longValue(), model.estimate(32));
+        assertEquals(dataSizes.get(1).longValue(), model.estimate(64));
     }
 
     private void roundTrip(int keyBytes, int valueBytes, int partitionCount) throws Exception
@@ -51,7 +90,7 @@ public class VCompCqlSstableMaterializerTest
         Path output = temporaryFolder.newFolder(table).toPath();
         VCompCqlSstableMaterializer materializer = new VCompCqlSstableMaterializer(
         output, schema, insert, keyspace, table, partitions, 64, entryBytes, codec, valueBytes);
-        VCompPipeline.VirtualSortedRun run = new DefaultFlushVirtualizer().virtualize(
+        VCompPipeline.VirtualSortedRun run = new DefaultFlushVirtualizer(0, 64, 2).virtualize(
         new VCompPipeline.FlushBatch("flush", keys, (long) keys.length * entryBytes, timestamp));
         VCompPipeline.MaterializedState state = materializer.materialize(
         new VCompPipeline.FrozenLayout(Collections.singletonList(run)));

@@ -1,0 +1,18 @@
+{
+  "db_root": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950",
+  "system": "virtual",
+  "workload": "C",
+  "definition": "100% read",
+  "key_distribution": "scrambled Zipfian theta=0.99",
+  "requested_seconds": 300,
+  "wall_seconds": 300.000442512,
+  "concurrency": 48,
+  "block_cache_bytes": 34359738368,
+  "operations": 40994236,
+  "throughput_ops_per_second": 136647.25177317107,
+  "point_lookup_latency_p50_us": 168,
+  "point_lookup_latency_p95_us": 1489,
+  "point_lookup_latency_p99_us": 3293,
+  "disk_read_bytes": 309080006656,
+  "disk_write_bytes": 17860128768
+}

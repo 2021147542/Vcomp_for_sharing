@@ -1,0 +1,5 @@
+qualified_at=2026-09-14T15:01:17.324803
+core_regressions=5_pass
+pilot=A_100GiB_both_arms_48_threads_60s
+server_errors=0
+oom_events=0

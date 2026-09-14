@@ -1,0 +1,56 @@
+{
+  "workload_root": "/work/vcomp-pebble-1tb/cassandra-cachefixed-100g-20260914-150117/workloads-300s",
+  "completion_marker_present": false,
+  "limits": [
+    "Client disk bytes are shared-device /proc/diskstats deltas over the workload measurement interval; they are neither unique data bytes nor Cassandra-only I/O.",
+    "Daemon /proc/PID/io and node/cache counters bracket a wider interval including client setup. Chunk-cache counters are node-wide. Their per-operation ratios are diagnostic, not exact workload cache-miss rates.",
+    "SSTables-per-read quantiles are table histogram snapshots, not per-request traces. Before/after quantiles cannot be subtracted or attributed exclusively to C/E.",
+    "Returned scan bytes are client payload bytes as defined by the recorded generator; they exclude storage metadata, protocol framing and physical block rounding.",
+    "Cgroup memory.stat file includes page cache and other file-backed charges for the whole daemon/client group. Peaks span the full workload suite and cannot identify one workload without timestamp alignment.",
+    "Native chunk cache plus bounded total memory is not the paper's exact 5% total-cache configuration. Cache miss counts and SST-read histograms can support a mechanism but do not prove causality.",
+    "Missing historical fields remain null/unavailable. This tool does not reconstruct them as zero or infer an unmeasured cause."
+  ],
+  "workloads": {
+    "C": {
+      "arms": {
+        "baseline": null,
+        "vcomp": null
+      },
+      "comparisons": {}
+    },
+    "E": {
+      "arms": {
+        "baseline": null,
+        "vcomp": null
+      },
+      "comparisons": {}
+    }
+  },
+  "memory": {
+    "protocol": {
+      "cgroup": "/sys/fs/cgroup/user.slice/user-1008.slice/user@1008.service/app.slice/vcomp-workloads-20260914-150307-4184916.service",
+      "memory_max_bytes": 21474836480,
+      "swap_max_bytes": 0,
+      "scope": "Cassandra daemon and workload clients together",
+      "interpretation": "Total memory cap; additional OS page cache is not an exact 5% cache",
+      "memory_events_before": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "live_memory_trace": "/tmp/vcomp-workload-memory-it5ndj2c.jsonl",
+      "logging": "Temporary trace outside DB filesystem; archived after all measured clients exit"
+    },
+    "whole_suite_trace_summary": null
+  },
+  "evidence_files": [
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-cachefixed-100g-20260914-150117/workloads-300s-control/protocol.json",
+      "bytes": 643,
+      "sha256": "f44ae7f813d74df256d8803b0436655867a23841a5452185f7b43a83ae07cb18"
+    }
+  ]
+}

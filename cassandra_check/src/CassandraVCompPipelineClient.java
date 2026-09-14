@@ -117,7 +117,7 @@ public final class CassandraVCompPipelineClient {
             throw new IllegalStateException("table schema not found: " + keyspace + '.' + table);
         }
         Map<String, String> options = row.getMap("compaction", String.class, String.class);
-        if (options == null || !"true".equalsIgnoreCase(options.get("enabled"))) {
+        if (!compactionEnabled(options)) {
             throw new IllegalStateException("automatic compaction is not enabled: " + options);
         }
         String strategy = options.get("class");
@@ -125,6 +125,12 @@ public final class CassandraVCompPipelineClient {
             throw new IllegalStateException("table is not using UCS: " + options);
         }
         System.out.printf("PASS: automatic UCS compaction enabled for %s.%s%n", keyspace, table);
+    }
+
+    static boolean compactionEnabled(Map<String, String> options) {
+        // CompactionParams.DEFAULT_ENABLED is true. Native CREATE TABLE may
+        // omit the option entirely; an absent option is not a disabled table.
+        return options != null && Boolean.parseBoolean(options.getOrDefault("enabled", "true"));
     }
 
     private static void verify(Session session,

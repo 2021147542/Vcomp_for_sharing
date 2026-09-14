@@ -1,0 +1,40 @@
+{
+  "rows": [
+    {
+      "group": "Final-only certificate",
+      "system": "baseline",
+      "seconds": null,
+      "write_gb": null,
+      "final_gb": 0.688132263,
+      "sst_count": 1,
+      "visible_rows": 662885,
+      "source": "logs/README.md",
+      "note": "Published final-state values; loading time and workload latency unavailable."
+    },
+    {
+      "group": "Final-only certificate",
+      "system": "vcomp-old",
+      "seconds": null,
+      "write_gb": null,
+      "final_gb": 0.737007837,
+      "sst_count": 1,
+      "visible_rows": 705870,
+      "source": "logs/README.md",
+      "note": "Published final-state values; loading time and workload latency unavailable."
+    },
+    {
+      "group": "Final-only certificate",
+      "system": "vcomp-new",
+      "seconds": null,
+      "write_gb": null,
+      "final_gb": 0.737007839,
+      "sst_count": 1,
+      "visible_rows": 705870,
+      "source": "logs/README.md",
+      "note": "Published final-state values; loading time and workload latency unavailable."
+    }
+  ],
+  "notes": [
+    "Transcribed from the retained README result table. Physical final-state bytes, not a new benchmark."
+  ]
+}

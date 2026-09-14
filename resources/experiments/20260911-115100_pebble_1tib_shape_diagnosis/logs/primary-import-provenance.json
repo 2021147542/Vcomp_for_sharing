@@ -1,0 +1,81 @@
+{
+  "note": "Completed recovered 1 TiB run referenced by the original diagnosis. Baseline load-time/write metrics unavailable; retained workload JSON used without modification.",
+  "files": [
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper_load_result.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/paper_load_result.json",
+      "sha256": "e8dd3d677a2418b82a1322e5a5d0d212cb9a95aad1d274afa4797e78dfbe1a2d"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/D_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/D_baseline.json",
+      "sha256": "b12b0d1a9d546d102f110b02fadba912bb5e07689d57e5e2f8bb9d7e825d03af"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/F_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/F_baseline.json",
+      "sha256": "62ff25b13a727153f11cb55425b0455e9cc138c7f5bf23ba6949b6435c5bb68f"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/A_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/A_baseline.json",
+      "sha256": "52a0599a5c9bd12632c121be8096c5124ff8aed707fdd8833f2312fe9b8ad712"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/E_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/E_baseline.json",
+      "sha256": "bd3c390199dfdb6b26519c812819781e0d8d90c0a8f1f75e5e805941751bdd54"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/C_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/C_baseline.json",
+      "sha256": "dcfeec52ba213ae30a2b6bc98b4b24120f38d0026d7c748c497d10ebe7ac3053"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/B_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/B_baseline.json",
+      "sha256": "99b88c2d2ff468242b54d29c306b1713f025df4193643cae154f42279ad1dd4f"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/MIXGRAPH_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/MIXGRAPH_virtual.json",
+      "sha256": "4c77c343d90bd073d4935d49fa8515b36a657e9b7dae87b3b23dc18bb9d011d1"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/D_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/D_virtual.json",
+      "sha256": "9c0af030da93d8bd01ccd85d181fba3388cab10699701ef307a9d6afeb017bc6"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/B_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/B_virtual.json",
+      "sha256": "ec6b7860226371d8550a92cf9c457af6c71789e59415ca045b78413105bf1740"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/F_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/F_virtual.json",
+      "sha256": "8e3740a7ea9964f864596e68f61412b8e68ca252096684d16d3ce67679eab45c"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/E_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/E_virtual.json",
+      "sha256": "b49761c7b927f712b7901b13161b59f694e5edd6297343c3a86edc7990576e22"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/MIXGRAPH_baseline.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/MIXGRAPH_baseline.json",
+      "sha256": "28ce43b0dc8fa47fc7a1de10824ee4f062ffb16909bf86493efdd7a5cb855211"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/A_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/A_virtual.json",
+      "sha256": "b36a337f5ebad6fadfe4aeff17409de91b1de84d474b5b321185085031085ed1"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/pebble-paper-1tib-1kb-20260911-133950/paper-workloads/results/C_virtual.json",
+      "archive": "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/results/C_virtual.json",
+      "sha256": "bf65b2fe7396bfae93ad2402b0ccd3f16b0098f4d400a4eaadaefa67f7d44220"
+    }
+  ],
+  "completion_evidence": "All 14 workload JSONs contain positive operation counts and at least 300 seconds. No separate final value-validation PASS log or canonical DB remains in this retained raw directory; no new validation is claimed."
+}

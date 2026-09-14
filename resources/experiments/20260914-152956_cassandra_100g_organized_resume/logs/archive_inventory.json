@@ -1,0 +1,135 @@
+[
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/runtime-jar.sha256",
+    "archive": "raw/runtime-jar.sha256",
+    "bytes": 143,
+    "sha256": "ba3cc4abe339e53216c2d2bf01df3c767262343d85cd719f5ef39d24369fd6d5",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/runtime-archive.sha256",
+    "archive": "raw/runtime-archive.sha256",
+    "bytes": 174,
+    "sha256": "adfe7acee8924e7fda3482367db6c8cad6bd81fc621dce2338be08e7c3492069",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/baseline_metrics.env",
+    "archive": "raw/reused-load-evidence/baseline/baseline_metrics.env",
+    "bytes": 300,
+    "sha256": "acb16de67187f1da54fac7209482056d81b3f4abe2ecdc411f2a28bdf684ee09",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/sstable-sizes.tsv",
+    "archive": "raw/reused-load-evidence/baseline/sstable-sizes.tsv",
+    "bytes": 49164,
+    "sha256": "6796d6f90706c0a01f1bb29cf29efdf1946bb61f772ca95897a41adbf6ccdf9f",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/verification.log",
+    "archive": "raw/reused-load-evidence/baseline/verification.log",
+    "bytes": 60,
+    "sha256": "d6b1b28108092a46be2feb0d44626b2dfe668005531a15123d30a64c5a178b69",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/SUCCESS",
+    "archive": "raw/reused-load-evidence/baseline/SUCCESS",
+    "bytes": 39,
+    "sha256": "1b0ffbfbb49b295a76171055f0971e5dba059dca3e4ec8ba34e630a0246a156c",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/configuration.txt",
+    "archive": "raw/reused-load-evidence/baseline/configuration.txt",
+    "bytes": 581,
+    "sha256": "75112cdf796351897b42f6776970db7bec84d0b969dd7f0ea773ed659ba9c2c5",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/tablestats.txt",
+    "archive": "raw/reused-load-evidence/baseline/tablestats.txt",
+    "bytes": 1581,
+    "sha256": "9ff4564201ff424f9f71260daf234d3b3b9292b4c742ece1ab8f0978e547c6dc",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/baseline/fingerprint.log",
+    "archive": "raw/reused-load-evidence/baseline/fingerprint.log",
+    "bytes": 119,
+    "sha256": "47cfd61bf6d60bf97e4f9a8be08adea5ed348f1a32c4b25f6b88010bb1f44140",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/load_metrics.env",
+    "archive": "raw/reused-load-evidence/vcomp/load_metrics.env",
+    "bytes": 298,
+    "sha256": "c7e8a8beb7d98c2771aa796ab1e93def789034e4efb8b1e0ff9624b8b1dd89d2",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/post_load_compaction_metrics.env",
+    "archive": "raw/reused-load-evidence/vcomp/post_load_compaction_metrics.env",
+    "bytes": 57,
+    "sha256": "cbc6b2effb277fc93eecea6fae7582dca21a79dbea6f097b849fea687c3be093",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/sstable-sizes.tsv",
+    "archive": "raw/reused-load-evidence/vcomp/sstable-sizes.tsv",
+    "bytes": 42302,
+    "sha256": "be554bf9fa6b78122ded2dd2a8ab898ba8edca4e0883f0aff5c9520e4d950ffc",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/verification.log",
+    "archive": "raw/reused-load-evidence/vcomp/verification.log",
+    "bytes": 60,
+    "sha256": "d6b1b28108092a46be2feb0d44626b2dfe668005531a15123d30a64c5a178b69",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/SUCCESS",
+    "archive": "raw/reused-load-evidence/vcomp/SUCCESS",
+    "bytes": 39,
+    "sha256": "d351c093184355b93a9275031ed99ff0a615a123edb0f2272fcfbeb6f8dedbaa",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/configuration.txt",
+    "archive": "raw/reused-load-evidence/vcomp/configuration.txt",
+    "bytes": 825,
+    "sha256": "1576b8516c1ba872c904739ea9a11674d0a01a2b0dcc245d5cabb538d0e56a52",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/tablestats.txt",
+    "archive": "raw/reused-load-evidence/vcomp/tablestats.txt",
+    "bytes": 1549,
+    "sha256": "73b24cc76b1e56994f634a8143a10179c56f0abcfc0601d29b80a52448ec08e6",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/compaction-enable.log",
+    "archive": "raw/reused-load-evidence/vcomp/compaction-enable.log",
+    "bytes": 171,
+    "sha256": "6851051ce57fccc54c5335a1b1d046a16d7ea60b03f2f746a9cc22186f0121a2",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/materialization_metrics.env",
+    "archive": "raw/reused-load-evidence/vcomp/materialization_metrics.env",
+    "bytes": 29,
+    "sha256": "119d0e4eb5fc72d9fea9327fb0620c21a7a49b7502de4fa6cad8420f3237dd61",
+    "archived": true
+  },
+  {
+    "source": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/reused-load-evidence/vcomp/fingerprint.log",
+    "archive": "raw/reused-load-evidence/vcomp/fingerprint.log",
+    "bytes": 119,
+    "sha256": "fd312de25e22e1d0726ec8fe9ef542e0072cbe4afb607d3693191a75eb8d9eb0",
+    "archived": true
+  }
+]

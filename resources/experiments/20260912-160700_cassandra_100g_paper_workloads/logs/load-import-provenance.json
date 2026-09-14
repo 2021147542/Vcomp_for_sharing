@@ -1,0 +1,20 @@
+{
+  "note": "Loading evidence from the exact canonical source paths recorded by this workload configuration; not a new load measurement.",
+  "files": [
+    {
+      "source": "/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare/baseline/cassandra-baseline-100g-audited-common-theta-logical-baseline-20260912-135643/baseline_metrics.env",
+      "archive": "resources/experiments/20260912-160700_cassandra_100g_paper_workloads/logs/load/baseline_metrics.env",
+      "sha256": "6b1299970ac909664dc9762807b9de9e8d420621946686e45b388af17f02b153"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare/vcomp/cassandra-vcomp-100g-audited-common-theta-logical-vcomp-20260912-154148/load_metrics.env",
+      "archive": "resources/experiments/20260912-160700_cassandra_100g_paper_workloads/logs/load/vcomp_load_metrics.env",
+      "sha256": "1bbab9ab76eca364d2ec02fdaab3783ce3668dfd2f26b902efde6bcb82cf963e"
+    },
+    {
+      "source": "/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare/vcomp/cassandra-vcomp-100g-audited-common-theta-logical-vcomp-20260912-154148/vcomp.log",
+      "archive": "resources/experiments/20260912-160700_cassandra_100g_paper_workloads/logs/load/vcomp.log",
+      "sha256": "9681ce66f33dccdc3879b16de4cc6728f1828c3d7e602a5eda78a6a875156188"
+    }
+  ]
+}
