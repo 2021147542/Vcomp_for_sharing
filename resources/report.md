@@ -1,5 +1,13 @@
 # Pebble VComp Feasibility Prototype Report
 
+## Native/exact differential debugging and preserved baseline (2026-09-14 17:28 KST)
+
+The seed-20260909 100 GiB native baseline is now a registered reference with 1,632 component hashes, immutable provenance and input/configuration guards. VComp-only rebuilds can reuse its loaded state; changing reader/workload/cache protocols requires new measurements from checkpoints, not another baseline load.
+
+A bounded native diagnostic found the first model-path field difference in job 1: 3,558 native/exact rows versus 3,728 model rows (+4.778%). Exact merge and four fixed-shard outputs match native rows/versions; seven matched-metadata picker event snapshots also agree. The same-job vectors contain 310 native-only keys, 480 model-only keys and 1,773 timestamp differences among 3,248 common keys. Production algorithms were not modified. These small 24 B / 43 B, 64-partition fixtures do not clear production size estimates, asynchronous scheduling, shard-count choices or the CQL materializer, and do not establish the cause of the full 100 GiB performance gap. No new large load or benchmark was launched.
+
+Diagnostic results (bundle deleted at user request, 2026-09-14) · [Differential workflow](../experiments/docs/cassandra-differential-debugging.md) · [Baseline reuse](../experiments/docs/baseline-reference.md).
+
 ## Cassandra 100 GiB completed; similarity not achieved (2026-09-14 16:50 KST)
 
 All fourteen 48-worker, 300-second workload cells completed with zero server errors and OOM events. Canonical SST component hashes before/after and the measured source/reader JAR checks passed. Similarity still fails: 30 of 47 primary comparisons fall outside ±10%. A–F throughput is 15.16–26.50% higher, which is still a mismatch; MixGraph is +6.32%. E reads are −7.73% in the fixed-time interval and −19.88% per scan. C diagnostics show different hit/miss populations and key-cache occupancy/miss behavior, without establishing their separate causal contributions. Model membership and native task/flush lifecycle differences remain unresolved.
@@ -64,7 +72,7 @@ RNG fix, but cannot attribute the within-pair I/O gap. E also reuses the operati
 choice for its scan length, restricting scans to 1..95 rather than the local
 RocksDB reference's uniform 1..100. This audit preserves measurements and code;
 it does not establish an I/O root cause or a corrected benchmark result.
-See [the setting and E audit](experiments/20260914-133300_cassandra_e_settings_audit/logs/README.md).
+See the setting and E audit (bundle deleted at user request, 2026-09-14).
 
 ## Cassandra 100 GiB rerun completed (2026-09-14 13:09:58 KST)
 
@@ -103,7 +111,7 @@ INSERT row liveness and encoding minima, and correlated workload worker RNG
 streams. Workload timing now starts after preparation and reports hit/miss
 latencies separately. The current standalone scheduler is still not integrated
 with the native task lifecycle. New 100 GiB workload parity is not established.
-See [the audit and validation bundle](experiments/20260914-104858_cassandra_fidelity_audit/logs/README.md)
+See the audit and validation bundle (bundle deleted at user request, 2026-09-14)
 for evidence and limits. Earlier sections below describe historical versions.
 
 ## Change log

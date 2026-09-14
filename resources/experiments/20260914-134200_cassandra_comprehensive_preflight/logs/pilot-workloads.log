@@ -1,4 +1,0 @@
-[2026-09-14T13:47:13+09:00] Preparing A baseline checkpoint
-Exception in thread "main" java.lang.IllegalStateException: automatic compaction is not enabled: {base_shard_count=1, class=org.apache.cassandra.db.compaction.UnifiedCompactionStrategy, scaling_parameters=T4, sstable_growth=0.333, target_sstable_size=64MiB}
-	at CassandraVCompPipelineClient.assertCompactionEnabled(CassandraVCompPipelineClient.java:121)
-	at CassandraVCompPipelineClient.main(CassandraVCompPipelineClient.java:59)

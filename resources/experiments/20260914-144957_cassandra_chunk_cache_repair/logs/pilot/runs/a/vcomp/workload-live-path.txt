@@ -1,1 +1,0 @@
-/tmp/vcomp-cassandra-workload.fPZovO.log

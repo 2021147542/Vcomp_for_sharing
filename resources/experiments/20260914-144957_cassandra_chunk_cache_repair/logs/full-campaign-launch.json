@@ -1,7 +1,0 @@
-{
-  "run_stamp": "20260914-150117",
-  "raw_root": "/work/vcomp-pebble-1tb/cassandra-cachefixed-100g-20260914-150117",
-  "result_root": "/home/dongju/vcomp/resources/experiments/20260914-150117_cassandra_100g_cachefixed",
-  "tmux": "cassandra_cachefixed_100g_20260914_150117",
-  "command": "env RUN_STAMP=20260914-150117 DATASET_GIB=100 CAMPAIGN_ROOT=/work/vcomp-pebble-1tb/cassandra-cachefixed-100g-20260914-150117 RESULT_ROOT=/home/dongju/vcomp/resources/experiments/20260914-150117_cassandra_100g_cachefixed bash /home/dongju/vcomp/experiments/scripts/cassandra/run_resumed_fidelity_100g_campaign.sh"
-}

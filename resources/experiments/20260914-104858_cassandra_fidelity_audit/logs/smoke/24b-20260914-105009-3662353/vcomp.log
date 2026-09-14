@@ -1,1 +1,0 @@
-VCOMP_RESULT seconds=0.871 writes=64 flush_bytes=256 target_sst_bytes=67108864 size_model=logical materialized_keys=43 logical_bytes=2752 virtual_compactions=5 final_runs=1 final_sstables=1 estimated_final_bytes=2752 max_estimated_sstable_bytes=2752 max_estimated_run_bytes=2752 max_sstables_per_run=1 physical_sst_bytes=8425 max_physical_sst_bytes=8425 physical_sst_count=1

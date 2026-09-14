@@ -1,1 +1,0 @@
-PASS: automatic UCS compaction enabled for baseline_100g.kv

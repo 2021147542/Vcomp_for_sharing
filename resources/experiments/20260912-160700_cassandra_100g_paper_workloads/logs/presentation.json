@@ -8,25 +8,25 @@
       "group": "Primary",
       "system": "baseline",
       "seconds": 6009.799,
-      "write_amplification": null,
+      "write_amplification": 5.915,
       "write_gb": 487.660642304,
       "final_gb": 82.451667173,
       "sst_count": 4.0,
       "visible_rows": 66278498.0,
-      "source": "logs/load/baseline_metrics.env",
-      "note": ""
+      "source": "logs/load/baseline_metrics.env; logs/loading-135643/cassandra_baseline_vcomp_100g.md",
+      "note": "WA is the rounded historical value; timing/bytes retain the existing raw load metrics."
     },
     {
       "group": "Primary",
       "system": "vcomp",
       "seconds": 112.63,
-      "write_amplification": null,
+      "write_amplification": 1.0,
       "write_gb": 90.833801216,
       "final_gb": 90.823971726,
       "sst_count": 4.0,
       "visible_rows": 67768639.0,
-      "source": "logs/load/vcomp_load_metrics.env; logs/load/vcomp.log",
-      "note": ""
+      "source": "logs/load/vcomp_load_metrics.env; logs/load/vcomp.log; logs/loading-135643/cassandra_baseline_vcomp_100g.md",
+      "note": "WA is the rounded historical value; timing/bytes retain the existing raw load metrics."
     }
   ],
   "workloads": [
@@ -367,7 +367,9 @@
       "p99": 5988.351
     }
   ],
+  "presentation": {},
   "notes": [
+    "135643 적재와 동일한 보존 DB로 수행한 160700 workload를 합친 결과입니다. 적재는 다시 실행하지 않았습니다. 단일 partition, 100GiB, 48 threads × 300초/workload 조건의 과거 실험이며 현재 ordered-partition 구현의 결과가 아닙니다. [원본 적재 보고서](logs/loading-135643/README.md).",
     "Cassandra historical load windows can differ: baseline may include drain, while VComp loader timing/write bytes may end before import/settling. Consult the preserved README/configuration; these values are not silently converted into symmetric windows."
   ],
   "physical_io_latency": null,

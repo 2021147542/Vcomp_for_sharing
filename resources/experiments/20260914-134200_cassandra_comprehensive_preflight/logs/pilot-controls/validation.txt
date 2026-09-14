@@ -1,1 +1,0 @@
-PASS: A/E x both arms, 48 threads, >=30 s, native cache capacity, E full range and exact requested-row return, no allocation blocking or OOM. A memtable switch counts baseline=36, VComp=38. This is functional/control qualification, not performance selection.

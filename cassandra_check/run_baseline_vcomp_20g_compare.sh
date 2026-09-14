@@ -15,9 +15,66 @@ BASELINE_TAG="${RUN_TAG_PREFIX}-baseline"
 VCOMP_TAG="${RUN_TAG_PREFIX}-vcomp"
 BASELINE_KEYSPACE="${BASELINE_KEYSPACE:-baseline_${DATASET_GIB}g}"
 VCOMP_KEYSPACE="${VCOMP_KEYSPACE:-vcomp_${DATASET_GIB}g}"
+BASELINE_REFERENCE="${BASELINE_REFERENCE:-}"
+REFERENCE_TOOL="$SCRIPT_DIR/../experiments/scripts/cassandra/baseline_reference.py"
+REUSED_BASELINE=""
+# A fixed baseline is a recorded database, not merely a seed. Validate its
+# identity and the requested input settings before building or creating output.
+if [[ -n "$BASELINE_REFERENCE" ]]; then
+  REUSED_BASELINE=$(python3 - "$REFERENCE_TOOL" "$BASELINE_REFERENCE" "$ROOT" \
+    "$DATASET_GIB" "$PARTITION_COUNT" "$BASELINE_TARGET_SSTABLE_SIZE" "$BASELINE_KEYSPACE" \
+    "${KEY_BYTES:-24}" "${VALUE_BYTES:-1000}" "${UCS_PICKER_SEED:-20260909}" <<'PY'
+import importlib.util
+from pathlib import Path
+import sys
+tool, reference, output, gib, partitions, target, keyspace, key_bytes, value_bytes, picker_seed = sys.argv[1:]
+spec = importlib.util.spec_from_file_location('baseline_reference', tool)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+module.validate(reference)
+module.guard(reference, [output])
+record = module.load_reference(reference)
+expected = dict(dataset_gib=gib, partition_keys=partitions, target_sstable_size=target,
+                key_bytes=key_bytes, value_bytes=value_bytes, seed='20260909',
+                ucs_picker_seed=picker_seed, flush_bytes='67108864',
+                compaction='UnifiedCompactionStrategy T4', compression='disabled')
+for field, value in expected.items():
+    if record['load_config'].get(field) != value:
+        raise SystemExit(f'Baseline input/config mismatch: {field}')
+if record['keyspace'] != keyspace:
+    raise SystemExit('Baseline keyspace mismatch')
+repo = Path(tool).resolve().parents[3]
+for name, sha in record['input_identity']['source_sha256'].items():
+    if module.digest(repo / name) != sha:
+        raise SystemExit('Input/schema helper changed; verify its input semantics before baseline reuse: ' + name)
+print(record['canonical_root'])
+PY
+  )
+fi
+if pgrep -f 'org[.]apache[.]cassandra[.]service[.]CassandraDaemon|CassandraPaper[W]orkload|CassandraBaseline[L]oad' >/dev/null \
+   || ss -H -ltn | awk '{print $4}' | rg -q ':(7000|7001|7199|9042)$'; then
+  echo 'A Cassandra process/listener is active; refusing to rebuild its runtime' >&2
+  exit 2
+fi
+for previous in "$ROOT/COMPLETE" "$ROOT/baseline/latest-$BASELINE_TAG" "$ROOT/vcomp/latest-$VCOMP_TAG"; do
+  [[ ! -e "$previous" && ! -L "$previous" ]] || { echo "Existing comparison output: $previous" >&2; exit 2; }
+done
 LOG="$ROOT/compare-$(date +%Y%m%d-%H%M%S).log"
 mkdir -p "$ROOT"
 exec > >(tee -a "$LOG") 2>&1
+if [[ -n "$BASELINE_REFERENCE" ]]; then
+  python3 - "$BASELINE_REFERENCE" "$ROOT/baseline-reuse.json" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+reference, output = map(Path, sys.argv[1:])
+data = json.loads(reference.read_text())
+output.write_text(json.dumps(dict(reference=str(reference.resolve()),
+    reference_sha256=hashlib.sha256(reference.read_bytes()).hexdigest(),
+    canonical_root=data['canonical_root'], baseline_load_repeated=False,
+    original_load_jar_sha256=data['original_load_jar_sha256'],
+    note='Original loading metrics are historical. Reader/workload measurements require their own matching protocol.'), indent=2) + '\n')
+PY
+fi
 
 echo '[1/4] Building and auditing the Cassandra runtime jar'
 export JAVA_HOME
@@ -40,6 +97,12 @@ if ! rg -q 'CassandraRelevantProperties.UCS_PICKER_SEED' "$ROOT/controller-runti
   exit 1
 fi
 
+if [[ -n "$REUSED_BASELINE" ]]; then
+  echo '[2/4] Reusing preserved baseline; no baseline load or compaction is run'
+  mkdir -p "$ROOT/baseline"
+  # No -f: never replace an existing baseline pointer.
+  ln -s "$REUSED_BASELINE" "$ROOT/baseline/latest-$BASELINE_TAG"
+else
 echo '[2/4] Measuring vanilla Cassandra UCS baseline'
 env \
   DATASET_GIB="$DATASET_GIB" \
@@ -49,6 +112,7 @@ env \
   PARTITION_COUNT="$PARTITION_COUNT" \
   TARGET_SSTABLE_SIZE="$BASELINE_TARGET_SSTABLE_SIZE" \
   bash "$SCRIPT_DIR/run_baseline_20g.sh"
+fi
 
 echo '[3/4] Measuring Cassandra VComp (starts only after baseline node exits)'
 env \
@@ -60,6 +124,9 @@ env \
   TARGET_SST_BYTES="$VCOMP_TARGET_SST_BYTES" \
   VCOMP_SST_SIZE_MODEL="$VCOMP_SST_SIZE_MODEL" \
   bash "$SCRIPT_DIR/run_pipeline_100g.sh"
+if [[ -n "$BASELINE_REFERENCE" ]]; then
+  python3 "$REFERENCE_TOOL" validate --reference "$BASELINE_REFERENCE" >"$ROOT/baseline-reference-after.json"
+fi
 
 baseline=$(readlink -f "$ROOT/baseline/latest-$BASELINE_TAG")
 vcomp=$(readlink -f "$ROOT/vcomp/latest-$VCOMP_TAG")

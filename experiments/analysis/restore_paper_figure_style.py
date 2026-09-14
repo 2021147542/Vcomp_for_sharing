@@ -41,6 +41,9 @@ def cell(value):
 
 
 def metadata(root, data):
+    if data.get('presentation'):
+        selected = data['presentation']
+        return selected['title'], selected['interval']
     logs = root / 'logs'
     config = {}
     candidates = [logs / 'configuration.txt', logs / 'campaign.env', logs / 'baseline_configuration.txt', logs / 'vcomp_configuration.txt']
@@ -162,10 +165,12 @@ def limit_axis(axis, values, formatter):
     axis.yaxis.set_major_formatter(FormatStrFormatter(formatter))
 
 
-def workload_figure(root, rows, title, interval, preview):
+def workload_figure(root, rows, title, interval, preview, selected=False):
     lookup = {(r['workload'], r['system']): r for r in rows}
+    order = list(dict.fromkeys(r['workload'] for r in rows)) if selected else ORDER
+    labels = [w.replace(' / ', '\n') if selected else ('mixg.' if w == 'MIXGRAPH' else w) for w in order]
     with plt.style.context('seaborn-v0_8-whitegrid'):
-        figure, axes = plt.subplots(2, 2, figsize=(14, 9))
+        figure, axes = plt.subplots(2, 2, figsize=(max(14, len(order) * 2), 10 if selected else 9))
         figure.suptitle('Workload behavior — ' + title, fontsize=18, fontweight='bold', y=.98)
         panels = [(axes[0, 0], 'Throughput (M ops/sec)', 'throughput', 1e-6, '%.2f'),
                   (axes[1, 0], f'Disk read (GB, {interval})', 'read_gb', 1, '%.0f'),
@@ -173,7 +178,7 @@ def workload_figure(root, rows, title, interval, preview):
         for axis, heading, metric, factor, formatter in panels:
             all_values = []
             for series, system in enumerate(('baseline', 'vcomp')):
-                for index, workload in enumerate(ORDER):
+                for index, workload in enumerate(order):
                     value = scaled(lookup.get((workload, system), {}).get(metric), factor)
                     x = index + (series - .5) * .36
                     all_values.append(value)
@@ -181,13 +186,13 @@ def workload_figure(root, rows, title, interval, preview):
                         axis.text(x, .02, 'N/A', rotation=90, ha='center', fontsize=8, color=COLORS[system], transform=axis.get_xaxis_transform())
                     else:
                         axis.bar(x, value, width=.33, color=COLORS[system])
-            axis.set_xticks(range(7), ['mixg.' if w == 'MIXGRAPH' else w for w in ORDER])
-            axis.set_xlim(-.6, 6.6)
+            axis.set_xticks(range(len(order)), labels)
+            axis.set_xlim(-.6, len(order) - .4)
             axis.set_title(heading, fontsize=15, fontweight='bold')
             limit_axis(axis, all_values, formatter)
             style_axis(axis)
         axis = axes[0, 1]
-        points = [w for w in ORDER if w != 'E']
+        points = [w for w in order if not any(r['workload'] == w and r.get('latency_kind') == 'scan' for r in rows)] if selected else [w for w in ORDER if w != 'E']
         maxima = []
         for series, system in enumerate(('baseline', 'vcomp')):
             for index, workload in enumerate(points):
@@ -205,8 +210,8 @@ def workload_figure(root, rows, title, interval, preview):
                     axis.bar(x, top - bottom, bottom=bottom, width=.33, color=COLORS[system], alpha=alpha)
                     bottom = top
         axis.set_title('Point-lookup latency (µs): p50 / p95 / p99', fontsize=15, fontweight='bold')
-        axis.set_xticks(range(6), ['mixg.' if w == 'MIXGRAPH' else w for w in points])
-        axis.set_xlim(-.6, 5.6)
+        axis.set_xticks(range(len(points)), [w.replace(' / ', '\n') if selected else ('mixg.' if w == 'MIXGRAPH' else w) for w in points])
+        axis.set_xlim(-.6, len(points) - .4)
         limit_axis(axis, maxima, '%.0f')
         style_axis(axis)
         figure.legend(handles=[Patch(color=COLORS[s], label=DISPLAY[s]) for s in ('baseline', 'vcomp')],
@@ -245,8 +250,8 @@ def restore(root, preview_dir=None):
     preview = Path(preview_dir) if preview_dir is not None else None
     with plt.rc_context({'svg.fonttype': 'none', 'font.family': 'sans-serif',
                          'font.sans-serif': ['DejaVu Sans', 'Arial']}):
-        loading_figure(root, loading, title, preview)
-        workload_figure(root, workloads, title, interval, preview)
+        loading_figure(root, loading, data.get('presentation', {}).get('loading_title', title), preview)
+        workload_figure(root, workloads, title, interval, preview, bool(data.get('presentation')))
     result = root / 'results.md'
     if result.is_file():
         original = result.read_text()

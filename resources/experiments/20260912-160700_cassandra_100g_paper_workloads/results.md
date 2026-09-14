@@ -10,12 +10,18 @@
 
 | 버전 | System | 적재 시간 (min) | Disk write (GiB) | 기록된 WA | 최종 DB (GiB) | SST 수 | Visible rows | 원본 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Primary | baseline | 100.163317 | 454.169365 | N/A | 76.789099 | 4 | 66,278,498 | logs/load/baseline_metrics.env |
-| Primary | vcomp | 1.877167 | 84.59557 | N/A | 84.586415 | 4 | 67,768,639 | logs/load/vcomp_load_metrics.env; logs/load/vcomp.log |
+| Primary | baseline | 100.163317 | 454.169365 | 5.915 | 76.789099 | 4 | 66,278,498 | logs/load/baseline_metrics.env; logs/loading-135643/cassandra_baseline_vcomp_100g.md |
+| Primary | vcomp | 1.877167 | 84.59557 | 1 | 84.586415 | 4 | 67,768,639 | logs/load/vcomp_load_metrics.env; logs/load/vcomp.log; logs/loading-135643/cassandra_baseline_vcomp_100g.md |
 
 WA는 원본에 기록된 정의와 값을 유지합니다. 분모나 측정 구간이 다른 실험의 WA를 동일 정의로 간주하지 않습니다.
 
+135643 적재와 동일한 보존 DB로 수행한 160700 workload를 합친 결과입니다. 적재는 다시 실행하지 않았습니다. 단일 partition, 100GiB, 48 threads × 300초/workload 조건의 과거 실험이며 현재 ordered-partition 구현의 결과가 아닙니다. [원본 적재 보고서](logs/loading-135643/README.md).
+
 Cassandra historical load windows can differ: baseline may include drain, while VComp loader timing/write bytes may end before import/settling. Consult the preserved README/configuration; these values are not silently converted into symmetric windows.
+
+Primary: WA is the rounded historical value; timing/bytes retain the existing raw load metrics.
+
+Primary: WA is the rounded historical value; timing/bytes retain the existing raw load metrics.
 
 ## Workload
 

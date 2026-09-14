@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Publish three figures and matching tables from an archived experiment's logs/.
 
-Only explicit primary-result locations are considered; nested pilots are never
-promoted from audit bundles. Missing data are None, never invented zeroes.
+Only explicit result locations are considered. A presentation_sources.json
+manifest can expose named pilots without treating them as full benchmarks.
+Missing data are None, never invented zeroes.
 """
 import argparse
 import json
@@ -75,6 +76,22 @@ def scaled(value, divisor):
 def load_rows(root, audit):
     logs = root / 'logs'
     rows, notes = [], []
+    selection = read_json(logs / 'presentation_sources.json')
+    if selection:
+        for item in selection.get('loading', []):
+            source = root / item['source']
+            data = env(source)
+            if not data:
+                raise ValueError('Missing selected loading metrics: ' + str(source))
+            rows.append(dict(group=item['group'], system=item['system'],
+                             seconds=first(data, 'load_seconds'),
+                             write_gb=scaled(first(data, 'disk_write_bytes'), 1e9),
+                             final_gb=scaled(first(data, 'final_db_bytes'), 1e9),
+                             write_amplification=first(data, 'write_amplification'),
+                             sst_count=first(data, 'sstable_count'),
+                             visible_rows=first(data, 'fingerprint_rows'),
+                             source=item['source'], note=''))
+        return rows, selection.get('notes', [])
     explicit = read_json(logs / 'primary_loading.json')
     if isinstance(explicit, dict) and isinstance(explicit.get('rows'), list):
         return explicit['rows'], explicit.get('notes', [])
@@ -219,21 +236,35 @@ def load_rows(root, audit):
     return rows, notes
 
 
-def workload_rows(root, audit):
+def workload_rows(root, audit, location=None):
+    selection = read_json(root / 'logs' / 'presentation_sources.json') if location is None else None
+    if selection:
+        rows = []
+        for item in selection['workloads']:
+            selected = workload_rows(root, False, root / item['directory'])
+            if not selected:
+                raise ValueError('Missing selected workload metrics: ' + item['directory'])
+            for row in selected:
+                row['original_workload'] = row['workload']
+                row['workload'] = item['label'] + ' / ' + row['workload']
+            rows.extend(selected)
+        return rows
     if audit:
         return []
     logs = root / 'logs'
     locations = [logs / 'results', logs]
     locations += sorted((logs / 'raw').glob('workloads*/results'))
+    if location is not None:
+        locations = [location]
     rows = []
     for workload in WORKLOADS:
         for system in SYSTEMS:
             selected, data = None, None
             aliases = [system, 'virtual'] if system == 'vcomp' else [system]
-            for location in locations:
+            for folder in locations:
                 for name in (workload, workload.lower()):
                     for alias in aliases:
-                        path = location / (name + '_' + alias + '.json')
+                        path = folder / (name + '_' + alias + '.json')
                         candidate = read_json(path)
                         if isinstance(candidate, dict) and 'throughput_ops_per_second' in candidate:
                             selected, data = path, candidate
@@ -269,7 +300,7 @@ def workload_rows(root, audit):
                 # E's all-zero point histogram does not represent scan latency.
                 row['p' + str(percentile)] = None if point_absent or (kind == 'scan' and data.get('scans') == 0) else value
             rows.append(row)
-    if rows:
+    if rows and location is None:
         found = {(row['workload'], row['system']): row for row in rows}
         rows = [found.get((workload, system), {
             'workload': workload, 'system': system, 'latency_kind': 'scan' if workload == 'E' else 'point lookup',
@@ -341,6 +372,8 @@ def publish(root):
         audit = False
     loading, notes = load_rows(root, audit)
     workloads = workload_rows(root, audit)
+    selection = read_json(logs / 'presentation_sources.json') or {}
+    groups = list(dict.fromkeys(row['workload'] for row in workloads)) if selection else WORKLOADS
     figures = root / 'figures'
     figures.mkdir(exist_ok=True)
     physical = 'Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.'
@@ -353,7 +386,8 @@ def publish(root):
     if device_available:
         latency_panels += [('disk_read_latency_avg_ms', 'Device average read (ms)'),
                            ('disk_write_latency_avg_ms', 'Device average write (ms)')]
-    grouped_figure(figures / 'io_latency.svg', workloads, 'workload', WORKLOADS, latency_panels,
+    grouped_figure(figures / 'io_latency.svg', workloads, 'workload', groups, latency_panels,
+                   (selection.get('title', '') + '\n' if selection else '') +
                    ('DB client and device-layer latency (separate metrics)' if device_available
                     else 'DB read / scan latency (client), not physical disk I/O'),
                    (device_note + ' Client: E scan, others point lookup.' if device_available else physical) + ' N/A is not zero.')
@@ -371,6 +405,7 @@ def publish(root):
                             'primary_comparison_count': count, 'primary_violation_count': violation_count,
                             'source': 'logs/fidelity.json'}
     normalized = {'fidelity_summary': fidelity_summary, 'status': status, 'bundle': root.name, 'audit_only': audit and not loading and not workloads, 'loading': loading, 'workloads': workloads,
+                  'presentation': selection,
                   'notes': notes, 'physical_io_latency': None,
                   'physical_io_latency_note': device_note if device_available else physical,
                   'device_latency_available': device_available, 'device_latency_note': device_note,
@@ -386,7 +421,9 @@ def publish(root):
                   + '개입니다. [기존 판정과 비교 항목](logs/fidelity.json)을 그대로 표시했으며 판정을 다시 계산하지 않았습니다.', '']
     if status:
         lines += ['## 실행 상태', '', markdown_table(['항목', '기록된 값'], [[key, status[key]] for key in ('status', 'phase', 'exit_status', 'updated_at') if key in status]), '', '출처: [status.env](logs/status.env). 완료 표시는 실행 완료를 뜻하며 baseline 유사성 통과를 뜻하지 않습니다.', '']
-    if audit:
+    if selection:
+        lines += ['**' + selection['description'] + '**', '']
+    elif audit:
         lines += ['이 폴더는 감사·검증 자료입니다. 내부 pilot과 과거 비교 결과를 이 폴더의 주 벤치마크로 사용하지 않았습니다.', '']
     if (logs / 'README.md').is_file():
         lines += ['실행 상태, 오류, 설정 차이와 해석 제한: [보존된 README](logs/README.md).', '']

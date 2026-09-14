@@ -55,6 +55,16 @@ conventions without the original server's workspace-level instructions.
   figure when changing the other figures' presentation.
 - Use a new run ID for new measurements. Do not overwrite historical bundles
   or present a rebuilt executable as the previously measured binary.
+- Keep the registered Cassandra 100 GiB baseline and its fixed input seed.
+  Rebuild only VComp for changes that preserve input/schema/load semantics;
+  validate the reference manifest before reuse. Run workloads on fresh
+  checkpoints, never on the canonical baseline. Reader/workload/cache changes
+  require fresh baseline measurements, not another baseline load. Preserve the
+  original load binary/source provenance separately from later readers.
+- Diagnose Cassandra discrepancies with bounded native/exact/model differential
+  traces before another large campaign. Record the first differing job and field.
+  Exact key/version lists are test-only oracles, never the production VComp
+  algorithm or paper benchmark results. Unchecked stages remain unresolved.
 - Generic shell runners use `experiments/lib/common.sh` for configurable
   paths. Frozen paper campaigns additionally enforce their documented binary,
   host, and completion conditions; preserve those checks.

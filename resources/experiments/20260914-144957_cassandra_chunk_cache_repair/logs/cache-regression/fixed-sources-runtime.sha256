@@ -1,3 +1,0 @@
-94bb6c66af0decb2f2f6223b225fe0a628bf6493db3b2376528fd03038c2d40b  cassandra_vcomp/build/apache-cassandra-5.0.9-SNAPSHOT.jar
-4a987e11225e473af7a0c1f4e8345c26fa1282137d798d6eb01cea9091ee9ce5  cassandra_vcomp/src/java/org/apache/cassandra/cache/ChunkCache.java
-7e992ee99a3080b143f6e568d9590aab809e0d96f24bc7148f98441ca3a36c9f  cassandra_vcomp/test/unit/org/apache/cassandra/io/util/ChunkCacheFileHandleTest.java

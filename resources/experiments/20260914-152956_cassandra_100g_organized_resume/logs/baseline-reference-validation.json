@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-09-14T08:30:38.667422+00:00",
+  "reference_sha256": "8daf8fcfdf7d116bc5bf3473424ac687c9752cf7f1bd0643993399dc34e0e619",
+  "reference_validation": {
+    "valid": true,
+    "mode": "stat-and-provenance",
+    "components": 1632,
+    "canonical_root": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052"
+  },
+  "mutation_guards": {
+    "canonical": "Refusing canonical/reference mutation target: /work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052",
+    "canonical_parent": "Refusing canonical/reference mutation target: /work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline",
+    "reference": "Refusing canonical/reference mutation target: /home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs/baseline-reference",
+    "new_run": {
+      "allowed": true,
+      "targets": [
+        "/work/vcomp-pebble-1tb/reference-guard-validation-new-run-not-created"
+      ]
+    }
+  },
+  "unit_tests": "6 passed: valid/reference path aliases/hardlinks/same-size corruption/inventory additions/tampered canonical metrics",
+  "new_component_content_hash_performed": false,
+  "canonical_writes_performed": false,
+  "script_sha256": "f61ee2c4f813d088b56b916c5b3a805282ec6c252f03bd91dbc923a7b1359d24",
+  "current_canonical_small_files_verified": 27
+}

@@ -1,9 +1,0 @@
-{
-  "run_stamp": "20260914-152956",
-  "raw_root": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956",
-  "result_root": "/home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume",
-  "tmux": "cassandra_organized_100g_20260914_152956",
-  "reason": "Resume after user-requested folder organization; all 14 workloads restarted from unchanged canonical loads; same seed/settings; added device mean latency counters",
-  "logs_root": "/home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs",
-  "command": "env RUN_STAMP=20260914-152956 DATASET_GIB=100 CAMPAIGN_ROOT=/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956 RESULT_ROOT=/home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume bash /home/dongju/vcomp/experiments/scripts/cassandra/run_resumed_fidelity_100g_campaign.sh"
-}

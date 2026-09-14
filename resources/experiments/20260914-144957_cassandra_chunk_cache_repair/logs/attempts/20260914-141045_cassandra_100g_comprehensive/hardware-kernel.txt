@@ -1,1 +1,0 @@
-Linux storage 6.17.0-rc4-bperf+ #1 SMP PREEMPT_DYNAMIC Fri Mar 27 16:43:13 KST 2026 x86_64 x86_64 x86_64 GNU/Linux

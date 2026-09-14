@@ -1,7 +1,0 @@
-writes=64
-key_bytes=48
-value_bytes=40
-flush_bytes=352
-partition_count=4
-target_sst_bytes=67108864
-size_model=logical

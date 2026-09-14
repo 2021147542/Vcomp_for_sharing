@@ -1,1 +1,0 @@
-/tmp/vcomp-cassandra-workload.i92ljs.log

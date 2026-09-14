@@ -1,5 +1,19 @@
 # VComp 작업 요약
 
+## 실험 폴더 정리 및 pilot 그래프 복구 — 2026-09-14
+
+사용자 지시로 100000·104858·133300·172801 결과 폴더를 삭제했다. 원본 DB는 삭제하지 않았다. 134200의 1GiB 적재 두 묶음과 workload pilot 세 묶음(총 20 cells), 144957의 기존 100GiB 적재 참조와 캐시 수정 후 A 60초 pilot 두 cells를 표·그래프에 반영했다. 각 폴더의 `logs/presentation_sources.json`에 출처·조건을 명시했다. WA와 물리 disk latency 미측정은 N/A로 유지한다.
+
+## 2026-09-14 17:28 — native/exact 차등 진단과 고정 baseline 등록
+
+Seed 20260909의 100 GiB baseline을 보존 참조로 등록했다. 1,632개 component의 기존 전후 SHA256 증거와 현재 파일 상태, 설정·지표·입력 source 출처를 묶었다. 입력 조건이 같은 VComp 변경에서는 baseline 적재를 반복하지 않는다. reader/workload/cache 조건이 바뀌면 원본 DB의 새 checkpoint에서 baseline 측정만 다시 한다.
+
+작은 실제 native compaction과 test-only exact merge/split을 비교했다. 같은 실제 metadata·후보를 준 picker 7개 이벤트는 일치했고, exact merge와 지정된 4-shard split도 native와 일치했다. 같은 job의 production-default model 경로는 **3,558행 → 3,728행(+4.778%)**으로 달라졌고 첫 불일치 필드는 `job 1 / approximation / $.row_count`다. 같은 입력의 기록된 벡터에는 native-only 310키, model-only 480키, 공통 3,248키 중 timestamp 차이 1,773개가 있다.
+
+Production 알고리즘은 수정하지 않았다. 이 fixture는 24 B/43 B, 64 partitions의 작은 진단이며, production의 크기 추정·비동기 일정·shard 개수 결정·CQL materializer는 아직 검증이 남았다. 100 GiB 성능 격차의 전체 원인을 입증한 것은 아니다. 새 대형 적재/벤치는 실행하지 않았다.
+
+진단 결과 (bundle deleted at user request, 2026-09-14) · [차등 디버깅 절차](../experiments/docs/cassandra-differential-debugging.md) · [baseline 재사용](../experiments/docs/baseline-reference.md).
+
 ## 2026-09-14 16:50 — 100 GiB workload 완료, 유사성 미통과
 
 14개 workload를 48 threads × 300초로 모두 완료했고 server ERROR/OOM은 0이다. 원본 SST의 전후 SHA256, 실행 중 소스와 reader JAR 검증도 통과했다. 다만 주 비교 47개 중 30개가 ±10% 밖이므로 유사성은 미통과다. A–F throughput은 +15.16~+26.50%, MixGraph는 +6.32%다. E disk read는 −7.73%, scan당 read는 −19.88%이며 시간 기준 실행의 작업 수 차이를 함께 봐야 한다. C의 hit/miss 구성과 key-cache 동작 차이는 기록했지만 원인별 기여도를 입증하거나 모델/native lifecycle 차이를 해결한 것은 아니다.
@@ -77,7 +91,7 @@ CPU-only E 재생에서 worker RNG 수정 전후 서로 다른 scan 시작점이
 늘었지만, 이것만으로 두 DB 사이 read 차이를 설명했다고 볼 수 없다. 또한 E가 같은
 난수 나머지를 연산 선택/scan 길이에 재사용해 실제 길이가 1..95인 기존 오류를 확인했다.
 이 감사에서는 원본 측정·DB·코드를 변경하거나 새 DB 실험을 실행하지 않았다.
-근거와 한계: [설정 및 E 감사](experiments/20260914-133300_cassandra_e_settings_audit/logs/README.md).
+근거와 한계: 설정 및 E 감사 (bundle deleted at user request, 2026-09-14).
 
 ## 2026-09-14 13:09 — 수정 후 100 GiB 비교 완료, fidelity 미통과
 
@@ -397,7 +411,7 @@ Seeded 1 GiB/100 GiB run은 baseline daemon이 seed 변경 전 JAR를 사용한 
 - VComp: 112.630 s, device write 84.596 GiB, write amp 1.000x, final DB 84.586 GiB, SST 4개, visible rows 67,768,639
 - visible cardinality delta는 +1,490,141 (+2.2483%)이며 양쪽 모두 전체 key/value semantic scan을 통과했다. VComp의 `materialized_keys=86,986,583`은 서로 겹치는 4개 final run의 physical row 합이므로 baseline visible row와 직접 비교하지 않는다.
 - baseline은 249 compaction, abort 0, cumulative compacted data 403.39 GB였다. single giant partition을 `ci.next()`로 한 번에 처리한 뒤 64 MiB/s rate limiter를 청구해 74 GB task가 100% 표시 후에도 오래 sleep하는 vanilla Cassandra 특성이 확인됐다.
-- 소형 결과 bundle: `resources/experiments/20260912-135643_cassandra_100g_audited_common_theta_logical/`
+- 소형 결과 bundle: `resources/experiments/20260912-160700_cassandra_100g_paper_workloads/ (135643 적재 자료 통합)`
 - raw 보존 root: `/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare`
 
 2026-09-12 retained 100 GiB Cassandra workload compare:

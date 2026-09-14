@@ -55,3 +55,7 @@ stopped after the campaign.
 | F | VComp | 58325 | 534 | 1391 | 1874 | 0 | 3315854 | 122.134 | 731.165 |
 | MixGraph | Baseline | 40354 | 840 | 2990 | 5693 | 33980 | 3595547 | 30.776 | 80.515 |
 | MixGraph | VComp | 37533 | 904 | 3160 | 5988 | 39715 | 3215962 | 37.118 | 79.716 |
+
+## Consolidated loading evidence
+
+The 135643 loading bundle is now consolidated here. Its original report, configurations, metrics, figures and presentation are preserved in [loading-135643](loading-135643/README.md). The workload source paths in configuration.txt identify the same loaded baseline/VComp databases. Loading and workload measurements retain their original intervals and provenance; no measurements were rerun. See [combined tables and figures](../results.md).

@@ -1,9 +1,0 @@
-run,level,key_min,key_max,estimated_keys,emitted_keys,segments,sketch_samples
-run-compaction-4-shard-0,2,531615,667589,91817,91817,1254,287
-run-compaction-4-shard-1,2,667590,786239,74615,74615,1125,328
-run-compaction-4-shard-2,2,786240,919615,89148,89148,1234,338
-run-compaction-4-shard-3,2,919616,1048575,79593,79593,1210,307
-run-compaction-5-shard-0,2,0,133559,86430,86430,1256,321
-run-compaction-5-shard-1,2,133560,267329,89068,89068,1239,254
-run-compaction-5-shard-2,2,267330,398369,89004,89004,1192,303
-run-compaction-5-shard-3,2,398370,531614,88078,88078,1222,275

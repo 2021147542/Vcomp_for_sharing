@@ -1,2 +1,0 @@
-SOURCE   FSTYPE OPTIONS
-/dev/md0 ext4   rw,relatime,stripe=512

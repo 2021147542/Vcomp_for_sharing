@@ -1,1 +1,0 @@
-PASS: automatic UCS compaction enabled for vcomp_100g.kv
