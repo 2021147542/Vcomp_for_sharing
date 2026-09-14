@@ -1,0 +1,11 @@
+baseline_100g/kv histograms
+Percentile      Read Latency     Write Latency          SSTables    Partition Size        Cell Count
+                    (micros)          (micros)                             (bytes)                  
+50%                    20.00              5.00              0.00           1629722              1597
+75%                    72.00              6.00              2.00           5839588              4768
+95%                  1331.00             10.00              4.00           5839588              5722
+98%                  1916.00             14.00              4.00           5839588              5722
+99%                  2299.00             35.00              4.00           5839588              5722
+Min                     4.00              0.00              0.00            315853               311
+Max                152321.00           3973.00              4.00         962624926            785939
+

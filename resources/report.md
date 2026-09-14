@@ -1,5 +1,13 @@
 # Pebble VComp Feasibility Prototype Report
 
+## Cassandra 100 GiB completed; similarity not achieved (2026-09-14 16:50 KST)
+
+All fourteen 48-worker, 300-second workload cells completed with zero server errors and OOM events. Canonical SST component hashes before/after and the measured source/reader JAR checks passed. Similarity still fails: 30 of 47 primary comparisons fall outside ±10%. A–F throughput is 15.16–26.50% higher, which is still a mismatch; MixGraph is +6.32%. E reads are −7.73% in the fixed-time interval and −19.88% per scan. C diagnostics show different hit/miss populations and key-cache occupancy/miss behavior, without establishing their separate causal contributions. Model membership and native task/flush lifecycle differences remain unresolved.
+
+The original gray/blue 2×2 loading/workload layout is restored in all 17 public bundles; normalized measurements and the independent latency figures were preserved during each style update. The automatic publisher was updated only after measurement verification.
+
+[Results](experiments/20260914-152956_cassandra_100g_organized_resume/results.md) · [Completion evidence and limits](experiments/20260914-152956_cassandra_100g_organized_resume/logs/completion-notes.md).
+
 ## Result layout completed; 100 GiB workloads resumed (15:30 KST)
 
 Timestamp bundles now expose only figures/, logs/, results.md; the three SVGs and tables use the same source values. Incomplete attempts were removed from the overview while preserving completed unfavorable cells and required load provenance under logs/. Historical device latency is unavailable. The resumed run adds device-level mean request latency from existing diskstats boundaries; the 47 primary comparisons, seed 20260909 and 48 workers × 300 seconds are unchanged. Canonical loads are reused and all fourteen workload checkpoints restart.

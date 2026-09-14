@@ -1,0 +1,27 @@
+{
+  "applied_at": "2026-09-14T16:51:16",
+  "measurement_completed_before_display_code_changes": true,
+  "verification": "../completion-verification.json",
+  "code_changes": [
+    {
+      "path": "experiments/analysis/publish_experiment_bundle.py",
+      "before_sha256": "b77931c974eb29b0577d6897deb4c521d8fc53ddffac8b64348aaaaba5cb0e6e",
+      "after_sha256": "4957492d34883900c474ca378c56d522db86c0efcea42e1f3d7757df20fc46ba"
+    },
+    {
+      "path": "experiments/scripts/cassandra/run_fidelity_100g_campaign.sh",
+      "before_sha256": "b82e2504e22c2d2c298a40c7dd574f28cea2dff09df870d0dfe535522a6dac60",
+      "after_sha256": "d772e7f2ad27033cd8db3b3d2c4a2653a4087d3807431c94cc6d99435eff6f64"
+    },
+    {
+      "path": "experiments/scripts/cassandra/run_resumed_fidelity_100g_campaign.sh",
+      "before_sha256": "be1093d9e34169f4318d68a5186933f1e56d628426cdd15b05291641b3a318b6",
+      "after_sha256": "1d78f467a8711aeaf82db3cae6baa7e5e236d70c73410c4133ddb7709c6a8f15"
+    }
+  ],
+  "preserved_sha256": {
+    "figures/io_latency.svg": "44a53de3ce232fbdd1c38eae7dd0e689d55b0a51f6811208d506eca7bc2403dd",
+    "logs/presentation.json": "1e31d5ddcbd54d2379d13c824a2ebbf9c214cffd19740514479d9421337b0638"
+  },
+  "note": "Only display code and future runner source-archive lists changed after the completed campaign. Measured source snapshots and binary provenance remain unchanged."
+}

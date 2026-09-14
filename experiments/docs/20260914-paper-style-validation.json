@@ -1,0 +1,173 @@
+[
+  {
+    "bundle": "20260910-205045_pebble_1tib_1kb",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260910-205045_pebble_1tib_1kb/figures/io_latency.svg": "e9f0543a59652f722b99e15744dd7612cfdc021301c1c00b9caa07f5760caa52",
+      "resources/experiments/20260910-205045_pebble_1tib_1kb/logs/presentation.json": "841fd5492709258ddc631aea6df2b5baeb662f61c79fbcad4259c8f5534db440"
+    }
+  },
+  {
+    "bundle": "20260911-115100_pebble_1tib_shape_diagnosis",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/figures/io_latency.svg": "ad741f57f42c3e2912f84d11277fc387e7a51903230de700b16bb3dc8b68daff",
+      "resources/experiments/20260911-115100_pebble_1tib_shape_diagnosis/logs/presentation.json": "ce8309ab256219a87849946c88e2500e21b363ce385c488a437528f1699f3d17"
+    }
+  },
+  {
+    "bundle": "20260912-135643_cassandra_100g_audited_common_theta_logical",
+    "loading_rows": 2,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260912-135643_cassandra_100g_audited_common_theta_logical/figures/io_latency.svg": "197c5862e1e731b89a497705ca97b508a83f43301f24456d44660c8817525cac",
+      "resources/experiments/20260912-135643_cassandra_100g_audited_common_theta_logical/logs/presentation.json": "11dbfb548fd2924f33e997e860094d12e37ffc9f0a88c223021dbc7e3ad43d1c"
+    }
+  },
+  {
+    "bundle": "20260912-160700_cassandra_100g_paper_workloads",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260912-160700_cassandra_100g_paper_workloads/figures/io_latency.svg": "4468f20ba628c7f0d48b2fafab372855c85e6fe9a0467ed21a3d55981bd25197",
+      "resources/experiments/20260912-160700_cassandra_100g_paper_workloads/logs/presentation.json": "26163c34eeeb950580041d82b68d5253a24d666282fa2f584ecfd1d730c5431a"
+    }
+  },
+  {
+    "bundle": "20260912-190636_cassandra_1g_final_only_certificate",
+    "loading_rows": 3,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260912-190636_cassandra_1g_final_only_certificate/figures/io_latency.svg": "d629ef9493a9cad0b9d825744c20667bb0d6467afcb70271d42196f9c312bc19",
+      "resources/experiments/20260912-190636_cassandra_1g_final_only_certificate/logs/presentation.json": "19b19093fd0c9bff7768670f73570ee9d0ca185c76bfac65e572c8dc46c01431"
+    }
+  },
+  {
+    "bundle": "20260913-124257_cassandra_iteration_versions",
+    "loading_rows": 18,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260913-124257_cassandra_iteration_versions/figures/io_latency.svg": "2c9402ae41d04a1d6ea55fbaf7e08423bac62122cbba976549af5ba8e9d6bd65",
+      "resources/experiments/20260913-124257_cassandra_iteration_versions/logs/presentation.json": "51a392fbee0ae4f07472ad2476375a2a6479c2d6c09762d11abec941c069e50e"
+    }
+  },
+  {
+    "bundle": "20260913-160100_cassandra_1g_fixed_operations_q1",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260913-160100_cassandra_1g_fixed_operations_q1/figures/io_latency.svg": "c4222cf3b7ffbaa395f408ed22a52957ca222540262709d0bf67f53c8de3ceb4",
+      "resources/experiments/20260913-160100_cassandra_1g_fixed_operations_q1/logs/presentation.json": "5e62b1e1465df5157f69a925ce721f71cb8b8fa4cc7da8b5850a2daa21a15fa3"
+    }
+  },
+  {
+    "bundle": "20260913-180400_cassandra_100g_fixed_operations_q1",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260913-180400_cassandra_100g_fixed_operations_q1/figures/io_latency.svg": "3ca453f532f72a2994244324c1a242ce3b048362a9242d363a175191fe948d2c",
+      "resources/experiments/20260913-180400_cassandra_100g_fixed_operations_q1/logs/presentation.json": "a12d76fd6cdbae6ae31b55612bf340c707d53d59fe60ebd547ef0fab45c0feb3"
+    }
+  },
+  {
+    "bundle": "20260913-225200_cassandra_faithful_v2_1g",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260913-225200_cassandra_faithful_v2_1g/figures/io_latency.svg": "d04425afd961769e579a48c53ccb0c414549dfde7cbca6c592af7b79b547b207",
+      "resources/experiments/20260913-225200_cassandra_faithful_v2_1g/logs/presentation.json": "a460b57de594348cf1c2bfc1b436114abf368fd42a765171da7012e82cf5c063"
+    }
+  },
+  {
+    "bundle": "20260914-010000_cassandra_faithful_v2_100g",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-010000_cassandra_faithful_v2_100g/figures/io_latency.svg": "da78aff1495832e22924fb65bb11fde8bd1dd7bfc57fc6d8e40864e1513a32c1",
+      "resources/experiments/20260914-010000_cassandra_faithful_v2_100g/logs/presentation.json": "c5d2b6ed74dc81b018a1bdd4cb625dcedd7fe60321fedd817f226a3b2c15b28c"
+    }
+  },
+  {
+    "bundle": "20260914-100000_cassandra_mixgraph_100g_5min_rerun",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-100000_cassandra_mixgraph_100g_5min_rerun/figures/io_latency.svg": "3a4ffefafe3b547c53319e15da42e8708d70b1edb7abecf49bd3c19cb103882f",
+      "resources/experiments/20260914-100000_cassandra_mixgraph_100g_5min_rerun/logs/presentation.json": "4d3b8fcf4cbe5e5292a47949271151b822d3250a66326f55a708079a7a35b6a1"
+    }
+  },
+  {
+    "bundle": "20260914-104858_cassandra_fidelity_audit",
+    "loading_rows": 0,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-104858_cassandra_fidelity_audit/figures/io_latency.svg": "0d236d7766c37f04633ccd785f2c645b8c3d25d72205a6a8e89589b0837de06b",
+      "resources/experiments/20260914-104858_cassandra_fidelity_audit/logs/presentation.json": "5075d93ff7990bfa96470e7813d3238b3d28ee94df950a6e326a036c49b5dbf9"
+    }
+  },
+  {
+    "bundle": "20260914-111023_cassandra_100g_fidelity_rerun",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-111023_cassandra_100g_fidelity_rerun/figures/io_latency.svg": "71200c6ddc29c42350abfb146d03ed170b7ad630883a92321a0ab52807640a8d",
+      "resources/experiments/20260914-111023_cassandra_100g_fidelity_rerun/logs/presentation.json": "0a71f556165c6783a8d662e5228fedb95612a5f2e9655541e4fe67e62373e1f0"
+    }
+  },
+  {
+    "bundle": "20260914-133300_cassandra_e_settings_audit",
+    "loading_rows": 0,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-133300_cassandra_e_settings_audit/figures/io_latency.svg": "93c4b5b005de20cc965bdbe4dcb952a6955e665473c58f774ee1618e0671fc22",
+      "resources/experiments/20260914-133300_cassandra_e_settings_audit/logs/presentation.json": "63010499fa7ebe86f3c5075bbe85674f33301e22f5740c2ed0f98b0f4f6882bf"
+    }
+  },
+  {
+    "bundle": "20260914-134200_cassandra_comprehensive_preflight",
+    "loading_rows": 0,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-134200_cassandra_comprehensive_preflight/figures/io_latency.svg": "796a7d93a12273a3d68a88e62e23b6c1f9c955a4224c160ace1e9faa948488fd",
+      "resources/experiments/20260914-134200_cassandra_comprehensive_preflight/logs/presentation.json": "ff55d56a0a229d4cf91f87aa972972fcd9f82b64d295ec330c01565404335814"
+    }
+  },
+  {
+    "bundle": "20260914-144957_cassandra_chunk_cache_repair",
+    "loading_rows": 0,
+    "workload_rows": 0,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-144957_cassandra_chunk_cache_repair/figures/io_latency.svg": "0dc95cee1ecbcdc887b36fb4d9bf9406c123d968e311fa50958f3f1a615bfaf2",
+      "resources/experiments/20260914-144957_cassandra_chunk_cache_repair/logs/presentation.json": "ebfd9a423215f669f6596582d18fd293c119b54ce7e5929bff25b3b05cba7208"
+    }
+  },
+  {
+    "bundle": "20260914-152956_cassandra_100g_organized_resume",
+    "loading_rows": 2,
+    "workload_rows": 14,
+    "io_latency_changed": false,
+    "preserved_sha256": {
+      "resources/experiments/20260914-152956_cassandra_100g_organized_resume/figures/io_latency.svg": "44a53de3ce232fbdd1c38eae7dd0e689d55b0a51f6811208d506eca7bc2403dd",
+      "resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs/presentation.json": "1e31d5ddcbd54d2379d13c824a2ebbf9c214cffd19740514479d9421337b0638"
+    },
+    "phase": "style restoration after completed measurement publication"
+  }
+]

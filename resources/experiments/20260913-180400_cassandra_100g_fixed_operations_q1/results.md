@@ -1,6 +1,6 @@
 # 20260913-180400_cassandra_100g_fixed_operations_q1
 
-그래프와 아래 표는 동일한 [정규화 값](logs/presentation.json)을 사용합니다. 원본 측정값은 `logs/`에 보존했습니다. GB는 10⁹ bytes이며, N/A는 미측정·누락·주 결과 없음입니다. N/A를 0으로 그리지 않습니다.
+그래프와 아래 표는 동일한 [정규화 값](logs/presentation.json)을 사용합니다. 원본 측정값은 `logs/`에 보존했습니다. GB는 10⁹ bytes, MB는 10⁶ bytes, GiB는 2³⁰ bytes이며, N/A는 미측정·누락·주 결과 없음입니다. N/A를 0으로 그리지 않습니다.
 
 [적재 그래프](figures/loading.svg) · [Workload 그래프](figures/workload.svg) · [읽기/scan latency 그래프](figures/io_latency.svg)
 
@@ -8,10 +8,10 @@
 
 ## 적재
 
-| 버전 | System | 적재 시간 (s) | Disk write (GB) | 기록된 WA | 최종 DB (GB) | SST 수 | Visible rows | 원본 |
+| 버전 | System | 적재 시간 (min) | Disk write (GiB) | 기록된 WA | 최종 DB (GiB) | SST 수 | Visible rows | 원본 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Primary | baseline | 5,558.277 | 453.283779 | N/A | 77.208163 | 184 | 66,278,498 | logs/load/baseline_metrics.env |
-| Primary | vcomp | 116.419 | 76.306817 | N/A | 76.213429 | 165 | 66,549,593 | logs/load/vcomp_metrics.env; logs/load/vcomp.log |
+| Primary | baseline | 92.63795 | 422.153416 | N/A | 71.905705 | 184 | 66,278,498 | logs/load/baseline_metrics.env |
+| Primary | vcomp | 1.940317 | 71.066261 | N/A | 70.979287 | 165 | 66,549,593 | logs/load/vcomp_metrics.env; logs/load/vcomp.log |
 
 WA는 원본에 기록된 정의와 값을 유지합니다. 분모나 측정 구간이 다른 실험의 WA를 동일 정의로 간주하지 않습니다.
 
@@ -19,22 +19,22 @@ Cassandra historical load windows can differ: baseline may include drain, while 
 
 ## Workload
 
-| Workload | System | Throughput (ops/s) | Disk read (GB) | Disk write (GB) | 실행 시간 (s) | Operations | 원본 |
+| Workload | System | Throughput (M ops/s) | Disk read (GB) | Disk write (MB) | 실행 시간 (s) | Operations | 원본 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| A | baseline | 74,301.234119 | 10.133062 | 0.013861 | 12.920378 | 960,000 | logs/results/a_baseline.json |
-| A | vcomp | 81,236.478059 | 8.32007 | 0.013955 | 11.817351 | 960,000 | logs/results/a_vcomp.json |
-| B | baseline | 55,271.590254 | 16.021135 | 0.00061 | 17.368778 | 960,000 | logs/results/b_baseline.json |
-| B | vcomp | 61,148.975327 | 12.801151 | 0.00052 | 15.699364 | 960,000 | logs/results/b_vcomp.json |
-| C | baseline | 50,941.221226 | 16.523067 | 0.000623 | 18.845249 | 960,000 | logs/results/c_baseline.json |
-| C | vcomp | 57,258.985776 | 13.210505 | 0.000516 | 16.765927 | 960,000 | logs/results/c_vcomp.json |
-| D | baseline | 66,791.353926 | 4.389695 | 0.000745 | 14.373118 | 960,000 | logs/results/d_baseline.json |
-| D | vcomp | 74,070.378534 | 3.64168 | 0.000602 | 12.960647 | 960,000 | logs/results/d_vcomp.json |
-| E | baseline | 26,305.367005 | 23.451013 | 0.009978 | 36.494454 | 960,000 | logs/results/e_baseline.json |
-| E | vcomp | 27,279.166322 | 19.783631 | 0.010031 | 35.191691 | 960,000 | logs/results/e_vcomp.json |
-| F | baseline | 49,394.350037 | 16.538583 | 0.014168 | 19.435421 | 960,000 | logs/results/f_baseline.json |
-| F | vcomp | 54,450.67121 | 13.215609 | 0.014336 | 17.630637 | 960,000 | logs/results/f_vcomp.json |
-| MIXGRAPH | baseline | 33,433.147582 | 7.899455 | 0.008143 | 28.714018 | 960,000 | logs/results/mixgraph_baseline.json |
-| MIXGRAPH | vcomp | 32,616.072628 | 7.846638 | 0.008401 | 29.433341 | 960,000 | logs/results/mixgraph_vcomp.json |
+| A | baseline | 0.074301 | 10.133062 | 13.860864 | 12.920378 | 960,000 | logs/results/a_baseline.json |
+| A | vcomp | 0.081236 | 8.32007 | 13.955072 | 11.817351 | 960,000 | logs/results/a_vcomp.json |
+| B | baseline | 0.055272 | 16.021135 | 0.610304 | 17.368778 | 960,000 | logs/results/b_baseline.json |
+| B | vcomp | 0.061149 | 12.801151 | 0.520192 | 15.699364 | 960,000 | logs/results/b_vcomp.json |
+| C | baseline | 0.050941 | 16.523067 | 0.622592 | 18.845249 | 960,000 | logs/results/c_baseline.json |
+| C | vcomp | 0.057259 | 13.210505 | 0.516096 | 16.765927 | 960,000 | logs/results/c_vcomp.json |
+| D | baseline | 0.066791 | 4.389695 | 0.745472 | 14.373118 | 960,000 | logs/results/d_baseline.json |
+| D | vcomp | 0.07407 | 3.64168 | 0.602112 | 12.960647 | 960,000 | logs/results/d_vcomp.json |
+| E | baseline | 0.026305 | 23.451013 | 9.977856 | 36.494454 | 960,000 | logs/results/e_baseline.json |
+| E | vcomp | 0.027279 | 19.783631 | 10.031104 | 35.191691 | 960,000 | logs/results/e_vcomp.json |
+| F | baseline | 0.049394 | 16.538583 | 14.168064 | 19.435421 | 960,000 | logs/results/f_baseline.json |
+| F | vcomp | 0.054451 | 13.215609 | 14.336 | 17.630637 | 960,000 | logs/results/f_vcomp.json |
+| MIXGRAPH | baseline | 0.033433 | 7.899455 | 8.142848 | 28.714018 | 960,000 | logs/results/mixgraph_baseline.json |
+| MIXGRAPH | vcomp | 0.032616 | 7.846638 | 8.400896 | 29.433341 | 960,000 | logs/results/mixgraph_vcomp.json |
 
 ## 읽기 / scan latency
 

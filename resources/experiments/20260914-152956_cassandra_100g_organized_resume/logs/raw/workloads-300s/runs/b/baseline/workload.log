@@ -1,0 +1,15 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=B mode=time operations=917936
+WORKLOAD_PROGRESS workload=B mode=time operations=1953479
+WORKLOAD_PROGRESS workload=B mode=time operations=3002373
+WORKLOAD_PROGRESS workload=B mode=time operations=4065781
+WORKLOAD_PROGRESS workload=B mode=time operations=5177703
+WORKLOAD_PROGRESS workload=B mode=time operations=6327342
+WORKLOAD_PROGRESS workload=B mode=time operations=7474013
+WORKLOAD_PROGRESS workload=B mode=time operations=8602524
+WORKLOAD_PROGRESS workload=B mode=time operations=9738990
+WORKLOAD_RESULT {"workload":"B","definition":"95% read / 5% update","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.002355,"threads":48,"operations":10869969,"throughput_ops_per_second":36232.945631,"point_reads":10326612,"writes":543357,"scans":0,"read_misses":2244196,"point_read_hits":8082416,"point_read_misses":2244196,"operation_latency_p50_us":1007.615,"operation_latency_p95_us":3108.863,"operation_latency_p99_us":4259.839,"point_lookup_latency_p50_us":1070.079,"point_lookup_latency_p95_us":3141.631,"point_lookup_latency_p99_us":4296.703,"point_lookup_hit_latency_p50_us":805.375,"point_lookup_hit_latency_p95_us":2871.295,"point_lookup_hit_latency_p99_us":4003.839,"point_lookup_miss_latency_p50_us":2000.895,"point_lookup_miss_latency_p95_us":3657.727,"point_lookup_miss_latency_p99_us":4988.927,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2577734463488,"disk_write_bytes":669925376,"disk_read_requests":22825525,"disk_write_requests":3993,"disk_read_time_ms":2603176,"disk_write_time_ms":1420,"disk_read_latency_avg_ms":0.11404670867373258,"disk_write_latency_avg_ms":0.35562233909341345,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}

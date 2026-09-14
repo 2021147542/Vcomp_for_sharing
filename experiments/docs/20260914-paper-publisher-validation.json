@@ -1,0 +1,18 @@
+{
+  "validation_only": true,
+  "fixtures_use_copied_existing_measurements": true,
+  "checks": [
+    {
+      "case": "historical",
+      "normalized_values_identical": true,
+      "io_svg_identical_except_timestamp": true,
+      "paper_layout": true
+    },
+    {
+      "case": "device_average",
+      "normalized_values_identical": true,
+      "io_svg_identical_except_timestamp": true,
+      "paper_layout": true
+    }
+  ]
+}

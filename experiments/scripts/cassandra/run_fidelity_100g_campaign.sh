@@ -156,7 +156,7 @@ git -C "$REPO_ROOT" diff -- cassandra_vcomp cassandra_check experiments/scripts/
 # New untracked helper files are absent from git diff; retain their exact bytes.
 (
     cd "$REPO_ROOT"
-    git ls-files --others --exclude-standard -- cassandra_vcomp/src cassandra_check experiments/scripts/cassandra experiments/analysis/analyze_cassandra_workload_diagnostics.py experiments/analysis/publish_experiment_bundle.py \
+    git ls-files --others --exclude-standard -- cassandra_vcomp/src cassandra_check experiments/scripts/cassandra experiments/analysis/analyze_cassandra_workload_diagnostics.py experiments/analysis/publish_experiment_bundle.py experiments/analysis/restore_paper_figure_style.py \
         | while IFS= read -r path; do
             mkdir -p "$RESULT_ROOT/new-source-files/$(dirname "$path")"
             cp "$path" "$RESULT_ROOT/new-source-files/$path"
@@ -170,7 +170,7 @@ cp "${BASH_SOURCE[0]}" "$RESULT_ROOT/campaign-runner.sh"
     for path in experiments/scripts/cassandra/run_fidelity_100g_campaign.sh \
                 experiments/scripts/cassandra/run_bounded_workloads.sh \
                 experiments/scripts/cassandra/monitor_workload_memory.py \
-                experiments/analysis/analyze_cassandra_workload_diagnostics.py experiments/analysis/publish_experiment_bundle.py \
+                experiments/analysis/analyze_cassandra_workload_diagnostics.py experiments/analysis/publish_experiment_bundle.py experiments/analysis/restore_paper_figure_style.py \
                 resources/plot_cassandra_baseline_compare.py resources/plot_cassandra_paper_workloads.py \
                 cassandra_check/run_baseline_20g.sh cassandra_check/run_pipeline_100g.sh \
                 cassandra_check/run_baseline_vcomp_20g_compare.sh cassandra_check/run_existing_100g_paper_workloads.sh; do
@@ -181,8 +181,8 @@ cp "${BASH_SOURCE[0]}" "$RESULT_ROOT/campaign-runner.sh"
 (
     cd "$REPO_ROOT"
     {
-        rg --files cassandra_vcomp/src/java cassandra_check experiments/scripts/cassandra resources experiments/analysis/analyze_cassandra_workload_diagnostics.py experiments/analysis/publish_experiment_bundle.py \
-            | rg '(\.java$|cassandra_check/.*\.sh$|experiments/scripts/cassandra/.*\.(sh|py)$|resources/plot_cassandra_.*\.py$|analyze_cassandra_workload_diagnostics\.py$|publish_experiment_bundle\.py$)'
+        rg --files cassandra_vcomp/src/java cassandra_check experiments/scripts/cassandra resources experiments/analysis/analyze_cassandra_workload_diagnostics.py experiments/analysis/publish_experiment_bundle.py experiments/analysis/restore_paper_figure_style.py \
+            | rg '(\.java$|cassandra_check/.*\.sh$|experiments/scripts/cassandra/.*\.(sh|py)$|resources/plot_cassandra_.*\.py$|analyze_cassandra_workload_diagnostics\.py$|publish_experiment_bundle\.py$|restore_paper_figure_style\.py$)'
         rg --files cassandra_vcomp/conf
         printf '%s\n' cassandra_vcomp/build.xml cassandra_vcomp/build-env.sh cassandra_check/logback-smoke.xml
     } | sort -u | while IFS= read -r path; do sha256sum "$path"; done

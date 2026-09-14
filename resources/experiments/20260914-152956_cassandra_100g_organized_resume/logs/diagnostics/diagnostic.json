@@ -1,0 +1,1277 @@
+{
+  "workload_root": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s",
+  "completion_marker_present": true,
+  "limits": [
+    "Client disk bytes are shared-device /proc/diskstats deltas over the workload measurement interval; they are neither unique data bytes nor Cassandra-only I/O.",
+    "Daemon /proc/PID/io and node/cache counters bracket a wider interval including client setup. Chunk-cache counters are node-wide. Their per-operation ratios are diagnostic, not exact workload cache-miss rates.",
+    "SSTables-per-read quantiles are table histogram snapshots, not per-request traces. Before/after quantiles cannot be subtracted or attributed exclusively to C/E.",
+    "Returned scan bytes are client payload bytes as defined by the recorded generator; they exclude storage metadata, protocol framing and physical block rounding.",
+    "Cgroup memory.stat file includes page cache and other file-backed charges for the whole daemon/client group. Peaks span the full workload suite and cannot identify one workload without timestamp alignment.",
+    "Native chunk cache plus bounded total memory is not the paper's exact 5% total-cache configuration. Cache miss counts and SST-read histograms can support a mechanism but do not prove causality.",
+    "Missing historical fields remain null/unavailable. This tool does not reconstruct them as zero or infer an unmeasured cause."
+  ],
+  "workloads": {
+    "C": {
+      "arms": {
+        "baseline": {
+          "generator_version": "reference-streams-v3",
+          "seed": 20260909,
+          "measurement_mode": "time",
+          "metrics": {
+            "wall_seconds": 300.002061,
+            "operations": 9506950,
+            "throughput_ops_per_second": 31689.615673,
+            "disk_read_bytes": 2668645122048,
+            "disk_write_bytes": 14446592,
+            "point_reads": 9506950,
+            "point_read_hits": 5455202,
+            "point_read_misses": 4051748,
+            "scans": 0,
+            "scan_requested_rows": 0,
+            "scan_returned_rows": 0,
+            "scan_returned_bytes": 0,
+            "scan_cql_requests": 0,
+            "empty_scans": 0,
+            "disk_read_bytes_per_operation": 280704.6552309626,
+            "disk_write_bytes_per_operation": 1.5195822003902408,
+            "disk_read_bytes_per_scan": null,
+            "returned_rows_per_scan": null,
+            "returned_bytes_per_scan": null,
+            "device_read_bytes_per_returned_scan_byte": null,
+            "point_hit_fraction": 0.573812000694229,
+            "coarse_chunk_misses": 25519871,
+            "coarse_chunk_requests": 77569715,
+            "coarse_chunk_miss_fraction": 0.32899271319999046,
+            "coarse_chunk_misses_per_operation": 2.68433840506156,
+            "coarse_daemon_read_bytes": 2668644868096,
+            "coarse_daemon_read_bytes_per_operation": 280704.62851871527,
+            "after_sstables_per_read_50pct": 4.0,
+            "after_sstables_per_read_95pct": 4.0,
+            "after_sstables_per_read_99pct": 4.0,
+            "after_sstables_per_read_max": 4.0
+          },
+          "chunk_cache": {
+            "before": {
+              "entries": 50,
+              "size_bytes": 565248.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 60,
+              "requests": 267,
+              "recent_hit_rate": 0.775,
+              "miss_latency": 44.083,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            },
+            "after": {
+              "entries": 81963,
+              "size_bytes": 5368709120.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 25519931,
+              "requests": 77569982,
+              "recent_hit_rate": 0.671,
+              "miss_latency": 329.111,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            }
+          },
+          "table_histograms": {
+            "before": {
+              "50%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 1629722.0,
+                "cell_count": 1597.0
+              },
+              "75%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 1955666.0,
+                "cell_count": 1916.0
+              },
+              "95%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "98%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "99%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "Min": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 315853.0,
+                "cell_count": 311.0
+              },
+              "Max": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              }
+            },
+            "after": {
+              "50%": {
+                "read_latency_us": 642.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 1629722.0,
+                "cell_count": 1597.0
+              },
+              "75%": {
+                "read_latency_us": 1597.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 1955666.0,
+                "cell_count": 1916.0
+              },
+              "95%": {
+                "read_latency_us": 2759.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "98%": {
+                "read_latency_us": 3311.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "99%": {
+                "read_latency_us": 3973.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "Min": {
+                "read_latency_us": 6.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 1.0,
+                "partition_bytes": 315853.0,
+                "cell_count": 311.0
+              },
+              "Max": {
+                "read_latency_us": 88148.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              }
+            }
+          },
+          "daemon_io": {
+            "before": {
+              "rchar": 31372428,
+              "wchar": 14771342,
+              "syscr": 27233,
+              "syscw": 7098,
+              "read_bytes": 4333568,
+              "write_bytes": 15237120,
+              "cancelled_write_bytes": 49152
+            },
+            "after": {
+              "rchar": 1672444518738,
+              "wchar": 53890399,
+              "syscr": 25551998,
+              "syscw": 3373136,
+              "read_bytes": 2668649201664,
+              "write_bytes": 28078080,
+              "cancelled_write_bytes": 49152
+            }
+          }
+        },
+        "vcomp": {
+          "generator_version": "reference-streams-v3",
+          "seed": 20260909,
+          "measurement_mode": "time",
+          "metrics": {
+            "wall_seconds": 300.001507,
+            "operations": 12026678,
+            "throughput_ops_per_second": 40088.725238,
+            "disk_read_bytes": 2451061334016,
+            "disk_write_bytes": 14909440,
+            "point_reads": 12026678,
+            "point_read_hits": 8048984,
+            "point_read_misses": 3977694,
+            "scans": 0,
+            "scan_requested_rows": 0,
+            "scan_returned_rows": 0,
+            "scan_returned_bytes": 0,
+            "scan_cql_requests": 0,
+            "empty_scans": 0,
+            "disk_read_bytes_per_operation": 203802.02529875663,
+            "disk_write_bytes_per_operation": 1.239697279664426,
+            "disk_read_bytes_per_scan": null,
+            "returned_rows_per_scan": null,
+            "returned_bytes_per_scan": null,
+            "device_read_bytes_per_returned_scan_byte": null,
+            "point_hit_fraction": 0.6692607883906097,
+            "coarse_chunk_misses": 26878944,
+            "coarse_chunk_requests": 92698504,
+            "coarse_chunk_miss_fraction": 0.289960925367253,
+            "coarse_chunk_misses_per_operation": 2.2349433484458467,
+            "coarse_daemon_read_bytes": 2451061342208,
+            "coarse_daemon_read_bytes_per_operation": 203802.025979909,
+            "after_sstables_per_read_50pct": 4.0,
+            "after_sstables_per_read_95pct": 6.0,
+            "after_sstables_per_read_99pct": 6.0,
+            "after_sstables_per_read_max": 6.0
+          },
+          "chunk_cache": {
+            "before": {
+              "entries": 39,
+              "size_bytes": 409600.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 49,
+              "requests": 268,
+              "recent_hit_rate": 0.817,
+              "miss_latency": 45.49,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            },
+            "after": {
+              "entries": 81920,
+              "size_bytes": 5368709120.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 26878993,
+              "requests": 92698772,
+              "recent_hit_rate": 0.71,
+              "miss_latency": 276.861,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            }
+          },
+          "table_histograms": {
+            "before": {
+              "50%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 785939.0,
+                "cell_count": 770.0
+              },
+              "75%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 2346799.0,
+                "cell_count": 2299.0
+              },
+              "95%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "98%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "99%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              },
+              "Min": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5723.0,
+                "cell_count": 6.0
+              },
+              "Max": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              }
+            },
+            "after": {
+              "50%": {
+                "read_latency_us": 446.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 785939.0,
+                "cell_count": 770.0
+              },
+              "75%": {
+                "read_latency_us": 1109.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 2346799.0,
+                "cell_count": 2299.0
+              },
+              "95%": {
+                "read_latency_us": 2299.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "98%": {
+                "read_latency_us": 2759.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "99%": {
+                "read_latency_us": 3311.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              },
+              "Min": {
+                "read_latency_us": 5.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 1.0,
+                "partition_bytes": 5723.0,
+                "cell_count": 6.0
+              },
+              "Max": {
+                "read_latency_us": 263210.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              }
+            }
+          },
+          "daemon_io": {
+            "before": {
+              "rchar": 31067321,
+              "wchar": 14661606,
+              "syscr": 26414,
+              "syscw": 6094,
+              "read_bytes": 3997696,
+              "write_bytes": 14872576,
+              "cancelled_write_bytes": 49152
+            },
+            "after": {
+              "rchar": 1761504416082,
+              "wchar": 56442981,
+              "syscr": 26910514,
+              "syscw": 3537609,
+              "read_bytes": 2451065339904,
+              "write_bytes": 29114368,
+              "cancelled_write_bytes": 49152
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "wall_seconds": {
+          "baseline": 300.002061,
+          "vcomp": 300.001507,
+          "delta_percent": -0.00018466539801753612
+        },
+        "operations": {
+          "baseline": 9506950,
+          "vcomp": 12026678,
+          "delta_percent": 26.504062817202147
+        },
+        "throughput_ops_per_second": {
+          "baseline": 31689.615673,
+          "vcomp": 40088.725238,
+          "delta_percent": 26.5042960813064
+        },
+        "disk_read_bytes": {
+          "baseline": 2668645122048,
+          "vcomp": 2451061334016,
+          "delta_percent": -8.15334291676143
+        },
+        "disk_write_bytes": {
+          "baseline": 14446592,
+          "vcomp": 14909440,
+          "delta_percent": 3.203855968244973
+        },
+        "point_reads": {
+          "baseline": 9506950,
+          "vcomp": 12026678,
+          "delta_percent": 26.504062817202147
+        },
+        "point_read_hits": {
+          "baseline": 5455202,
+          "vcomp": 8048984,
+          "delta_percent": 47.54694693248756
+        },
+        "point_read_misses": {
+          "baseline": 4051748,
+          "vcomp": 3977694,
+          "delta_percent": -1.8277049806651346
+        },
+        "scans": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "scan_requested_rows": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "scan_returned_rows": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "scan_returned_bytes": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "scan_cql_requests": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "empty_scans": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "disk_read_bytes_per_operation": {
+          "baseline": 280704.6552309626,
+          "vcomp": 203802.02529875663,
+          "delta_percent": -27.39627879307196
+        },
+        "disk_write_bytes_per_operation": {
+          "baseline": 1.5195822003902408,
+          "vcomp": 1.239697279664426,
+          "delta_percent": -18.418544298158935
+        },
+        "disk_read_bytes_per_scan": {
+          "baseline": null,
+          "vcomp": null,
+          "delta_percent": null
+        },
+        "returned_rows_per_scan": {
+          "baseline": null,
+          "vcomp": null,
+          "delta_percent": null
+        },
+        "returned_bytes_per_scan": {
+          "baseline": null,
+          "vcomp": null,
+          "delta_percent": null
+        },
+        "device_read_bytes_per_returned_scan_byte": {
+          "baseline": null,
+          "vcomp": null,
+          "delta_percent": null
+        },
+        "point_hit_fraction": {
+          "baseline": 0.573812000694229,
+          "vcomp": 0.6692607883906097,
+          "delta_percent": 16.634156758816744
+        },
+        "coarse_chunk_misses": {
+          "baseline": 25519871,
+          "vcomp": 26878944,
+          "delta_percent": 5.325548079768905
+        },
+        "coarse_chunk_requests": {
+          "baseline": 77569715,
+          "vcomp": 92698504,
+          "delta_percent": 19.50347374616499
+        },
+        "coarse_chunk_miss_fraction": {
+          "baseline": 0.32899271319999046,
+          "vcomp": 0.289960925367253,
+          "delta_percent": -11.864028067092946
+        },
+        "coarse_chunk_misses_per_operation": {
+          "baseline": 2.68433840506156,
+          "vcomp": 2.2349433484458467,
+          "delta_percent": -16.741371198517253
+        },
+        "coarse_daemon_read_bytes": {
+          "baseline": 2668644868096,
+          "vcomp": 2451061342208,
+          "delta_percent": -8.153333869532043
+        },
+        "coarse_daemon_read_bytes_per_operation": {
+          "baseline": 280704.62851871527,
+          "vcomp": 203802.025979909,
+          "delta_percent": -27.396271641341674
+        },
+        "after_sstables_per_read_50pct": {
+          "baseline": 4.0,
+          "vcomp": 4.0,
+          "delta_percent": 0.0
+        },
+        "after_sstables_per_read_95pct": {
+          "baseline": 4.0,
+          "vcomp": 6.0,
+          "delta_percent": 50.0
+        },
+        "after_sstables_per_read_99pct": {
+          "baseline": 4.0,
+          "vcomp": 6.0,
+          "delta_percent": 50.0
+        },
+        "after_sstables_per_read_max": {
+          "baseline": 4.0,
+          "vcomp": 6.0,
+          "delta_percent": 50.0
+        }
+      }
+    },
+    "E": {
+      "arms": {
+        "baseline": {
+          "generator_version": "reference-streams-v3",
+          "seed": 20260909,
+          "measurement_mode": "time",
+          "metrics": {
+            "wall_seconds": 300.003049,
+            "operations": 4264471,
+            "throughput_ops_per_second": 14214.758883,
+            "disk_read_bytes": 2172692029440,
+            "disk_write_bytes": 471277568,
+            "point_reads": 0,
+            "point_read_hits": 0,
+            "point_read_misses": 0,
+            "scans": 4050546,
+            "scan_requested_rows": 204504700,
+            "scan_returned_rows": 204504700,
+            "scan_returned_bytes": 209412812800,
+            "scan_cql_requests": 4164788,
+            "empty_scans": 0,
+            "disk_read_bytes_per_operation": 509486.88112546667,
+            "disk_write_bytes_per_operation": 110.5125507946941,
+            "disk_read_bytes_per_scan": 536394.8537900817,
+            "returned_rows_per_scan": 50.488181099535716,
+            "returned_bytes_per_scan": 51699.89744592457,
+            "device_read_bytes_per_returned_scan_byte": 10.375162820218803,
+            "point_hit_fraction": null,
+            "coarse_chunk_misses": 16807092,
+            "coarse_chunk_requests": 42150353,
+            "coarse_chunk_miss_fraction": 0.39874142928292916,
+            "coarse_chunk_misses_per_operation": 3.9411903610084345,
+            "coarse_daemon_read_bytes": 2172691992576,
+            "coarse_daemon_read_bytes_per_operation": 509486.8724810182,
+            "after_sstables_per_read_50pct": 4.0,
+            "after_sstables_per_read_95pct": 4.0,
+            "after_sstables_per_read_99pct": 4.0,
+            "after_sstables_per_read_max": 4.0
+          },
+          "chunk_cache": {
+            "before": {
+              "entries": 50,
+              "size_bytes": 565248.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 60,
+              "requests": 267,
+              "recent_hit_rate": 0.775,
+              "miss_latency": 48.35,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            },
+            "after": {
+              "entries": 81963,
+              "size_bytes": 5368709120.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 16807152,
+              "requests": 42150620,
+              "recent_hit_rate": 0.601,
+              "miss_latency": 370.866,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            }
+          },
+          "table_histograms": {
+            "before": {
+              "50%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 1629722.0,
+                "cell_count": 1597.0
+              },
+              "75%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 1955666.0,
+                "cell_count": 1916.0
+              },
+              "95%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "98%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "99%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "Min": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 315853.0,
+                "cell_count": 311.0
+              },
+              "Max": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              }
+            },
+            "after": {
+              "50%": {
+                "read_latency_us": 1597.0,
+                "write_latency_us": 12.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 1629722.0,
+                "cell_count": 1597.0
+              },
+              "75%": {
+                "read_latency_us": 2759.0,
+                "write_latency_us": 14.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 4768.0
+              },
+              "95%": {
+                "read_latency_us": 4768.0,
+                "write_latency_us": 24.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "98%": {
+                "read_latency_us": 5722.0,
+                "write_latency_us": 35.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "99%": {
+                "read_latency_us": 5722.0,
+                "write_latency_us": 86.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 5839588.0,
+                "cell_count": 5722.0
+              },
+              "Min": {
+                "read_latency_us": 11.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 1.0,
+                "partition_bytes": 315853.0,
+                "cell_count": 311.0
+              },
+              "Max": {
+                "read_latency_us": 51012.0,
+                "write_latency_us": 11864.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 223875792.0,
+                "cell_count": 219342.0
+              }
+            }
+          },
+          "daemon_io": {
+            "before": {
+              "rchar": 31380078,
+              "wchar": 14770886,
+              "syscr": 27289,
+              "syscw": 7094,
+              "read_bytes": 4333568,
+              "write_bytes": 15237120,
+              "cancelled_write_bytes": 49152
+            },
+            "after": {
+              "rchar": 1101451897859,
+              "wchar": 490407690,
+              "syscr": 16841339,
+              "syscw": 957141,
+              "read_bytes": 2172696326144,
+              "write_bytes": 486203392,
+              "cancelled_write_bytes": 69632
+            }
+          }
+        },
+        "vcomp": {
+          "generator_version": "reference-streams-v3",
+          "seed": 20260909,
+          "measurement_mode": "time",
+          "metrics": {
+            "wall_seconds": 300.003159,
+            "operations": 4910787,
+            "throughput_ops_per_second": 16369.117635,
+            "disk_read_bytes": 2004704026624,
+            "disk_write_bytes": 485134336,
+            "point_reads": 0,
+            "point_read_hits": 0,
+            "point_read_misses": 0,
+            "scans": 4664468,
+            "scan_requested_rows": 235507385,
+            "scan_returned_rows": 235507385,
+            "scan_returned_bytes": 241159562240,
+            "scan_cql_requests": 4797692,
+            "empty_scans": 0,
+            "disk_read_bytes_per_operation": 408224.593455998,
+            "disk_write_bytes_per_operation": 98.78952925467955,
+            "disk_read_bytes_per_scan": 429781.922959703,
+            "returned_rows_per_scan": 50.48965605509567,
+            "returned_bytes_per_scan": 51701.40780041797,
+            "device_read_bytes_per_returned_scan_byte": 8.312770217375562,
+            "point_hit_fraction": null,
+            "coarse_chunk_misses": 15747148,
+            "coarse_chunk_requests": 45471314,
+            "coarse_chunk_miss_fraction": 0.3463094996551012,
+            "coarse_chunk_misses_per_operation": 3.20664447470436,
+            "coarse_daemon_read_bytes": 2004704006144,
+            "coarse_daemon_read_bytes_per_operation": 408224.589285587,
+            "after_sstables_per_read_50pct": 4.0,
+            "after_sstables_per_read_95pct": 6.0,
+            "after_sstables_per_read_99pct": 6.0,
+            "after_sstables_per_read_max": 6.0
+          },
+          "chunk_cache": {
+            "before": {
+              "entries": 39,
+              "size_bytes": 409600.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 49,
+              "requests": 268,
+              "recent_hit_rate": 0.817,
+              "miss_latency": 40.837,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            },
+            "after": {
+              "entries": 81920,
+              "size_bytes": 5368709120.0,
+              "capacity_bytes": 5368709120.0,
+              "misses": 15747197,
+              "requests": 45471582,
+              "recent_hit_rate": 0.654,
+              "miss_latency": 325.715,
+              "miss_latency_unit": "microseconds",
+              "capacity_precision": "human-readable nodetool rounding"
+            }
+          },
+          "table_histograms": {
+            "before": {
+              "50%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 785939.0,
+                "cell_count": 770.0
+              },
+              "75%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 2346799.0,
+                "cell_count": 2299.0
+              },
+              "95%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "98%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "99%": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              },
+              "Min": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 5723.0,
+                "cell_count": 6.0
+              },
+              "Max": {
+                "read_latency_us": 0.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 0.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              }
+            },
+            "after": {
+              "50%": {
+                "read_latency_us": 1109.0,
+                "write_latency_us": 10.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 785939.0,
+                "cell_count": 770.0
+              },
+              "75%": {
+                "read_latency_us": 1916.0,
+                "write_latency_us": 14.0,
+                "sstables_per_read": 4.0,
+                "partition_bytes": 2346799.0,
+                "cell_count": 2299.0
+              },
+              "95%": {
+                "read_latency_us": 3311.0,
+                "write_latency_us": 20.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "98%": {
+                "read_latency_us": 3973.0,
+                "write_latency_us": 29.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 7007506.0,
+                "cell_count": 6866.0
+              },
+              "99%": {
+                "read_latency_us": 4768.0,
+                "write_latency_us": 60.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 8409007.0,
+                "cell_count": 8239.0
+              },
+              "Min": {
+                "read_latency_us": 9.0,
+                "write_latency_us": 0.0,
+                "sstables_per_read": 1.0,
+                "partition_bytes": 5723.0,
+                "cell_count": 6.0
+              },
+              "Max": {
+                "read_latency_us": 51012.0,
+                "write_latency_us": 14237.0,
+                "sstables_per_read": 6.0,
+                "partition_bytes": 223875792.0,
+                "cell_count": 219342.0
+              }
+            }
+          },
+          "daemon_io": {
+            "before": {
+              "rchar": 31061956,
+              "wchar": 14662076,
+              "syscr": 26397,
+              "syscw": 6095,
+              "read_bytes": 3989504,
+              "write_bytes": 14872576,
+              "cancelled_write_bytes": 49152
+            },
+            "after": {
+              "rchar": 1031979225341,
+              "wchar": 505390281,
+              "syscr": 15780836,
+              "syscw": 1011693,
+              "read_bytes": 2004707995648,
+              "write_bytes": 500731904,
+              "cancelled_write_bytes": 77824
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "wall_seconds": {
+          "baseline": 300.003049,
+          "vcomp": 300.003159,
+          "delta_percent": 3.66662940232132e-05
+        },
+        "operations": {
+          "baseline": 4264471,
+          "vcomp": 4910787,
+          "delta_percent": 15.155830582503672
+        },
+        "throughput_ops_per_second": {
+          "baseline": 14214.758883,
+          "vcomp": 16369.117635,
+          "delta_percent": 15.155788217952004
+        },
+        "disk_read_bytes": {
+          "baseline": 2172692029440,
+          "vcomp": 2004704026624,
+          "delta_percent": -7.731790817095141
+        },
+        "disk_write_bytes": {
+          "baseline": 471277568,
+          "vcomp": 485134336,
+          "delta_percent": 2.940256218602788
+        },
+        "point_reads": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "point_read_hits": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "point_read_misses": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "scans": {
+          "baseline": 4050546,
+          "vcomp": 4664468,
+          "delta_percent": 15.156524577180463
+        },
+        "scan_requested_rows": {
+          "baseline": 204504700,
+          "vcomp": 235507385,
+          "delta_percent": 15.159888745833229
+        },
+        "scan_returned_rows": {
+          "baseline": 204504700,
+          "vcomp": 235507385,
+          "delta_percent": 15.159888745833229
+        },
+        "scan_returned_bytes": {
+          "baseline": 209412812800,
+          "vcomp": 241159562240,
+          "delta_percent": 15.159888745833229
+        },
+        "scan_cql_requests": {
+          "baseline": 4164788,
+          "vcomp": 4797692,
+          "delta_percent": 15.196547819480855
+        },
+        "empty_scans": {
+          "baseline": 0,
+          "vcomp": 0,
+          "delta_percent": null
+        },
+        "disk_read_bytes_per_operation": {
+          "baseline": 509486.88112546667,
+          "vcomp": 408224.593455998,
+          "delta_percent": -19.875347417342383
+        },
+        "disk_write_bytes_per_operation": {
+          "baseline": 110.5125507946941,
+          "vcomp": 98.78952925467955,
+          "delta_percent": -10.60786440609187
+        },
+        "disk_read_bytes_per_scan": {
+          "baseline": 536394.8537900817,
+          "vcomp": 429781.922959703,
+          "delta_percent": -19.87583029126183
+        },
+        "returned_rows_per_scan": {
+          "baseline": 50.488181099535716,
+          "vcomp": 50.48965605509567,
+          "delta_percent": 0.00292138779380835
+        },
+        "returned_bytes_per_scan": {
+          "baseline": 51699.89744592457,
+          "vcomp": 51701.40780041797,
+          "delta_percent": 0.00292138779380835
+        },
+        "device_read_bytes_per_returned_scan_byte": {
+          "baseline": 10.375162820218803,
+          "vcomp": 8.312770217375562,
+          "delta_percent": -19.878170960595554
+        },
+        "point_hit_fraction": {
+          "baseline": null,
+          "vcomp": null,
+          "delta_percent": null
+        },
+        "coarse_chunk_misses": {
+          "baseline": 16807092,
+          "vcomp": 15747148,
+          "delta_percent": -6.306528220348884
+        },
+        "coarse_chunk_requests": {
+          "baseline": 42150353,
+          "vcomp": 45471314,
+          "delta_percent": 7.878845047869465
+        },
+        "coarse_chunk_miss_fraction": {
+          "baseline": 0.39874142928292916,
+          "vcomp": 0.3463094996551012,
+          "delta_percent": -13.149355892644044
+        },
+        "coarse_chunk_misses_per_operation": {
+          "baseline": 3.9411903610084345,
+          "vcomp": 3.20664447470436,
+          "delta_percent": -18.637665756295153
+        },
+        "coarse_daemon_read_bytes": {
+          "baseline": 2172691992576,
+          "vcomp": 2004704006144,
+          "delta_percent": -7.731790194192644
+        },
+        "coarse_daemon_read_bytes_per_operation": {
+          "baseline": 509486.8724810182,
+          "vcomp": 408224.589285587,
+          "delta_percent": -19.87534687642102
+        },
+        "after_sstables_per_read_50pct": {
+          "baseline": 4.0,
+          "vcomp": 4.0,
+          "delta_percent": 0.0
+        },
+        "after_sstables_per_read_95pct": {
+          "baseline": 4.0,
+          "vcomp": 6.0,
+          "delta_percent": 50.0
+        },
+        "after_sstables_per_read_99pct": {
+          "baseline": 4.0,
+          "vcomp": 6.0,
+          "delta_percent": 50.0
+        },
+        "after_sstables_per_read_max": {
+          "baseline": 4.0,
+          "vcomp": 6.0,
+          "delta_percent": 50.0
+        }
+      }
+    }
+  },
+  "memory": {
+    "protocol": {
+      "cgroup": "/sys/fs/cgroup/user.slice/user-1008.slice/user@1008.service/app.slice/vcomp-workloads-20260914-153145-4725.service",
+      "memory_max_bytes": 21474836480,
+      "swap_max_bytes": 0,
+      "scope": "Cassandra daemon and workload clients together",
+      "interpretation": "Total memory cap; additional OS page cache is not an exact 5% cache",
+      "memory_events_before": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "live_memory_trace": "/tmp/vcomp-workload-memory-z8mrwq6x.jsonl",
+      "logging": "Temporary trace outside DB filesystem; archived after all measured clients exit",
+      "memory_events_after": {
+        "low": 0,
+        "high": 0,
+        "max": 212118726,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "runner_exit_status": 0
+    },
+    "whole_suite_trace_summary": {
+      "samples": 927,
+      "first_unix_seconds": 1789367505.4818902,
+      "last_unix_seconds": 1789372137.2090816,
+      "peak_memory_current": 21474988032,
+      "peak_file_bytes": 13735075840,
+      "peak_anon_bytes": 12437053440,
+      "final_memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 212118726,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      }
+    }
+  },
+  "evidence_files": [
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/results/c_baseline.json",
+      "bytes": 1596,
+      "sha256": "ac327ef08a5dfe9d4de8b0feec9b6b5c259d0c9b4c9225f75109abd6b61679f5"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/node-info-before.txt",
+      "bytes": 1271,
+      "sha256": "fc4e7ea5c472bd30c7120a13fde06e7ef6855225e22babd6d5ddc7305b9b80c6"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/node-info-after.txt",
+      "bytes": 1298,
+      "sha256": "f0b44a3fdaadefbcd128868e11a82d4ddb25da5139941c1dd27be21153f51ae5"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/tablehistograms-before.txt",
+      "bytes": 938,
+      "sha256": "a95f6e62543a366d38b57d30befa2fa79f166e7ee11c29c10e1d4dc637722b2c"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/tablehistograms-after.txt",
+      "bytes": 938,
+      "sha256": "973f2d44f16b8456bd1c2cf082ca86c0e864de33427e0ff69fbb603019b6f661"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/daemon-io-before.txt",
+      "bytes": 128,
+      "sha256": "7d0d9fcfdb7302e637055a7843db45714acab5bd38edb01273d7d1541431e5e9"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/daemon-io-after.txt",
+      "bytes": 145,
+      "sha256": "fc4ed9f32dccab7e5d61c5c55e525489abe38f0420856c144733276d45decfca"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/results/c_vcomp.json",
+      "bytes": 1597,
+      "sha256": "91c5ebfb88785a921874139390b55dab5e9e91ff84f8aaa93b66c6ab518cf61c"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/node-info-before.txt",
+      "bytes": 1270,
+      "sha256": "5b9257751705474165a5a811f23261cbb5745266e0b134d7f86cbdc5e3df2a59"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/node-info-after.txt",
+      "bytes": 1298,
+      "sha256": "ee92d099fd5409b1d9e148055777b430084831c9031b1f3f121332f9d27ae3ae"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/tablehistograms-before.txt",
+      "bytes": 935,
+      "sha256": "7a12ecd8c644b621f5e85f9d4b62c03303916178d8449079f70e2aeba4e74a43"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/tablehistograms-after.txt",
+      "bytes": 935,
+      "sha256": "f27a9ee078fc61009a3b09a6268c58de28ce945aae592ef3f08e887da91c6d44"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/daemon-io-before.txt",
+      "bytes": 128,
+      "sha256": "ff0cd60b8081623671ed26771b20588b3213f80719dc07b6b71195c2eb5aaebf"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/daemon-io-after.txt",
+      "bytes": 145,
+      "sha256": "5eb614a93ed7ba4cd325773aab9daa2fc2e52ab59351c21efa3a8c6d3bff27b7"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/results/e_baseline.json",
+      "bytes": 1615,
+      "sha256": "941912c34ea633d0af337e82e95053f76f2d48e2b8304c092b87d83c2143d1e8"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/baseline/node-info-before.txt",
+      "bytes": 1271,
+      "sha256": "a0b3d080c424e3f49a9765af3caa83560b96f1f6d8a002819275135605ee14b3"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/baseline/node-info-after.txt",
+      "bytes": 1298,
+      "sha256": "c01095885bde7047eda26de333381a9214fc80e662dc0d71adc7959025f299f0"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/baseline/tablehistograms-before.txt",
+      "bytes": 938,
+      "sha256": "a95f6e62543a366d38b57d30befa2fa79f166e7ee11c29c10e1d4dc637722b2c"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/baseline/tablehistograms-after.txt",
+      "bytes": 938,
+      "sha256": "8660a6ddc57bcc7aabfa56d5f2756360a5a49dc6ad22a1fcc785edf36194d17b"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/baseline/daemon-io-before.txt",
+      "bytes": 128,
+      "sha256": "aceca698b7317927da283b96bbb002cf3157a5ac7af1d1ec0c5cfe4fbed3e935"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/baseline/daemon-io-after.txt",
+      "bytes": 146,
+      "sha256": "3bfe67fd1de8b39445dfa21a6d032ae28bda963c124e2483d4822518cba2ed5a"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/results/e_vcomp.json",
+      "bytes": 1615,
+      "sha256": "5e5ecd742dfa055fdaa5f5cda3f9ce3ff3175db767f47fcfdd1a4dde7101c788"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/vcomp/node-info-before.txt",
+      "bytes": 1270,
+      "sha256": "03eb69e3f97c4e262a2a63c85ca26871eca77406e185fe2598037f3d2da5b8d0"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/vcomp/node-info-after.txt",
+      "bytes": 1298,
+      "sha256": "a6b6722a5baf95c821c059544d632fa633cad2a81a10a81359110604aa6e5303"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/vcomp/tablehistograms-before.txt",
+      "bytes": 935,
+      "sha256": "7a12ecd8c644b621f5e85f9d4b62c03303916178d8449079f70e2aeba4e74a43"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/vcomp/tablehistograms-after.txt",
+      "bytes": 935,
+      "sha256": "02e4ed743b9977fe1c0c1a37c8911bf2a99bf4a7f27a8d79a60eff95f01fcef1"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/vcomp/daemon-io-before.txt",
+      "bytes": 128,
+      "sha256": "fb97703147aa81f473fc598d725291747ab570b86a4ee94c3188c741009c0743"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/e/vcomp/daemon-io-after.txt",
+      "bytes": 147,
+      "sha256": "533883759fb6e009b6f90396d1bdae98d518098f0baa8dde79853d8932f7d6e7"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s-control/protocol.json",
+      "bytes": 807,
+      "sha256": "8947389caa79977619a51f22fd1333b785dfb97142564dcb98b92fd632464c04"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s-control/memory.jsonl",
+      "bytes": 1642669,
+      "sha256": "46339aa5f12815076804d16394f443e4129549196970c553a09f2ed4a0f69643"
+    }
+  ]
+}

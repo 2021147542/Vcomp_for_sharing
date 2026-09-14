@@ -1,6 +1,6 @@
 # 20260912-135643_cassandra_100g_audited_common_theta_logical
 
-그래프와 아래 표는 동일한 [정규화 값](logs/presentation.json)을 사용합니다. 원본 측정값은 `logs/`에 보존했습니다. GB는 10⁹ bytes이며, N/A는 미측정·누락·주 결과 없음입니다. N/A를 0으로 그리지 않습니다.
+그래프와 아래 표는 동일한 [정규화 값](logs/presentation.json)을 사용합니다. 원본 측정값은 `logs/`에 보존했습니다. GB는 10⁹ bytes, MB는 10⁶ bytes, GiB는 2³⁰ bytes이며, N/A는 미측정·누락·주 결과 없음입니다. N/A를 0으로 그리지 않습니다.
 
 [적재 그래프](figures/loading.svg) · [Workload 그래프](figures/workload.svg) · [읽기/scan latency 그래프](figures/io_latency.svg)
 
@@ -8,10 +8,10 @@
 
 ## 적재
 
-| 버전 | System | 적재 시간 (s) | Disk write (GB) | 기록된 WA | 최종 DB (GB) | SST 수 | Visible rows | 원본 |
+| 버전 | System | 적재 시간 (min) | Disk write (GiB) | 기록된 WA | 최종 DB (GiB) | SST 수 | Visible rows | 원본 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Primary | baseline | 6,009.799 | 487.660642 | 5.915 | 82.451667 | 4 | 66,278,498 | logs/baseline_metrics.env; logs/cassandra_baseline_vcomp_100g.md |
-| Primary | vcomp | 112.63 | 90.833801 | 1 | 90.823526 | 4 | 67,768,639 | logs/vcomp_load_metrics.env; logs/README.md; logs/cassandra_baseline_vcomp_100g.md |
+| Primary | baseline | 100.163317 | 454.169365 | 5.915 | 76.789099 | 4 | 66,278,498 | logs/baseline_metrics.env; logs/cassandra_baseline_vcomp_100g.md |
+| Primary | vcomp | 1.877167 | 84.59557 | 1 | 84.586 | 4 | 67,768,639 | logs/vcomp_load_metrics.env; logs/README.md; logs/cassandra_baseline_vcomp_100g.md |
 
 WA는 원본에 기록된 정의와 값을 유지합니다. 분모나 측정 구간이 다른 실험의 WA를 동일 정의로 간주하지 않습니다.
 
@@ -23,7 +23,7 @@ Primary: Missing fields filled from preserved rounded loading table.
 
 ## Workload
 
-| Workload | System | Throughput (ops/s) | Disk read (GB) | Disk write (GB) | 실행 시간 (s) | Operations | 원본 |
+| Workload | System | Throughput (M ops/s) | Disk read (GB) | Disk write (MB) | 실행 시간 (s) | Operations | 원본 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 

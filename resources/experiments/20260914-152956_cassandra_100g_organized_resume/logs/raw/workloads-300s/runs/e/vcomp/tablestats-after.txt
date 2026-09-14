@@ -1,0 +1,49 @@
+Total number of tables: 1
+----------------
+Keyspace: vcomp_100g
+	Read Count: 4797692
+	Read Latency: 1.2327075785606911 ms
+	Write Count: 246319
+	Write Latency: 0.014193030176316079 ms
+	Pending Flushes: 0
+		Table: kv
+		SSTable count: 187
+		Old SSTable count: 0
+		Max SSTable size: 606.303MiB
+		Space used (live): 82122510804
+		Space used (total): 82122510804
+		Space used by snapshots (total): 0
+		Off heap memory used (total): 71232
+		SSTable Compression Ratio: -1.00000
+		Number of partitions (estimate): 10078
+		Memtable cell count: 45481
+		Memtable data size: 48437273
+		Memtable off heap memory used: 0
+		Memtable switch count: 4
+		Speculative retries: 0
+		Local read count: 4797692
+		Local read latency: 1.339 ms
+		Local write count: 246319
+		Local write latency: 0.014 ms
+		Local read/write ratio: 19.47756
+		Pending flushes: 0
+		Percent repaired: 0.0
+		Bytes repaired: 0B
+		Bytes unrepaired: 76.400GiB
+		Bytes pending repair: 0B
+		Bloom filter false positives: 0
+		Bloom filter false ratio: 0.00000
+		Bloom filter space used: 57464
+		Bloom filter off heap memory used: 55968
+		Index summary off heap memory used: 15264
+		Compression metadata off heap memory used: 0
+		Compacted partition minimum bytes: 5723
+		Compacted partition maximum bytes: 223875792
+		Compacted partition mean bytes: 2054183
+		Average live cells per slice (last five minutes): 53.14405124293616
+		Maximum live cells per slice (last five minutes): 103
+		Average tombstones per slice (last five minutes): 1.0
+		Maximum tombstones per slice (last five minutes): 1
+		Droppable tombstone ratio: 0.00000
+
+----------------

@@ -17,6 +17,22 @@ figures, and provenance stay under `logs/`. Missing results are `N/A`; an audit
 without a primary benchmark gets explicitly unavailable figures. Existing
 completed but unfavorable measurements remain visible.
 
+Loading and workload figures retain the original 2×2 paper layout, with gray
+Baseline and blue VComp bars. Loading shows minutes, device writes in GiB,
+recorded write amplification, and final DB size in GiB, with values above bars.
+Workloads show throughput in M ops/s, point-lookup p50/p95/p99 in µs, disk reads
+in GB, and disk writes in MB. Percentile bands end at the recorded percentiles;
+they do not add percentile values together. E scan latency remains in the
+separate latency figure. Tables use the same display units as the figures;
+normalized source measurements keep their original units.
+
+To update only those two figures and their tables while preserving the latency
+figure and normalized measurements byte for byte, run:
+
+```
+python3 experiments/analysis/restore_paper_figure_style.py resources/experiments/<run-id>
+```
+
 Render or refresh a bundle with:
 
 ```
@@ -27,10 +43,13 @@ The Cassandra campaign runners accept `RESULT_ROOT` as the public timestamp
 folder and store their internal outputs in `RESULT_ROOT/logs`. They publish
 this layout before workload measurement and after completion or failure.
 
-`io_latency.svg` identifies the recorded client DB lookup/scan latency. Existing
-logs do not retain physical-device request durations/counts, so physical disk
-I/O latency cannot be reconstructed. Server table histogram snapshots, where
-present, remain separate raw evidence; they are not relabeled as device latency.
+`io_latency.svg` identifies the recorded client DB lookup/scan latency. Historical
+logs do not retain device request durations/counts, so device I/O latency cannot
+be reconstructed for those runs. The resumed 2026-09-14 campaign also records
+diskstats request counts and accumulated milliseconds, allowing separate device
+average read/write latency panels. These are device-layer averages including
+other processes, not physical NVMe latency percentiles. Server table histogram
+snapshots, where present, remain separate raw evidence.
 
 The 2026-09-14 migration manifest records each original path, new path and
 original SHA256. Original documents whose relative links changed are retained

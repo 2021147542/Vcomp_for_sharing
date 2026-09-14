@@ -48,3 +48,295 @@ Canonical SHA256 before: vcomp 1281/1488 components
 Canonical SHA256 before: vcomp 1345/1488 components
 Canonical SHA256 before: vcomp 1409/1488 components
 Canonical SHA256 before: vcomp 1473/1488 components
+{"bundle": "20260914-152956_cassandra_100g_organized_resume", "loading_rows": 2, "workload_rows": 0, "audit_only": false}
+[2026-09-14T15:31:45+09:00] Running A-F/MixGraph, 48 workers for 300 seconds per cell
+[2026-09-14T15:31:46+09:00] Preparing A baseline checkpoint
+[2026-09-14T15:32:00+09:00] Running A baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=A mode=time operations=1601522
+WORKLOAD_PROGRESS workload=A mode=time operations=3392740
+WORKLOAD_PROGRESS workload=A mode=time operations=5206303
+WORKLOAD_PROGRESS workload=A mode=time operations=6982063
+WORKLOAD_PROGRESS workload=A mode=time operations=8777635
+WORKLOAD_PROGRESS workload=A mode=time operations=10522106
+WORKLOAD_PROGRESS workload=A mode=time operations=12170869
+WORKLOAD_PROGRESS workload=A mode=time operations=13910641
+WORKLOAD_PROGRESS workload=A mode=time operations=15637437
+WORKLOAD_RESULT {"workload":"A","definition":"50% read / 50% update","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.002219,"threads":48,"operations":17275739,"throughput_ops_per_second":57585.370673,"point_reads":8641870,"writes":8633869,"scans":0,"read_misses":1481623,"point_read_hits":7160247,"point_read_misses":1481623,"operation_latency_p50_us":491.007,"operation_latency_p95_us":2510.847,"operation_latency_p99_us":4024.319,"point_lookup_latency_p50_us":755.711,"point_lookup_latency_p95_us":3031.039,"point_lookup_latency_p99_us":5582.847,"point_lookup_hit_latency_p50_us":601.087,"point_lookup_hit_latency_p95_us":2709.503,"point_lookup_hit_latency_p99_us":4546.559,"point_lookup_miss_latency_p50_us":1980.415,"point_lookup_miss_latency_p95_us":3956.735,"point_lookup_miss_latency_p99_us":9486.335,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2123076612096,"disk_write_bytes":21544427520,"disk_read_requests":18820967,"disk_write_requests":84635,"disk_read_time_ms":2703896,"disk_write_time_ms":35332,"disk_read_latency_avg_ms":0.14366403171526734,"disk_write_latency_avg_ms":0.4174632244343357,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T15:37:15+09:00] Preparing A vcomp checkpoint
+[2026-09-14T15:37:31+09:00] Running A vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=A mode=time operations=1854596
+WORKLOAD_PROGRESS workload=A mode=time operations=3969709
+WORKLOAD_PROGRESS workload=A mode=time operations=6149239
+WORKLOAD_PROGRESS workload=A mode=time operations=8261493
+WORKLOAD_PROGRESS workload=A mode=time operations=10413314
+WORKLOAD_PROGRESS workload=A mode=time operations=12439293
+WORKLOAD_PROGRESS workload=A mode=time operations=14490000
+WORKLOAD_PROGRESS workload=A mode=time operations=16608011
+WORKLOAD_PROGRESS workload=A mode=time operations=18593085
+WORKLOAD_RESULT {"workload":"A","definition":"50% read / 50% update","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.001887,"threads":48,"operations":20644649,"throughput_ops_per_second":68815.063751,"point_reads":10326950,"writes":10317699,"scans":0,"read_misses":1730220,"point_read_hits":8596730,"point_read_misses":1730220,"operation_latency_p50_us":442.367,"operation_latency_p95_us":1974.271,"operation_latency_p99_us":3514.367,"point_lookup_latency_p50_us":644.095,"point_lookup_latency_p95_us":2455.551,"point_lookup_latency_p99_us":5271.551,"point_lookup_hit_latency_p50_us":536.575,"point_lookup_hit_latency_p95_us":2193.407,"point_lookup_hit_latency_p99_us":4235.263,"point_lookup_miss_latency_p50_us":1448.959,"point_lookup_miss_latency_p95_us":3336.191,"point_lookup_miss_latency_p99_us":8626.175,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":1922461413376,"disk_write_bytes":32191299584,"disk_read_requests":17256859,"disk_write_requests":116607,"disk_read_time_ms":2705816,"disk_write_time_ms":54488,"disk_read_latency_avg_ms":0.1567965526055466,"disk_write_latency_avg_ms":0.4672789798211085,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T15:42:46+09:00] Preparing B baseline checkpoint
+[2026-09-14T15:43:02+09:00] Running B baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=B mode=time operations=917936
+WORKLOAD_PROGRESS workload=B mode=time operations=1953479
+WORKLOAD_PROGRESS workload=B mode=time operations=3002373
+WORKLOAD_PROGRESS workload=B mode=time operations=4065781
+WORKLOAD_PROGRESS workload=B mode=time operations=5177703
+WORKLOAD_PROGRESS workload=B mode=time operations=6327342
+WORKLOAD_PROGRESS workload=B mode=time operations=7474013
+WORKLOAD_PROGRESS workload=B mode=time operations=8602524
+WORKLOAD_PROGRESS workload=B mode=time operations=9738990
+WORKLOAD_RESULT {"workload":"B","definition":"95% read / 5% update","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.002355,"threads":48,"operations":10869969,"throughput_ops_per_second":36232.945631,"point_reads":10326612,"writes":543357,"scans":0,"read_misses":2244196,"point_read_hits":8082416,"point_read_misses":2244196,"operation_latency_p50_us":1007.615,"operation_latency_p95_us":3108.863,"operation_latency_p99_us":4259.839,"point_lookup_latency_p50_us":1070.079,"point_lookup_latency_p95_us":3141.631,"point_lookup_latency_p99_us":4296.703,"point_lookup_hit_latency_p50_us":805.375,"point_lookup_hit_latency_p95_us":2871.295,"point_lookup_hit_latency_p99_us":4003.839,"point_lookup_miss_latency_p50_us":2000.895,"point_lookup_miss_latency_p95_us":3657.727,"point_lookup_miss_latency_p99_us":4988.927,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2577734463488,"disk_write_bytes":669925376,"disk_read_requests":22825525,"disk_write_requests":3993,"disk_read_time_ms":2603176,"disk_write_time_ms":1420,"disk_read_latency_avg_ms":0.11404670867373258,"disk_write_latency_avg_ms":0.35562233909341345,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T15:48:17+09:00] Preparing B vcomp checkpoint
+[2026-09-14T15:48:32+09:00] Running B vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=B mode=time operations=1149064
+WORKLOAD_PROGRESS workload=B mode=time operations=2478426
+WORKLOAD_PROGRESS workload=B mode=time operations=3857360
+WORKLOAD_PROGRESS workload=B mode=time operations=5267268
+WORKLOAD_PROGRESS workload=B mode=time operations=6670560
+WORKLOAD_PROGRESS workload=B mode=time operations=8063678
+WORKLOAD_PROGRESS workload=B mode=time operations=9462408
+WORKLOAD_PROGRESS workload=B mode=time operations=10872621
+WORKLOAD_PROGRESS workload=B mode=time operations=12286312
+WORKLOAD_RESULT {"workload":"B","definition":"95% read / 5% update","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.002384,"threads":48,"operations":13690461,"throughput_ops_per_second":45634.507406,"point_reads":13006430,"writes":684031,"scans":0,"read_misses":2770718,"point_read_hits":10235712,"point_read_misses":2770718,"operation_latency_p50_us":816.639,"operation_latency_p95_us":2445.311,"operation_latency_p99_us":3500.031,"point_lookup_latency_p50_us":846.335,"point_lookup_latency_p95_us":2473.983,"point_lookup_latency_p99_us":3536.895,"point_lookup_hit_latency_p50_us":696.831,"point_lookup_hit_latency_p95_us":2265.087,"point_lookup_hit_latency_p99_us":3289.087,"point_lookup_miss_latency_p50_us":1428.479,"point_lookup_miss_latency_p95_us":2918.399,"point_lookup_miss_latency_p99_us":4136.959,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2376231460864,"disk_write_bytes":1268789248,"disk_read_requests":21207128,"disk_write_requests":6269,"disk_read_time_ms":2416520,"disk_write_time_ms":2152,"disk_read_latency_avg_ms":0.11394847996390647,"disk_write_latency_avg_ms":0.3432764396235444,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T15:53:48+09:00] Preparing C baseline checkpoint
+[2026-09-14T15:54:03+09:00] Running C baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=C mode=time operations=854894
+WORKLOAD_PROGRESS workload=C mode=time operations=1768245
+WORKLOAD_PROGRESS workload=C mode=time operations=2730789
+WORKLOAD_PROGRESS workload=C mode=time operations=3688719
+WORKLOAD_PROGRESS workload=C mode=time operations=4655483
+WORKLOAD_PROGRESS workload=C mode=time operations=5596632
+WORKLOAD_PROGRESS workload=C mode=time operations=6562648
+WORKLOAD_PROGRESS workload=C mode=time operations=7536840
+WORKLOAD_PROGRESS workload=C mode=time operations=8521233
+WORKLOAD_RESULT {"workload":"C","definition":"100% read","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.002061,"threads":48,"operations":9506950,"throughput_ops_per_second":31689.615673,"point_reads":9506950,"writes":0,"scans":0,"read_misses":4051748,"point_read_hits":5455202,"point_read_misses":4051748,"operation_latency_p50_us":1268.735,"operation_latency_p95_us":3356.671,"operation_latency_p99_us":4550.655,"point_lookup_latency_p50_us":1268.735,"point_lookup_latency_p95_us":3354.623,"point_lookup_latency_p99_us":4550.655,"point_lookup_hit_latency_p50_us":1259.519,"point_lookup_hit_latency_p95_us":3282.943,"point_lookup_hit_latency_p99_us":4476.927,"point_lookup_miss_latency_p50_us":1285.119,"point_lookup_miss_latency_p95_us":3442.687,"point_lookup_miss_latency_p99_us":4636.671,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2668645122048,"disk_write_bytes":14446592,"disk_read_requests":23707652,"disk_write_requests":568,"disk_read_time_ms":2678932,"disk_write_time_ms":204,"disk_read_latency_avg_ms":0.1129986217108299,"disk_write_latency_avg_ms":0.3591549295774648,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T15:59:19+09:00] Preparing C vcomp checkpoint
+[2026-09-14T15:59:34+09:00] Running C vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=C mode=time operations=1074890
+WORKLOAD_PROGRESS workload=C mode=time operations=2277866
+WORKLOAD_PROGRESS workload=C mode=time operations=3492197
+WORKLOAD_PROGRESS workload=C mode=time operations=4722101
+WORKLOAD_PROGRESS workload=C mode=time operations=5940253
+WORKLOAD_PROGRESS workload=C mode=time operations=7167595
+WORKLOAD_PROGRESS workload=C mode=time operations=8383085
+WORKLOAD_PROGRESS workload=C mode=time operations=9619723
+WORKLOAD_PROGRESS workload=C mode=time operations=10837336
+WORKLOAD_RESULT {"workload":"C","definition":"100% read","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.001507,"threads":48,"operations":12026678,"throughput_ops_per_second":40088.725238,"point_reads":12026678,"writes":0,"scans":0,"read_misses":3977694,"point_read_hits":8048984,"point_read_misses":3977694,"operation_latency_p50_us":981.503,"operation_latency_p95_us":2660.351,"operation_latency_p99_us":3788.799,"point_lookup_latency_p50_us":980.479,"point_lookup_latency_p95_us":2658.303,"point_lookup_latency_p99_us":3788.799,"point_lookup_hit_latency_p50_us":898.559,"point_lookup_hit_latency_p95_us":2533.375,"point_lookup_hit_latency_p99_us":3645.439,"point_lookup_miss_latency_p50_us":1169.407,"point_lookup_miss_latency_p95_us":2856.959,"point_lookup_miss_latency_p99_us":4018.175,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2451061334016,"disk_write_bytes":14909440,"disk_read_requests":21958033,"disk_write_requests":579,"disk_read_time_ms":2467912,"disk_write_time_ms":204,"disk_read_latency_avg_ms":0.11239221655236606,"disk_write_latency_avg_ms":0.35233160621761656,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:04:49+09:00] Preparing D baseline checkpoint
+[2026-09-14T16:05:05+09:00] Running D baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=D mode=time operations=2322508
+WORKLOAD_PROGRESS workload=D mode=time operations=4916912
+WORKLOAD_PROGRESS workload=D mode=time operations=7442808
+WORKLOAD_PROGRESS workload=D mode=time operations=9994706
+WORKLOAD_PROGRESS workload=D mode=time operations=12578940
+WORKLOAD_PROGRESS workload=D mode=time operations=15147376
+WORKLOAD_PROGRESS workload=D mode=time operations=17694457
+WORKLOAD_PROGRESS workload=D mode=time operations=20249210
+WORKLOAD_PROGRESS workload=D mode=time operations=22609786
+WORKLOAD_RESULT {"workload":"D","definition":"95% read / 5% insert","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"latest theta=0.99","wall_seconds":300.001344,"threads":48,"operations":25166747,"throughput_ops_per_second":83888.780765,"point_reads":23908800,"writes":1257947,"scans":0,"read_misses":2643083,"point_read_hits":21265717,"point_read_misses":2643083,"operation_latency_p50_us":399.871,"operation_latency_p95_us":1645.567,"operation_latency_p99_us":2543.615,"point_lookup_latency_p50_us":399.103,"point_lookup_latency_p95_us":1675.263,"point_lookup_latency_p99_us":2566.143,"point_lookup_hit_latency_p50_us":379.903,"point_lookup_hit_latency_p95_us":1354.751,"point_lookup_hit_latency_p99_us":2306.047,"point_lookup_miss_latency_p50_us":948.223,"point_lookup_miss_latency_p95_us":2445.311,"point_lookup_miss_latency_p99_us":3428.351,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":1966544433152,"disk_write_bytes":3317211136,"disk_read_requests":17494562,"disk_write_requests":12035,"disk_read_time_ms":1956044,"disk_write_time_ms":5008,"disk_read_latency_avg_ms":0.11180868660787278,"disk_write_latency_avg_ms":0.4161196510178646,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:10:21+09:00] Preparing D vcomp checkpoint
+[2026-09-14T16:10:37+09:00] Running D vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=D mode=time operations=2890309
+WORKLOAD_PROGRESS workload=D mode=time operations=6142020
+WORKLOAD_PROGRESS workload=D mode=time operations=9308808
+WORKLOAD_PROGRESS workload=D mode=time operations=12398877
+WORKLOAD_PROGRESS workload=D mode=time operations=15531539
+WORKLOAD_PROGRESS workload=D mode=time operations=18658931
+WORKLOAD_PROGRESS workload=D mode=time operations=21810944
+WORKLOAD_PROGRESS workload=D mode=time operations=24935851
+WORKLOAD_PROGRESS workload=D mode=time operations=28022952
+WORKLOAD_RESULT {"workload":"D","definition":"95% read / 5% insert","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"latest theta=0.99","wall_seconds":300.000872,"threads":48,"operations":31139755,"throughput_ops_per_second":103798.881746,"point_reads":29582361,"writes":1557394,"scans":0,"read_misses":3057786,"point_read_hits":26524575,"point_read_misses":3057786,"operation_latency_p50_us":354.815,"operation_latency_p95_us":1133.567,"operation_latency_p99_us":1959.935,"point_lookup_latency_p50_us":353.791,"point_lookup_latency_p95_us":1155.071,"point_lookup_latency_p99_us":1981.439,"point_lookup_hit_latency_p50_us":339.967,"point_lookup_hit_latency_p95_us":974.335,"point_lookup_hit_latency_p99_us":1760.255,"point_lookup_miss_latency_p50_us":626.687,"point_lookup_miss_latency_p95_us":1867.775,"point_lookup_miss_latency_p99_us":2713.599,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":1593309675520,"disk_write_bytes":4654600192,"disk_read_requests":14236066,"disk_write_requests":16370,"disk_read_time_ms":1590956,"disk_write_time_ms":5788,"disk_read_latency_avg_ms":0.11175531217683313,"disk_write_latency_avg_ms":0.35357361026267564,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:15:53+09:00] Preparing E baseline checkpoint
+[2026-09-14T16:16:09+09:00] Running E baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=E mode=time operations=386707
+WORKLOAD_PROGRESS workload=E mode=time operations=816845
+WORKLOAD_PROGRESS workload=E mode=time operations=1246818
+WORKLOAD_PROGRESS workload=E mode=time operations=1675982
+WORKLOAD_PROGRESS workload=E mode=time operations=2110435
+WORKLOAD_PROGRESS workload=E mode=time operations=2545282
+WORKLOAD_PROGRESS workload=E mode=time operations=2976916
+WORKLOAD_PROGRESS workload=E mode=time operations=3414878
+WORKLOAD_PROGRESS workload=E mode=time operations=3845224
+WORKLOAD_RESULT {"workload":"E","definition":"95% scan / 5% insert","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":204504700,"scan_returned_rows":204504700,"scan_returned_bytes":209412812800,"scan_cql_requests":4164788,"empty_scans":0,"scan_length_min":1,"scan_length_max":100,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.003049,"threads":48,"operations":4264471,"throughput_ops_per_second":14214.758883,"point_reads":0,"writes":213925,"scans":4050546,"read_misses":0,"point_read_hits":0,"point_read_misses":0,"operation_latency_p50_us":3166.207,"operation_latency_p95_us":6189.055,"operation_latency_p99_us":9084.927,"point_lookup_latency_p50_us":0.000,"point_lookup_latency_p95_us":0.000,"point_lookup_latency_p99_us":0.000,"point_lookup_hit_latency_p50_us":0.000,"point_lookup_hit_latency_p95_us":0.000,"point_lookup_hit_latency_p99_us":0.000,"point_lookup_miss_latency_p50_us":0.000,"point_lookup_miss_latency_p95_us":0.000,"point_lookup_miss_latency_p99_us":0.000,"scan_latency_p50_us":3258.367,"scan_latency_p95_us":6238.207,"scan_latency_p99_us":9207.807,"disk_device":"md0","disk_read_bytes":2172692029440,"disk_write_bytes":471277568,"disk_read_requests":16468610,"disk_write_requests":2331,"disk_read_time_ms":1875612,"disk_write_time_ms":884,"disk_read_latency_avg_ms":0.11389012187428083,"disk_write_latency_avg_ms":0.37923637923637926,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:21:25+09:00] Preparing E vcomp checkpoint
+[2026-09-14T16:21:41+09:00] Running E vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=E mode=time operations=444120
+WORKLOAD_PROGRESS workload=E mode=time operations=939637
+WORKLOAD_PROGRESS workload=E mode=time operations=1433272
+WORKLOAD_PROGRESS workload=E mode=time operations=1930400
+WORKLOAD_PROGRESS workload=E mode=time operations=2427654
+WORKLOAD_PROGRESS workload=E mode=time operations=2929631
+WORKLOAD_PROGRESS workload=E mode=time operations=3429371
+WORKLOAD_PROGRESS workload=E mode=time operations=3923790
+WORKLOAD_PROGRESS workload=E mode=time operations=4415605
+WORKLOAD_RESULT {"workload":"E","definition":"95% scan / 5% insert","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":235507385,"scan_returned_rows":235507385,"scan_returned_bytes":241159562240,"scan_cql_requests":4797692,"empty_scans":0,"scan_length_min":1,"scan_length_max":100,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.003159,"threads":48,"operations":4910787,"throughput_ops_per_second":16369.117635,"point_reads":0,"writes":246319,"scans":4664468,"read_misses":0,"point_read_hits":0,"point_read_misses":0,"operation_latency_p50_us":2707.455,"operation_latency_p95_us":5316.607,"operation_latency_p99_us":7729.151,"point_lookup_latency_p50_us":0.000,"point_lookup_latency_p95_us":0.000,"point_lookup_latency_p99_us":0.000,"point_lookup_hit_latency_p50_us":0.000,"point_lookup_hit_latency_p95_us":0.000,"point_lookup_hit_latency_p99_us":0.000,"point_lookup_miss_latency_p50_us":0.000,"point_lookup_miss_latency_p95_us":0.000,"point_lookup_miss_latency_p99_us":0.000,"scan_latency_p50_us":2768.895,"scan_latency_p95_us":5361.663,"scan_latency_p99_us":7823.359,"disk_device":"md0","disk_read_bytes":2004704026624,"disk_write_bytes":485134336,"disk_read_requests":14594714,"disk_write_requests":2367,"disk_read_time_ms":1670712,"disk_write_time_ms":800,"disk_read_latency_avg_ms":0.11447377454604454,"disk_write_latency_avg_ms":0.33798056611744826,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:26:56+09:00] Preparing F baseline checkpoint
+[2026-09-14T16:27:11+09:00] Running F baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=F mode=time operations=812373
+WORKLOAD_PROGRESS workload=F mode=time operations=1752571
+WORKLOAD_PROGRESS workload=F mode=time operations=2693965
+WORKLOAD_PROGRESS workload=F mode=time operations=3647584
+WORKLOAD_PROGRESS workload=F mode=time operations=4642927
+WORKLOAD_PROGRESS workload=F mode=time operations=5635940
+WORKLOAD_PROGRESS workload=F mode=time operations=6614358
+WORKLOAD_PROGRESS workload=F mode=time operations=7577522
+WORKLOAD_PROGRESS workload=F mode=time operations=8561982
+WORKLOAD_RESULT {"workload":"F","definition":"50% read / 50% read-modify-write","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.045704,"threads":48,"operations":9516927,"throughput_ops_per_second":31718.257834,"point_reads":9516927,"writes":4755958,"scans":0,"read_misses":1732661,"point_read_hits":7784266,"point_read_misses":1732661,"operation_latency_p50_us":1193.983,"operation_latency_p95_us":3401.727,"operation_latency_p99_us":5099.519,"point_lookup_latency_p50_us":843.263,"point_lookup_latency_p95_us":3055.615,"point_lookup_latency_p99_us":4669.439,"point_lookup_hit_latency_p50_us":658.943,"point_lookup_hit_latency_p95_us":2752.511,"point_lookup_hit_latency_p99_us":4141.055,"point_lookup_miss_latency_p50_us":2018.303,"point_lookup_miss_latency_p95_us":3770.367,"point_lookup_miss_latency_p99_us":7098.367,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2275236188160,"disk_write_bytes":10868920320,"disk_read_requests":20145249,"disk_write_requests":43703,"disk_read_time_ms":2574512,"disk_write_time_ms":19396,"disk_read_latency_avg_ms":0.12779747721162443,"disk_write_latency_avg_ms":0.4438139258174496,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:32:26+09:00] Preparing F vcomp checkpoint
+[2026-09-14T16:32:41+09:00] Running F vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=F mode=time operations=997092
+WORKLOAD_PROGRESS workload=F mode=time operations=2147077
+WORKLOAD_PROGRESS workload=F mode=time operations=3312547
+WORKLOAD_PROGRESS workload=F mode=time operations=4497352
+WORKLOAD_PROGRESS workload=F mode=time operations=5682588
+WORKLOAD_PROGRESS workload=F mode=time operations=6820578
+WORKLOAD_PROGRESS workload=F mode=time operations=7996582
+WORKLOAD_PROGRESS workload=F mode=time operations=9121619
+WORKLOAD_PROGRESS workload=F mode=time operations=10227547
+WORKLOAD_RESULT {"workload":"F","definition":"50% read / 50% read-modify-write","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":0,"scan_returned_rows":0,"scan_returned_bytes":0,"scan_cql_requests":0,"empty_scans":0,"scan_length_min":0,"scan_length_max":0,"scan_seek_only_rows":0,"key_distribution":"scrambled Zipfian theta=0.99","wall_seconds":300.005580,"threads":48,"operations":11307885,"throughput_ops_per_second":37692.248911,"point_reads":11307885,"writes":5651041,"scans":0,"read_misses":2019737,"point_read_hits":9288148,"point_read_misses":2019737,"operation_latency_p50_us":1032.191,"operation_latency_p95_us":2840.575,"operation_latency_p99_us":4423.679,"point_lookup_latency_p50_us":725.503,"point_lookup_latency_p95_us":2512.895,"point_lookup_latency_p99_us":4032.511,"point_lookup_hit_latency_p50_us":599.551,"point_lookup_hit_latency_p95_us":2269.183,"point_lookup_hit_latency_p99_us":3583.999,"point_lookup_miss_latency_p50_us":1512.447,"point_lookup_miss_latency_p95_us":3149.823,"point_lookup_miss_latency_p99_us":6041.599,"scan_latency_p50_us":0.000,"scan_latency_p95_us":0.000,"scan_latency_p99_us":0.000,"disk_device":"md0","disk_read_bytes":2125729914880,"disk_write_bytes":14219214848,"disk_read_requests":19031008,"disk_write_requests":55979,"disk_read_time_ms":2504728,"disk_write_time_ms":21168,"disk_read_latency_avg_ms":0.13161299706247825,"disk_write_latency_avg_ms":0.37814180317619106,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:37:58+09:00] Preparing MIXGRAPH baseline checkpoint
+[2026-09-14T16:38:13+09:00] Running MIXGRAPH baseline (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=1220809
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=2530164
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=3811824
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=5076457
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=6357772
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=7668986
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=8929830
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=10202568
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=11439263
+WORKLOAD_RESULT {"workload":"MIXGRAPH","definition":"83% get / 14% put / 3% seek","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":217098084,"scan_returned_rows":216901341,"scan_returned_bytes":186859291600,"scan_cql_requests":412751,"empty_scans":1,"scan_length_min":0,"scan_length_max":9999,"scan_seek_only_rows":1,"key_distribution":"MixGraph power + two-term-exponential key ranges","wall_seconds":300.010587,"threads":48,"operations":12735481,"throughput_ops_per_second":42450.105327,"point_reads":10571774,"writes":1781575,"scans":382132,"read_misses":2908675,"point_read_hits":7663099,"point_read_misses":2908675,"operation_latency_p50_us":685.567,"operation_latency_p95_us":3145.727,"operation_latency_p99_us":6246.399,"point_lookup_latency_p50_us":693.247,"point_lookup_latency_p95_us":3076.095,"point_lookup_latency_p99_us":5533.695,"point_lookup_hit_latency_p50_us":672.767,"point_lookup_hit_latency_p95_us":2951.167,"point_lookup_hit_latency_p99_us":5357.567,"point_lookup_miss_latency_p50_us":759.295,"point_lookup_miss_latency_p95_us":3366.911,"point_lookup_miss_latency_p99_us":5947.391,"scan_latency_p50_us":1235.967,"scan_latency_p95_us":16556.031,"scan_latency_p99_us":33112.063,"disk_device":"md0","disk_read_bytes":894923771904,"disk_write_bytes":296685568,"disk_read_requests":7424898,"disk_write_requests":3115,"disk_read_time_ms":762356,"disk_write_time_ms":1156,"disk_read_latency_avg_ms":0.10267561924756408,"disk_write_latency_avg_ms":0.371107544141252,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+[2026-09-14T16:43:29+09:00] Preparing MIXGRAPH vcomp checkpoint
+[2026-09-14T16:43:44+09:00] Running MIXGRAPH vcomp (48 threads, 300s)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x000000084024e040 (file:/home/dongju/vcomp/cassandra_vcomp/lib/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x000000084024e040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=1266346
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=2678711
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=4044377
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=5396143
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=6767670
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=8153183
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=9516551
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=10837655
+WORKLOAD_PROGRESS workload=MIXGRAPH mode=time operations=12181595
+WORKLOAD_RESULT {"workload":"MIXGRAPH","definition":"83% get / 14% put / 3% seek","generator_version":"reference-streams-v3","seed":20260909,"measurement_mode":"time","requested_duration_seconds":300,"operations_per_thread":0,"keyspace_size":104857600,"scan_requested_rows":231220125,"scan_returned_rows":231039549,"scan_returned_bytes":198357683590,"scan_cql_requests":438487,"empty_scans":1,"scan_length_min":0,"scan_length_max":9999,"scan_seek_only_rows":1,"key_distribution":"MixGraph power + two-term-exponential key ranges","wall_seconds":300.004560,"threads":48,"operations":13540412,"throughput_ops_per_second":45134.020684,"point_reads":11240455,"writes":1893487,"scans":406470,"read_misses":2919861,"point_read_hits":8320594,"point_read_misses":2919861,"operation_latency_p50_us":657.919,"operation_latency_p95_us":2973.695,"operation_latency_p99_us":6053.887,"point_lookup_latency_p50_us":663.551,"point_lookup_latency_p95_us":2893.823,"point_lookup_latency_p99_us":5345.279,"point_lookup_hit_latency_p50_us":648.703,"point_lookup_hit_latency_p95_us":2803.711,"point_lookup_hit_latency_p99_us":5210.111,"point_lookup_miss_latency_p50_us":713.215,"point_lookup_miss_latency_p95_us":3125.247,"point_lookup_miss_latency_p99_us":5689.343,"scan_latency_p50_us":1134.591,"scan_latency_p95_us":15040.511,"scan_latency_p99_us":29982.719,"disk_device":"md0","disk_read_bytes":735147945984,"disk_write_bytes":298930176,"disk_read_requests":6095456,"disk_write_requests":2989,"disk_read_time_ms":627272,"disk_write_time_ms":1044,"disk_read_latency_avg_ms":0.10290813353422615,"disk_write_latency_avg_ms":0.34928069588491134,"disk_latency_scope":"block device md0; mean completed request latency; not percentiles"}
+Completed Cassandra paper workloads: /work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s
+Canonical SHA256 after: baseline 1/1632 components
+Canonical SHA256 after: baseline 65/1632 components
+Canonical SHA256 after: baseline 129/1632 components
+Canonical SHA256 after: baseline 193/1632 components
+Canonical SHA256 after: baseline 257/1632 components
+Canonical SHA256 after: baseline 321/1632 components
+Canonical SHA256 after: baseline 385/1632 components
+Canonical SHA256 after: baseline 449/1632 components
+Canonical SHA256 after: baseline 513/1632 components
+Canonical SHA256 after: baseline 577/1632 components
+Canonical SHA256 after: baseline 641/1632 components
+Canonical SHA256 after: baseline 705/1632 components
+Canonical SHA256 after: baseline 769/1632 components
+Canonical SHA256 after: baseline 833/1632 components
+Canonical SHA256 after: baseline 897/1632 components
+Canonical SHA256 after: baseline 961/1632 components
+Canonical SHA256 after: baseline 1025/1632 components
+Canonical SHA256 after: baseline 1089/1632 components
+Canonical SHA256 after: baseline 1153/1632 components
+Canonical SHA256 after: baseline 1217/1632 components
+Canonical SHA256 after: baseline 1281/1632 components
+Canonical SHA256 after: baseline 1345/1632 components
+Canonical SHA256 after: baseline 1409/1632 components
+Canonical SHA256 after: baseline 1473/1632 components
+Canonical SHA256 after: baseline 1537/1632 components
+Canonical SHA256 after: baseline 1601/1632 components
+Canonical SHA256 after: vcomp 1/1488 components
+Canonical SHA256 after: vcomp 65/1488 components
+Canonical SHA256 after: vcomp 129/1488 components
+Canonical SHA256 after: vcomp 193/1488 components
+Canonical SHA256 after: vcomp 257/1488 components
+Canonical SHA256 after: vcomp 321/1488 components
+Canonical SHA256 after: vcomp 385/1488 components
+Canonical SHA256 after: vcomp 449/1488 components
+Canonical SHA256 after: vcomp 513/1488 components
+Canonical SHA256 after: vcomp 577/1488 components
+Canonical SHA256 after: vcomp 641/1488 components
+Canonical SHA256 after: vcomp 705/1488 components
+Canonical SHA256 after: vcomp 769/1488 components
+Canonical SHA256 after: vcomp 833/1488 components
+Canonical SHA256 after: vcomp 897/1488 components
+Canonical SHA256 after: vcomp 961/1488 components
+Canonical SHA256 after: vcomp 1025/1488 components
+Canonical SHA256 after: vcomp 1089/1488 components
+Canonical SHA256 after: vcomp 1153/1488 components
+Canonical SHA256 after: vcomp 1217/1488 components
+Canonical SHA256 after: vcomp 1281/1488 components
+Canonical SHA256 after: vcomp 1345/1488 components
+Canonical SHA256 after: vcomp 1409/1488 components
+Canonical SHA256 after: vcomp 1473/1488 components
+/home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs/paper_workloads.svg

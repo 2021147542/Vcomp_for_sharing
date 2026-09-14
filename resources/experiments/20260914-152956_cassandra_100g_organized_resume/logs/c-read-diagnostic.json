@@ -1,0 +1,587 @@
+{
+  "scope": "Completed C cells only; the full organized campaign is still running",
+  "root": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s",
+  "arms": {
+    "baseline": {
+      "record": {
+        "workload": "C",
+        "definition": "100% read",
+        "generator_version": "reference-streams-v3",
+        "seed": 20260909,
+        "measurement_mode": "time",
+        "requested_duration_seconds": 300,
+        "operations_per_thread": 0,
+        "keyspace_size": 104857600,
+        "scan_requested_rows": 0,
+        "scan_returned_rows": 0,
+        "scan_returned_bytes": 0,
+        "scan_cql_requests": 0,
+        "empty_scans": 0,
+        "scan_length_min": 0,
+        "scan_length_max": 0,
+        "scan_seek_only_rows": 0,
+        "key_distribution": "scrambled Zipfian theta=0.99",
+        "wall_seconds": 300.002061,
+        "threads": 48,
+        "operations": 9506950,
+        "throughput_ops_per_second": 31689.615673,
+        "point_reads": 9506950,
+        "writes": 0,
+        "scans": 0,
+        "read_misses": 4051748,
+        "point_read_hits": 5455202,
+        "point_read_misses": 4051748,
+        "operation_latency_p50_us": 1268.735,
+        "operation_latency_p95_us": 3356.671,
+        "operation_latency_p99_us": 4550.655,
+        "point_lookup_latency_p50_us": 1268.735,
+        "point_lookup_latency_p95_us": 3354.623,
+        "point_lookup_latency_p99_us": 4550.655,
+        "point_lookup_hit_latency_p50_us": 1259.519,
+        "point_lookup_hit_latency_p95_us": 3282.943,
+        "point_lookup_hit_latency_p99_us": 4476.927,
+        "point_lookup_miss_latency_p50_us": 1285.119,
+        "point_lookup_miss_latency_p95_us": 3442.687,
+        "point_lookup_miss_latency_p99_us": 4636.671,
+        "scan_latency_p50_us": 0.0,
+        "scan_latency_p95_us": 0.0,
+        "scan_latency_p99_us": 0.0,
+        "disk_device": "md0",
+        "disk_read_bytes": 2668645122048,
+        "disk_write_bytes": 14446592,
+        "disk_read_requests": 23707652,
+        "disk_write_requests": 568,
+        "disk_read_time_ms": 2678932,
+        "disk_write_time_ms": 204,
+        "disk_read_latency_avg_ms": 0.1129986217108299,
+        "disk_write_latency_avg_ms": 0.3591549295774648,
+        "disk_latency_scope": "block device md0; mean completed request latency; not percentiles"
+      },
+      "derived": {
+        "miss_fraction": 0.42618799930577106,
+        "hit_fraction": 0.573812000694229,
+        "device_read_bytes_per_operation": 280704.6552309626,
+        "device_read_requests_per_operation": 2.4937179642261715,
+        "device_bytes_per_read_request": 112564.71632230809,
+        "coarse_daemon_read_bytes": 2668644868096,
+        "coarse_chunk_requests": 77569714.0,
+        "coarse_chunk_misses": 25519871.0,
+        "coarse_chunk_miss_fraction": 0.3289927174412426,
+        "coarse_chunk_misses_per_operation": 2.68433840506156,
+        "coarse_key_cache_requests": 33434696,
+        "coarse_key_cache_misses": 4392619,
+        "coarse_key_cache_miss_fraction": 0.1313790620378304,
+        "coarse_key_cache_misses_per_operation": 0.46204292649062,
+        "key_cache_average_weight_bytes_rounded": 3173.752232210418,
+        "sstables_per_read_50%": 4.0,
+        "sstables_per_read_95%": 4.0,
+        "sstables_per_read_99%": 4.0,
+        "sstable_count": 204,
+        "live_component_bytes": 87990345878,
+        "memtable_switch_count": 0,
+        "bloom_false_positives": 0
+      },
+      "runtime": {
+        "before": {
+          "chunk_cache_capacity_bytes": 5368709120.0,
+          "chunk_cache_size": 565248.0,
+          "chunk_cache_hits": 208.0,
+          "chunk_cache_misses": 60.0,
+          "chunk_cache_requests": 268.0,
+          "memtable_blocked_allocation_count": 0.0,
+          "memtable_pending_flush_tasks": 0.0
+        },
+        "after": {
+          "chunk_cache_capacity_bytes": 5368709120.0,
+          "chunk_cache_size": 5368676352.0,
+          "chunk_cache_hits": 52050051.0,
+          "chunk_cache_misses": 25519931.0,
+          "chunk_cache_requests": 77569982.0,
+          "memtable_blocked_allocation_count": 0.0,
+          "memtable_pending_flush_tasks": 0.0
+        }
+      },
+      "key_cache": {
+        "before": {
+          "entries": 20,
+          "size_bytes_rounded": 1740.8,
+          "capacity_bytes": 104857600.0,
+          "hits": 132,
+          "requests": 154
+        },
+        "after": {
+          "entries": 33039,
+          "size_bytes_rounded": 104857600.0,
+          "capacity_bytes": 104857600.0,
+          "hits": 29042209,
+          "requests": 33434850
+        }
+      },
+      "daemon_io": {
+        "before": {
+          "rchar": 31372428,
+          "wchar": 14771342,
+          "syscr": 27233,
+          "syscw": 7098,
+          "read_bytes": 4333568,
+          "write_bytes": 15237120,
+          "cancelled_write_bytes": 49152
+        },
+        "after": {
+          "rchar": 1672444518738,
+          "wchar": 53890399,
+          "syscr": 25551998,
+          "syscw": 3373136,
+          "read_bytes": 2668649201664,
+          "write_bytes": 28078080,
+          "cancelled_write_bytes": 49152
+        }
+      },
+      "after_histogram": "baseline_100g/kv histograms\nPercentile      Read Latency     Write Latency          SSTables    Partition Size        Cell Count\n                    (micros)          (micros)                             (bytes)                  \n50%                   642.00              0.00              4.00           1629722              1597\n75%                  1597.00              0.00              4.00           1955666              1916\n95%                  2759.00              0.00              4.00           5839588              5722\n98%                  3311.00              0.00              4.00           5839588              5722\n99%                  3973.00              0.00              4.00           5839588              5722\nMin                     6.00              0.00              1.00            315853               311\nMax                 88148.00              0.00              4.00           5839588              5722\n\n",
+      "after_tablestats": "Total number of tables: 1\n----------------\nKeyspace: baseline_100g\n\tRead Count: 9506950\n\tRead Latency: 0.8991685788817655 ms\n\tWrite Count: 0\n\tWrite Latency: NaN ms\n\tPending Flushes: 0\n\t\tTable: kv\n\t\tSSTable count: 204\n\t\tOld SSTable count: 0\n\t\tMax SSTable size: 687.964MiB\n\t\tSpace used (live): 87990345878\n\t\tSpace used (total): 87990345878\n\t\tSpace used by snapshots (total): 0\n\t\tOff heap memory used (total): 65936\n\t\tSSTable Compression Ratio: -1.00000\n\t\tNumber of partitions (estimate): 10077\n\t\tMemtable cell count: 0\n\t\tMemtable data size: 0\n\t\tMemtable off heap memory used: 0\n\t\tMemtable switch count: 0\n\t\tSpeculative retries: 0\n\t\tLocal read count: 9506950\n\t\tLocal read latency: 0.965 ms\n\t\tLocal write count: 0\n\t\tLocal write latency: NaN ms\n\t\tLocal read/write ratio: 0.00000\n\t\tPending flushes: 0\n\t\tPercent repaired: 0.0\n\t\tBytes repaired: 0B\n\t\tBytes unrepaired: 81.859GiB\n\t\tBytes pending repair: 0B\n\t\tBloom filter false positives: 0\n\t\tBloom filter false ratio: 0.00000\n\t\tBloom filter space used: 52952\n\t\tBloom filter off heap memory used: 51320\n\t\tIndex summary off heap memory used: 14616\n\t\tCompression metadata off heap memory used: 0\n\t\tCompacted partition minimum bytes: 315853\n\t\tCompacted partition maximum bytes: 5839588\n\t\tCompacted partition mean bytes: 2437833\n\t\tAverage live cells per slice (last five minutes): 1.0\n\t\tMaximum live cells per slice (last five minutes): 1\n\t\tAverage tombstones per slice (last five minutes): 1.0\n\t\tMaximum tombstones per slice (last five minutes): 1\n\t\tDroppable tombstone ratio: 0.00000\n\n----------------\n",
+      "after_compactionstats": "concurrent compactors            48                     \npending tasks                    0                      \ncompactions completed            1                      \ndata compacted                   889                    \ncompressed data compacted        834                    \ncompactions aborted              0                      \ncompactions reduced              0                      \nsstables dropped from compaction 0                      \n15 minute rate                   8.50/minute            \nmean rate                        11.38/hour             \ncompaction throughput (MiB/s)    throttling disabled (0)\n"
+    },
+    "vcomp": {
+      "record": {
+        "workload": "C",
+        "definition": "100% read",
+        "generator_version": "reference-streams-v3",
+        "seed": 20260909,
+        "measurement_mode": "time",
+        "requested_duration_seconds": 300,
+        "operations_per_thread": 0,
+        "keyspace_size": 104857600,
+        "scan_requested_rows": 0,
+        "scan_returned_rows": 0,
+        "scan_returned_bytes": 0,
+        "scan_cql_requests": 0,
+        "empty_scans": 0,
+        "scan_length_min": 0,
+        "scan_length_max": 0,
+        "scan_seek_only_rows": 0,
+        "key_distribution": "scrambled Zipfian theta=0.99",
+        "wall_seconds": 300.001507,
+        "threads": 48,
+        "operations": 12026678,
+        "throughput_ops_per_second": 40088.725238,
+        "point_reads": 12026678,
+        "writes": 0,
+        "scans": 0,
+        "read_misses": 3977694,
+        "point_read_hits": 8048984,
+        "point_read_misses": 3977694,
+        "operation_latency_p50_us": 981.503,
+        "operation_latency_p95_us": 2660.351,
+        "operation_latency_p99_us": 3788.799,
+        "point_lookup_latency_p50_us": 980.479,
+        "point_lookup_latency_p95_us": 2658.303,
+        "point_lookup_latency_p99_us": 3788.799,
+        "point_lookup_hit_latency_p50_us": 898.559,
+        "point_lookup_hit_latency_p95_us": 2533.375,
+        "point_lookup_hit_latency_p99_us": 3645.439,
+        "point_lookup_miss_latency_p50_us": 1169.407,
+        "point_lookup_miss_latency_p95_us": 2856.959,
+        "point_lookup_miss_latency_p99_us": 4018.175,
+        "scan_latency_p50_us": 0.0,
+        "scan_latency_p95_us": 0.0,
+        "scan_latency_p99_us": 0.0,
+        "disk_device": "md0",
+        "disk_read_bytes": 2451061334016,
+        "disk_write_bytes": 14909440,
+        "disk_read_requests": 21958033,
+        "disk_write_requests": 579,
+        "disk_read_time_ms": 2467912,
+        "disk_write_time_ms": 204,
+        "disk_read_latency_avg_ms": 0.11239221655236606,
+        "disk_write_latency_avg_ms": 0.35233160621761656,
+        "disk_latency_scope": "block device md0; mean completed request latency; not percentiles"
+      },
+      "derived": {
+        "miss_fraction": 0.3307392116093904,
+        "hit_fraction": 0.6692607883906097,
+        "device_read_bytes_per_operation": 203802.02529875663,
+        "device_read_requests_per_operation": 1.8257770765958812,
+        "device_bytes_per_read_request": 111624.8132979853,
+        "coarse_daemon_read_bytes": 2451061342208,
+        "coarse_chunk_requests": 92698503.0,
+        "coarse_chunk_misses": 26878944.0,
+        "coarse_chunk_miss_fraction": 0.28996092849525307,
+        "coarse_chunk_misses_per_operation": 2.2349433484458467,
+        "coarse_key_cache_requests": 47296584,
+        "coarse_key_cache_misses": 43833,
+        "coarse_key_cache_miss_fraction": 0.0009267688338760364,
+        "coarse_key_cache_misses_per_operation": 0.0036446473415185808,
+        "key_cache_average_weight_bytes_rounded": 1742.724655766117,
+        "sstables_per_read_50%": 4.0,
+        "sstables_per_read_95%": 6.0,
+        "sstables_per_read_99%": 6.0,
+        "sstable_count": 186,
+        "live_component_bytes": 81913819477,
+        "memtable_switch_count": 0,
+        "bloom_false_positives": 0
+      },
+      "runtime": {
+        "before": {
+          "chunk_cache_capacity_bytes": 5368709120.0,
+          "chunk_cache_size": 409600.0,
+          "chunk_cache_hits": 220.0,
+          "chunk_cache_misses": 49.0,
+          "chunk_cache_requests": 269.0,
+          "memtable_blocked_allocation_count": 0.0,
+          "memtable_pending_flush_tasks": 0.0
+        },
+        "after": {
+          "chunk_cache_capacity_bytes": 5368709120.0,
+          "chunk_cache_size": 5368709120.0,
+          "chunk_cache_hits": 65819779.0,
+          "chunk_cache_misses": 26878993.0,
+          "chunk_cache_requests": 92698772.0,
+          "memtable_blocked_allocation_count": 0.0,
+          "memtable_pending_flush_tasks": 0.0
+        }
+      },
+      "key_cache": {
+        "before": {
+          "entries": 21,
+          "size_bytes_rounded": 1822.72,
+          "capacity_bytes": 104857600.0,
+          "hits": 132,
+          "requests": 153
+        },
+        "after": {
+          "entries": 43851,
+          "size_bytes_rounded": 76420218.88,
+          "capacity_bytes": 104857600.0,
+          "hits": 47252883,
+          "requests": 47296737
+        }
+      },
+      "daemon_io": {
+        "before": {
+          "rchar": 31067321,
+          "wchar": 14661606,
+          "syscr": 26414,
+          "syscw": 6094,
+          "read_bytes": 3997696,
+          "write_bytes": 14872576,
+          "cancelled_write_bytes": 49152
+        },
+        "after": {
+          "rchar": 1761504416082,
+          "wchar": 56442981,
+          "syscr": 26910514,
+          "syscw": 3537609,
+          "read_bytes": 2451065339904,
+          "write_bytes": 29114368,
+          "cancelled_write_bytes": 49152
+        }
+      },
+      "after_histogram": "vcomp_100g/kv histograms\nPercentile      Read Latency     Write Latency          SSTables    Partition Size        Cell Count\n                    (micros)          (micros)                             (bytes)                  \n50%                   446.00              0.00              4.00            785939               770\n75%                  1109.00              0.00              4.00           2346799              2299\n95%                  2299.00              0.00              6.00           7007506              6866\n98%                  2759.00              0.00              6.00           7007506              6866\n99%                  3311.00              0.00              6.00           8409007              8239\nMin                     5.00              0.00              1.00              5723                 6\nMax                263210.00              0.00              6.00           8409007              8239\n\n",
+      "after_tablestats": "Total number of tables: 1\n----------------\nKeyspace: vcomp_100g\n\tRead Count: 12026678\n\tRead Latency: 0.6423988102117641 ms\n\tWrite Count: 0\n\tWrite Latency: NaN ms\n\tPending Flushes: 0\n\t\tTable: kv\n\t\tSSTable count: 186\n\t\tOld SSTable count: 0\n\t\tMax SSTable size: 606.303MiB\n\t\tSpace used (live): 81913819477\n\t\tSpace used (total): 81913819477\n\t\tSpace used by snapshots (total): 0\n\t\tOff heap memory used (total): 71188\n\t\tSSTable Compression Ratio: -1.00000\n\t\tNumber of partitions (estimate): 10077\n\t\tMemtable cell count: 0\n\t\tMemtable data size: 0\n\t\tMemtable off heap memory used: 0\n\t\tMemtable switch count: 0\n\t\tSpeculative retries: 0\n\t\tLocal read count: 12026678\n\t\tLocal read latency: 0.701 ms\n\t\tLocal write count: 0\n\t\tLocal write latency: NaN ms\n\t\tLocal read/write ratio: 0.00000\n\t\tPending flushes: 0\n\t\tPercent repaired: 0.0\n\t\tBytes repaired: 0B\n\t\tBytes unrepaired: 76.206GiB\n\t\tBytes pending repair: 0B\n\t\tBloom filter false positives: 0\n\t\tBloom filter false ratio: 0.00000\n\t\tBloom filter space used: 57448\n\t\tBloom filter off heap memory used: 55960\n\t\tIndex summary off heap memory used: 15228\n\t\tCompression metadata off heap memory used: 0\n\t\tCompacted partition minimum bytes: 5723\n\t\tCompacted partition maximum bytes: 8409007\n\t\tCompacted partition mean bytes: 2049122\n\t\tAverage live cells per slice (last five minutes): 1.0\n\t\tMaximum live cells per slice (last five minutes): 1\n\t\tAverage tombstones per slice (last five minutes): 1.0\n\t\tMaximum tombstones per slice (last five minutes): 1\n\t\tDroppable tombstone ratio: 0.00000\n\n----------------\n",
+      "after_compactionstats": "concurrent compactors            48                     \npending tasks                    0                      \ncompactions completed            1                      \ndata compacted                   870                    \ncompressed data compacted        830                    \ncompactions aborted              0                      \ncompactions reduced              0                      \nsstables dropped from compaction 0                      \n15 minute rate                   8.50/minute            \nmean rate                        11.38/hour             \ncompaction throughput (MiB/s)    throttling disabled (0)\n"
+    }
+  },
+  "comparisons": {
+    "throughput_ops_per_second": {
+      "baseline": 31689.615673,
+      "vcomp": 40088.725238,
+      "delta_percent": 26.5042960813064
+    },
+    "point_lookup_latency_p50_us": {
+      "baseline": 1268.735,
+      "vcomp": 980.479,
+      "delta_percent": -22.719953339349818
+    },
+    "point_lookup_latency_p95_us": {
+      "baseline": 3354.623,
+      "vcomp": 2658.303,
+      "delta_percent": -20.757026944607492
+    },
+    "point_lookup_latency_p99_us": {
+      "baseline": 4550.655,
+      "vcomp": 3788.799,
+      "delta_percent": -16.741677846375957
+    },
+    "point_lookup_hit_latency_p50_us": {
+      "baseline": 1259.519,
+      "vcomp": 898.559,
+      "delta_percent": -28.65855933892224
+    },
+    "point_lookup_hit_latency_p95_us": {
+      "baseline": 3282.943,
+      "vcomp": 2533.375,
+      "delta_percent": -22.83219659920992
+    },
+    "point_lookup_hit_latency_p99_us": {
+      "baseline": 4476.927,
+      "vcomp": 3645.439,
+      "delta_percent": -18.572739738664488
+    },
+    "point_lookup_miss_latency_p50_us": {
+      "baseline": 1285.119,
+      "vcomp": 1169.407,
+      "delta_percent": -9.003991070087668
+    },
+    "point_lookup_miss_latency_p95_us": {
+      "baseline": 3442.687,
+      "vcomp": 2856.959,
+      "delta_percent": -17.01368727392296
+    },
+    "point_lookup_miss_latency_p99_us": {
+      "baseline": 4636.671,
+      "vcomp": 4018.175,
+      "delta_percent": -13.339225491737505
+    },
+    "disk_read_bytes": {
+      "baseline": 2668645122048,
+      "vcomp": 2451061334016,
+      "delta_percent": -8.15334291676143
+    },
+    "disk_read_requests": {
+      "baseline": 23707652,
+      "vcomp": 21958033,
+      "delta_percent": -7.379975882892154
+    },
+    "disk_read_latency_avg_ms": {
+      "baseline": 0.1129986217108299,
+      "vcomp": 0.11239221655236606,
+      "delta_percent": -0.5366482787866778
+    },
+    "miss_fraction": {
+      "baseline": 0.42618799930577106,
+      "vcomp": 0.3307392116093904,
+      "delta_percent": -22.39593509246147
+    },
+    "hit_fraction": {
+      "baseline": 0.573812000694229,
+      "vcomp": 0.6692607883906097,
+      "delta_percent": 16.634156758816744
+    },
+    "device_read_bytes_per_operation": {
+      "baseline": 280704.6552309626,
+      "vcomp": 203802.02529875663,
+      "delta_percent": -27.39627879307196
+    },
+    "device_read_requests_per_operation": {
+      "baseline": 2.4937179642261715,
+      "vcomp": 1.8257770765958812,
+      "delta_percent": -26.78494108845865
+    },
+    "device_bytes_per_read_request": {
+      "baseline": 112564.71632230809,
+      "vcomp": 111624.8132979853,
+      "delta_percent": -0.8349890223429801
+    },
+    "coarse_daemon_read_bytes": {
+      "baseline": 2668644868096,
+      "vcomp": 2451061342208,
+      "delta_percent": -8.153333869532043
+    },
+    "coarse_chunk_requests": {
+      "baseline": 77569714.0,
+      "vcomp": 92698503.0,
+      "delta_percent": 19.503473997596533
+    },
+    "coarse_chunk_misses": {
+      "baseline": 25519871.0,
+      "vcomp": 26878944.0,
+      "delta_percent": 5.325548079768905
+    },
+    "coarse_chunk_miss_fraction": {
+      "baseline": 0.3289927174412426,
+      "vcomp": 0.28996092849525307,
+      "delta_percent": -11.86402825252827
+    },
+    "coarse_chunk_misses_per_operation": {
+      "baseline": 2.68433840506156,
+      "vcomp": 2.2349433484458467,
+      "delta_percent": -16.741371198517253
+    },
+    "coarse_key_cache_requests": {
+      "baseline": 33434696,
+      "vcomp": 47296584,
+      "delta_percent": 41.459590360863466
+    },
+    "coarse_key_cache_misses": {
+      "baseline": 4392619,
+      "vcomp": 43833,
+      "delta_percent": -99.00212151338415
+    },
+    "coarse_key_cache_miss_fraction": {
+      "baseline": 0.1313790620378304,
+      "vcomp": 0.0009267688338760364,
+      "delta_percent": -99.29458406879996
+    },
+    "coarse_key_cache_misses_per_operation": {
+      "baseline": 0.46204292649062,
+      "vcomp": 0.0036446473415185808,
+      "delta_percent": -99.21118858604741
+    },
+    "key_cache_average_weight_bytes_rounded": {
+      "baseline": 3173.752232210418,
+      "vcomp": 1742.724655766117,
+      "delta_percent": -45.08945474447561
+    },
+    "sstables_per_read_50%": {
+      "baseline": 4.0,
+      "vcomp": 4.0,
+      "delta_percent": 0.0
+    },
+    "sstables_per_read_95%": {
+      "baseline": 4.0,
+      "vcomp": 6.0,
+      "delta_percent": 50.0
+    },
+    "sstables_per_read_99%": {
+      "baseline": 4.0,
+      "vcomp": 6.0,
+      "delta_percent": 50.0
+    },
+    "sstable_count": {
+      "baseline": 204,
+      "vcomp": 186,
+      "delta_percent": -8.823529411764708
+    },
+    "live_component_bytes": {
+      "baseline": 87990345878,
+      "vcomp": 81913819477,
+      "delta_percent": -6.905901255832314
+    },
+    "memtable_switch_count": {
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null
+    },
+    "bloom_false_positives": {
+      "baseline": 0,
+      "vcomp": 0,
+      "delta_percent": null
+    }
+  },
+  "findings": [
+    "C hit/miss mix differs by about 9.54 percentage points. Both hit and miss conditional latency distributions also differ, so hit/miss mixture alone does not describe all observed differences.",
+    "With equal 100 MiB capacity, baseline key cache reaches its limit with 33,039 entries and 13.138% counter-delta misses. VComp holds 43,851 entries in 72.88 MiB with 0.0927% misses. This is a concrete difference in the cached index working set.",
+    "Native key cache weighs the key and RowIndexEntry together. RowIndexEntry documentation describes indexed and shallow forms selected according to partition index-sample size. Different partition/index geometry could affect cache occupancy and Index.db work; its contribution has not been measured directly.",
+    "VComp has fewer global SSTs (186 versus 204), but its SSTs-per-read p95/p99 is higher (6 versus 4). The histogram does not support explaining the result simply as fewer SST probes per read.",
+    "VComp reads 27.40% fewer device bytes and issues 26.78% fewer device read requests per operation, while mean completed device-request latency remains almost identical (0.1124 versus 0.1130 ms). This supports investigating read work and cache behavior rather than attributing the gap to substantially faster device service.",
+    "Both C cells record zero write operations, zero memtable switches, and zero pending flush tasks. Compaction counters report less than 1 KiB of total compacted data, providing no evidence of substantial data-table compaction. Both native chunk-cache capacities are exactly 5 GiB; row caches are disabled.",
+    "Final keys are reconstructed from rank models rather than replayed from original keys. Near-equal visible row counts do not guarantee equal Zipf-weighted hit probability. Membership mismatch remains a fidelity issue even when throughput is higher."
+  ],
+  "limits": [
+    "Time mode completes different per-worker stream prefixes. Same seed/generator/distribution is not an identical per-request trace.",
+    "Conditional hit/miss populations contain different keys on the two model-generated databases. Conditional quantile differences are observed costs, not a controlled same-key causal effect.",
+    "Quantiles cannot be linearly reweighted. Raw conditional histograms or request-level matched measurements are unavailable, so the fraction of overall improvement attributable solely to hit/miss mix cannot be computed.",
+    "Native cache/JMX/process I/O snapshots bracket a wider interval than the client clock; cache counters are node-wide. SSTables/read values are histogram snapshots, not exact request traces.",
+    "Device mean completed-request latency is a block-device counter ratio for md0, not client lookup latency and not latency percentiles.",
+    "Cache-entry weight is inferred from human-readable node-info Size/Entries and is rounded. Actual cached RowIndexEntry variants and their distribution were not measured.",
+    "No fresh benchmark, DB query, SST scan, seed/configuration change, or published result edit was performed for this diagnostic.",
+    "The cache correctness repair does not resolve model-generated membership, standalone descriptor scheduling versus native task lifecycle, or logical versus native allocated-heap flush-boundary differences. It is not a fidelity proof."
+  ],
+  "evidence": [
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/results/c_baseline.json",
+      "sha256": "ac327ef08a5dfe9d4de8b0feec9b6b5c259d0c9b4c9225f75109abd6b61679f5"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/runtime-metrics-before.env",
+      "sha256": "7b4c119dbf6f9c97b1e937f1a2d35e07478e5825cfb00b1080738332d26669bf"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/runtime-metrics-after.env",
+      "sha256": "d3948c931b45146732a539156e2e4c35bcf512a71d238a783e6ae6b39c98228f"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/node-info-before.txt",
+      "sha256": "fc4e7ea5c472bd30c7120a13fde06e7ef6855225e22babd6d5ddc7305b9b80c6"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/node-info-after.txt",
+      "sha256": "f0b44a3fdaadefbcd128868e11a82d4ddb25da5139941c1dd27be21153f51ae5"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/daemon-io-before.txt",
+      "sha256": "7d0d9fcfdb7302e637055a7843db45714acab5bd38edb01273d7d1541431e5e9"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/daemon-io-after.txt",
+      "sha256": "fc4ed9f32dccab7e5d61c5c55e525489abe38f0420856c144733276d45decfca"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/tablehistograms-after.txt",
+      "sha256": "973f2d44f16b8456bd1c2cf082ca86c0e864de33427e0ff69fbb603019b6f661"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/tablestats-after.txt",
+      "sha256": "e19f5af8160f3eb8d17c3239f6523e89d33bd8d9d2bdc3bdf6a9bf4eaf3bda3b"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/tablestats-before.txt",
+      "sha256": "f4966f106669e0a88239c853dc566d05ca6a3af337bda4e0332907669913984b"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/baseline/compactionstats-after.txt",
+      "sha256": "62d7a4aab419d8c488a6f903bcb1275ab3049f649052bb95a965f3bfa0134d4f"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/results/c_vcomp.json",
+      "sha256": "91c5ebfb88785a921874139390b55dab5e9e91ff84f8aaa93b66c6ab518cf61c"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/runtime-metrics-before.env",
+      "sha256": "b1d47914ce2a5ec33f48caa9e0dad767205941ebd1cb3bf5a835119d934c577b"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/runtime-metrics-after.env",
+      "sha256": "c2c9af19c130e395b771de46a33b05a360e68f2be2e01beb8b3917797f99af5c"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/node-info-before.txt",
+      "sha256": "5b9257751705474165a5a811f23261cbb5745266e0b134d7f86cbdc5e3df2a59"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/node-info-after.txt",
+      "sha256": "ee92d099fd5409b1d9e148055777b430084831c9031b1f3f121332f9d27ae3ae"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/daemon-io-before.txt",
+      "sha256": "ff0cd60b8081623671ed26771b20588b3213f80719dc07b6b71195c2eb5aaebf"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/daemon-io-after.txt",
+      "sha256": "5eb614a93ed7ba4cd325773aab9daa2fc2e52ab59351c21efa3a8c6d3bff27b7"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/tablehistograms-after.txt",
+      "sha256": "f27a9ee078fc61009a3b09a6268c58de28ce945aae592ef3f08e887da91c6d44"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/tablestats-after.txt",
+      "sha256": "ff3a277666a3982823b871073938d1ad2470650a9f43374c6ca3c90e40db6b4a"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/tablestats-before.txt",
+      "sha256": "d96e2b3c10e2475d9e55634f54464c7301531d6f2f56e06d26cc0e9adadde19a"
+    },
+    {
+      "path": "/work/vcomp-pebble-1tb/cassandra-organized-100g-20260914-152956/workloads-300s/runs/c/vcomp/compactionstats-after.txt",
+      "sha256": "d34acc568b300226812d4e44a0f962606172f96f157db3656a4e8b632e23094b"
+    }
+  ],
+  "source_notes": [
+    {
+      "path": "cassandra_vcomp/src/java/org/apache/cassandra/cache/CaffeineCache.java",
+      "lines": "61-65",
+      "fact": "weigher=key.unsharedHeapSize()+value.unsharedHeapSize()"
+    },
+    {
+      "path": "cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/format/big/RowIndexEntry.java",
+      "lines": "83-123",
+      "fact": "partition index sample count and indexed/shallow representations"
+    },
+    {
+      "path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompMaterializedKeyIterator.java",
+      "lines": "26-28",
+      "fact": "reconstruction from final rank model, notoriginal-keyreplay"
+    }
+  ]
+}

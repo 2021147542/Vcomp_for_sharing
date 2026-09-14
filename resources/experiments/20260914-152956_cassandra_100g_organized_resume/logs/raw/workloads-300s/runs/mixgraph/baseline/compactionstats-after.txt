@@ -1,0 +1,11 @@
+concurrent compactors            48                     
+pending tasks                    0                      
+compactions completed            3                      
+data compacted                   105824564              
+compressed data compacted        105824509              
+compactions aborted              0                      
+compactions reduced              0                      
+sstables dropped from compaction 0                      
+15 minute rate                   8.62/minute            
+mean rate                        34.15/hour             
+compaction throughput (MiB/s)    throttling disabled (0)

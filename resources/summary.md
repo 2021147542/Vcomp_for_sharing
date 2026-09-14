@@ -1,5 +1,19 @@
 # VComp 작업 요약
 
+## 2026-09-14 16:50 — 100 GiB workload 완료, 유사성 미통과
+
+14개 workload를 48 threads × 300초로 모두 완료했고 server ERROR/OOM은 0이다. 원본 SST의 전후 SHA256, 실행 중 소스와 reader JAR 검증도 통과했다. 다만 주 비교 47개 중 30개가 ±10% 밖이므로 유사성은 미통과다. A–F throughput은 +15.16~+26.50%, MixGraph는 +6.32%다. E disk read는 −7.73%, scan당 read는 −19.88%이며 시간 기준 실행의 작업 수 차이를 함께 봐야 한다. C의 hit/miss 구성과 key-cache 동작 차이는 기록했지만 원인별 기여도를 입증하거나 모델/native lifecycle 차이를 해결한 것은 아니다.
+
+원래 2×2 loading/workload 양식을 새 결과에도 적용했고, 별도 I/O latency와 측정값은 유지했다. 자동 출력 코드 연결은 실험 완료 검증 뒤에 반영했다.
+
+[결과 표와 그래프](experiments/20260914-152956_cassandra_100g_organized_resume/results.md) · [완료 확인·남은 차이](experiments/20260914-152956_cassandra_100g_organized_resume/logs/completion-notes.md).
+
+## 2026-09-14 — loading/workload 원래 그래프 형식 복원
+
+17개 시간별 결과 폴더의 loading과 workload 그래프를 원래 2×2 회색 Baseline·파란색 VComp 양식으로 복원했다. 적재는 분·GiB와 막대 위 수치, workload는 throughput·point p50/p95/p99·disk read·disk write 네 패널을 사용한다. 표의 표시 단위도 맞췄으며 원본 측정값과 별도 I/O latency 그래프는 바꾸지 않았다. 17개 I/O SVG와 정규화 JSON의 SHA256이 동일함을 확인했다. 15:30 캠페인의 실행 코드는 완료 검증까지 동결했고, 이후 자동 출력에 이 양식을 연결했다.
+
+[표시 형식 및 검증](../experiments/docs/result-layout.md) · [보존 해시](../experiments/docs/20260914-paper-style-validation.json).
+
 ## 2026-09-14 15:30 — 결과 폴더 정리 완료, 100 GiB workload 재개
 
 각 시간별 폴더는 figures/ · logs/ · results.md로 통일했다. 그래프는 loading.svg · workload.svg · io_latency.svg 세 개이며 표와 동일한 원본 값을 사용한다. 실패·중단 폴더는 목록에서 정리하되 완료된 불리한 측정과 필요한 적재 출처는 logs/에 보존했다. 과거 물리 disk latency는 미측정으로 표시한다. 새 실행은 md0 요청 수·누적 시간을 추가 기록해 장치 평균 latency를 별도로 표시한다. 기존 47개 비교 기준과 seed 20260909, 48 threads × 300초는 유지한다. 적재 DB를 재사용하고 모든 workload checkpoint는 새로 만든다.

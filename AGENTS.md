@@ -49,6 +49,10 @@ conventions without the original server's workspace-level instructions.
   supporting documents under `logs/`. Generate figures and tables from the same
   values with `experiments/analysis/publish_experiment_bundle.py`. Explicitly
   label unavailable measurements; client DB latency is not physical disk latency.
+  Preserve the established 2×2 paper layout for loading and workload figures:
+  gray Baseline, blue VComp, loading values above bars, and stacked p50/p95/p99
+  point-lookup latency in the workload figure. Keep the separate I/O latency
+  figure when changing the other figures' presentation.
 - Use a new run ID for new measurements. Do not overwrite historical bundles
   or present a rebuilt executable as the previously measured binary.
 - Generic shell runners use `experiments/lib/common.sh` for configurable
