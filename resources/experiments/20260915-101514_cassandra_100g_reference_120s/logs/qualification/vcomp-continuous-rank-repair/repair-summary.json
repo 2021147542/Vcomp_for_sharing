@@ -1,0 +1,22 @@
+{
+  "seed": 20260909,
+  "error_bound": 8,
+  "kmv_samples": 512,
+  "fix": "Connected monotone endpoint-constrained shrinking-cone PLR; no algorithm/cardinality estimator or parameter switch",
+  "old_actual_flush_backward_boundaries": 2571,
+  "old_actual_flush_max_backward_rank": 7.0,
+  "old_actual_flush_segments": 4993,
+  "new_actual_flush_segments": 11040,
+  "replay_global_rows": 690994,
+  "old_replay_partition_sd": 456.42,
+  "new_replay_partition_sd": 364.2689616203939,
+  "native_partition_sd": 49.62728584156099,
+  "test_count": 16,
+  "test_status": "pass",
+  "negative_control": "Old prechange compiled VCompLearnedModel fails2 of3 new regression tests (backward rank and disconnected interval)",
+  "scope": "CPU only; actual recorded native DAG fixed; not a new storage/performance benchmark",
+  "source_sha256": {
+    "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java": "ac2919be27129682b68207a28083647a415bdfe947156852067dbdc6f4ced238",
+    "cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompContinuousRankTest.java": "6f72e84fb501bf9b7f91b0d065421cffc8f6730467d3c5fb35fb3c899f8960dc"
+  }
+}

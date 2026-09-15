@@ -1,0 +1,115 @@
+{
+  "native": {
+    "physical_rows": 20480,
+    "unique_keys": 20478,
+    "cross_sst_duplicate_rows": 2,
+    "duplicate_keys": 2,
+    "key_multiplicity_histogram": {
+      "1": 20476,
+      "2": 2
+    },
+    "files": {
+      "J1.0": {
+        "rows": 16384,
+        "occupied_partitions": 8078,
+        "key_min": 17102,
+        "key_max": 104848189,
+        "partition_row_count_histogram": {
+          "1": 3233,
+          "2": 2576,
+          "3": 1446,
+          "4": 543,
+          "5": 215,
+          "6": 44,
+          "7": 19,
+          "8": 1,
+          "9": 1
+        },
+        "key_quantiles": {
+          "0": 17102,
+          "0.25": 26108906,
+          "0.5": 51923071,
+          "0.75": 78478768,
+          "1": 104848189
+        }
+      },
+      "F5": {
+        "rows": 4096,
+        "occupied_partitions": 3363,
+        "key_min": 58681,
+        "key_max": 104825677,
+        "partition_row_count_histogram": {
+          "1": 2717,
+          "2": 568,
+          "3": 70,
+          "4": 7,
+          "5": 1
+        },
+        "key_quantiles": {
+          "0": 58681,
+          "0.25": 26633138,
+          "0.5": 53196339,
+          "0.75": 78914624,
+          "1": 104825677
+        }
+      }
+    }
+  },
+  "vcomp": {
+    "physical_rows": 19997,
+    "unique_keys": 19996,
+    "cross_sst_duplicate_rows": 1,
+    "duplicate_keys": 1,
+    "key_multiplicity_histogram": {
+      "1": 19995,
+      "2": 1
+    },
+    "files": {
+      "V0": {
+        "rows": 15901,
+        "occupied_partitions": 9939,
+        "key_min": 17102,
+        "key_max": 104841139,
+        "partition_row_count_histogram": {
+          "1": 4346,
+          "2": 5275,
+          "3": 284,
+          "4": 29,
+          "5": 2,
+          "7": 1,
+          "8": 1,
+          "12": 1
+        },
+        "key_quantiles": {
+          "0": 17102,
+          "0.25": 26252497,
+          "0.5": 52440164,
+          "0.75": 79193058,
+          "1": 104841139
+        }
+      },
+      "V1": {
+        "rows": 4096,
+        "occupied_partitions": 4000,
+        "key_min": 58681,
+        "key_max": 104822726,
+        "partition_row_count_histogram": {
+          "1": 3988,
+          "9": 12
+        },
+        "key_quantiles": {
+          "0": 58681,
+          "0.25": 26720436,
+          "0.5": 53102589,
+          "0.75": 78888273,
+          "1": 104822726
+        }
+      }
+    }
+  },
+  "comparison": {
+    "native_only_keys": 20460,
+    "vcomp_only_keys": 19978,
+    "common_keys": 18
+  }
+}

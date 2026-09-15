@@ -1,0 +1,13 @@
+{
+  "diagnostic_only" : true,
+  "seed" : 20260909,
+  "domain" : 104857600,
+  "partitions" : 10000,
+  "baseline_ssts" : 204,
+  "vcomp_ssts" : 186,
+  "point_requests" : 1000,
+  "scan_operations" : 1000,
+  "checkpoint_root" : "/work/vcomp-pebble-1tb/vcomp-cassandra-read-diagnosis-20260914-211800",
+  "checkpoint_components_unchanged" : true,
+  "scope" : "Frozen checkpoint local C and E read components; no writes, CQL transport, or new loading; all ABBA rounds retained"
+}

@@ -1,0 +1,342 @@
+{
+  "diagnostic_only" : true,
+  "status" : "complete",
+  "input_directory" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output",
+  "seed" : 20260909,
+  "kmv_samples" : 4096,
+  "plr_error" : 8.0,
+  "diagnostic_parameter_intervention" : true,
+  "scope" : "Actual native job DAG imposed on carried production descriptors; bypasses picker intentionally; original keys used only for actual initial flush fits. No inherited models refit. No native timing replay or physical SST generation.",
+  "first_cardinality_or_mapping_difference" : {
+    "event_seq" : 23,
+    "stage" : "global_cardinality",
+    "field" : "row_count",
+    "native" : 231923,
+    "modeled" : 237908
+  },
+  "jobs" : [ {
+    "event_seq" : 23,
+    "generation_depth" : 1,
+    "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-1-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-2-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-3-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-4-big" ],
+    "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-5-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+    "native_rows" : 231923,
+    "modeled_estimated_rows" : 237908,
+    "native_formula_shards" : 2,
+    "modeled_formula_shards" : 2,
+    "model_outputs" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 125223,
+      "bytes" : 129606631,
+      "max_timestamp" : 262144
+    }, {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 112685,
+      "bytes" : 116629718,
+      "max_timestamp" : 262144
+    } ],
+    "mapping_verified" : true,
+    "mapping_basis" : "Equal calculated full-ring shard count, every output wholly within one shard, unique identical occupied shard IDs; never positional zip or nearest boundary"
+  }, {
+    "event_seq" : 44,
+    "generation_depth" : 1,
+    "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-10-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-7-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-8-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-9-big" ],
+    "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-11-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big" ],
+    "native_rows" : 231890,
+    "modeled_estimated_rows" : 240984,
+    "native_formula_shards" : 2,
+    "modeled_formula_shards" : 2,
+    "model_outputs" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 125242,
+      "bytes" : 129626296,
+      "max_timestamp" : 524288
+    }, {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115742,
+      "bytes" : 119793733,
+      "max_timestamp" : 524288
+    } ],
+    "mapping_verified" : true,
+    "mapping_basis" : "Equal calculated full-ring shard count, every output wholly within one shard, unique identical occupied shard IDs; never positional zip or nearest boundary"
+  }, {
+    "event_seq" : 61,
+    "generation_depth" : 1,
+    "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-13-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-14-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-15-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-16-big" ],
+    "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-17-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big" ],
+    "native_rows" : 232096,
+    "modeled_estimated_rows" : 234578,
+    "native_formula_shards" : 2,
+    "modeled_formula_shards" : 2,
+    "model_outputs" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 124718,
+      "bytes" : 129083953,
+      "max_timestamp" : 786432
+    }, {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 109860,
+      "bytes" : 113705825,
+      "max_timestamp" : 786432
+    } ],
+    "mapping_verified" : true,
+    "mapping_basis" : "Equal calculated full-ring shard count, every output wholly within one shard, unique identical occupied shard IDs; never positional zip or nearest boundary"
+  }, {
+    "event_seq" : 98,
+    "generation_depth" : 1,
+    "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-19-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-20-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-21-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-22-big" ],
+    "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-23-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big" ],
+    "native_rows" : 232050,
+    "modeled_estimated_rows" : 237669,
+    "native_formula_shards" : 2,
+    "modeled_formula_shards" : 2,
+    "model_outputs" : [ {
+      "id" : "vsst-compaction-3-0",
+      "key_min" : 0,
+      "key_max" : 555757,
+      "rows" : 126369,
+      "bytes" : 130792748,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-3-1",
+      "key_min" : 555758,
+      "key_max" : 1048574,
+      "rows" : 111300,
+      "bytes" : 115196234,
+      "max_timestamp" : 1048576
+    } ],
+    "mapping_verified" : true,
+    "mapping_basis" : "Equal calculated full-ring shard count, every output wholly within one shard, unique identical occupied shard IDs; never positional zip or nearest boundary"
+  }, {
+    "event_seq" : 105,
+    "generation_depth" : 2,
+    "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+    "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-26-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-28-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-30-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-32-big" ],
+    "native_rows" : 311422,
+    "modeled_estimated_rows" : 320878,
+    "native_formula_shards" : 8,
+    "modeled_formula_shards" : 8,
+    "model_outputs" : [ {
+      "id" : "vsst-compaction-4-0",
+      "key_min" : 555758,
+      "key_max" : 702561,
+      "rows" : 94860,
+      "bytes" : 98180726,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-4-1",
+      "key_min" : 702562,
+      "key_max" : 849360,
+      "rows" : 96648,
+      "bytes" : 100031318,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-4-2",
+      "key_min" : 849361,
+      "key_max" : 943725,
+      "rows" : 60893,
+      "bytes" : 63024657,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-4-3",
+      "key_min" : 943726,
+      "key_max" : 1048575,
+      "rows" : 68477,
+      "bytes" : 70874147,
+      "max_timestamp" : 1048576
+    } ],
+    "mapping_verified" : true,
+    "mapping_basis" : "Equal calculated full-ring shard count, every output wholly within one shard, unique identical occupied shard IDs; never positional zip or nearest boundary"
+  }, {
+    "event_seq" : 109,
+    "generation_depth" : 2,
+    "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-11-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-17-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-23-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-5-big" ],
+    "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-25-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-27-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-29-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-31-big" ],
+    "native_rows" : 351463,
+    "modeled_estimated_rows" : 369716,
+    "native_formula_shards" : 8,
+    "modeled_formula_shards" : 8,
+    "model_outputs" : [ {
+      "id" : "vsst-compaction-5-0",
+      "key_min" : 0,
+      "key_max" : 136317,
+      "rows" : 88530,
+      "bytes" : 91629134,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-5-1",
+      "key_min" : 136318,
+      "key_max" : 272635,
+      "rows" : 91190,
+      "bytes" : 94382252,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-5-2",
+      "key_min" : 272636,
+      "key_max" : 408953,
+      "rows" : 91758,
+      "bytes" : 94970135,
+      "max_timestamp" : 1048576
+    }, {
+      "id" : "vsst-compaction-5-3",
+      "key_min" : 408954,
+      "key_max" : 555757,
+      "rows" : 98238,
+      "bytes" : 101676978,
+      "max_timestamp" : 1048576
+    } ],
+    "mapping_verified" : true,
+    "mapping_basis" : "Equal calculated full-ring shard count, every output wholly within one shard, unique identical occupied shard IDs; never positional zip or nearest boundary"
+  } ],
+  "frontier_scope" : "fully_replayed_native_final_lineage",
+  "model_partition_rows" : [ 6758, 6807, 6452, 6748, 7046, 6989, 6765, 6574, 7364, 6546, 6506, 7273, 6702, 7098, 7083, 7572, 7036, 6825, 7681, 7667, 7125, 6826, 6461, 6531, 6573, 6712, 6889, 6393, 6936, 6891, 7401, 7713, 7451, 7233, 6927, 6845, 7030, 6837, 7212, 7002, 6684, 6702, 7248, 6969, 6953, 7212, 6402, 7780, 6803, 7255, 7016, 7603, 6609, 6758, 6615, 6681, 6681, 6954, 7600, 6331, 5889, 6636, 6517, 7130, 7637, 7450, 5981, 6691, 7399, 6616, 6672, 6978, 6623, 6070, 6839, 6443, 7255, 6840, 7788, 7231, 7203, 7013, 6789, 6697, 6493, 6709, 6908, 6787, 7034, 6463, 7118, 7245, 6629, 7125, 6352, 6261, 6739, 6949, 7060, 6995 ],
+  "native_partition_rows" : [ 6618, 6766, 6619, 6739, 6524, 6606, 6572, 6686, 6685, 6591, 6646, 6595, 6618, 6671, 6729, 6716, 6652, 6606, 6640, 6570, 6614, 6609, 6697, 6599, 6681, 6571, 6664, 6689, 6540, 6616, 6591, 6719, 6672, 6651, 6642, 6617, 6550, 6627, 6652, 6663, 6621, 6498, 6624, 6623, 6676, 6607, 6547, 6651, 6642, 6608, 6543, 6692, 6618, 6618, 6576, 6605, 6644, 6620, 6658, 6567, 6591, 6583, 6589, 6660, 6593, 6613, 6605, 6606, 6623, 6683, 6594, 6717, 6660, 6643, 6629, 6619, 6664, 6607, 6716, 6637, 6570, 6595, 6660, 6729, 6609, 6692, 6614, 6628, 6582, 6693, 6614, 6697, 6539, 6626, 6605, 6608, 6592, 6613, 6605, 6631 ],
+  "model_frontier" : [ {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-26-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 94860,
+    "native_rows" : 92522,
+    "modeled_key_min" : 555758,
+    "modeled_key_max" : 702561,
+    "modeled_bytes" : 98180726,
+    "emitted_rows" : 94860,
+    "emitted_key_sha256" : "e42ccf6d8cab2e3f5cb17432009c8257aa83917597e55ae41816f507440a2d98",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-79c6839fef5a3b42987b5fc09ec04a78/oa-8-big-Data.db",
+      "actual_rows" : 92217,
+      "actual_key_sha256" : "76d80eb11c9aa8eddbb117d55e0d2f0b498e91a6d56a67319910030b16b57c4a",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-28-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 96648,
+    "native_rows" : 92968,
+    "modeled_key_min" : 702562,
+    "modeled_key_max" : 849360,
+    "modeled_bytes" : 100031318,
+    "emitted_rows" : 96648,
+    "emitted_key_sha256" : "9c1d59b6f6cef0e5928b3fd14520e7446ec7706906b15a43a3c17d3a10930be6",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-5349b47978b33bd2a75638cdb5102fb3/oa-9-big-Data.db",
+      "actual_rows" : 94987,
+      "actual_key_sha256" : "74ca1d12bb9a07be0490592101296d2a0f74762753eec2c71aba0c045cd15716",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-30-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 60893,
+    "native_rows" : 59802,
+    "modeled_key_min" : 849361,
+    "modeled_key_max" : 943725,
+    "modeled_bytes" : 63024657,
+    "emitted_rows" : 60893,
+    "emitted_key_sha256" : "b99e93531425589dec289c158aa810db695f70e43e579e7fcc3efbb51ad288b4",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-c1475c9db2f1399f83dfb3a0bfc09cff/oa-10-big-Data.db",
+      "actual_rows" : 64185,
+      "actual_key_sha256" : "78e0ab578857646b0c11775dc6242dd76e90d84bf4fd650c84f5ca7d922b4b82",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-32-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 68477,
+    "native_rows" : 66130,
+    "modeled_key_min" : 943726,
+    "modeled_key_max" : 1048575,
+    "modeled_bytes" : 70874147,
+    "emitted_rows" : 68473,
+    "emitted_key_sha256" : "54111f72fcc751348b791ee88e9003423250013d6f44c597bbb0b625c66e57bd",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-762c878f1b4738a0aa38b5e10852e5a9/oa-11-big-Data.db",
+      "actual_rows" : 64255,
+      "actual_key_sha256" : "56c5d2824563105d5e892a74b0dcc6334d86f5839647ae9bd3288efb92514245",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-25-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 88530,
+    "native_rows" : 86265,
+    "modeled_key_min" : 0,
+    "modeled_key_max" : 136317,
+    "modeled_bytes" : 91629134,
+    "emitted_rows" : 88530,
+    "emitted_key_sha256" : "5b887ca600eafe59eb88e318a18b6d091e285b6cd63cdc45804c0ae205a30236",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-287361d5f9cb39f59fccc83efb388ae2/oa-4-big-Data.db",
+      "actual_rows" : 89785,
+      "actual_key_sha256" : "91d55f86277642bf39a70550722e301d28575dbce5f31d6eeed8a47c33c378a4",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-27-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 91190,
+    "native_rows" : 86355,
+    "modeled_key_min" : 136318,
+    "modeled_key_max" : 272635,
+    "modeled_bytes" : 94382252,
+    "emitted_rows" : 91190,
+    "emitted_key_sha256" : "1c668c0c4f0252fe6513935fae7fc411636aacc14ce20eeea6e80906c3d70c3b",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-459ea329ce3c3638aad8d09e9c289614/oa-5-big-Data.db",
+      "actual_rows" : 92772,
+      "actual_key_sha256" : "4b31a9152f802b2a3a1b2c9dffaa63a1acbd8801650e68248c43ad0e815f0712",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-29-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 91758,
+    "native_rows" : 86230,
+    "modeled_key_min" : 272636,
+    "modeled_key_max" : 408953,
+    "modeled_bytes" : 94970135,
+    "emitted_rows" : 91758,
+    "emitted_key_sha256" : "5617b3f16c4a37eb84c242a04f45e33e5bd989425cb5908c3813d736ad294eb0",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-61f57f13640b3436a23afa58efc16dd4/oa-6-big-Data.db",
+      "actual_rows" : 94003,
+      "actual_key_sha256" : "24703759eff5b723eb6de9e4ece40f6c3ed7216fb7bf75af5a851554fbda4c26",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  }, {
+    "native_lineage" : "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-31-big",
+    "generation_depth" : 2,
+    "modeled_rows" : 98238,
+    "native_rows" : 92613,
+    "modeled_key_min" : 408954,
+    "modeled_key_max" : 555757,
+    "modeled_bytes" : 101676978,
+    "emitted_rows" : 98238,
+    "emitted_key_sha256" : "231acf227d432107a906831fe799fa5c230a70a85555149282400baef5620cfb",
+    "actual_virtual_range_contained_candidates" : [ {
+      "actual_virtual_file" : "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-0e365102eac53b988341d403b2d60709/oa-7-big-Data.db",
+      "actual_rows" : 98790,
+      "actual_key_sha256" : "b0c0cf0995ef29e1faaf16d50c36cee93955caa0becf44bf869cdaae629b4f53",
+      "emitted_keys_match" : false
+    } ],
+    "unique_actual_virtual_candidate" : true
+  } ]
+}

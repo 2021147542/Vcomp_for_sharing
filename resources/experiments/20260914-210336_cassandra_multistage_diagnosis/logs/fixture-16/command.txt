@@ -1,0 +1,7 @@
+bash experiments/scripts/cassandra/run_native_event_diagnostic.sh 
+ATTEMPT=20260914-210336
+EVIDENCE_ROOT=/home/dongju/vcomp/experiments/artifacts/cassandra-full-diagnosis-20260914-210336
+DOMAIN=1048576
+PARTITIONS=100
+FLUSHES=16
+FLUSH_WRITES=65536

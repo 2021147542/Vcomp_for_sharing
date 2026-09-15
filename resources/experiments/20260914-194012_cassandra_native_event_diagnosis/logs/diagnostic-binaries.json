@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/tmp/vcomp-cassandra-native-event-20260914-194012/classes/org/apache/cassandra/db/compaction/VCompNativeEventDiagnosticTest$ObservedUCS$1.class",
+    "sha256": "8968ad26b6f0a894f21315723e7a4b3cd3d79c49a656a89b8f1c840dac1896a7"
+  },
+  {
+    "path": "/tmp/vcomp-cassandra-native-event-20260914-194012/classes/org/apache/cassandra/db/compaction/VCompNativeEventDiagnosticTest$ObservedUCS.class",
+    "sha256": "09201773e09514a942b5156168c557752f6a060d6e7498d42c783ec99b5c154a"
+  },
+  {
+    "path": "/tmp/vcomp-cassandra-native-event-20260914-194012/classes/org/apache/cassandra/db/compaction/VCompNativeEventDiagnosticTest$Recorder.class",
+    "sha256": "36efbfdb90cb554961280cf4ace4fa4510dee7f01af625ee70ee6e971b75d5a7"
+  },
+  {
+    "path": "/tmp/vcomp-cassandra-native-event-20260914-194012/classes/org/apache/cassandra/db/compaction/VCompNativeEventDiagnosticTest.class",
+    "sha256": "dcb7ba49f4e9d5b82969260e070f9d50ddc61d0b741764d9ad4cffcbb6f73c0c"
+  },
+  {
+    "path": "/tmp/vcomp-cassandra-event-replay-20260914-194611/classes/org/apache/cassandra/db/compaction/VCompNativeEventReplay$1.class",
+    "sha256": "def59406f811870faf5695cf1af7b9fb3d3894be3610067b7c12d67a8ed04b83"
+  },
+  {
+    "path": "/tmp/vcomp-cassandra-event-replay-20260914-194611/classes/org/apache/cassandra/db/compaction/VCompNativeEventReplay.class",
+    "sha256": "15840a09f36568f3378f0aab334292a8acc6f7568ac28a4b25c84a6fa0e56d29"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraFixedReadDiagnostic.class",
+    "sha256": "79004de4ec41c0f0b8ae7652ca86fa0766f3458f8ac6d37917cfe51500498a6d"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$AcknowledgedInserts.class",
+    "sha256": "bb19de3af817247859f8f44832f5b067eb2cf3c79072195a18a062c09a5960d1"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$DiskCounters.class",
+    "sha256": "cda2f6570ac8acfed984738062732d6515c294c2b3019b52a63dd5e6ebe3a70f"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$Measurement.class",
+    "sha256": "880c5d0b2b3c01dc5a72c97aed541cfd25ecef6920adbf3a4eea90ae5e61051d"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$MixGraph.class",
+    "sha256": "9c0c32a2d523de08a1af1bd04254f80f29684e60d94a6d9e8e9c29ec723733b1"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$Mt19937_64.class",
+    "sha256": "cd7d3955b4d3f8db7f3d1aa100d6b92d848d63a549e879a052b554f2022095b2"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$WorkloadContext.class",
+    "sha256": "534f2f1f63b027e8bc46eb9f31cf1dde4f86a781f4a5d61ea179689147c46182"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload$Zipf.class",
+    "sha256": "f6c52aa96d338b1b9d1d0af26d8bc34b009a41bdad0bb9056f73a126b9e5eb39"
+  },
+  {
+    "path": "/tmp/vcomp-fixed-read-20260914/classes/CassandraPaperWorkload.class",
+    "sha256": "73256ae3c2763f721ad637cfe1c855d37a130f6fe725af979d209a61b1ab836b"
+  }
+]

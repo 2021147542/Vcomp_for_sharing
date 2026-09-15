@@ -1,0 +1,13 @@
+{
+  "native_junit": "2 tests passed",
+  "offline_writer_junit": "2 tests passed",
+  "cpu_model_lanes": 4,
+  "picker_size_schedule_assertions": 7,
+  "python_analyzer_tests": 6,
+  "checkstyle": "passed",
+  "production_source_changes": false,
+  "baseline_preserved": true,
+  "large_benchmark_run": false,
+  "all_causes_of_100g_performance_gap_resolved": false,
+  "evidence_files": 74
+}

@@ -1,0 +1,8 @@
+{
+  "input_root" : "/tmp/vcomp-cassandra-native-event-20260914-194012/output",
+  "diagnostic_only" : true,
+  "native_storage_repeated" : false,
+  "input_sequence_verified_against_saved_flush_vectors" : true,
+  "scope" : "same native case offline continuation; exact saved vectors are test-only picker controls",
+  "installation" : "no-op installer and verifier; standalone physical SST scan validates deterministic values, partition mapping and liveness; no read workload"
+}

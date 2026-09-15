@@ -1,0 +1,6 @@
+{
+  "predicted_flush_bytes_rounded" : 68157440,
+  "predicted_data_bytes_for_4096" : 4239387,
+  "predicted_data_bytes_for_8192" : 8478774,
+  "materialized" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-287361d5f9cb39f59fccc83efb388ae2", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-459ea329ce3c3638aad8d09e9c289614", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-61f57f13640b3436a23afa58efc16dd4", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-0e365102eac53b988341d403b2d60709", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-79c6839fef5a3b42987b5fc09ec04a78", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-5349b47978b33bd2a75638cdb5102fb3", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-c1475c9db2f1399f83dfb3a0bfc09cff", "/tmp/vcomp-cassandra-native-event-20260914-210336/output/materialized/vcomp_event_materialized/kv-762c878f1b4738a0aa38b5e10852e5a9" ]
+}

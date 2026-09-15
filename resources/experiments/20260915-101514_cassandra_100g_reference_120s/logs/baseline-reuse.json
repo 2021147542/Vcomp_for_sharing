@@ -1,0 +1,8 @@
+{
+  "reference": "/home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs/baseline-reference/reference.json",
+  "reference_sha256": "8daf8fcfdf7d116bc5bf3473424ac687c9752cf7f1bd0643993399dc34e0e619",
+  "canonical_root": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052",
+  "baseline_load_repeated": false,
+  "original_load_jar_sha256": "3d0940fb30bb4e44cda4e0d7e6c239e991872b2597ad12c8bc643d9d76c293e1",
+  "note": "Original loading metrics are historical. Reader/workload measurements require their own matching protocol."
+}

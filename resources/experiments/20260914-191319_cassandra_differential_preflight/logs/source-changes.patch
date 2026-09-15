@@ -1,0 +1,120 @@
+diff --git a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
+index eb02d32b..62d50ebe 100644
+--- a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
++++ b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
+@@ -85,6 +85,8 @@ public class VCompNativeExactDifferentialTest extends CQLTester
+         List<Map<String, Object>> inputEvidence = new ArrayList<>();
+         TreeMap<Long, List<Object>> exact = new TreeMap<>();
+         List<VCompPipeline.VirtualSortedRun> virtualInputs = new ArrayList<>();
++        List<VCompPipeline.VirtualSortedRun> exactFitInputs = new ArrayList<>();
++        List<Map<String, Object>> flushDiagnostics = new ArrayList<>();
+         for (int index = 0; index < inputs.size(); index++)
+         {
+             SSTableReader reader = inputs.get(index);
+@@ -105,6 +107,16 @@ public class VCompNativeExactDifferentialTest extends CQLTester
+             virtualInputs.add(new DefaultFlushVirtualizer().virtualize(
+                 new VCompPipeline.FlushBatch("input-" + index, keys, reader.onDiskLength(), maxTimestamp)));
+         }
++        for (int index = 0; index < inputs.size(); index++)
++        {
++            List<List<Object>> physical = rows(inputs.get(index));
++            long[] keys = physical.stream().mapToLong(r -> (Long) r.get(1)).toArray();
++            VCompPipeline.VirtualSSTable descriptor = virtualInputs.get(index).sstables().get(0);
++            flushDiagnostics.add(keyComparison("flush-" + index, physical, virtualInputs.get(index)));
++            exactFitInputs.add(new DefaultFlushVirtualizer(0, VCompKmvSketch.DEFAULT_SAMPLES,
++                                                          VCompKmvSketch.DEFAULT_RANGE_BUCKETS).virtualize(
++                new VCompPipeline.FlushBatch("exact-fit-" + index, keys, inputs.get(index).onDiskLength(), descriptor.maximumTimestamp())));
++        }
+         List<List<List<Object>>> predictedShards = shard(new ArrayList<>(exact.values()));
+         Map<String, Object> trace = object("schema_version", 1, "diagnostic_only", true, "seed", SEED,
+                                        "fixture", object("domain", DOMAIN, "partitions", 64, "flushes", 4,
+@@ -190,10 +202,89 @@ public class VCompNativeExactDifferentialTest extends CQLTester
+         stages.put("approximation", object("status", "checked", "native", rowMetadata(nativeRows),
+                 "approximate", rowMetadata(approximateRows), "note",
+                 "Production PLR/KMV merge and materialized-key iterator on identical native inputs, unsplit union; not the production picker or shard splitter. Per-output max timestamp is the production representation."));
++        Map<String, Object> decomposition = object("scope", "same first job only; exact-count/error-zero lanes are diagnostic interventions, not production changes",
++                                                  "flush_reconstruction", flushDiagnostics,
++                                                  "native_union_count", exact.size(),
++                                                  "global_kmv", sketchEvidence(sketch),
++                                                  "global_kmv_estimate", estimate);
++        List<Map<String, Object>> lanes = new ArrayList<>();
++        lanes.add(keyComparison("production-default", nativeRows, approximate));
++        VCompLearnedModel countOnly = compactor.merge(plan, exact.size());
++        lanes.add(keyComparison("exact-global-count-only", nativeRows,
++                                compactor.split(plan, countOnly, sketch, exact.size())));
++        VCompPipeline.VirtualCompactionPlan exactFitPlan = new VCompPipeline.VirtualCompactionPlan("exact-input-fit", exactFitInputs, 1);
++        VCompLearnedModel exactFitModel = compactor.merge(exactFitPlan, exact.size());
++        lanes.add(keyComparison("exact-global-count-and-zero-error-input-fit", nativeRows,
++                                compactor.split(exactFitPlan, exactFitModel, sketch, exact.size())));
++        long[] exactKeys = exact.keySet().stream().mapToLong(Long::longValue).toArray();
++        for (double error : new double[] { 8.0, 0.0 })
++        {
++            VCompPipeline.VirtualSortedRun directlyFitted = new DefaultFlushVirtualizer(error,
++                VCompKmvSketch.DEFAULT_SAMPLES, VCompKmvSketch.DEFAULT_RANGE_BUCKETS).virtualize(
++                new VCompPipeline.FlushBatch("exact-union-fit", exactKeys, 1, 10400));
++            lanes.add(keyComparison("direct-exact-union-fit-error-" + error, nativeRows, directlyFitted));
++        }
++        decomposition.put("lanes", lanes);
++        trace.put("first_job_decomposition", decomposition);
+         trace.put("stopped_at", nativeRows.equals(approximateRows) ? "bounded fixture complete" : "first approximate output divergence; no later jobs executed");
+         write(trace);
+     }
+ 
++    private Map<String, Object> sketchEvidence(VCompKmvSketch sketch)
++    {
++        BigInteger unsigned = new BigInteger(Long.toUnsignedString(sketch.thetaHash()));
++        double theta = unsigned.doubleValue() / Math.scalb(1.0, 64);
++        return object("sample_count", sketch.samples().size(), "complete", sketch.isComplete(),
++                      "theta_unsigned", unsigned.toString(), "theta_probability", theta,
++                      "sample_count_over_theta", sketch.samples().size() / theta);
++    }
++
++    private Map<String, Object> keyComparison(String label, List<List<Object>> reference,
++                                              VCompPipeline.VirtualSortedRun run)
++    {
++        java.util.TreeSet<Long> expected = new java.util.TreeSet<>();
++        Map<Long, Long> versions = new TreeMap<>();
++        for (List<Object> row : reference)
++        {
++            expected.add((Long) row.get(1));
++            versions.put((Long) row.get(1), (Long) row.get(3));
++        }
++        java.util.TreeSet<Long> emitted = new java.util.TreeSet<>();
++        long descriptorCount = 0;
++        long timestampDifferences = 0;
++        List<Map<String, Object>> descriptors = new ArrayList<>();
++        for (VCompPipeline.VirtualSSTable descriptor : run.sstables())
++        {
++            descriptorCount += descriptor.estimatedUniqueKeys();
++            descriptors.add(object("estimated_count", descriptor.estimatedUniqueKeys(),
++                                   "segments", descriptor.model().segments().size(),
++                                   "maximum_timestamp", descriptor.maximumTimestamp(),
++                                   "global_sketch", sketchEvidence(descriptor.sketch()),
++                                   "complete_range_sketches", descriptor.rangeSketches().stream().filter(r -> r.sketch().isComplete()).count(),
++                                   "range_sketches", descriptor.rangeSketches().size()));
++            VCompMaterializedKeyIterator iterator = new VCompMaterializedKeyIterator(descriptor);
++            while (iterator.hasNext())
++            {
++                long key = iterator.nextLong();
++                assertTrue("bounded key iterator", emitted.size() < ROW_LIMIT);
++                assertTrue("unexpected duplicate output key", emitted.add(key));
++                if (versions.containsKey(key) && versions.get(key) != descriptor.maximumTimestamp())
++                    timestampDifferences++;
++            }
++        }
++        java.util.TreeSet<Long> missing = new java.util.TreeSet<>(expected);
++        missing.removeAll(emitted);
++        java.util.TreeSet<Long> extra = new java.util.TreeSet<>(emitted);
++        extra.removeAll(expected);
++        return object("lane", label, "native_count", expected.size(), "descriptor_count", descriptorCount,
++                      "emitted_count", emitted.size(), "count_lost_at_inverse", descriptorCount - emitted.size(),
++                      "missing_keys", missing.size(), "extra_keys", extra.size(),
++                      "common_keys", expected.size() - missing.size(), "timestamp_differences", timestampDifferences,
++                      "first_missing_keys", new ArrayList<>(missing).subList(0, Math.min(8, missing.size())),
++                      "first_extra_keys", new ArrayList<>(extra).subList(0, Math.min(8, extra.size())),
++                      "descriptors", descriptors);
++    }
++
+     private List<List<Object>> rows(SSTableReader reader) throws Exception
+     {
+         List<List<Object>> result = new ArrayList<>();

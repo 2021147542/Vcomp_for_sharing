@@ -1,0 +1,4 @@
+bash experiments/scripts/cassandra/run_checkpoint_read_diagnostic.sh /work/vcomp-pebble-1tb/vcomp-cassandra-read-diagnosis-20260914-211800/checkpoint.json
+POINT_REQUESTS=1000
+SCAN_OPERATIONS=1000
+EVICT_DATA_CACHE=true

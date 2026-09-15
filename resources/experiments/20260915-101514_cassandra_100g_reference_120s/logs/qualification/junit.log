@@ -1,0 +1,33 @@
+JUnit version 4.12
+...............................................WARN  o.a.cassandra.utils.NativeLibrary - Could not skip cache
+java.nio.file.NoSuchFileException: /tmp/vcomp-cassandra-repair-qualification-20260915/tmp/junit14380538340141902375/kv48/vcomp_materializer_test/kv48-cfe020ec78573776af52f0c300dc8afc/oa-6-big-Digest.crc32
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:116)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newFileChannel(UnixFileSystemProvider.java:182)
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:292)
+	at org.apache.cassandra.io.util.PathUtils.newFileChannel(PathUtils.java:123)
+	at org.apache.cassandra.io.util.PathUtils.newReadChannel(PathUtils.java:101)
+	at org.apache.cassandra.io.util.File.newReadChannel(File.java:732)
+	at org.apache.cassandra.io.util.FileInputStreamPlus.<init>(FileInputStreamPlus.java:50)
+	at org.apache.cassandra.io.util.FileInputStreamPlus.<init>(FileInputStreamPlus.java:44)
+	at org.apache.cassandra.utils.NativeLibrary.trySkipCache(NativeLibrary.java:217)
+	at org.apache.cassandra.io.sstable.format.SSTableReader$GlobalTidy.tidy(SSTableReader.java:1680)
+	at org.apache.cassandra.utils.concurrent.Ref$GlobalState.release(Ref.java:349)
+	at org.apache.cassandra.utils.concurrent.Ref$State.release(Ref.java:239)
+	at org.apache.cassandra.utils.concurrent.Ref.release(Ref.java:133)
+	at org.apache.cassandra.io.sstable.format.SSTableReader$InstanceTidier$1.run(SSTableReader.java:1573)
+	at org.apache.cassandra.concurrent.ExecutionFailure$1.run(ExecutionFailure.java:133)
+	at org.apache.cassandra.concurrent.ExecutionFailure$1.run(ExecutionFailure.java:133)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+Time: 0.931
+
+OK (47 tests)
+

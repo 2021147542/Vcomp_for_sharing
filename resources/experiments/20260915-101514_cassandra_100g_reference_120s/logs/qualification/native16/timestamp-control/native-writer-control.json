@@ -1,0 +1,102 @@
+{
+  "diagnostic_only" : true,
+  "flatten_timestamp" : true,
+  "scope" : "Same native SST keys/values/header/boundaries; optional per-SST max timestamp intervention",
+  "files" : [ {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-26-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-0/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-21-big-Data.db",
+    "rows" : 86265,
+    "partitions" : 13,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 86264,
+    "native_data_db_bytes" : 89456303,
+    "data_db_bytes" : 89457156,
+    "native_encoding_min_timestamp" : 1,
+    "control_encoding_min_timestamp" : 1
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-28-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-1/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-22-big-Data.db",
+    "rows" : 86355,
+    "partitions" : 13,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 86354,
+    "native_data_db_bytes" : 89549643,
+    "data_db_bytes" : 89550486,
+    "native_encoding_min_timestamp" : 1,
+    "control_encoding_min_timestamp" : 1
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-30-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-2/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-23-big-Data.db",
+    "rows" : 86230,
+    "partitions" : 13,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 86229,
+    "native_data_db_bytes" : 89420085,
+    "data_db_bytes" : 89420861,
+    "native_encoding_min_timestamp" : 1,
+    "control_encoding_min_timestamp" : 1
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-32-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-3/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-24-big-Data.db",
+    "rows" : 92613,
+    "partitions" : 14,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 92612,
+    "native_data_db_bytes" : 96039205,
+    "data_db_bytes" : 96040059,
+    "native_encoding_min_timestamp" : 1,
+    "control_encoding_min_timestamp" : 1
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-25-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-4/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-25-big-Data.db",
+    "rows" : 92522,
+    "partitions" : 14,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 92521,
+    "native_data_db_bytes" : 95944862,
+    "data_db_bytes" : 95945692,
+    "native_encoding_min_timestamp" : 2,
+    "control_encoding_min_timestamp" : 2
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-27-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-5/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-26-big-Data.db",
+    "rows" : 92968,
+    "partitions" : 14,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 92967,
+    "native_data_db_bytes" : 96407375,
+    "data_db_bytes" : 96408194,
+    "native_encoding_min_timestamp" : 2,
+    "control_encoding_min_timestamp" : 2
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-29-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-6/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-27-big-Data.db",
+    "rows" : 59802,
+    "partitions" : 9,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 59801,
+    "native_data_db_bytes" : 62014361,
+    "data_db_bytes" : 62014917,
+    "native_encoding_min_timestamp" : 2,
+    "control_encoding_min_timestamp" : 2
+  }, {
+    "native_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-b7ccf850b0a211f1abb4697cd026a145/oa-31-big-Data.db",
+    "control_file" : "/tmp/vcomp-cassandra-native-event-20260915-repair16/output/timestamp-control/sst-7/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-00000000000000000000000000000001/oa-28-big-Data.db",
+    "rows" : 66130,
+    "partitions" : 10,
+    "format" : "oa",
+    "flatten_timestamp" : true,
+    "changed_timestamps" : 66129,
+    "native_data_db_bytes" : 68576489,
+    "data_db_bytes" : 68577080,
+    "native_encoding_min_timestamp" : 2,
+    "control_encoding_min_timestamp" : 2
+  } ]
+}

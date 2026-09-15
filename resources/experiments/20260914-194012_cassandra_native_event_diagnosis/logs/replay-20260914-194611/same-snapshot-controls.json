@@ -1,0 +1,488 @@
+[ {
+  "event_seq" : 0,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 0,
+  "native_base_density" : 812646.4,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "not_applicable",
+    "reason" : "native initial empty state has observed flush bytes 0; offline planner requires positive bytes"
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "not_applicable",
+    "reason" : "native initial empty state has observed flush bytes 0; offline planner requires positive bytes"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 1,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 0,
+  "native_base_density" : 812646.4,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "not_applicable",
+    "reason" : "native initial empty state has observed flush bytes 0; offline planner requires positive bytes"
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "not_applicable",
+    "reason" : "native initial empty state has observed flush bytes 0; offline planner requires positive bytes"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 3,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 5,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 51537,
+    "exact_max_key" : 104824173,
+    "native_max_timestamp" : 4096,
+    "native_effective_coverage" : 0.9989664918917153,
+    "layout_token_coverage" : 0.9989664918917154
+  } ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 7,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 8,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 51537,
+    "exact_max_key" : 104824173,
+    "native_max_timestamp" : 4096,
+    "native_effective_coverage" : 0.9989664918917153,
+    "layout_token_coverage" : 0.9989664918917154
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 17102,
+    "exact_max_key" : 104836115,
+    "native_max_timestamp" : 8192,
+    "native_effective_coverage" : 0.9992140036775838,
+    "layout_token_coverage" : 0.9992140036775838
+  } ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 11,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 12,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 51537,
+    "exact_max_key" : 104824173,
+    "native_max_timestamp" : 4096,
+    "native_effective_coverage" : 0.9989664918917153,
+    "layout_token_coverage" : 0.9989664918917154
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 17102,
+    "exact_max_key" : 104836115,
+    "native_max_timestamp" : 8192,
+    "native_effective_coverage" : 0.9992140036775838,
+    "layout_token_coverage" : 0.9992140036775838
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big",
+    "measured_data_db_bytes" : 4369602,
+    "measured_on_disk_length_used" : 4369602,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 29967,
+    "exact_max_key" : 104848189,
+    "native_max_timestamp" : 12288,
+    "native_effective_coverage" : 0.9993973241006794,
+    "layout_token_coverage" : 0.9993973241006793
+  } ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 15,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 17,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big" ],
+  "native_level" : 0,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 51537,
+    "exact_max_key" : 104824173,
+    "native_max_timestamp" : 4096,
+    "native_effective_coverage" : 0.9989664918917153,
+    "layout_token_coverage" : 0.9989664918917154
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big",
+    "measured_data_db_bytes" : 4371806,
+    "measured_on_disk_length_used" : 4371806,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 17102,
+    "exact_max_key" : 104836115,
+    "native_max_timestamp" : 8192,
+    "native_effective_coverage" : 0.9992140036775838,
+    "layout_token_coverage" : 0.9992140036775838
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big",
+    "measured_data_db_bytes" : 4369602,
+    "measured_on_disk_length_used" : 4369602,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 29967,
+    "exact_max_key" : 104848189,
+    "native_max_timestamp" : 12288,
+    "native_effective_coverage" : 0.9993973241006794,
+    "layout_token_coverage" : 0.9993973241006793
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big",
+    "measured_data_db_bytes" : 4372186,
+    "measured_on_disk_length_used" : 4372186,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 41476,
+    "exact_max_key" : 104841250,
+    "native_max_timestamp" : 16384,
+    "native_effective_coverage" : 0.999296706482987,
+    "layout_token_coverage" : 0.999296706482987
+  } ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big" ],
+    "level" : 0
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big" ],
+    "level" : 0,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big", "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big" ],
+    "level" : 0
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 20,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-6-big",
+    "measured_data_db_bytes" : 4371122,
+    "measured_on_disk_length_used" : 4371122,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 58681,
+    "exact_max_key" : 104825677,
+    "native_max_timestamp" : 20480,
+    "native_effective_coverage" : 0.9989571236694741,
+    "layout_token_coverage" : 0.9989571236694741
+  } ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 21,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 25,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+}, {
+  "event_seq" : 26,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "observed_flush_bytes" : 5242880,
+  "native_base_density" : 4063232.0,
+  "candidate_metadata" : [ {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-5-big",
+    "measured_data_db_bytes" : 17280660,
+    "measured_on_disk_length_used" : 17280660,
+    "predicted_bytes" : 16957548,
+    "exact_rows" : 16384,
+    "exact_min_key" : 17102,
+    "exact_max_key" : 104848189,
+    "native_max_timestamp" : 16384,
+    "native_effective_coverage" : 0.9994582788553104,
+    "layout_token_coverage" : 0.9994582788553102
+  }, {
+    "id" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-6-big",
+    "measured_data_db_bytes" : 4371122,
+    "measured_on_disk_length_used" : 4371122,
+    "predicted_bytes" : 4239387,
+    "exact_rows" : 4096,
+    "exact_min_key" : 58681,
+    "exact_max_key" : 104825677,
+    "native_max_timestamp" : 20480,
+    "native_effective_coverage" : 0.9989571236694741,
+    "layout_token_coverage" : 0.9989571236694741
+  } ],
+  "measured_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "native_metadata_shared_kernel_control" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null,
+    "scope" : "shared production picker kernel; saved native bytes/max timestamp/first-last tokens, Statistics.db effective coverage, captured native base density; T4/baseShard1/target1GiB native defaults; no new native execution"
+  },
+  "predicted_size_same_availability" : {
+    "status" : "evaluated",
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "same saved strategy candidates intersect captured noncompacting view; measured VComp control uses native onDiskLength, exact bounds/count/max timestamp but layout-derived coverage; predicted-size control also uses layout coverage and changes size/flush calibration only; shared-kernel control uses native effective coverage and captured native base density"
+} ]

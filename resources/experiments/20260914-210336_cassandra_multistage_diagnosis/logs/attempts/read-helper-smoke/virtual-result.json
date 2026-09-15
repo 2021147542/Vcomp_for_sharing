@@ -1,0 +1,5 @@
+{
+  "predicted_flush_bytes_rounded" : 5242880,
+  "predicted_data_bytes_for_4096" : 4239387,
+  "materialized" : [ "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761", "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23" ]
+}

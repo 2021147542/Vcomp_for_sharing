@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "request_count": 10000,
+  "unique_keys": 7522,
+  "all_keys_in_domain": true,
+  "json_sha256": "9ceaa2a03b38639a6d88e611437e3a7f11871b7502fee70831615b17d089b85a",
+  "database_access": false,
+  "native_queries": 0,
+  "compile_attempts": 1,
+  "run_attempts": 1,
+  "compile_or_run_failures": [],
+  "interpretation": "Actual local reference-streams-v3 generator reflection; requests exported for static membership replay only."
+}

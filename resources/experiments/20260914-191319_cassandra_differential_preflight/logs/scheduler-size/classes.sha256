@@ -1,0 +1,4 @@
+ec3feb50b866d0357d71092a893177a56aafe7b27bead42325c9a8844399f179  cassandra_vcomp/build/classes/main/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.class
+52952fc73ce82daee576fab10252c257ee2f67877380152b135157973fcd15d6  cassandra_vcomp/build/classes/main/org/apache/cassandra/db/compaction/vcomp/VCompSSTSizeModel.class
+6a0ad80d4e80a053bcdfd25a3c1c697f149b9e0a33bc91656b4b271ebe70e79e  cassandra_vcomp/build/classes/main/org/apache/cassandra/db/compaction/vcomp/SyntheticVCompLoadSource.class
+4a2d436581f371d8385cdc1223a82119f8bbb5aeba5daac0e9d4f2340bbd7ba1  cassandra_vcomp/build/classes/main/org/apache/cassandra/db/compaction/vcomp/VCompOrderedPartitionLayout.class

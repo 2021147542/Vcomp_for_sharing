@@ -1,0 +1,23 @@
+ID                     : 2c792ce1-44e1-42e9-a8f6-3259d0db8492
+Gossip active          : true
+Native Transport active: true
+Load                   : 81.39 GiB
+Uncompressed load      : 81.39 GiB
+Generation No          : 1789437212
+Uptime (seconds)       : 137
+Heap Memory (MB)       : 2497.74 / 4096.00
+Off Heap Memory (MB)   : 0.07
+Data Center            : datacenter1
+Rack                   : rack1
+Exceptions             : 0
+Key Cache              : entries 43829, size 99.1 MiB, capacity 100 MiB, 7524428 hits, 7568264 requests, 0.994 recent hit rate, 14400 save period in seconds
+Row Cache              : entries 0, size 0 bytes, capacity 0 bytes, 0 hits, 0 requests, NaN recent hit rate, 0 save period in seconds
+Counter Cache          : entries 0, size 0 bytes, capacity 50 MiB, 0 hits, 0 requests, NaN recent hit rate, 7200 save period in seconds
+Chunk Cache            : entries 81920, size 5 GiB, capacity 5 GiB, 6231837 misses, 16051973 requests, 0.612 recent hit rate, 361.916 microseconds miss latency
+Network Cache          : size 8 MiB, overflow size: 0 bytes, capacity 128 MiB
+Percent Repaired       : 100.0%
+Token                  : -6479185077107764477
+Bootstrap state        : COMPLETED
+Bootstrap failed       : false
+Decommissioning        : false
+Decommission failed    : false

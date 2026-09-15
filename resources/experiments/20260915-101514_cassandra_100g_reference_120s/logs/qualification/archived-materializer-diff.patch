@@ -1,0 +1,77 @@
+--- /home/dongju/vcomp/resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs/baseline-reference/evidence/input-source/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
++++ /home/dongju/vcomp/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+@@ -24,6 +24,7 @@
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+ import java.util.ArrayList;
++import java.util.Arrays;
+ import java.util.List;
+ import java.util.PrimitiveIterator;
+ import java.util.UUID;
+@@ -176,6 +177,66 @@
+     }
+ 
+ 	/**
++	 * Measure the first source flush with its actual buffered coordinates and
++	 * partition occupancy. This non-installed probe supplies the offline UCS
++	 * observed-flush input; the ordinary descriptor size model is unchanged.
++	 *
++	 * Like final materialization, this probe uses the batch maximum timestamp
++	 * for every row. It therefore measures our writer, not native per-row
++	 * timestamp encoding, and must not be described as an exact native flush.
++	 */
++	public long measureFirstFlushDataBytes(VCompPipeline.FlushBatch firstFlush) throws Exception
++	{
++		Objects.requireNonNull(firstFlush, "firstFlush");
++		long[] keys = firstFlush.keyCoordinates();
++		Path probeRoot = outputDirectory.resolve(".vcomp-calibration").resolve("first-source-flush");
++		requireEmptyDirectory(probeRoot);
++		// Keep the ordinary keyspace/table directory shape so native SSTable
++		// inspection tools can resolve this retained, non-installed probe.
++		UUID probeId = UUID.nameUUIDFromBytes("first-source-flush".getBytes(StandardCharsets.UTF_8));
++		Path directory = probeRoot.resolve(keyspace).resolve(table + '-' + probeId.toString().replace("-", ""));
++		requireEmptyDirectory(directory);
++		long timestamp = Math.max(1, firstFlush.maximumTimestamp());
++		long[] written = new long[1];
++		CQLSSTableWriter.Builder builder = CQLSSTableWriter.builder()
++		                                                  .inDirectory(directory.toString())
++		                                                  .forTable(tableSchema)
++		                                                  .using(insertStatement)
++		                                                  .withPartitioner(Murmur3Partitioner.instance)
++		                                                  .withEncodingStats(encodingStats(timestamp))
++		                                                  .withEstimatedPartitionCount(1)
++		                                                  .sorted();
++		if (partitionLayout != null)
++			builder.withEstimatedPartitionCount(partitionLayout.partitionCount(keys[0], keys[keys.length - 1]));
++		try (CQLSSTableWriter writer = builder.build())
++		{
++			keyCodec.validateSchema(writer.tableMetadata());
++			CoordinateCursor cursor = new CoordinateCursor(Arrays.stream(keys).iterator());
++			while (cursor.hasNext())
++			{
++				VCompOrderedPartitionLayout.Partition mapped = partitionLayout == null
++				                                             ? null : partitionLayout.partitionFor(cursor.peek());
++				try (UnfilteredRowIterator partition = partition(writer.tableMetadata(), cursor, mapped, timestamp, written))
++				{
++					writer.addPartition(partition);
++				}
++			}
++		}
++		if (written[0] != firstFlush.keyCount())
++			throw new IllegalStateException("first-flush sizing probe changed the buffered key count");
++		long bytes = 0;
++		try (Stream<Path> files = Files.walk(directory))
++		{
++			for (Path path : (Iterable<Path>) files::iterator)
++				if (Files.isRegularFile(path) && path.getFileName().toString().endsWith("-Data.db"))
++					bytes = saturatedAdd(bytes, Files.size(path));
++		}
++		if (bytes <= 0)
++			throw new IllegalStateException("first-flush sizing probe produced no Data.db bytes");
++		return bytes;
++	}
++
++	/**
+ 	 * Write two small, non-installed SSTables and fit the physical-size model
+ 	 * used for virtual sizing and output splitting. Calibration artifacts are
+ 	 * retained below .vcomp-calibration for auditability and are never imported.

@@ -1,0 +1,50 @@
+ M cassandra_check/run_baseline_vcomp_20g_compare.sh
+ M cassandra_check/run_existing_100g_paper_workloads.sh
+ M cassandra_check/run_pipeline_100g.sh
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompPipeline.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/tools/VCompBulkLoad.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
+ M experiments/analysis/publish_cassandra_differential.py
+ M experiments/docs/cassandra-differential-debugging.md
+ M experiments/scripts/cassandra/run_bounded_workloads.sh
+ M experiments/scripts/cassandra/run_differential_oracle.sh
+ M resources/report.md
+ M resources/summary.md
+?? cassandra_check/test/CassandraFixedReadDiagnostic.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompCheckpointReadDiagnosticTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompNativeEventDiagnosticTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompNativeEventReplay.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompReadPathDiagnostic.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompRetainedScanDiagnosticTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompScanPathDiagnostic.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompCompleteCardinalityTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompCompleteSketchShardTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompCompleteSketchSplitProbe.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompContinuousRankTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompFirstFlushSizingTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompMatchedMaterializationTest.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompModelStageProbe.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeScheduleModelReplay.java
+?? cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompTimestampMaterializationDiagnosticTest.java
+?? experiments/analysis/analyze_cassandra_native_events.py
+?? experiments/analysis/cassandra_actual_read_analysis.py
+?? experiments/analysis/cassandra_actual_scan_analysis.py
+?? experiments/analysis/cassandra_multistage_analysis.py
+?? experiments/analysis/cassandra_read_depth_attribution.py
+?? experiments/analysis/publish_cassandra_multistage.py
+?? experiments/docs/cassandra-port-causal-review.md
+?? experiments/docs/cassandra-reference-120s-campaign.md
+?? experiments/scripts/cassandra/prepare_preserved_read_diagnostic.py
+?? experiments/scripts/cassandra/resume_native_event_replay.sh
+?? experiments/scripts/cassandra/run_checkpoint_read_diagnostic.sh
+?? experiments/scripts/cassandra/run_matched_materialization_diagnostic.sh
+?? experiments/scripts/cassandra/run_native_event_diagnostic.sh
+?? experiments/scripts/cassandra/run_reference_100g_120s_campaign.sh
+?? experiments/scripts/cassandra/run_retained_scan_diagnostic.sh
+?? experiments/scripts/cassandra/run_timestamp_materialization_diagnostic.sh
+?? resources/experiments/20260914-191319_cassandra_differential_preflight/
+?? resources/experiments/20260914-194012_cassandra_native_event_diagnosis/
+?? resources/experiments/20260914-210336_cassandra_multistage_diagnosis/

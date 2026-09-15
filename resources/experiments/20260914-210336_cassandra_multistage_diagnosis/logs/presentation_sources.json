@@ -1,0 +1,18 @@
+{
+  "title": "Retained 100 GiB: local C/E, Data.db eviction (process I/O), one thread",
+  "interval": "4-round totals",
+  "description": "보존한 100GiB DB의 단일 스레드 고정 C/E 읽기 진단입니다. 재적재나 논문 workload 재실행이 아닙니다. 그래프는 cold Data.db 조건의 4회 전체 측정치를 합산합니다.",
+  "loading": [],
+  "workloads": [
+    {
+      "label": "Local cold",
+      "directory": "logs/figure-data"
+    }
+  ],
+  "notes": [
+    "No load rerun; loading is N/A. All four fixed rounds are pooled, never the best round.",
+    "C = 4 x 1000 point requests; E = 4 x 947 scans, fixed 53 write decisions per phase omitted.",
+    "Disk read panels show process-attributed read_bytes sum; physical device I/O latency and write bytes were not measured.",
+    "Latency is local engine command latency, without driver/network/48-thread queueing. These graphs are diagnostics, not replacements for paper benchmarks."
+  ]
+}

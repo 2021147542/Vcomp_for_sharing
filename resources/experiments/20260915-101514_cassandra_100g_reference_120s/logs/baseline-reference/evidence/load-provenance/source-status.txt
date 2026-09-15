@@ -1,0 +1,23 @@
+ M cassandra_check/run_baseline_20g.sh
+ M cassandra_check/run_baseline_vcomp_20g_compare.sh
+ M cassandra_check/run_existing_100g_paper_workloads.sh
+ M cassandra_check/run_pipeline_100g.sh
+ M cassandra_check/src/CassandraPaperWorkload.java
+ M cassandra_check/src/CassandraVCompPipelineClient.java
+ M cassandra_check/test/CassandraPaperWorkloadTest.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompMaterializedKeyIterator.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java
+ M cassandra_vcomp/src/java/org/apache/cassandra/tools/VCompBulkLoad.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompactionTest.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializerTest.java
+ M cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlannerTest.java
+ M experiments/scripts/cassandra/run_fidelity_100g_campaign.sh
+ M resources/plot_cassandra_baseline_compare.py
+?? cassandra_check/src/CassandraRuntimeMetrics.java
+?? cassandra_check/test/CassandraCompactionOptionsTest.java
+?? experiments/analysis/analyze_cassandra_workload_diagnostics.py
+?? experiments/scripts/cassandra/monitor_workload_memory.py
+?? experiments/scripts/cassandra/run_bounded_workloads.sh
+?? resources/experiments/20260914-134200_cassandra_comprehensive_preflight/
+?? resources/experiments/20260914-141045_cassandra_100g_comprehensive/

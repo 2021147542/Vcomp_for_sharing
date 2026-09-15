@@ -1,0 +1,9 @@
+{
+  "sources": {
+    "baseline": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052",
+    "vcomp": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/vcomp/cassandra-vcomp-fidelity-100g-20260914-141045-vcomp-20260914-144011"
+  },
+  "bytes": 169904165355,
+  "components": 3120,
+  "method": "independent cp --reflink=auto --preserve=mode,timestamps; no hardlinks"
+}

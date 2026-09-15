@@ -1,0 +1,198 @@
+[ {
+  "seq" : 0,
+  "kind" : "virtual_picker",
+  "flush_number" : 1,
+  "live" : [ "run-0" ],
+  "in_flight" : [ ],
+  "runs" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 51537,
+      "key_max" : 104824173,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 4096,
+      "coverage" : 0.9989664918917154
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "seq" : 1,
+  "kind" : "virtual_picker",
+  "flush_number" : 2,
+  "live" : [ "run-0", "run-1" ],
+  "in_flight" : [ ],
+  "runs" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 51537,
+      "key_max" : 104824173,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 4096,
+      "coverage" : 0.9989664918917154
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 17102,
+      "key_max" : 104836115,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 8192,
+      "coverage" : 0.9992140036775838
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "seq" : 2,
+  "kind" : "virtual_picker",
+  "flush_number" : 3,
+  "live" : [ "run-0", "run-1", "run-2" ],
+  "in_flight" : [ ],
+  "runs" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 51537,
+      "key_max" : 104824173,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 4096,
+      "coverage" : 0.9989664918917154
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 17102,
+      "key_max" : 104836115,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 8192,
+      "coverage" : 0.9992140036775838
+    } ]
+  }, {
+    "id" : "run-2",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-2",
+      "key_min" : 29967,
+      "key_max" : 104848189,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 12288,
+      "coverage" : 0.9993973241006793
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "seq" : 3,
+  "kind" : "virtual_picker",
+  "flush_number" : 4,
+  "live" : [ "run-0", "run-1", "run-2", "run-3" ],
+  "in_flight" : [ ],
+  "runs" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 51537,
+      "key_max" : 104824173,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 4096,
+      "coverage" : 0.9989664918917154
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 17102,
+      "key_max" : 104836115,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 8192,
+      "coverage" : 0.9992140036775838
+    } ]
+  }, {
+    "id" : "run-2",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-2",
+      "key_min" : 29967,
+      "key_max" : 104848189,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 12288,
+      "coverage" : 0.9993973241006793
+    } ]
+  }, {
+    "id" : "run-3",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-3",
+      "key_min" : 41476,
+      "key_max" : 104841250,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 16384,
+      "coverage" : 0.999296706482987
+    } ]
+  } ],
+  "selected" : [ "run-3", "run-2", "run-1", "run-0" ],
+  "output_level" : 1
+}, {
+  "seq" : 4,
+  "kind" : "virtual_picker",
+  "flush_number" : 4,
+  "live" : [ "run-compaction-0" ],
+  "in_flight" : [ ],
+  "runs" : [ {
+    "id" : "run-compaction-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 17102,
+      "key_max" : 104848189,
+      "estimated_bytes" : 16457640,
+      "max_timestamp" : 16384,
+      "coverage" : 0.9994582788553102
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "seq" : 5,
+  "kind" : "virtual_picker",
+  "flush_number" : 5,
+  "live" : [ "run-compaction-0", "run-4" ],
+  "in_flight" : [ ],
+  "runs" : [ {
+    "id" : "run-compaction-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 17102,
+      "key_max" : 104848189,
+      "estimated_bytes" : 16457640,
+      "max_timestamp" : 16384,
+      "coverage" : 0.9994582788553102
+    } ]
+  }, {
+    "id" : "run-4",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-4",
+      "key_min" : 58681,
+      "key_max" : 104825677,
+      "estimated_bytes" : 4239387,
+      "max_timestamp" : 20480,
+      "coverage" : 0.9989571236694741
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+} ]

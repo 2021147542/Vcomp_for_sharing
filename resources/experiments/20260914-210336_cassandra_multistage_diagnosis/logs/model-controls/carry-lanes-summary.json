@@ -1,0 +1,51 @@
+{
+  "diagnostic_only": true,
+  "lanes": [
+    {
+      "samples": 512,
+      "plr_error": 8,
+      "emitted_rows": 690994,
+      "partition_mean": 6909.94,
+      "partition_population_sd": 456.4195837165623,
+      "partition_min": 5616,
+      "partition_max": 7939,
+      "native_rows": 662885,
+      "native_population_sd": 49.62728584156099
+    },
+    {
+      "samples": 512,
+      "plr_error": 0,
+      "emitted_rows": 690994,
+      "partition_mean": 6909.94,
+      "partition_population_sd": 185.42226511398246,
+      "partition_min": 6626,
+      "partition_max": 7136,
+      "native_rows": 662885,
+      "native_population_sd": 49.62728584156099
+    },
+    {
+      "samples": 4096,
+      "plr_error": 8,
+      "emitted_rows": 690590,
+      "partition_mean": 6905.9,
+      "partition_population_sd": 389.9685243708779,
+      "partition_min": 5889,
+      "partition_max": 7788,
+      "native_rows": 662885,
+      "native_population_sd": 49.62728584156099
+    },
+    {
+      "samples": 4096,
+      "plr_error": 0,
+      "emitted_rows": 690594,
+      "partition_mean": 6905.94,
+      "partition_population_sd": 76.83161068206236,
+      "partition_min": 6790,
+      "partition_max": 7021,
+      "native_rows": 662885,
+      "native_population_sd": 49.62728584156099
+    }
+  ],
+  "native_dag_default_matches_actual_virtual_key_fingerprints": true,
+  "direct_global_bottom_k_all_six_jobs_both_sample_sizes_match": true
+}

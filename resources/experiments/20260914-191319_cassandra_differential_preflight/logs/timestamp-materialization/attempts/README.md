@@ -1,0 +1,1 @@
+Setup attempts are retained: sandbox interface discovery, relative source-copy path, and test-only SST descriptor directory naming were repaired. 191630 completed the timestamp-only case; 191826 adds calibration. The fixed seed and requested cases were not selected by performance. Physical SSTs remain in the recorded /tmp paths.

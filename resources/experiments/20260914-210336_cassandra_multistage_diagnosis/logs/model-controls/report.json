@@ -1,0 +1,93 @@
+{
+  "diagnostic_only" : true,
+  "seed" : 20260909,
+  "domain" : 4096,
+  "partitions" : 64,
+  "flushes" : 4,
+  "attempted_writes_per_flush" : 128,
+  "cases" : [ {
+    "bytes_per_entry_metadata_only" : 1024,
+    "plr_error" : 8.0,
+    "global_sketch_complete" : true,
+    "global_sketch_count" : 488,
+    "exact_union_count" : 488,
+    "estimated_count" : 488,
+    "shard_count" : 1,
+    "diagnostic_allocations" : [ {
+      "shard" : 0,
+      "modeled_count" : 488,
+      "original_count" : 488
+    } ],
+    "production_split_status" : "success",
+    "output_count" : 1
+  }, {
+    "bytes_per_entry_metadata_only" : 1024,
+    "plr_error" : 0.0,
+    "global_sketch_complete" : true,
+    "global_sketch_count" : 488,
+    "exact_union_count" : 488,
+    "estimated_count" : 488,
+    "shard_count" : 1,
+    "diagnostic_allocations" : [ {
+      "shard" : 0,
+      "modeled_count" : 488,
+      "original_count" : 488
+    } ],
+    "production_split_status" : "success",
+    "output_count" : 1
+  }, {
+    "bytes_per_entry_metadata_only" : 1048576,
+    "plr_error" : 8.0,
+    "global_sketch_complete" : true,
+    "global_sketch_count" : 488,
+    "exact_union_count" : 488,
+    "estimated_count" : 488,
+    "shard_count" : 4,
+    "diagnostic_allocations" : [ {
+      "shard" : 0,
+      "modeled_count" : 145,
+      "original_count" : 127
+    }, {
+      "shard" : 1,
+      "modeled_count" : 108,
+      "original_count" : 109
+    }, {
+      "shard" : 2,
+      "modeled_count" : 140,
+      "original_count" : 143
+    }, {
+      "shard" : 3,
+      "modeled_count" : 95,
+      "original_count" : 109
+    } ],
+    "production_split_status" : "rejected",
+    "exception" : "complete vSST KMV cardinality differs from descriptor estimate"
+  }, {
+    "bytes_per_entry_metadata_only" : 1048576,
+    "plr_error" : 0.0,
+    "global_sketch_complete" : true,
+    "global_sketch_count" : 488,
+    "exact_union_count" : 488,
+    "estimated_count" : 488,
+    "shard_count" : 4,
+    "diagnostic_allocations" : [ {
+      "shard" : 0,
+      "modeled_count" : 127,
+      "original_count" : 127
+    }, {
+      "shard" : 1,
+      "modeled_count" : 110,
+      "original_count" : 109
+    }, {
+      "shard" : 2,
+      "modeled_count" : 143,
+      "original_count" : 143
+    }, {
+      "shard" : 3,
+      "modeled_count" : 108,
+      "original_count" : 109
+    } ],
+    "production_split_status" : "rejected",
+    "exception" : "complete vSST KMV cardinality differs from descriptor estimate"
+  } ]
+}

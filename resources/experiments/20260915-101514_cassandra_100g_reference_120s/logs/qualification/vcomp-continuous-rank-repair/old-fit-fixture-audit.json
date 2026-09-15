@@ -1,0 +1,137 @@
+{
+  "scope": "Read-only reproduction of former independent shrinking-cone fit over every actual initial flush vector of fixed 1GiB fixture; not workload data",
+  "seed": 20260909,
+  "error": 8,
+  "flushes": [
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-1-big",
+      "keys": 63597,
+      "segments": 311,
+      "backward_boundaries": 167,
+      "max_backward_rank": 6.992255566312451,
+      "positive_jump_rank_mass": 1254.5318379174523
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-2-big",
+      "keys": 63578,
+      "segments": 317,
+      "backward_boundaries": 158,
+      "max_backward_rank": 6.992809734510956,
+      "positive_jump_rank_mass": 1386.0422247468173
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-3-big",
+      "keys": 63511,
+      "segments": 302,
+      "backward_boundaries": 146,
+      "max_backward_rank": 6.997382198955165,
+      "positive_jump_rank_mass": 1363.1849458912056
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-4-big",
+      "keys": 63558,
+      "segments": 316,
+      "backward_boundaries": 150,
+      "max_backward_rank": 6.977549111317785,
+      "positive_jump_rank_mass": 1449.6332572493102
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-7-big",
+      "keys": 63534,
+      "segments": 311,
+      "backward_boundaries": 172,
+      "max_backward_rank": 7.0,
+      "positive_jump_rank_mass": 1211.0557563339862
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-8-big",
+      "keys": 63539,
+      "segments": 324,
+      "backward_boundaries": 151,
+      "max_backward_rank": 7.0,
+      "positive_jump_rank_mass": 1505.9760556036397
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-9-big",
+      "keys": 63539,
+      "segments": 320,
+      "backward_boundaries": 179,
+      "max_backward_rank": 6.9970501474927005,
+      "positive_jump_rank_mass": 1215.7184628417801
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-10-big",
+      "keys": 63566,
+      "segments": 315,
+      "backward_boundaries": 163,
+      "max_backward_rank": 7.0,
+      "positive_jump_rank_mass": 1327.05996597776
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-13-big",
+      "keys": 63519,
+      "segments": 325,
+      "backward_boundaries": 180,
+      "max_backward_rank": 6.990111248454923,
+      "positive_jump_rank_mass": 1264.9833312874057
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-14-big",
+      "keys": 63594,
+      "segments": 307,
+      "backward_boundaries": 154,
+      "max_backward_rank": 6.9979184013354825,
+      "positive_jump_rank_mass": 1336.1945046732303
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-15-big",
+      "keys": 63495,
+      "segments": 305,
+      "backward_boundaries": 170,
+      "max_backward_rank": 7.0,
+      "positive_jump_rank_mass": 1173.7830881153254
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-16-big",
+      "keys": 63439,
+      "segments": 311,
+      "backward_boundaries": 167,
+      "max_backward_rank": 6.9958100558651495,
+      "positive_jump_rank_mass": 1253.8435092667075
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-19-big",
+      "keys": 63615,
+      "segments": 314,
+      "backward_boundaries": 163,
+      "max_backward_rank": 6.990599820948773,
+      "positive_jump_rank_mass": 1320.6513767263664
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-20-big",
+      "keys": 63565,
+      "segments": 312,
+      "backward_boundaries": 155,
+      "max_backward_rank": 7.0,
+      "positive_jump_rank_mass": 1370.634727981886
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-21-big",
+      "keys": 63469,
+      "segments": 307,
+      "backward_boundaries": 151,
+      "max_backward_rank": 6.999457700650964,
+      "positive_jump_rank_mass": 1357.2705546509735
+    },
+    {
+      "flush": "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-22-big",
+      "keys": 63555,
+      "segments": 296,
+      "backward_boundaries": 145,
+      "max_backward_rank": 6.995412844036764,
+      "positive_jump_rank_mass": 1316.9346664145473
+    }
+  ],
+  "total_backward_boundaries": 2571,
+  "max_backward_rank": 7.0
+}

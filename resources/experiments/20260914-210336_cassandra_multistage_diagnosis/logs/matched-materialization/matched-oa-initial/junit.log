@@ -1,0 +1,9 @@
+JUnit version 4.12
+WARN  o.a.c.config.YamlConfigurationLoader - [scripted_user_defined_functions_enabled] parameters have been deprecated. They have new names and/or value format; For more information, please refer to NEWS.txt
+WARN  o.a.c.config.YamlConfigurationLoader - [scripted_user_defined_functions_enabled] parameters have been deprecated. They have new names and/or value format; For more information, please refer to NEWS.txt
+WARN  o.apache.cassandra.db.SystemKeyspace - No host ID found, created 63137df0-9f49-4bd3-8887-df02f02dcc3e (Note: This should happen exactly once per node).
+.
+Time: 3.167
+
+OK (1 test)
+

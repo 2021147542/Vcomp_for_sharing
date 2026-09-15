@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "seed": 20260909,
+  "writes": 4096,
+  "domain": 4096,
+  "partitions": 64,
+  "unique_keys": 2577,
+  "compression": false,
+  "cases": [
+    {
+      "value_bytes": 43,
+      "key_bytes": 24,
+      "exact": {
+        "row_count": 2577,
+        "data_db_bytes": 197594,
+        "encoding_min_timestamp": 2,
+        "data_file": "/tmp/vcomp-timestamp-materialization-20260914-192004/output/exact/vcomp_timestamp_diagnostic/kv43-00000000000000000000000000000001/oa-6-big-Data.db"
+      },
+      "flattened_cql": {
+        "row_count": 2577,
+        "data_db_bytes": 195067,
+        "encoding_min_timestamp": 4096,
+        "data_file": "/tmp/vcomp-timestamp-materialization-20260914-192004/output/flat-cql/vcomp_timestamp_diagnostic/kv43-00000000000000000000000000000002/oa-7-big-Data.db"
+      },
+      "production_materializer": {
+        "row_count": 2577,
+        "data_db_bytes": 195067,
+        "encoding_min_timestamp": 4096,
+        "data_file": "/tmp/vcomp-timestamp-materialization-20260914-192004/output/kv43-production-materializer/vcomp_timestamp_diagnostic/kv43-3d7bc4e4e7953ad0a0230b24970f7657/oa-8-big-Data.db"
+      },
+      "timestamp_differences": 2576,
+      "data_db_delta_bytes": -2527
+    },
+    {
+      "value_bytes": 1000,
+      "key_bytes": 24,
+      "exact": {
+        "row_count": 2577,
+        "data_db_bytes": 2671450,
+        "encoding_min_timestamp": 2,
+        "data_file": "/tmp/vcomp-timestamp-materialization-20260914-192004/output/exact/vcomp_timestamp_diagnostic/kv1000-00000000000000000000000000000001/oa-9-big-Data.db"
+      },
+      "flattened_cql": {
+        "row_count": 2577,
+        "data_db_bytes": 2668923,
+        "encoding_min_timestamp": 4096,
+        "data_file": "/tmp/vcomp-timestamp-materialization-20260914-192004/output/flat-cql/vcomp_timestamp_diagnostic/kv1000-00000000000000000000000000000002/oa-10-big-Data.db"
+      },
+      "production_materializer": {
+        "row_count": 2577,
+        "data_db_bytes": 2668923,
+        "encoding_min_timestamp": 4096,
+        "data_file": "/tmp/vcomp-timestamp-materialization-20260914-192004/output/kv1000-production-materializer/vcomp_timestamp_diagnostic/kv1000-3d7bc4e4e7953ad0a0230b24970f7657/oa-11-big-Data.db"
+      },
+      "timestamp_differences": 2576,
+      "data_db_delta_bytes": -2527
+    }
+  ],
+  "scope": "One-flush timestamp ablation, exact key control with PLR error 0; production writer roundtrip, not native flush/compaction or latency benchmark",
+  "first_information_loss": "SyntheticVCompLoadSource sorts/deduplicates keys and retains generated ordinal only as FlushBatch.maximumTimestamp",
+  "limitations": [
+    "Physical result applies to fixed uncompressed fixture only",
+    "Default PLR/KMV approximation intentionally excluded",
+    "Values are key-deterministic; timestamp inequality alone does not imply changed current read value",
+    "Actual campaign timestamps/coverage and compressed/native writers require separate comparison"
+  ],
+  "raw_json_sha256": "922bada932a96cffb39fe3b536c027ca6969055d9f74d1c74ccf4fbc2e4726a4",
+  "raw_json_gzip": "timestamp-materialization.json.gz",
+  "raw_root": "/tmp/vcomp-timestamp-materialization-20260914-192004"
+}

@@ -1,0 +1,16 @@
+     [echo] apache-cassandra: /home/dongju/vcomp/cassandra_vcomp/build.xml
+     [echo] Compiling for Java 11...
+     [echo] git.is-available=true
+     [echo] Repository state is dirty
+     [echo]  .../vcomp/VCompNativeExactDifferentialTest.java    | 91 ++++++++++++++++++++++
+     [echo]  .../analysis/publish_cassandra_differential.py     | 31 +++++++-
+     [echo]  .../docs/cassandra-differential-debugging.md       | 10 +++
+     [echo]  .../scripts/cassandra/run_differential_oracle.sh   |  6 ++
+     [echo]  resources/report.md                                |  6 ++
+     [echo]  resources/summary.md                               |  6 ++
+     [echo]  6 files changed, 149 insertions(+), 1 deletion(-)
+     [echo] git.worktree.name=cassandra_vcomp
+     [echo] git.branch.name=Vcomp-ssh
+
+BUILD SUCCESSFUL
+Total time: 1 second

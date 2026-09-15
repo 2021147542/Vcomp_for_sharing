@@ -1,5 +1,15 @@
 # Cassandra differential debugging
 
+## Follow-up bounded diagnosis, 2026-09-14 19:13–19:20
+
+[Results and scope](../../resources/experiments/20260914-191319_cassandra_differential_preflight/results.md). Production unchanged. Same-job decomposition: native3558 → KMV3731 → inverse3728; merged bottom-K matches direct exact-union bottom-K. Exact global count alone does not restore key membership. Paper §4.2–4.3 explicitly allows approximate membership and inverse count loss.
+
+Offline CQL writer controls locate timestamp loss in the initial FlushBatch, before any compaction; 1000B values yield a −0.0946% Data.db size delta in the bounded case. Production first-flush materialization for the 100GiB key domain (only65536 writes) has −0.392% size-prediction bias, with65519 rows but occupied partitions changing9983→9897. These are not measured20–30% performance causes.
+
+CPU interventions demonstrate candidate-size/availability sensitivity, not actual native asynchronous history. The next unresolved comparison is native live/in-flight events versus virtual snapshots, followed by multi-job SST membership/shape and fixed-request hit/miss/SST-access diagnostics. Preserve the baseline and fixed seed; exact/debug controls remain test-only.
+
+The reproducible native runner now includes the first-job CPU model probe. Offline writer controls run with `bash experiments/scripts/cassandra/run_timestamp_materialization_diagnostic.sh`; they require current main classes and write only a fresh `/tmp` tree.
+
 Freeze the retained 100 GiB baseline and seed 20260909. Pause large end-to-end
 reruns while identifying the first differing field in small native/exact/model
 observations. Do not modify the production approximation algorithm to make an
@@ -61,3 +71,7 @@ patch later jobs or choose a favorable seed before this divergence is understood
 See [baseline reuse](baseline-reference.md) for rebuilding only VComp when input
 semantics remain compatible. Reader/workload/configuration changes may require
 new baseline measurements on a fresh checkpoint, without repeating its load.
+
+## Full-path follow-through (2026-09-14)
+
+The completed bounded analysis now covers matched format/target native jobs, exact writer and timestamp controls, carried native-DAG replay, actual C/E commands, and warm/Data.db-cold reads on independent copies of the retained original 100GiB states. See [the multistage diagnosis](../../resources/experiments/20260914-210336_cassandra_multistage_diagnosis/results.md). Extra partition overlap and hot-key membership are observed in the original state; do not equate total SST count with read amplification, or claim a historical first100GiB job was reconstructed. Production algorithms and the registered seed/reference remain unchanged.

@@ -1,0 +1,114 @@
+[
+  {
+    "original_path": "experiments/analysis/analyze_cassandra_native_events.py",
+    "sha256": "d950e4bf536127a09799b97e4582244dfa31e1d906fc66dd8b91278c2f96b988"
+  },
+  {
+    "original_path": "experiments/analysis/publish_experiment_bundle.py",
+    "sha256": "c36db2238393be4f7dc91a646b242a03cbc9fa1e4669f41137a9789a49a81c3a"
+  },
+  {
+    "original_path": "experiments/scripts/cassandra/run_native_event_diagnostic.sh",
+    "sha256": "63f09ec7a818ec7c896ac838a83e7dab580d8063ed630835651e1da154faae96"
+  },
+  {
+    "original_path": "experiments/scripts/cassandra/resume_native_event_replay.sh",
+    "sha256": "138ae61f2956bbe8513e8553ce8e4d269b4d90b6eeabccfc821a59e6d397a42c"
+  },
+  {
+    "original_path": "cassandra_check/test/CassandraFixedReadDiagnostic.java",
+    "sha256": "b67cdb88b93705d7875edc7f2b88201d3ec525e621355e63b0b32a324b5ffa44"
+  },
+  {
+    "original_path": "cassandra_check/src/CassandraBaselineLoad.java",
+    "sha256": "1a35682178b8b91809b6740c3a254d3d8018c4b58ffa7881f9f52727d88c66eb"
+  },
+  {
+    "original_path": "cassandra_check/src/CassandraPaperWorkload.java",
+    "sha256": "f88637bedd0ea7974fbcff48678861350e5aa7376af96d0008c1f60070309544"
+  },
+  {
+    "original_path": "cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompNativeEventDiagnosticTest.java",
+    "sha256": "c3da977e4f2e9f4bfe06c95bb46eea94fda8165cbf7331dea5821886e77e3afb"
+  },
+  {
+    "original_path": "cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/VCompNativeEventReplay.java",
+    "sha256": "c55cb1d60da622d97dfa4c0f12b7a7075b8c5efc3eb040b68b46f8fcaa93a9d9"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/UnifiedCompactionStrategy.java",
+    "sha256": "88c5dfe8c847f370b1985d69a4a554d26ebb29359900fbc7be7198dcde1e9516"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/AbstractCompactionTask.java",
+    "sha256": "401acbf43cbf523f3c5f573d4f5b9fb399777f9a01f326391ebc4baeec8f431c"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/ShardManager.java",
+    "sha256": "e583477237d34997b7623669c02188ebe0fc1035dd945be4e410675b014b2674"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/UnifiedCompactionPicker.java",
+    "sha256": "037a5f502f85dfe29cdb7987e6afd00d5aae98b5454a1f9d3485f76ff48c0dd7"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/unified/Controller.java",
+    "sha256": "314594299ef68e5e758ab0ec662fe04416bd36af0c8e343e09b3c5fe225cc176"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompPipeline.java",
+    "sha256": "6179ff085d67e9f48e787618da6687ff049f9fcd4e8285eba7e5cbb78c9ce2ae"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompUcsPlanner.java",
+    "sha256": "286cb2b52757981ecf142a7751624f196f18da9295bea73e30b5b94ce520ecf3"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/SyntheticVCompLoadSource.java",
+    "sha256": "b815aae3e01fda485d3590cd7157ed8d6601066920223bd9f19906af521e57f0"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultFlushVirtualizer.java",
+    "sha256": "e0081998143327742a929a3cb327a1a97cd961b9c5fef3c1a22b67ae503a704a"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java",
+    "sha256": "c1275d4e028fb3bf0d4e882e98138389414ed6de137196af913ac0697f472e1b"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java",
+    "sha256": "ce2e093f842a85675523b0b3abad57e60ef18fe4575bd3ecca46ad92fba83c4f"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompOrderedPartitionLayout.java",
+    "sha256": "d157ffdb9495bcfaa22a480adc22c8aaba51b014e76adb58187a631af8a83035"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/lifecycle/LifecycleTransaction.java",
+    "sha256": "334129cdb8d2e5d1ab940e90de9a6f70e7f3638764ec48854408ec749e61ddeb"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/lifecycle/Tracker.java",
+    "sha256": "0c7b5dd402000f07b3cc010f5a3495acd32f1408902ff94f2ac1865d493b1f53"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/config/DatabaseDescriptor.java",
+    "sha256": "a53ee6f121e67934454804aece5154c85e42965f5bc6ddedb750600883bb626e"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/config/CassandraRelevantProperties.java",
+    "sha256": "8a4565362feeb7c3284d85c6d339bfa631a3e2c75dbff3cf5f2df0b48414539c"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/format/big/BigFormat.java",
+    "sha256": "dae7a8a2a9f417fb598580263ab60e14cf67cb335a2f8d6e75404d31c0915efe"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/io/sstable/CQLSSTableWriter.java",
+    "sha256": "bd7a32cf9fea0f32cd2c6e5f1de8e982e50d967150f1981590708c0901a03b0f"
+  },
+  {
+    "original_path": "cassandra_vcomp/src/java/org/apache/cassandra/db/ColumnFamilyStore.java",
+    "sha256": "473e8b41f60618b8fc61de9d012ac9f27502b1196e2b10183bd12adfb2cebced"
+  }
+]

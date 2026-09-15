@@ -1,0 +1,6 @@
+{
+  "contiguous_estimate_bytes" : 67830192,
+  "measured_first_source_flush_data_bytes" : 65825595,
+  "picker_flush_size_bytes" : 66060288,
+  "timestamp_encoding" : "flat_batch_maximum"
+}

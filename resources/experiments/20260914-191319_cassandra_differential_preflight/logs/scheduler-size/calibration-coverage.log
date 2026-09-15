@@ -1,0 +1,6 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.github.jamm.utils.InjectedInvoker/0x0000000840066040 (file:/home/dongju/vcomp/cassandra_vcomp/build/lib/jars/jamm-0.4.0.jar) to field java.nio.DirectByteBuffer.att
+WARNING: Please consider reporting this to the maintainers of org.github.jamm.utils.InjectedInvoker/0x0000000840066040
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+{"diagnostic_only":true,"seed":20260909,"domain":104857600,"partition_count":10000,"scope":"Actual production load-source first 65536 keys and partition layout only; no SST write, no size error measurement","random_first_flush_attempts":65536,"random_first_flush_unique":65519,"random_first_flush_occupied_partitions":9983,"random_first_flush_scalar_range_partitions":10000,"calibration_4096_partition_count":1,"calibration_8192_partition_count":2}

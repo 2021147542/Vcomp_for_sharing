@@ -1,0 +1,28 @@
+{
+  "/tmp/vcomp-cassandra-event-replay-20260914-194611/output/materialized/vcomp_event_replay/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Data.db" : {
+    "rows" : 15901,
+    "data_db_bytes" : 16725888,
+    "on_disk_length" : 16725888,
+    "key_min" : 17102,
+    "key_max" : 104841139,
+    "min_timestamp" : 16384,
+    "max_timestamp" : 16384,
+    "first_token" : "-9219342434355759184",
+    "last_token" : "9217166378347069538",
+    "coverage" : 0.9994451453890277,
+    "occupied_partitions" : 9939
+  },
+  "/tmp/vcomp-cassandra-event-replay-20260914-194611/output/materialized/vcomp_event_replay/kv-5eadc77af1a634488364551550404c23/oa-5-big-Data.db" : {
+    "rows" : 4096,
+    "data_db_bytes" : 4347360,
+    "on_disk_length" : 4347360,
+    "key_min" : 58681,
+    "key_max" : 104822726,
+    "min_timestamp" : 20480,
+    "max_timestamp" : 20480,
+    "first_token" : "-9215770919519518667",
+    "last_token" : "9211735481420291405",
+    "coverage" : 0.9989571236694741,
+    "occupied_partitions" : 4000
+  }
+}

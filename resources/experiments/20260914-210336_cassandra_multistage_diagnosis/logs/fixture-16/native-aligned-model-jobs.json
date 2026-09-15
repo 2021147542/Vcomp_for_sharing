@@ -1,0 +1,201 @@
+[ {
+  "event_seq" : 23,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-1-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-2-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-3-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-4-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-5-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+  "exact_rows" : 231923,
+  "model_estimated_rows" : 254244,
+  "model_output" : [ {
+    "id" : "run-compaction-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 137435,
+      "bytes" : 142246131,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    }, {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 116809,
+      "bytes" : 120898085,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+}, {
+  "event_seq" : 44,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-10-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-7-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-8-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-9-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-11-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big" ],
+  "exact_rows" : 231890,
+  "model_estimated_rows" : 238810,
+  "model_output" : [ {
+    "id" : "run-compaction-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122889,
+      "bytes" : 127190926,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    }, {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115921,
+      "bytes" : 119979000,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+}, {
+  "event_seq" : 61,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-13-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-14-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-15-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-16-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-17-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big" ],
+  "exact_rows" : 232096,
+  "model_estimated_rows" : 213304,
+  "model_output" : [ {
+    "id" : "run-compaction-2",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114452,
+      "bytes" : 118458575,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    }, {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 98852,
+      "bytes" : 102312472,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+}, {
+  "event_seq" : 98,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-19-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-20-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-21-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-22-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-23-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big" ],
+  "exact_rows" : 232050,
+  "model_estimated_rows" : 217887,
+  "model_output" : [ {
+    "id" : "run-compaction-3",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-3-0",
+      "key_min" : 0,
+      "key_max" : 555757,
+      "rows" : 119035,
+      "bytes" : 123202010,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.4911774442854806
+    }, {
+      "id" : "vsst-compaction-3-1",
+      "key_min" : 555758,
+      "key_max" : 1048574,
+      "rows" : 98852,
+      "bytes" : 102312472,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+}, {
+  "event_seq" : 105,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-26-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-28-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-30-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-32-big" ],
+  "exact_rows" : 311422,
+  "model_estimated_rows" : 315644,
+  "model_output" : [ {
+    "id" : "run-compaction-4",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-0",
+      "key_min" : 555758,
+      "key_max" : 702561,
+      "rows" : 94163,
+      "bytes" : 97459326,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10729126201865968
+    }, {
+      "id" : "vsst-compaction-4-1",
+      "key_min" : 702562,
+      "key_max" : 849360,
+      "rows" : 95215,
+      "bytes" : 98548153,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.1114282648784668
+    }, {
+      "id" : "vsst-compaction-4-2",
+      "key_min" : 849361,
+      "key_max" : 943725,
+      "rows" : 63625,
+      "bytes" : 65852295,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.1112796152959663
+    }, {
+      "id" : "vsst-compaction-4-3",
+      "key_min" : 943726,
+      "key_max" : 1048575,
+      "rows" : 62641,
+      "bytes" : 64833848,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.09411199678440052
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+}, {
+  "event_seq" : 109,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-11-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-17-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-23-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-5-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-25-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-27-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-29-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-31-big" ],
+  "exact_rows" : 351463,
+  "model_estimated_rows" : 375350,
+  "model_output" : [ {
+    "id" : "run-compaction-5",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-5-0",
+      "key_min" : 0,
+      "key_max" : 136317,
+      "rows" : 90965,
+      "bytes" : 94149375,
+      "max_timestamp" : 1048574,
+      "coverage" : 0.10895937605618339
+    }, {
+      "id" : "vsst-compaction-5-1",
+      "key_min" : 136318,
+      "key_max" : 272635,
+      "rows" : 93322,
+      "bytes" : 96588886,
+      "max_timestamp" : 1048574,
+      "coverage" : 0.09451471420750313
+    }, {
+      "id" : "vsst-compaction-5-2",
+      "key_min" : 272636,
+      "key_max" : 408953,
+      "rows" : 92509,
+      "bytes" : 95747425,
+      "max_timestamp" : 1048574,
+      "coverage" : 0.10873970836223945
+    }, {
+      "id" : "vsst-compaction-5-3",
+      "key_min" : 408954,
+      "key_max" : 555756,
+      "rows" : 98554,
+      "bytes" : 102004040,
+      "max_timestamp" : 1048574,
+      "coverage" : 0.10992868746976486
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+} ]

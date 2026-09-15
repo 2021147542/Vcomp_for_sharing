@@ -1,0 +1,5 @@
+# Preserved baseline and corrected VComp, 120-second workloads
+
+The baseline loading metrics are historical; its DB is preserved. VComp was loaded once with the same fixed seed and input definition. All fourteen workload measurements are new, each 120 seconds and 48 threads, in predetermined A–F/MixGraph order, baseline then VComp. Each cell uses a fresh independent checkpoint. Native chunk cache is 5% of logical data with a 20 GiB process-group limit and no swap; additional OS cache means this is not identical to the paper cache implementation. Time-based cells can complete different operation counts, so disk bytes describe the two-minute interval and must not be interpreted as equal-operation I/O. All measured results are retained without selecting seeds or choosing favorable repetitions.
+
+Raw artifacts: `/work/vcomp-pebble-1tb/cassandra-reference-100g-120s-20260915-101514`. Logs above 20 MiB and database files remain there. Source/runtime copies and hashes are in `campaign-control/`.

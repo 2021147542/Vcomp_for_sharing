@@ -1,0 +1,130 @@
+{
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-CRC.db" : {
+    "bytes" : 792,
+    "mtime" : "2026-09-14T11:59:32.095169Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Data.db" : {
+    "bytes" : 12901383,
+    "mtime" : "2026-09-14T11:59:32.07117Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Digest.crc32" : {
+    "bytes" : 10,
+    "mtime" : "2026-09-14T11:59:32.095169Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Filter.db" : {
+    "bytes" : 16,
+    "mtime" : "2026-09-14T11:59:32.06717Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Index.db" : {
+    "bytes" : 203885,
+    "mtime" : "2026-09-14T11:59:32.06717Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Statistics.db" : {
+    "bytes" : 4978,
+    "mtime" : "2026-09-14T11:59:32.099169Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Summary.db" : {
+    "bytes" : 116,
+    "mtime" : "2026-09-14T11:59:32.07117Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-TOC.txt" : {
+    "bytes" : 80,
+    "mtime" : "2026-09-14T11:59:32.103169Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-CRC.db" : {
+    "bytes" : 252,
+    "mtime" : "2026-09-14T11:59:32.131168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Data.db" : {
+    "bytes" : 3998313,
+    "mtime" : "2026-09-14T11:59:32.123168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Digest.crc32" : {
+    "bytes" : 10,
+    "mtime" : "2026-09-14T11:59:32.131168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Filter.db" : {
+    "bytes" : 16,
+    "mtime" : "2026-09-14T11:59:32.119168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Index.db" : {
+    "bytes" : 62974,
+    "mtime" : "2026-09-14T11:59:32.119168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Statistics.db" : {
+    "bytes" : 4978,
+    "mtime" : "2026-09-14T11:59:32.135168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Summary.db" : {
+    "bytes" : 116,
+    "mtime" : "2026-09-14T11:59:32.123168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-TOC.txt" : {
+    "bytes" : 80,
+    "mtime" : "2026-09-14T11:59:32.139168Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-CRC.db" : {
+    "bytes" : 824,
+    "mtime" : "2026-09-14T11:59:31.319186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Data.db" : {
+    "bytes" : 13320919,
+    "mtime" : "2026-09-14T11:59:31.287187Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Digest.crc32" : {
+    "bytes" : 10,
+    "mtime" : "2026-09-14T11:59:31.315186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Filter.db" : {
+    "bytes" : 16,
+    "mtime" : "2026-09-14T11:59:31.315186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Index.db" : {
+    "bytes" : 210353,
+    "mtime" : "2026-09-14T11:59:31.311186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Statistics.db" : {
+    "bytes" : 5002,
+    "mtime" : "2026-09-14T11:59:31.323186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Summary.db" : {
+    "bytes" : 116,
+    "mtime" : "2026-09-14T11:59:31.315186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-TOC.txt" : {
+    "bytes" : 80,
+    "mtime" : "2026-09-14T11:59:31.323186Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-CRC.db" : {
+    "bytes" : 252,
+    "mtime" : "2026-09-14T11:59:31.271187Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Data.db" : {
+    "bytes" : 4002056,
+    "mtime" : "2026-09-14T11:59:31.259188Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Digest.crc32" : {
+    "bytes" : 10,
+    "mtime" : "2026-09-14T11:59:31.271187Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Filter.db" : {
+    "bytes" : 16,
+    "mtime" : "2026-09-14T11:59:31.255188Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Index.db" : {
+    "bytes" : 63039,
+    "mtime" : "2026-09-14T11:59:31.259188Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Statistics.db" : {
+    "bytes" : 5002,
+    "mtime" : "2026-09-14T11:59:31.275187Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Summary.db" : {
+    "bytes" : 116,
+    "mtime" : "2026-09-14T11:59:31.259188Z"
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-TOC.txt" : {
+    "bytes" : 80,
+    "mtime" : "2026-09-14T11:59:31.275187Z"
+  }
+}

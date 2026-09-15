@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "native_event_seq": 2,
+    "flush": "F1",
+    "field": "Data.db bytes vs estimated_bytes",
+    "native_bytes": 4371806,
+    "virtual_estimated_bytes": 4239387,
+    "delta_percent": -3.0289312929256185,
+    "scope": "first substantive picker-size metadata difference; coverage has roundoff differences; timestamp collapse already established"
+  },
+  "availability": {
+    "native_event_seq": 19,
+    "confirmed_native_picker_seq": 20,
+    "virtual_event_seq": 5,
+    "flush": "F5",
+    "field": "eligible input identities / prior job output availability",
+    "native_eligible": [
+      "F5"
+    ],
+    "native_inflight": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "virtual_eligible": [
+      "J1.0",
+      "F5"
+    ],
+    "native_selected": [],
+    "virtual_selected": [],
+    "scope": "first differing equivalent pre-pick flush boundary; no selected input-set divergence"
+  },
+  "policy": {
+    "checked_native_snapshots": 12,
+    "initial_empty_not_applicable": 2,
+    "shared_kernel_matches": true,
+    "measured_vcomp_matches": true,
+    "predicted_size_matches": true,
+    "selected_set_difference_observed": false
+  }
+}

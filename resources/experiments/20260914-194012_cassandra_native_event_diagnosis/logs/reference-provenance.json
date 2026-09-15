@@ -1,0 +1,5 @@
+{
+  "reference_manifest": "resources/experiments/20260914-152956_cassandra_100g_organized_resume/logs/baseline-reference/reference.json",
+  "sha256": "8daf8fcfdf7d116bc5bf3473424ac687c9752cf7f1bd0643993399dc34e0e619",
+  "scope": "read small manifest only; no canonical DB/checkpoint opened, no stat/hash rerun"
+}

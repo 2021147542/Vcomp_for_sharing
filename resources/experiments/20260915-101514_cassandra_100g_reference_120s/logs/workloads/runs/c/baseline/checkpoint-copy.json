@@ -1,0 +1,7 @@
+{
+  "source": "/work/vcomp-pebble-1tb/cassandra-comprehensive-100g-20260914-141045/baseline/cassandra-baseline-fidelity-100g-20260914-141045-baseline-20260914-141052/data/data",
+  "method": "independent_copy_reflink_auto",
+  "files": 1809,
+  "bytes": 87990959745,
+  "source_inodes_shared": false
+}

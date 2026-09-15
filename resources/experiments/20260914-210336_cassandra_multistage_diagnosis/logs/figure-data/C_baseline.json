@@ -1,0 +1,20 @@
+{
+  "classification": "DERIVED local engine diagnostic; all four fixed ABBA measured rounds pooled; not paper workload benchmark",
+  "source_files": [
+    "logs/checkpoint-100g-cold/point-C/actual-read-native-measured_1.json",
+    "logs/checkpoint-100g-cold/point-C/actual-read-native-measured_2.json",
+    "logs/checkpoint-100g-cold/point-C/actual-read-native-measured_3.json",
+    "logs/checkpoint-100g-cold/point-C/actual-read-native-measured_4.json"
+  ],
+  "throughput_ops_per_second": 1674.2798697717324,
+  "operations": 4000,
+  "wall_seconds": 2.389086838,
+  "disk_read_bytes": 2278735872,
+  "disk_bytes_scope": "Sum Linux process read_bytes, not device-wide diskstats; four matched cold-start phases",
+  "measurement_mode": "single_thread_local_commands_fixed_trace_with_best_effort_Data_db_eviction",
+  "generator_version": "reference-streams-v3; one worker, seed20260909; E skips 53/1000 write decisions on frozen states",
+  "point_lookup_latency_p50_us": 555.565,
+  "point_lookup_latency_p95_us": 986.788,
+  "point_lookup_latency_p99_us": 3003.225,
+  "point_reads": 4000
+}

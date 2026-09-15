@@ -1,0 +1,1 @@
+/tmp/vcomp-cassandra-workload.ezGX4f.log

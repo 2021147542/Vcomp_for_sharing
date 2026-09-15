@@ -1,0 +1,20 @@
+{
+  "classification": "DERIVED local engine diagnostic; all four fixed ABBA measured rounds pooled; not paper workload benchmark",
+  "source_files": [
+    "logs/checkpoint-100g-cold/scan-E/actual-scan-vcomp-measured_1.json",
+    "logs/checkpoint-100g-cold/scan-E/actual-scan-vcomp-measured_2.json",
+    "logs/checkpoint-100g-cold/scan-E/actual-scan-vcomp-measured_3.json",
+    "logs/checkpoint-100g-cold/scan-E/actual-scan-vcomp-measured_4.json"
+  ],
+  "throughput_ops_per_second": 1058.4604600510204,
+  "operations": 3788,
+  "wall_seconds": 3.578782716,
+  "disk_read_bytes": 3676438528,
+  "disk_bytes_scope": "Sum Linux process read_bytes, not device-wide diskstats; four matched cold-start phases",
+  "measurement_mode": "single_thread_local_commands_fixed_trace_with_best_effort_Data_db_eviction",
+  "generator_version": "reference-streams-v3; one worker, seed20260909; E skips 53/1000 write decisions on frozen states",
+  "scan_latency_p50_us": 974.896,
+  "scan_latency_p95_us": 1497.329,
+  "scan_latency_p99_us": 3351.904,
+  "scans": 3788
+}

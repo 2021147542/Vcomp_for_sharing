@@ -1,0 +1,1 @@
+{"seed":20260909,"input":"/tmp/vcomp-cassandra-native-event-20260914-210336/output","lanes":[[512,8],[512,0],[4096,8],[4096,0]],"diagnostic_only":true,"scope":"All four predeclared CPU native-DAG lanes retained; no favorable production parameter selection"}

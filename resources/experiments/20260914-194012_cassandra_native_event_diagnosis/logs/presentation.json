@@ -1,0 +1,28 @@
+{
+  "fidelity_summary": null,
+  "status": {
+    "status": "complete",
+    "phase": "bounded_diagnostic_analysis",
+    "diagnostic_only": "true",
+    "performance_measured": "false",
+    "native_cases": "1",
+    "native_postprocess_failure_retained": "true"
+  },
+  "bundle": "20260914-194012_cassandra_native_event_diagnosis",
+  "audit_only": true,
+  "loading": [],
+  "workloads": [],
+  "presentation": {},
+  "notes": [
+    "Audit/qualification bundle: nested pilot and historical comparison measurements are not promoted to primary results."
+  ],
+  "physical_io_latency": null,
+  "physical_io_latency_note": "Physical disk I/O latency and write-only latency were not measured. E uses scan latency; other workloads use client point-lookup latency.",
+  "device_latency_available": false,
+  "device_latency_note": "Device-layer averages = diskstats accumulated milliseconds / completed requests; includes all processes and in-flight boundary effects. Not NVMe physical latency percentiles.",
+  "units": {
+    "volume": "GB = 10^9 bytes",
+    "client_latency": "microseconds",
+    "device_average_latency": "milliseconds"
+  }
+}

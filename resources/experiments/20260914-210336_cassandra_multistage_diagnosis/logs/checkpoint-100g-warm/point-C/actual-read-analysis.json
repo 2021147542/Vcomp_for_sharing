@@ -1,0 +1,1368 @@
+{
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "seed": 20260909,
+  "domain": 104857600,
+  "requests_per_round_per_side": 1000,
+  "actual_requests_excluding_warmup": 8000,
+  "classification": "All four pre-fixed paired rounds, no selected passes; same-request hit groups computed after execution",
+  "limitations": "Actual engine local read path; one thread, cache policy reported separately, no CQL transport or contention; bounded read-only diagnostic, not full workload campaign SST histogram counts merged SST iterators, not physical disk operations. Bloom is partition-level. Chunk counters are process-global deltas. Linux process read_bytes delta is attributed storage reads under warm OS cache and can be zero; rchar includes logical syscall bytes and instrumentation. Physical I/O latency is not measured.",
+  "cache_eviction_requested": false,
+  "eviction_scope": "Optional before each phase: invalidate Cassandra chunk-cache entries and best-effort POSIX_FADV_DONTNEED on this side fixture/checkpoint Data.db files only; index/key cache unchanged, no global cache drop",
+  "histogram_note": "SSTablesPerReadHistogram records merged SST iterators. Bucket-upper mean is exact for singleton buckets and an upper-bound approximation otherwise; not candidate count or device I/O count.",
+  "unique_requested_keys": 832,
+  "unique_key_membership": {
+    "both_hit": 354,
+    "native_only_hit": 165,
+    "vcomp_only_hit": 213,
+    "both_miss": 100
+  },
+  "most_frequent_requests": [
+    {
+      "key": 8808170,
+      "requests_per_phase": 42,
+      "membership": "vcomp_only_hit"
+    },
+    {
+      "key": 48152884,
+      "requests_per_phase": 21,
+      "membership": "vcomp_only_hit"
+    },
+    {
+      "key": 20091919,
+      "requests_per_phase": 20,
+      "membership": "vcomp_only_hit"
+    },
+    {
+      "key": 38761928,
+      "requests_per_phase": 11,
+      "membership": "native_only_hit"
+    },
+    {
+      "key": 76213849,
+      "requests_per_phase": 9,
+      "membership": "vcomp_only_hit"
+    },
+    {
+      "key": 10700963,
+      "requests_per_phase": 8,
+      "membership": "vcomp_only_hit"
+    },
+    {
+      "key": 104274814,
+      "requests_per_phase": 7,
+      "membership": "vcomp_only_hit"
+    },
+    {
+      "key": 94883858,
+      "requests_per_phase": 6,
+      "membership": "both_hit"
+    },
+    {
+      "key": 66822893,
+      "requests_per_phase": 5,
+      "membership": "both_hit"
+    },
+    {
+      "key": 76101946,
+      "requests_per_phase": 5,
+      "membership": "vcomp_only_hit"
+    }
+  ],
+  "paired_request_membership": {
+    "both_hit": 383,
+    "native_only_hit": 190,
+    "vcomp_only_hit": 323,
+    "both_miss": 104
+  },
+  "native_sstables": 204,
+  "vcomp_sstables": 186,
+  "rounds": [
+    {
+      "same_key_timestamp_differences": 383,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "sum": 3540,
+            "mean": 3.54,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 1000,
+            "sum": 3840,
+            "mean": 3.84,
+            "max": 6
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "sum": 1236,
+            "mean": 3.227154046997389,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 383,
+            "sum": 1445,
+            "mean": 3.772845953002611,
+            "max": 6
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "sum": 596,
+            "mean": 3.136842105263158,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 190,
+            "sum": 829,
+            "mean": 4.363157894736842,
+            "max": 6
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "sum": 1292,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 323,
+            "sum": 1113,
+            "mean": 3.4458204334365323,
+            "max": 6
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "sum": 416,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 104,
+            "sum": 453,
+            "mean": 4.355769230769231,
+            "max": 6
+          }
+        }
+      },
+      "round": 1,
+      "first": "native",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_1",
+          "requests": 1000,
+          "hits": 573,
+          "misses": 427,
+          "elapsed_ns_including_command_setup": 29459983,
+          "ops_per_second_including_setup": 33944.35088438442,
+          "command_latency_ns": {
+            "p50": 28543,
+            "p95": 41989,
+            "p99": 49021,
+            "mean": 27938.049
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.54,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3540,
+            0,
+            0,
+            3540,
+            3540,
+            6975,
+            6975,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 22,
+            "2": 135,
+            "3": 124,
+            "4": 719
+          },
+          "sst_per_request_bucket_upper_mean": 3.54,
+          "counters": {
+            "bloom_true_positive": 3540,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3540,
+            "key_cache_hits": 3540,
+            "chunk_cache_requests": 6975,
+            "chunk_cache_hits": 6975,
+            "chunk_cache_misses": 0
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_1",
+          "requests": 1000,
+          "hits": 706,
+          "misses": 294,
+          "elapsed_ns_including_command_setup": 26649066,
+          "ops_per_second_including_setup": 37524.76728452697,
+          "command_latency_ns": {
+            "p50": 25898,
+            "p95": 36478,
+            "p99": 40145,
+            "mean": 25171.415
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.84,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3840,
+            0,
+            0,
+            3840,
+            3840,
+            7191,
+            7191,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 61,
+            "2": 91,
+            "3": 83,
+            "4": 564,
+            "5": 114,
+            "6": 87
+          },
+          "sst_per_request_bucket_upper_mean": 3.84,
+          "counters": {
+            "bloom_true_positive": 3840,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3840,
+            "key_cache_hits": 3840,
+            "chunk_cache_requests": 7191,
+            "chunk_cache_hits": 7191,
+            "chunk_cache_misses": 0
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "mean_us": 27.938049,
+            "p50_us": 28.543,
+            "p95_us": 41.989,
+            "p99_us": 49.021
+          },
+          "vcomp": {
+            "count": 1000,
+            "mean_us": 25.171415,
+            "p50_us": 25.898,
+            "p95_us": 36.478,
+            "p99_us": 40.145
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "mean_us": 29.521454308093993,
+            "p50_us": 28.924,
+            "p95_us": 45.205,
+            "p99_us": 51.626
+          },
+          "vcomp": {
+            "count": 383,
+            "mean_us": 26.568104438642298,
+            "p50_us": 27.702,
+            "p95_us": 37.73,
+            "p99_us": 40.605
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "mean_us": 28.077842105263155,
+            "p50_us": 27.933,
+            "p95_us": 41.727,
+            "p99_us": 46.937
+          },
+          "vcomp": {
+            "count": 190,
+            "mean_us": 25.265715789473685,
+            "p50_us": 25.448,
+            "p95_us": 35.175,
+            "p99_us": 38.662
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "mean_us": 25.123402476780186,
+            "p50_us": 26.981,
+            "p95_us": 39.934,
+            "p99_us": 43.251
+          },
+          "vcomp": {
+            "count": 323,
+            "mean_us": 22.96298452012384,
+            "p50_us": 23.163,
+            "p95_us": 35.947,
+            "p99_us": 39.844
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "mean_us": 30.59310576923077,
+            "p50_us": 30.567,
+            "p95_us": 39.093,
+            "p99_us": 41.617
+          },
+          "vcomp": {
+            "count": 104,
+            "mean_us": 26.714432692307692,
+            "p50_us": 26.459,
+            "p95_us": 34.194,
+            "p99_us": 38.902
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 383,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "sum": 3540,
+            "mean": 3.54,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 1000,
+            "sum": 3840,
+            "mean": 3.84,
+            "max": 6
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "sum": 1236,
+            "mean": 3.227154046997389,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 383,
+            "sum": 1445,
+            "mean": 3.772845953002611,
+            "max": 6
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "sum": 596,
+            "mean": 3.136842105263158,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 190,
+            "sum": 829,
+            "mean": 4.363157894736842,
+            "max": 6
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "sum": 1292,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 323,
+            "sum": 1113,
+            "mean": 3.4458204334365323,
+            "max": 6
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "sum": 416,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 104,
+            "sum": 453,
+            "mean": 4.355769230769231,
+            "max": 6
+          }
+        }
+      },
+      "round": 2,
+      "first": "vcomp",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_2",
+          "requests": 1000,
+          "hits": 573,
+          "misses": 427,
+          "elapsed_ns_including_command_setup": 26164574,
+          "ops_per_second_including_setup": 38219.617105174344,
+          "command_latency_ns": {
+            "p50": 25458,
+            "p95": 37530,
+            "p99": 42359,
+            "mean": 24783.105
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.54,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3540,
+            0,
+            0,
+            3540,
+            3540,
+            6975,
+            6975,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 22,
+            "2": 135,
+            "3": 124,
+            "4": 719
+          },
+          "sst_per_request_bucket_upper_mean": 3.54,
+          "counters": {
+            "bloom_true_positive": 3540,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3540,
+            "key_cache_hits": 3540,
+            "chunk_cache_requests": 6975,
+            "chunk_cache_hits": 6975,
+            "chunk_cache_misses": 0
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_2",
+          "requests": 1000,
+          "hits": 706,
+          "misses": 294,
+          "elapsed_ns_including_command_setup": 25331411,
+          "ops_per_second_including_setup": 39476.67976331836,
+          "command_latency_ns": {
+            "p50": 24285,
+            "p95": 34805,
+            "p99": 38862,
+            "mean": 23738.287
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.84,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3840,
+            0,
+            0,
+            3840,
+            3840,
+            7191,
+            7191,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 61,
+            "2": 91,
+            "3": 83,
+            "4": 564,
+            "5": 114,
+            "6": 87
+          },
+          "sst_per_request_bucket_upper_mean": 3.84,
+          "counters": {
+            "bloom_true_positive": 3840,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3840,
+            "key_cache_hits": 3840,
+            "chunk_cache_requests": 7191,
+            "chunk_cache_hits": 7191,
+            "chunk_cache_misses": 0
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "mean_us": 24.783105,
+            "p50_us": 25.458,
+            "p95_us": 37.53,
+            "p99_us": 42.359
+          },
+          "vcomp": {
+            "count": 1000,
+            "mean_us": 23.738287,
+            "p50_us": 24.285,
+            "p95_us": 34.805,
+            "p99_us": 38.862
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "mean_us": 25.616109660574413,
+            "p50_us": 25.448,
+            "p95_us": 39.694,
+            "p99_us": 43.2
+          },
+          "vcomp": {
+            "count": 383,
+            "mean_us": 25.032809399477806,
+            "p50_us": 25.618,
+            "p95_us": 36.328,
+            "p99_us": 40.706
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "mean_us": 24.841389473684213,
+            "p50_us": 25.568,
+            "p95_us": 39.473,
+            "p99_us": 43.951
+          },
+          "vcomp": {
+            "count": 190,
+            "mean_us": 23.64817894736842,
+            "p50_us": 24.195,
+            "p95_us": 33.051,
+            "p99_us": 37.44
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "mean_us": 22.754374613003097,
+            "p50_us": 23.785,
+            "p95_us": 34.865,
+            "p99_us": 39.162
+          },
+          "vcomp": {
+            "count": 323,
+            "mean_us": 21.843482972136222,
+            "p50_us": 21.3,
+            "p95_us": 34.254,
+            "p99_us": 40.445
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "mean_us": 27.909692307692307,
+            "p50_us": 28.133,
+            "p95_us": 36.348,
+            "p99_us": 38.673
+          },
+          "vcomp": {
+            "count": 104,
+            "mean_us": 25.020403846153847,
+            "p50_us": 24.526,
+            "p95_us": 32.561,
+            "p99_us": 35.697
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 383,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "sum": 3540,
+            "mean": 3.54,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 1000,
+            "sum": 3840,
+            "mean": 3.84,
+            "max": 6
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "sum": 1236,
+            "mean": 3.227154046997389,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 383,
+            "sum": 1445,
+            "mean": 3.772845953002611,
+            "max": 6
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "sum": 596,
+            "mean": 3.136842105263158,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 190,
+            "sum": 829,
+            "mean": 4.363157894736842,
+            "max": 6
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "sum": 1292,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 323,
+            "sum": 1113,
+            "mean": 3.4458204334365323,
+            "max": 6
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "sum": 416,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 104,
+            "sum": 453,
+            "mean": 4.355769230769231,
+            "max": 6
+          }
+        }
+      },
+      "round": 3,
+      "first": "vcomp",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_3",
+          "requests": 1000,
+          "hits": 573,
+          "misses": 427,
+          "elapsed_ns_including_command_setup": 25981302,
+          "ops_per_second_including_setup": 38489.21813079267,
+          "command_latency_ns": {
+            "p50": 25557,
+            "p95": 36257,
+            "p99": 42469,
+            "mean": 24871.877
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.54,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3540,
+            0,
+            0,
+            3540,
+            3540,
+            6975,
+            6975,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 22,
+            "2": 135,
+            "3": 124,
+            "4": 719
+          },
+          "sst_per_request_bucket_upper_mean": 3.54,
+          "counters": {
+            "bloom_true_positive": 3540,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3540,
+            "key_cache_hits": 3540,
+            "chunk_cache_requests": 6975,
+            "chunk_cache_hits": 6975,
+            "chunk_cache_misses": 0
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_3",
+          "requests": 1000,
+          "hits": 706,
+          "misses": 294,
+          "elapsed_ns_including_command_setup": 24556989,
+          "ops_per_second_including_setup": 40721.60475374241,
+          "command_latency_ns": {
+            "p50": 23544,
+            "p95": 34254,
+            "p99": 42269,
+            "mean": 23248.518
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.84,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3840,
+            0,
+            0,
+            3840,
+            3840,
+            7191,
+            7191,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 61,
+            "2": 91,
+            "3": 83,
+            "4": 564,
+            "5": 114,
+            "6": 87
+          },
+          "sst_per_request_bucket_upper_mean": 3.84,
+          "counters": {
+            "bloom_true_positive": 3840,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3840,
+            "key_cache_hits": 3840,
+            "chunk_cache_requests": 7191,
+            "chunk_cache_hits": 7191,
+            "chunk_cache_misses": 0
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "mean_us": 24.871877,
+            "p50_us": 25.557,
+            "p95_us": 36.257,
+            "p99_us": 42.469
+          },
+          "vcomp": {
+            "count": 1000,
+            "mean_us": 23.248518,
+            "p50_us": 23.544,
+            "p95_us": 34.254,
+            "p99_us": 42.269
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "mean_us": 25.756566579634466,
+            "p50_us": 25.468,
+            "p95_us": 38.692,
+            "p99_us": 44.723
+          },
+          "vcomp": {
+            "count": 383,
+            "mean_us": 24.304647519582247,
+            "p50_us": 24.846,
+            "p95_us": 34.404,
+            "p99_us": 46.937
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "mean_us": 24.716742105263158,
+            "p50_us": 25.758,
+            "p95_us": 37.11,
+            "p99_us": 42.99
+          },
+          "vcomp": {
+            "count": 190,
+            "mean_us": 23.68291052631579,
+            "p50_us": 23.664,
+            "p95_us": 33.432,
+            "p99_us": 43.37
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "mean_us": 23.05929411764706,
+            "p50_us": 24.375,
+            "p95_us": 34.284,
+            "p99_us": 39.593
+          },
+          "vcomp": {
+            "count": 323,
+            "mean_us": 21.342470588235294,
+            "p50_us": 20.909,
+            "p95_us": 34.334,
+            "p99_us": 40.244
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "mean_us": 27.526721153846154,
+            "p50_us": 27.892,
+            "p95_us": 35.566,
+            "p99_us": 36.258
+          },
+          "vcomp": {
+            "count": 104,
+            "mean_us": 24.485259615384617,
+            "p50_us": 24.205,
+            "p95_us": 32.16,
+            "p99_us": 34.915
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 383,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "sum": 3540,
+            "mean": 3.54,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 1000,
+            "sum": 3840,
+            "mean": 3.84,
+            "max": 6
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "sum": 1236,
+            "mean": 3.227154046997389,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 383,
+            "sum": 1445,
+            "mean": 3.772845953002611,
+            "max": 6
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "sum": 596,
+            "mean": 3.136842105263158,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 190,
+            "sum": 829,
+            "mean": 4.363157894736842,
+            "max": 6
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "sum": 1292,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 323,
+            "sum": 1113,
+            "mean": 3.4458204334365323,
+            "max": 6
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "sum": 416,
+            "mean": 4.0,
+            "max": 4
+          },
+          "vcomp": {
+            "count": 104,
+            "sum": 453,
+            "mean": 4.355769230769231,
+            "max": 6
+          }
+        }
+      },
+      "round": 4,
+      "first": "native",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_4",
+          "requests": 1000,
+          "hits": 573,
+          "misses": 427,
+          "elapsed_ns_including_command_setup": 23969084,
+          "ops_per_second_including_setup": 41720.40950751393,
+          "command_latency_ns": {
+            "p50": 23294,
+            "p95": 34144,
+            "p99": 39193,
+            "mean": 22882.98
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.54,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3540,
+            0,
+            0,
+            3540,
+            3540,
+            6975,
+            6975,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 22,
+            "2": 135,
+            "3": 124,
+            "4": 719
+          },
+          "sst_per_request_bucket_upper_mean": 3.54,
+          "counters": {
+            "bloom_true_positive": 3540,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3540,
+            "key_cache_hits": 3540,
+            "chunk_cache_requests": 6975,
+            "chunk_cache_hits": 6975,
+            "chunk_cache_misses": 0
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_4",
+          "requests": 1000,
+          "hits": 706,
+          "misses": 294,
+          "elapsed_ns_including_command_setup": 23800631,
+          "ops_per_second_including_setup": 42015.69277722091,
+          "command_latency_ns": {
+            "p50": 23083,
+            "p95": 33593,
+            "p99": 37169,
+            "mean": 22673.977
+          },
+          "sst_histogram_count": 1000,
+          "sst_histogram_decaying_mean": 3.84,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            3840,
+            0,
+            0,
+            3840,
+            3840,
+            7191,
+            7191,
+            0
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 134,
+            "syscr": 3,
+            "read_bytes": 0
+          },
+          "best_effort_data_cache_eviction_paths": [],
+          "sst_histogram_nonzero_buckets": {
+            "1": 61,
+            "2": 91,
+            "3": 83,
+            "4": 564,
+            "5": 114,
+            "6": 87
+          },
+          "sst_per_request_bucket_upper_mean": 3.84,
+          "counters": {
+            "bloom_true_positive": 3840,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 3840,
+            "key_cache_hits": 3840,
+            "chunk_cache_requests": 7191,
+            "chunk_cache_hits": 7191,
+            "chunk_cache_misses": 0
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 1000,
+            "mean_us": 22.88298,
+            "p50_us": 23.294,
+            "p95_us": 34.144,
+            "p99_us": 39.193
+          },
+          "vcomp": {
+            "count": 1000,
+            "mean_us": 22.673977,
+            "p50_us": 23.083,
+            "p95_us": 33.593,
+            "p99_us": 37.169
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 383,
+            "mean_us": 23.698913838120106,
+            "p50_us": 23.263,
+            "p95_us": 35.877,
+            "p99_us": 41.397
+          },
+          "vcomp": {
+            "count": 383,
+            "mean_us": 23.380475195822456,
+            "p50_us": 24.095,
+            "p95_us": 34.264,
+            "p99_us": 37.27
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 190,
+            "mean_us": 22.833905263157895,
+            "p50_us": 23.354,
+            "p95_us": 34.865,
+            "p99_us": 39.493
+          },
+          "vcomp": {
+            "count": 190,
+            "mean_us": 22.854763157894737,
+            "p50_us": 23.233,
+            "p95_us": 31.329,
+            "p99_us": 35.857
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 323,
+            "mean_us": 21.238278637770897,
+            "p50_us": 21.921,
+            "p95_us": 31.609,
+            "p99_us": 34.153
+          },
+          "vcomp": {
+            "count": 323,
+            "mean_us": 21.338749226006193,
+            "p50_us": 20.548,
+            "p95_us": 34.204,
+            "p99_us": 40.595
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 104,
+            "mean_us": 25.075865384615383,
+            "p50_us": 25.287,
+            "p95_us": 31.869,
+            "p99_us": 36.649
+          },
+          "vcomp": {
+            "count": 104,
+            "mean_us": 23.88878846153846,
+            "p50_us": 23.954,
+            "p95_us": 30.867,
+            "p99_us": 33.593
+          }
+        }
+      }
+    }
+  ],
+  "all_rounds_sst_groups": {
+    "all": {
+      "native": {
+        "count": 4000,
+        "sum": 14160,
+        "mean": 3.54,
+        "max": 4
+      },
+      "vcomp": {
+        "count": 4000,
+        "sum": 15360,
+        "mean": 3.84,
+        "max": 6
+      }
+    },
+    "both_hit": {
+      "native": {
+        "count": 1532,
+        "sum": 4944,
+        "mean": 3.227154046997389,
+        "max": 4
+      },
+      "vcomp": {
+        "count": 1532,
+        "sum": 5780,
+        "mean": 3.772845953002611,
+        "max": 6
+      }
+    },
+    "native_only_hit": {
+      "native": {
+        "count": 760,
+        "sum": 2384,
+        "mean": 3.136842105263158,
+        "max": 4
+      },
+      "vcomp": {
+        "count": 760,
+        "sum": 3316,
+        "mean": 4.363157894736842,
+        "max": 6
+      }
+    },
+    "vcomp_only_hit": {
+      "native": {
+        "count": 1292,
+        "sum": 5168,
+        "mean": 4.0,
+        "max": 4
+      },
+      "vcomp": {
+        "count": 1292,
+        "sum": 4452,
+        "mean": 3.4458204334365323,
+        "max": 6
+      }
+    },
+    "both_miss": {
+      "native": {
+        "count": 416,
+        "sum": 1664,
+        "mean": 4.0,
+        "max": 4
+      },
+      "vcomp": {
+        "count": 416,
+        "sum": 1812,
+        "mean": 4.355769230769231,
+        "max": 6
+      }
+    }
+  },
+  "all_rounds_latency_groups": {
+    "all": {
+      "native": {
+        "count": 4000,
+        "mean_us": 25.11900275,
+        "p50_us": 25.558,
+        "p95_us": 38.552,
+        "p99_us": 44.422
+      },
+      "vcomp": {
+        "count": 4000,
+        "mean_us": 23.70804925,
+        "p50_us": 24.034,
+        "p95_us": 34.915,
+        "p99_us": 39.955
+      }
+    },
+    "both_hit": {
+      "native": {
+        "count": 1532,
+        "mean_us": 26.148261096605744,
+        "p50_us": 25.718,
+        "p95_us": 40.255,
+        "p99_us": 47.127
+      },
+      "vcomp": {
+        "count": 1532,
+        "mean_us": 24.8215091383812,
+        "p50_us": 25.477,
+        "p95_us": 35.957,
+        "p99_us": 40.686
+      }
+    },
+    "native_only_hit": {
+      "native": {
+        "count": 760,
+        "mean_us": 25.117469736842104,
+        "p50_us": 25.758,
+        "p95_us": 39.794,
+        "p99_us": 43.18
+      },
+      "vcomp": {
+        "count": 760,
+        "mean_us": 23.86289210526316,
+        "p50_us": 24.075,
+        "p95_us": 33.423,
+        "p99_us": 37.51
+      }
+    },
+    "vcomp_only_hit": {
+      "native": {
+        "count": 1292,
+        "mean_us": 23.04383746130031,
+        "p50_us": 23.795,
+        "p95_us": 35.576,
+        "p99_us": 41.478
+      },
+      "vcomp": {
+        "count": 1292,
+        "mean_us": 21.87192182662539,
+        "p50_us": 21.319,
+        "p95_us": 35.075,
+        "p99_us": 40.445
+      }
+    },
+    "both_miss": {
+      "native": {
+        "count": 416,
+        "mean_us": 27.776346153846152,
+        "p50_us": 27.942,
+        "p95_us": 36.348,
+        "p99_us": 40.235
+      },
+      "vcomp": {
+        "count": 416,
+        "mean_us": 25.027221153846153,
+        "p50_us": 24.595,
+        "p95_us": 33.382,
+        "p99_us": 36.849
+      }
+    }
+  }
+}

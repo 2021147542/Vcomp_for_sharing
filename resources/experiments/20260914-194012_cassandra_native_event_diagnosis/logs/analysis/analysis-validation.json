@@ -1,0 +1,14 @@
+{
+  "native_events": 28,
+  "native_flushes": 5,
+  "native_jobs": 1,
+  "native_final_exact_rows": 20478,
+  "requests": 10000,
+  "performance_measured": false,
+  "first_availability_boundary": {
+    "native_event_seq": 19,
+    "confirmed_picker_seq": 20,
+    "field": "eligible input identities / prior job output availability"
+  },
+  "note": "Corresponding virtual F5, earlier flush boundaries, and12 same-snapshot set/level controls validated. Fixture-specific assertions are evidence validation, not production tests."
+}

@@ -1,0 +1,49 @@
+Total number of tables: 1
+----------------
+Keyspace: baseline_100g
+	Read Count: 3725256
+	Read Latency: 0.9014669858930501 ms
+	Write Count: 0
+	Write Latency: NaN ms
+	Pending Flushes: 0
+		Table: kv
+		SSTable count: 204
+		Old SSTable count: 0
+		Max SSTable size: 687.964MiB
+		Space used (live): 87990345878
+		Space used (total): 87990345878
+		Space used by snapshots (total): 0
+		Off heap memory used (total): 65936
+		SSTable Compression Ratio: -1.00000
+		Number of partitions (estimate): 10077
+		Memtable cell count: 0
+		Memtable data size: 0
+		Memtable off heap memory used: 0
+		Memtable switch count: 0
+		Speculative retries: 0
+		Local read count: 3725256
+		Local read latency: 0.968 ms
+		Local write count: 0
+		Local write latency: NaN ms
+		Local read/write ratio: 0.00000
+		Pending flushes: 0
+		Percent repaired: 0.0
+		Bytes repaired: 0B
+		Bytes unrepaired: 81.859GiB
+		Bytes pending repair: 0B
+		Bloom filter false positives: 0
+		Bloom filter false ratio: 0.00000
+		Bloom filter space used: 52952
+		Bloom filter off heap memory used: 51320
+		Index summary off heap memory used: 14616
+		Compression metadata off heap memory used: 0
+		Compacted partition minimum bytes: 315853
+		Compacted partition maximum bytes: 5839588
+		Compacted partition mean bytes: 2437833
+		Average live cells per slice (last five minutes): 1.0
+		Maximum live cells per slice (last five minutes): 1
+		Average tombstones per slice (last five minutes): 1.0
+		Maximum tombstones per slice (last five minutes): 1
+		Droppable tombstone ratio: 0.00000
+
+----------------

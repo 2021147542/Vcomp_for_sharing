@@ -1,0 +1,33 @@
+{
+  "diagnostic_only" : true,
+  "scope" : "Shared production UCS picker on opened final metadata; all files assumed eligible, no TTL/expired/inflight, single-node full-ring, T4; native66MiB inferred and model65MiB recorded; not online task scheduling",
+  "cases" : [ {
+    "arm" : "native",
+    "flush_mib" : 65,
+    "files" : 204,
+    "selected" : false,
+    "level" : null,
+    "selected_files" : [ ]
+  }, {
+    "arm" : "native",
+    "flush_mib" : 66,
+    "files" : 204,
+    "selected" : false,
+    "level" : null,
+    "selected_files" : [ ]
+  }, {
+    "arm" : "vcomp",
+    "flush_mib" : 65,
+    "files" : 186,
+    "selected" : false,
+    "level" : null,
+    "selected_files" : [ ]
+  }, {
+    "arm" : "vcomp",
+    "flush_mib" : 66,
+    "files" : 186,
+    "selected" : false,
+    "level" : null,
+    "selected_files" : [ ]
+  } ]
+}

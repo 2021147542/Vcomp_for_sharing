@@ -1,0 +1,21 @@
+[ {
+  "event_seq" : 25,
+  "native_inputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-1-big", "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-2-big", "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-3-big", "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-4-big" ],
+  "native_outputs" : [ "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big" ],
+  "exact_rows" : 12858,
+  "model_estimated_rows" : 12465,
+  "model_output" : [ {
+    "id" : "run-compaction-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 1,
+      "key_max" : 32763,
+      "rows" : 12465,
+      "bytes" : 12901302,
+      "max_timestamp" : 16384,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "scope" : "each job independently refits exact native input vectors; isolates model/sketch/split, no inherited earlier model error; not production algorithm change"
+} ]

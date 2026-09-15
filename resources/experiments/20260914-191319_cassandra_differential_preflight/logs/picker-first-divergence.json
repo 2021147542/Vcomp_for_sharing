@@ -1,0 +1,226 @@
+{
+  "diagnostic_only": true,
+  "scope": "controlled event snapshots; no compaction execution or 100GiB causal claim",
+  "seed": 20260909,
+  "jobs_observed": 7,
+  "comparisons": [
+    {
+      "job_id": "flush-1",
+      "stage": "picker",
+      "matches": true
+    },
+    {
+      "job_id": "flush-2",
+      "stage": "picker",
+      "matches": true
+    },
+    {
+      "job_id": "flush-3",
+      "stage": "picker",
+      "matches": true
+    },
+    {
+      "job_id": "flush-4",
+      "stage": "picker",
+      "matches": true
+    },
+    {
+      "job_id": "reserve-flush-1",
+      "stage": "picker",
+      "matches": true
+    },
+    {
+      "job_id": "release-flush-1",
+      "stage": "picker",
+      "matches": true
+    },
+    {
+      "job_id": "flush-5",
+      "stage": "picker",
+      "matches": true
+    }
+  ],
+  "unchecked": [
+    {
+      "job_id": "flush-1",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-1",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-1",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-1",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-1",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-2",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-2",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-2",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-2",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-2",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-3",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-3",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-3",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-3",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-3",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-4",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-4",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-4",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-4",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-4",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "reserve-flush-1",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "reserve-flush-1",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "reserve-flush-1",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "reserve-flush-1",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "reserve-flush-1",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "release-flush-1",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "release-flush-1",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "release-flush-1",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "release-flush-1",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "release-flush-1",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-5",
+      "stage": "merge",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-5",
+      "stage": "split",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-5",
+      "stage": "physical_bytes",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-5",
+      "stage": "materialization",
+      "reason": "No observation supplied"
+    },
+    {
+      "job_id": "flush-5",
+      "stage": "approximation",
+      "reason": "No observation supplied"
+    }
+  ],
+  "fixture": null,
+  "first_divergence": null,
+  "production_fidelity_certified": false,
+  "stopped_at_first_divergence": false,
+  "all_required_stages_checked": false,
+  "source_trace_sha256": "4938f438f252ff2c3dc22595a60fd58b4602f7d9a043df87cf47dd0a0ded7b29"
+}

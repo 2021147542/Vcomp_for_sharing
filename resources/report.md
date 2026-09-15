@@ -1,4 +1,33 @@
+## 2026-09-15: 원인 기반 수정 후 보존 baseline 재사용 실험 진행
+
+- PLR rank 역행/불연속, complete-sketch 원본 수와 모델 shard 수의 잘못된 동일성 검사 및 cap을 수정했다. 초기 UCS flush-size는 실제 첫 source flush의 미설치 Data.db probe로 측정한다.
+- 통합 회귀 47개와 실제 1 GiB 대조 pilot 통과. 근사 오차의 해소나 ±10% 유사성 통과를 뜻하지 않는다.
+- `20260915-101514_cassandra_100g_reference_120s`: 원본 baseline 유지, VComp만 100 GiB 재적재, 고정 seed 20260909, 48 threads, A–F/MixGraph 양쪽 각각 120초(14셀). tmux에서 실행 중이다.
+- 수정/검증/제한: [기록](../experiments/docs/cassandra-repair-20260915.md).
+
 # Pebble VComp Feasibility Prototype Report
+
+## 4단계 원인 분해 + 보존 100GiB 실제 읽기 — 2026-09-14
+
+Production은 수정하지 않고 native picker/exact merge/split/materialization/실제 C·E 읽기를 분석했다. 1GiB 16/19-flush native 사례는 각각 6 jobs·65 picker snapshot을 검증했고 같은 실제 metadata에서 picker가 일치했다. Native DAG를 따르는 모델의 최종 생성 key가 실제 VComp와 같아 이 작은 사례의 최종 차이는 일정 차이 때문이 아니었다. PLR 초기 근사를 제거한 진단에서 partition 행 수 편차가 크게 줄었고, KMV의 약 +4.2% 총량 오차는 직접 exact union의 bottom-K와도 같았다.
+
+보존한 원래 100GiB DB를 독립 복사한 체크포인트에서 동일 C1000/E1000 요청을 warm/cold 각 4회 ABBA로 읽었다. Native는 모든 partition에 후보4개, VComp는 25.35% 영역에 5~6개다. Cold C 평균 latency는 595.50→711.43µs(+19.47%), E는 820.50→944.14µs(+15.07%). 추가 중첩 영역의 23.3% 요청이 관측 C 평균 gap의 약71.3%를 차지했다(사후 그룹 관측 기여도). C hit도573→706으로 달랐다. 최종 실제 metadata의 shared picker는 양쪽 모두 quiescent이며, 동일 partition의 timestamp 구간도 서로 겹치지 않아 timestamp 평탄화만으로 point 조기 종료 차이를 설명할 수 없다.
+
+원래 48-thread·300초 벤치의 전체 인과 기여도나 최초100GiB 분기 job까지 확정한 것은 아니다. 새100GiB 적재/compaction·대형workload는 없었고 seed20260909·canonical baseline·원본 참조를 유지했다. 원본/복사본3120components stat 및 baseline 참조 검증 통과. Complete-sketch sharded-output invariant 예외는 별도 CPU stress에서 재현한 latent bug이며100GiB 원인으로 주장하지 않는다.
+
+[전체 진단·표·그래프](experiments/20260914-210336_cassandra_multistage_diagnosis/results.md).
+
+## 실제 native 이벤트 경계 진단 — 2026-09-14 19:53
+
+20MiB·5flush·seed20260909의 실제 비동기 native case1개를 추적했다. 최초 size metadata는F1(실측4,371,806B/예측4,239,387B), 최초 flush 경계 availability는F5(native F1–F4 예약 중→F5만 후보, virtual은J1+F5)에서 달랐다. 첫 job 입력은 같고12개 동일 snapshot 통제(비어 있지 않은6개 포함)도 선택집합/level이 일치했다. 초기 후처리 실패를 보존하고 native 재실행 없이 이어갔다. 실제 C 생성기10000요청 정적 대조는 양쪽1hit이지만 hit 요청2개가 엇갈렸다. 실제 read/SST 접근/성능 미측정이며100GiB 격차의 인과 기여도는 미확정이다. Production 변경·대형 벤치·canonical DB 접근 없음.
+
+[진단 보고서](experiments/20260914-194012_cassandra_native_event_diagnosis/results.md).
+
+## Bounded Cassandra cause isolation — 2026-09-14 19:20
+
+Fixed-seed native/exact job decomposition:3558 exact rows,3731 KMV estimate,3728 emitted. Merged bottom-K matches direct exact-union bottom-K. Exact counts do not restore membership. Offline timestamp control changes1000B-value Data.db size by−0.0946%; first64MiB flush in the100GiB key domain has roughly−0.4% size prediction error. Synthetic candidate-size/timing controls demonstrate picker sensitivity without establishing actual native event divergence. No production changes or100GiB benchmark rerun; the full throughput/latency cause remains unresolved.
+
+[진단 결과](experiments/20260914-191319_cassandra_differential_preflight/results.md).
 
 ## Native/exact differential debugging and preserved baseline (2026-09-14 17:28 KST)
 

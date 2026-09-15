@@ -1,0 +1,73 @@
+{
+  "diagnostic_only": true,
+  "scope": null,
+  "seed": 20260909,
+  "jobs_observed": 1,
+  "comparisons": [
+    {
+      "job_id": 1,
+      "stage": "merge",
+      "matches": true
+    },
+    {
+      "job_id": 1,
+      "stage": "split",
+      "matches": true
+    },
+    {
+      "job_id": 1,
+      "stage": "approximation",
+      "matches": false
+    }
+  ],
+  "unchecked": [
+    {
+      "job_id": 1,
+      "stage": "picker",
+      "reason": "same explicit four native SST inputs; native event scheduling not replayed"
+    },
+    {
+      "job_id": 1,
+      "stage": "physical_bytes",
+      "reason": "actual Data.db and onDiskLength recorded; an exact serialization byte predictor is not implemented"
+    },
+    {
+      "job_id": 1,
+      "stage": "materialization",
+      "reason": "native compaction output scanned directly; no CQL writer round trip"
+    }
+  ],
+  "fixture": {
+    "domain": 4096,
+    "partitions": 64,
+    "flushes": 4,
+    "attempted_inserts_per_flush": 2048,
+    "forced_shards": 4,
+    "key_bytes": 24,
+    "value_bytes": 43,
+    "plr_error": 8.0,
+    "kmv_samples": 512,
+    "kmv_range_buckets": 8,
+    "timestamp_order": [
+      10300,
+      10100,
+      10400,
+      10200
+    ],
+    "scope": "insert-only, no TTL/tombstones; globally unique scalar ck maps to one partition"
+  },
+  "first_divergence": {
+    "job_id": 1,
+    "stage": "approximation",
+    "matches": false,
+    "field": "$.row_count",
+    "native": 3558,
+    "predicted": 3728,
+    "reason": "value",
+    "category": "model_path_difference"
+  },
+  "production_fidelity_certified": false,
+  "stopped_at_first_divergence": true,
+  "all_required_stages_checked": false,
+  "source_trace_sha256": "6d48393d393955dbdf419f7248dafe87ab7b717b5c46d8fe6a6a19f9e77c9147"
+}

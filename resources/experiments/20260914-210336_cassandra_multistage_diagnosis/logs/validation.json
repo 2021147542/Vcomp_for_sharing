@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "scope": "bounded causal diagnostics, not completed production repair or 48-thread paper workload equivalence",
+  "original_100g_warm_cold_junit": "passed",
+  "small_16_19_native_and_writer_controls_junit": "passed",
+  "all_fixed_rounds_figure_aggregation": "recomputed and matched",
+  "report_links_and_two_folder_layout": "passed",
+  "figures": "2x2 workload and separate local latency visually inspected; no new loading measurement",
+  "seed": 20260909,
+  "production_algorithm_modified": false,
+  "preservation": "see preservation-validation.json"
+}

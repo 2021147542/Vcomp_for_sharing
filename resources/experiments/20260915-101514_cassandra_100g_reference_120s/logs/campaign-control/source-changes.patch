@@ -1,0 +1,578 @@
+diff --git a/cassandra_check/run_baseline_vcomp_20g_compare.sh b/cassandra_check/run_baseline_vcomp_20g_compare.sh
+index 0bd7942d..320530fe 100644
+--- a/cassandra_check/run_baseline_vcomp_20g_compare.sh
++++ b/cassandra_check/run_baseline_vcomp_20g_compare.sh
+@@ -25,6 +25,8 @@ if [[ -n "$BASELINE_REFERENCE" ]]; then
+     "$DATASET_GIB" "$PARTITION_COUNT" "$BASELINE_TARGET_SSTABLE_SIZE" "$BASELINE_KEYSPACE" \
+     "${KEY_BYTES:-24}" "${VALUE_BYTES:-1000}" "${UCS_PICKER_SEED:-20260909}" <<'PY'
+ import importlib.util
++import json
++import os
+ from pathlib import Path
+ import sys
+ tool, reference, output, gib, partitions, target, keyspace, key_bytes, value_bytes, picker_seed = sys.argv[1:]
+@@ -44,8 +46,19 @@ for field, value in expected.items():
+ if record['keyspace'] != keyspace:
+     raise SystemExit('Baseline keyspace mismatch')
+ repo = Path(tool).resolve().parents[3]
++review_path = os.environ.get('BASELINE_COMPATIBILITY_REVIEW')
++review = json.loads(Path(review_path).read_text()) if review_path else {}
++if review and review.get('reference_sha256') != module.digest(Path(reference)):
++    raise SystemExit('Compatibility review belongs to a different reference')
+ for name, sha in record['input_identity']['source_sha256'].items():
+-    if module.digest(repo / name) != sha:
++    current = module.digest(repo / name)
++    if current != sha:
++        entry = review.get('sources', {}).get(name, {})
++        allowed = name == 'cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java'
++        if (allowed and entry.get('original_sha256') == sha and entry.get('current_sha256') == current
++                and entry.get('input_schema_semantics_unchanged') is True
++                and entry.get('rationale') and entry.get('validation')):
++            continue
+         raise SystemExit('Input/schema helper changed; verify its input semantics before baseline reuse: ' + name)
+ print(record['canonical_root'])
+ PY
+@@ -63,6 +76,9 @@ LOG="$ROOT/compare-$(date +%Y%m%d-%H%M%S).log"
+ mkdir -p "$ROOT"
+ exec > >(tee -a "$LOG") 2>&1
+ if [[ -n "$BASELINE_REFERENCE" ]]; then
++  if [[ -n "${BASELINE_COMPATIBILITY_REVIEW:-}" ]]; then
++    cp "$BASELINE_COMPATIBILITY_REVIEW" "$ROOT/baseline-compatibility-review.json"
++  fi
+   python3 - "$BASELINE_REFERENCE" "$ROOT/baseline-reuse.json" <<'PY'
+ import hashlib, json, sys
+ from pathlib import Path
+@@ -79,7 +95,13 @@ fi
+ echo '[1/4] Building and auditing the Cassandra runtime jar'
+ export JAVA_HOME
+ source "$SOURCE_ROOT/build-env.sh"
+-ant -f "$SOURCE_ROOT/build.xml" jar >"$ROOT/build-jar.log" 2>&1
++if [[ "${SKIP_CASSANDRA_BUILD:-false}" != true ]]; then
++  ant -f "$SOURCE_ROOT/build.xml" jar >"$ROOT/build-jar.log" 2>&1
++else
++  : "${EXPECTED_RUNTIME_JAR_SHA256:?A qualified runtime hash is required when skipping the build}"
++  sha256sum --check --status "$EXPECTED_RUNTIME_JAR_SHA256" || { echo 'Qualified runtime changed' >&2; exit 2; }
++  printf 'Qualified existing runtime used; no rebuild.\n' >"$ROOT/build-jar.log"
++fi
+ RUNTIME_JAR=$(find "$SOURCE_ROOT/build" -maxdepth 1 -name 'apache-cassandra-*.jar' \
+   ! -name '*-sources.jar' ! -name '*-javadoc.jar' -print -quit)
+ if [[ -z "$RUNTIME_JAR" ]]; then
+diff --git a/cassandra_check/run_existing_100g_paper_workloads.sh b/cassandra_check/run_existing_100g_paper_workloads.sh
+index 0dcb79df..4f75fd6d 100755
+--- a/cassandra_check/run_existing_100g_paper_workloads.sh
++++ b/cassandra_check/run_existing_100g_paper_workloads.sh
+@@ -2,12 +2,12 @@
+ set -euo pipefail
+ 
+ # Run the paper-style YCSB A-F and MixGraph workloads against independent
+-# hard-linked checkpoints of the preserved 100 GiB baseline and VComp DBs.
+-# Immutable SSTables are shared with the canonical runs; all newly written
+-# SSTables, commitlogs, caches, and logs live below OUT_ROOT.
++# copied checkpoints of the preserved 100 GiB baseline and VComp DBs.
++# Reflinks are used when supported; source inodes are never shared.
+ 
+ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ SOURCE_ROOT="$SCRIPT_DIR/../cassandra_vcomp"
++REFERENCE_TOOL="$SCRIPT_DIR/../experiments/scripts/cassandra/baseline_reference.py"
+ JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ CANONICAL_ROOT=/work/vcomp-pebble-1tb/cassandra-vcomp-100g-audited-compare
+ BASELINE_SOURCE="${BASELINE_SOURCE:-$CANONICAL_ROOT/baseline/cassandra-baseline-100g-audited-common-theta-logical-baseline-20260912-135643}"
+@@ -61,6 +61,15 @@ for source in "$BASELINE_SOURCE" "$VCOMP_SOURCE"; do
+         exit 2
+     fi
+ done
++if [[ -n "${BASELINE_REFERENCE:-}" ]]; then
++    python3 "$REFERENCE_TOOL" validate --reference "$BASELINE_REFERENCE"
++    python3 "$REFERENCE_TOOL" guard --reference "$BASELINE_REFERENCE" --path "$OUT_ROOT"
++    python3 - "$BASELINE_REFERENCE" "$BASELINE_SOURCE" <<'PYREF'
++import json, sys
++from pathlib import Path
++assert Path(json.loads(Path(sys.argv[1]).read_text())['canonical_root']).resolve() == Path(sys.argv[2]).resolve(), 'Baseline source differs from registered reference'
++PYREF
++fi
+ if pgrep -f 'org[.]apache[.]cassandra[.]service[.]CassandraDaemon' >/dev/null; then
+     echo 'another Cassandra daemon is already running; refusing to overlap benchmarks' >&2
+     exit 2
+@@ -97,7 +106,7 @@ OUTPUT_CREATED=true
+     printf 'duration_seconds=%s\noperations_per_thread=%s\nthreads=%s\nworkloads=%s\n' \
+         "$DURATION_SECONDS" "$OPERATIONS_PER_THREAD" "$THREADS" "$WORKLOADS"
+     printf 'key_space=%s\nkey_bytes=%s\nvalue_bytes=%s\npartition_count=%s\nseed=%s\nucs_picker_seed=%s\n' "$KEY_SPACE" "$KEY_BYTES" "$VALUE_BYTES" "$PARTITION_COUNT" "$SEED" "$UCS_PICKER_SEED"
+-    printf 'disk_device=%s\ncheckpoint_method=hardlink_immutable_sstables\n' "$DISK_DEVICE"
++    printf 'disk_device=%s\ncheckpoint_method=independent_copy_reflink_auto\n' "$DISK_DEVICE"
+     printf 'cache_protocol=native_chunkcache_5pct_bounded_process_group\nchunk_cache_mib=%s\nfile_cache_mib=%s\n' "$CHUNK_CACHE_MIB" "$FILE_CACHE_MIB"
+     printf 'cache_equivalence=not_paper_equivalent_additional_OS_page_cache\ndisk_access_mode=standard\n'
+     printf 'compaction_throughput_mib_per_second=0\nmemtable_heap_mib=1024\nmemtable_cleanup_threshold=0.0625\nmemtable_flush_writers=2\nnominal_nonflushing_memtable_heap_trigger_mib=64\n'
+@@ -156,16 +165,29 @@ prepare_checkpoint() {
+     ACTIVE_RUN=$2
+     mkdir -p "$ACTIVE_RUN"/{conf,data/data,data/commitlog,data/hints,data/saved_caches,logs}
+     cp -a "$source/conf/." "$ACTIVE_RUN/conf/"
+-    # SSTables are immutable in this no-repair campaign. Copy system keyspaces
+-    # separately so metadata writes cannot modify a canonical checkpoint inode.
++    # Independent inodes protect the canonical reference, including ctime.
+     for directory in "$source/data/data/"*; do
+         [[ -d "$directory" ]] || continue
+-        if [[ "$(basename "$directory")" == system* ]]; then
+-            cp -a --reflink=auto "$directory" "$ACTIVE_RUN/data/data/"
+-        else
+-            cp -al "$directory" "$ACTIVE_RUN/data/data/"
+-        fi
++        cp -a --reflink=auto "$directory" "$ACTIVE_RUN/data/data/"
+     done
++    python3 - "$source/data/data" "$ACTIVE_RUN/data/data" <<'PYCOPY'
++import json, sys
++from pathlib import Path
++source, copy = map(Path, sys.argv[1:])
++count = total = 0
++for original in source.rglob('*'):
++    if original.is_symlink():
++        raise SystemExit('Source checkpoint contains a symlink: ' + str(original))
++    if not original.is_file():
++        continue
++    saved = copy / original.relative_to(source)
++    a, b = original.stat(), saved.stat()
++    if a.st_size != b.st_size or (a.st_dev, a.st_ino) == (b.st_dev, b.st_ino):
++        raise SystemExit('Checkpoint size or inode isolation failed: ' + str(saved))
++    count += 1
++    total += a.st_size
++(copy.parents[1] / 'checkpoint-copy.json').write_text(json.dumps(dict(source=str(source.resolve()), method='independent_copy_reflink_auto', files=count, bytes=total, source_inodes_shared=False), indent=2) + '\n')
++PYCOPY
+     sed -i \
+         -e "s|^hints_directory:.*|hints_directory: $ACTIVE_RUN/data/hints|" \
+         -e "/^data_file_directories:/{n;s|^    - .*|    - $ACTIVE_RUN/data/data|;}" \
+@@ -201,6 +223,9 @@ run_one() {
+     ACTIVE_RUN="$OUT_ROOT/runs/$lower_workload/$system"
+     echo "[$(date --iso-8601=seconds)] Preparing $workload $system checkpoint"
+     prepare_checkpoint "$source" "$ACTIVE_RUN"
++    # A fresh independent copy has dirty data pages. DONTNEED can discard them
++    # only after writeback; syncing just before measurement would be too late.
++    sync -f "$ACTIVE_RUN"
+     evict_checkpoint_cache
+ 
+     export JAVA_HOME CASSANDRA_HOME="$SOURCE_ROOT" CASSANDRA_CONF="$ACTIVE_RUN/conf" CASSANDRA_LOG_DIR="$ACTIVE_RUN/logs"
+@@ -297,6 +322,9 @@ run_one() {
+     fi
+     sync -f "$ACTIVE_RUN"
+     printf 'completed_at=%s\nserver_error_count=0\n' "$(date --iso-8601=seconds)" >"$ACTIVE_RUN/SUCCESS"
++    if [[ -n "${BASELINE_REFERENCE:-}" ]]; then
++        python3 "$REFERENCE_TOOL" validate --reference "$BASELINE_REFERENCE" >"$ACTIVE_RUN/baseline-reference-after.json"
++    fi
+ }
+ 
+ for workload in $WORKLOADS; do
+diff --git a/cassandra_check/run_pipeline_100g.sh b/cassandra_check/run_pipeline_100g.sh
+index 459f97b3..65607c43 100755
+--- a/cassandra_check/run_pipeline_100g.sh
++++ b/cassandra_check/run_pipeline_100g.sh
+@@ -184,7 +184,13 @@ free -h >"$RUN_DIR/memory-before.txt"
+ 
+ echo "[1/8] Building Cassandra and verification client"
+ source "$SOURCE_ROOT/build-env.sh"
+-ant -f "$SOURCE_ROOT/build.xml" build >"$RUN_DIR/build.log" 2>&1
++if [[ "${SKIP_CASSANDRA_BUILD:-false}" != true ]]; then
++    ant -f "$SOURCE_ROOT/build.xml" build >"$RUN_DIR/build.log" 2>&1
++else
++    : "${EXPECTED_RUNTIME_JAR_SHA256:?A qualified runtime hash is required when skipping the build}"
++    sha256sum --check --status "$EXPECTED_RUNTIME_JAR_SHA256" || { echo 'Qualified runtime changed' >&2; exit 2; }
++    printf 'Qualified existing runtime used; no rebuild.\n' >"$RUN_DIR/build.log"
++fi
+ "$JAVA_HOME/bin/javac" -cp "$SOURCE_ROOT/build/classes/main:$SOURCE_ROOT/lib/*" \
+     -d "$RUN_DIR/classes" "$SCRIPT_DIR/src/CassandraVCompPipelineClient.java"
+ 
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
+index fc41f195..49f2c6ff 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/DefaultVirtualCompaction.java
+@@ -579,10 +579,14 @@ public final class DefaultVirtualCompaction implements VCompPipeline.ModelMerger
+                                                         long cap,
+                                                         long fallback)
+     {
++        // Complete sketches contain the exact original-key union. A modeled
++        // child's row count may be smaller after approximate PLR splitting, so
++        // its naive count is not an upper bound on this original cardinality.
++        // Sample range validation/filtering still bounds m by the key domain.
++        if (complete)
++            return distinctSamples;
+         if (cap <= 0)
+             return 0;
+-        if (complete)
+-            return Math.min(cap, distinctSamples);
+         if (distinctSamples == 0)
+             return Math.min(cap, fallback);
+         double theta = unsignedHashProbability(thetaHash);
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+index ab8ff1cb..f51a7b85 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java
+@@ -24,6 +24,7 @@ import java.nio.charset.StandardCharsets;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+ import java.util.ArrayList;
++import java.util.Arrays;
+ import java.util.List;
+ import java.util.PrimitiveIterator;
+ import java.util.UUID;
+@@ -175,6 +176,66 @@ public final class VCompCqlSstableMaterializer implements VCompPipeline.FinalMat
+                                                    saturatedMultiply(materializedKeys, logicalEntryBytes));
+     }
+ 
++	/**
++	 * Measure the first source flush with its actual buffered coordinates and
++	 * partition occupancy. This non-installed probe supplies the offline UCS
++	 * observed-flush input; the ordinary descriptor size model is unchanged.
++	 *
++	 * Like final materialization, this probe uses the batch maximum timestamp
++	 * for every row. It therefore measures our writer, not native per-row
++	 * timestamp encoding, and must not be described as an exact native flush.
++	 */
++	public long measureFirstFlushDataBytes(VCompPipeline.FlushBatch firstFlush) throws Exception
++	{
++		Objects.requireNonNull(firstFlush, "firstFlush");
++		long[] keys = firstFlush.keyCoordinates();
++		Path probeRoot = outputDirectory.resolve(".vcomp-calibration").resolve("first-source-flush");
++		requireEmptyDirectory(probeRoot);
++		// Keep the ordinary keyspace/table directory shape so native SSTable
++		// inspection tools can resolve this retained, non-installed probe.
++		UUID probeId = UUID.nameUUIDFromBytes("first-source-flush".getBytes(StandardCharsets.UTF_8));
++		Path directory = probeRoot.resolve(keyspace).resolve(table + '-' + probeId.toString().replace("-", ""));
++		requireEmptyDirectory(directory);
++		long timestamp = Math.max(1, firstFlush.maximumTimestamp());
++		long[] written = new long[1];
++		CQLSSTableWriter.Builder builder = CQLSSTableWriter.builder()
++		                                                  .inDirectory(directory.toString())
++		                                                  .forTable(tableSchema)
++		                                                  .using(insertStatement)
++		                                                  .withPartitioner(Murmur3Partitioner.instance)
++		                                                  .withEncodingStats(encodingStats(timestamp))
++		                                                  .withEstimatedPartitionCount(1)
++		                                                  .sorted();
++		if (partitionLayout != null)
++			builder.withEstimatedPartitionCount(partitionLayout.partitionCount(keys[0], keys[keys.length - 1]));
++		try (CQLSSTableWriter writer = builder.build())
++		{
++			keyCodec.validateSchema(writer.tableMetadata());
++			CoordinateCursor cursor = new CoordinateCursor(Arrays.stream(keys).iterator());
++			while (cursor.hasNext())
++			{
++				VCompOrderedPartitionLayout.Partition mapped = partitionLayout == null
++				                                             ? null : partitionLayout.partitionFor(cursor.peek());
++				try (UnfilteredRowIterator partition = partition(writer.tableMetadata(), cursor, mapped, timestamp, written))
++				{
++					writer.addPartition(partition);
++				}
++			}
++		}
++		if (written[0] != firstFlush.keyCount())
++			throw new IllegalStateException("first-flush sizing probe changed the buffered key count");
++		long bytes = 0;
++		try (Stream<Path> files = Files.walk(directory))
++		{
++			for (Path path : (Iterable<Path>) files::iterator)
++				if (Files.isRegularFile(path) && path.getFileName().toString().endsWith("-Data.db"))
++					bytes = saturatedAdd(bytes, Files.size(path));
++		}
++		if (bytes <= 0)
++			throw new IllegalStateException("first-flush sizing probe produced no Data.db bytes");
++		return bytes;
++	}
++
+ 	/**
+ 	 * Write two small, non-installed SSTables and fit the physical-size model
+ 	 * used for virtual sizing and output splitting. Calibration artifacts are
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
+index 45bb4284..7409807c 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompLearnedModel.java
+@@ -65,8 +65,12 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+     }
+ 
+     /**
+-     * Build a model using the shrinking-cone greedy fit used by the Pebble prototype.
+-     * Keys must be distinct, non-negative, and sorted in ascending order.
++     * Fit a continuous, monotone rank function within the requested error.
++     * Adjacent segments share an actual (key, rank) endpoint. Independently
++     * anchored segments with a midpoint cone slope can overshoot the following
++     * anchor, making rank decrease and dropping rank mass across key gaps.
++     * Endpoint slopes are accepted only while they satisfy every earlier point's
++     * shrinking cone, so continuity does not weaken the error bound.
+      */
+     public static VCompLearnedModel greedyFit(long[] sortedKeys, double errorBound)
+     {
+@@ -79,46 +83,42 @@ public final class VCompLearnedModel implements VCompPipeline.MergedModel
+         {
+             if (segmentStart == sortedKeys.length - 1)
+             {
+-                long key = sortedKeys[segmentStart];
+-                segments.add(new Segment(key, key, 0, segmentStart));
++                if (segments.isEmpty())
++                {
++                    long key = sortedKeys[segmentStart];
++                    segments.add(new Segment(key, key, 0, segmentStart));
++                }
+                 break;
+             }
+ 
+-            double x0 = sortedKeys[segmentStart];
++            long x0 = sortedKeys[segmentStart];
+             double y0 = segmentStart;
+-            double slopeLow = Double.NEGATIVE_INFINITY;
++            double slopeLow = 0;
+             double slopeHigh = Double.POSITIVE_INFINITY;
+             int segmentEnd = segmentStart;
++            double slope = 0;
+ 
+             for (int i = segmentStart + 1; i < sortedKeys.length; i++)
+             {
+-                double dx = sortedKeys[i] - x0;
++                double dx = (double) (sortedKeys[i] - x0);
+                 double dy = i - y0;
+-                double newSlopeLow = (dy - errorBound) / dx;
+-                double newSlopeHigh = (dy + errorBound) / dx;
+-                if (newSlopeLow > slopeHigh || newSlopeHigh < slopeLow)
++                double endpointSlope = dy / dx;
++                if (endpointSlope < slopeLow || endpointSlope > slopeHigh)
+                     break;
+ 
+-                slopeLow = Math.max(slopeLow, newSlopeLow);
+-                slopeHigh = Math.min(slopeHigh, newSlopeHigh);
++                slopeLow = Math.max(slopeLow, (dy - errorBound) / dx);
++                slopeHigh = Math.min(slopeHigh, (dy + errorBound) / dx);
+                 segmentEnd = i;
++                slope = endpointSlope;
+             }
+ 
+-            double slope;
+-            if (Double.isInfinite(slopeLow) && Double.isInfinite(slopeHigh))
+-                slope = 0;
+-            else if (Double.isInfinite(slopeLow))
+-                slope = slopeHigh;
+-            else if (Double.isInfinite(slopeHigh))
+-                slope = slopeLow;
+-            else
+-                slope = (slopeLow + slopeHigh) / 2;
+-
+             segments.add(new Segment(sortedKeys[segmentStart],
+                                      sortedKeys[segmentEnd],
+                                      slope,
+                                      y0 - slope * x0));
+-            segmentStart = segmentEnd + 1;
++            // Share the endpoint: the next segment starts at the same rank and
++            // there is no unmodeled interval between two consecutive segments.
++            segmentStart = segmentEnd;
+         }
+         return new VCompLearnedModel(segments);
+     }
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompPipeline.java b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompPipeline.java
+index 01b40117..0da06dca 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompPipeline.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompPipeline.java
+@@ -657,8 +657,11 @@ public final class VCompPipeline
+                 if (sample.key() < keyMin || sample.key() > keyMax)
+                     throw new IllegalArgumentException("global KMV sample lies outside its vSST range");
+             }
+-            if (sketch.isComplete() && sketch.samples().size() != estimatedUniqueKeys)
+-                throw new IllegalArgumentException("complete vSST KMV cardinality differs from descriptor estimate");
++            // Sketches retain original source keys, whereas a PLR shard's count
++            // describes its modeled rank interval. Even a complete sketch can
++            // therefore have a different cardinality after a key-range split.
++            // Do not replace either count with the other: later KMV unions need
++            // the original samples, and materialization needs the modeled count.
+             this.keyMin = keyMin;
+             this.keyMax = keyMax;
+             this.estimatedUniqueKeys = estimatedUniqueKeys;
+diff --git a/cassandra_vcomp/src/java/org/apache/cassandra/tools/VCompBulkLoad.java b/cassandra_vcomp/src/java/org/apache/cassandra/tools/VCompBulkLoad.java
+index e60c31c7..227dbb4e 100644
+--- a/cassandra_vcomp/src/java/org/apache/cassandra/tools/VCompBulkLoad.java
++++ b/cassandra_vcomp/src/java/org/apache/cassandra/tools/VCompBulkLoad.java
+@@ -115,14 +115,23 @@ public final class VCompBulkLoad
+                                                                                    entryBytes,
+                                                                                    keyCodec,
+                                                                                    valueBytes);
++        long startNanos = Clock.Global.nanoTime();
+         VCompSSTSizeModel sizeModel = sizeModelName.equals("calibrated")
+                                       ? materializer.calibrateSizeModel(4096, 8192)
+                                       : VCompSSTSizeModel.logical(entryBytes);
+         long estimatedFlushDataBytes = sizeModel.estimate(writesPerFlush);
+-        long pickerFlushSizeBytes = VCompUcsPlanner.roundObservedFlushSize(estimatedFlushDataBytes);
+-        System.out.printf("VCOMP_SIZING estimated_flush_bytes=%d picker_flush_size_bytes=%d size_basis=%s%n",
+-                          estimatedFlushDataBytes, pickerFlushSizeBytes,
+-                          sizeModelName.equals("calibrated") ? "data_component" : "logical_kv");
++        // Every source iterator starts at the same seed. Inspecting this first
++        // buffered flush leaves the pipeline's subsequent source stream intact.
++        VCompPipeline.FlushBatch firstFlush = source.flushBatches().iterator().next();
++        long measuredFlushDataBytes = sizeModelName.equals("calibrated")
++                                      ? materializer.measureFirstFlushDataBytes(firstFlush) : -1;
++        long pickerFlushSizeBytes = VCompUcsPlanner.roundObservedFlushSize(
++        measuredFlushDataBytes > 0 ? measuredFlushDataBytes : estimatedFlushDataBytes);
++        System.out.printf("VCOMP_SIZING estimated_flush_bytes=%d measured_first_flush_bytes=%d "
++                          + "first_flush_unique_keys=%d picker_flush_size_bytes=%d size_basis=%s "
++                          + "first_flush_timestamp_encoding=flat_batch_maximum%n",
++                          estimatedFlushDataBytes, measuredFlushDataBytes, firstFlush.keyCount(), pickerFlushSizeBytes,
++                          sizeModelName.equals("calibrated") ? "first_source_flush_data_component" : "logical_kv");
+         VCompPipeline pipeline = VCompPipeline.createDefault(flushBytes,
+                                                               pickerFlushSizeBytes,
+                                                               requestedTargetSSTBytes,
+@@ -134,7 +143,6 @@ public final class VCompBulkLoad
+                                                                                          table),
+                                                               new VCompFilesystemVerifier());
+ 
+-        long startNanos = Clock.Global.nanoTime();
+         VCompPipeline.Result result = pipeline.execute(new VCompPipeline.Request(
+         VCompPipeline.ExecutionConstraints.orderedPartitionKeyValue(partitionCount), source));
+         double seconds = (Clock.Global.nanoTime() - startNanos) / 1_000_000_000.0;
+diff --git a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
+index eb02d32b..62d50ebe 100644
+--- a/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
++++ b/cassandra_vcomp/test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
+@@ -85,6 +85,8 @@ public class VCompNativeExactDifferentialTest extends CQLTester
+         List<Map<String, Object>> inputEvidence = new ArrayList<>();
+         TreeMap<Long, List<Object>> exact = new TreeMap<>();
+         List<VCompPipeline.VirtualSortedRun> virtualInputs = new ArrayList<>();
++        List<VCompPipeline.VirtualSortedRun> exactFitInputs = new ArrayList<>();
++        List<Map<String, Object>> flushDiagnostics = new ArrayList<>();
+         for (int index = 0; index < inputs.size(); index++)
+         {
+             SSTableReader reader = inputs.get(index);
+@@ -105,6 +107,16 @@ public class VCompNativeExactDifferentialTest extends CQLTester
+             virtualInputs.add(new DefaultFlushVirtualizer().virtualize(
+                 new VCompPipeline.FlushBatch("input-" + index, keys, reader.onDiskLength(), maxTimestamp)));
+         }
++        for (int index = 0; index < inputs.size(); index++)
++        {
++            List<List<Object>> physical = rows(inputs.get(index));
++            long[] keys = physical.stream().mapToLong(r -> (Long) r.get(1)).toArray();
++            VCompPipeline.VirtualSSTable descriptor = virtualInputs.get(index).sstables().get(0);
++            flushDiagnostics.add(keyComparison("flush-" + index, physical, virtualInputs.get(index)));
++            exactFitInputs.add(new DefaultFlushVirtualizer(0, VCompKmvSketch.DEFAULT_SAMPLES,
++                                                          VCompKmvSketch.DEFAULT_RANGE_BUCKETS).virtualize(
++                new VCompPipeline.FlushBatch("exact-fit-" + index, keys, inputs.get(index).onDiskLength(), descriptor.maximumTimestamp())));
++        }
+         List<List<List<Object>>> predictedShards = shard(new ArrayList<>(exact.values()));
+         Map<String, Object> trace = object("schema_version", 1, "diagnostic_only", true, "seed", SEED,
+                                        "fixture", object("domain", DOMAIN, "partitions", 64, "flushes", 4,
+@@ -190,10 +202,89 @@ public class VCompNativeExactDifferentialTest extends CQLTester
+         stages.put("approximation", object("status", "checked", "native", rowMetadata(nativeRows),
+                 "approximate", rowMetadata(approximateRows), "note",
+                 "Production PLR/KMV merge and materialized-key iterator on identical native inputs, unsplit union; not the production picker or shard splitter. Per-output max timestamp is the production representation."));
++        Map<String, Object> decomposition = object("scope", "same first job only; exact-count/error-zero lanes are diagnostic interventions, not production changes",
++                                                  "flush_reconstruction", flushDiagnostics,
++                                                  "native_union_count", exact.size(),
++                                                  "global_kmv", sketchEvidence(sketch),
++                                                  "global_kmv_estimate", estimate);
++        List<Map<String, Object>> lanes = new ArrayList<>();
++        lanes.add(keyComparison("production-default", nativeRows, approximate));
++        VCompLearnedModel countOnly = compactor.merge(plan, exact.size());
++        lanes.add(keyComparison("exact-global-count-only", nativeRows,
++                                compactor.split(plan, countOnly, sketch, exact.size())));
++        VCompPipeline.VirtualCompactionPlan exactFitPlan = new VCompPipeline.VirtualCompactionPlan("exact-input-fit", exactFitInputs, 1);
++        VCompLearnedModel exactFitModel = compactor.merge(exactFitPlan, exact.size());
++        lanes.add(keyComparison("exact-global-count-and-zero-error-input-fit", nativeRows,
++                                compactor.split(exactFitPlan, exactFitModel, sketch, exact.size())));
++        long[] exactKeys = exact.keySet().stream().mapToLong(Long::longValue).toArray();
++        for (double error : new double[] { 8.0, 0.0 })
++        {
++            VCompPipeline.VirtualSortedRun directlyFitted = new DefaultFlushVirtualizer(error,
++                VCompKmvSketch.DEFAULT_SAMPLES, VCompKmvSketch.DEFAULT_RANGE_BUCKETS).virtualize(
++                new VCompPipeline.FlushBatch("exact-union-fit", exactKeys, 1, 10400));
++            lanes.add(keyComparison("direct-exact-union-fit-error-" + error, nativeRows, directlyFitted));
++        }
++        decomposition.put("lanes", lanes);
++        trace.put("first_job_decomposition", decomposition);
+         trace.put("stopped_at", nativeRows.equals(approximateRows) ? "bounded fixture complete" : "first approximate output divergence; no later jobs executed");
+         write(trace);
+     }
+ 
++    private Map<String, Object> sketchEvidence(VCompKmvSketch sketch)
++    {
++        BigInteger unsigned = new BigInteger(Long.toUnsignedString(sketch.thetaHash()));
++        double theta = unsigned.doubleValue() / Math.scalb(1.0, 64);
++        return object("sample_count", sketch.samples().size(), "complete", sketch.isComplete(),
++                      "theta_unsigned", unsigned.toString(), "theta_probability", theta,
++                      "sample_count_over_theta", sketch.samples().size() / theta);
++    }
++
++    private Map<String, Object> keyComparison(String label, List<List<Object>> reference,
++                                              VCompPipeline.VirtualSortedRun run)
++    {
++        java.util.TreeSet<Long> expected = new java.util.TreeSet<>();
++        Map<Long, Long> versions = new TreeMap<>();
++        for (List<Object> row : reference)
++        {
++            expected.add((Long) row.get(1));
++            versions.put((Long) row.get(1), (Long) row.get(3));
++        }
++        java.util.TreeSet<Long> emitted = new java.util.TreeSet<>();
++        long descriptorCount = 0;
++        long timestampDifferences = 0;
++        List<Map<String, Object>> descriptors = new ArrayList<>();
++        for (VCompPipeline.VirtualSSTable descriptor : run.sstables())
++        {
++            descriptorCount += descriptor.estimatedUniqueKeys();
++            descriptors.add(object("estimated_count", descriptor.estimatedUniqueKeys(),
++                                   "segments", descriptor.model().segments().size(),
++                                   "maximum_timestamp", descriptor.maximumTimestamp(),
++                                   "global_sketch", sketchEvidence(descriptor.sketch()),
++                                   "complete_range_sketches", descriptor.rangeSketches().stream().filter(r -> r.sketch().isComplete()).count(),
++                                   "range_sketches", descriptor.rangeSketches().size()));
++            VCompMaterializedKeyIterator iterator = new VCompMaterializedKeyIterator(descriptor);
++            while (iterator.hasNext())
++            {
++                long key = iterator.nextLong();
++                assertTrue("bounded key iterator", emitted.size() < ROW_LIMIT);
++                assertTrue("unexpected duplicate output key", emitted.add(key));
++                if (versions.containsKey(key) && versions.get(key) != descriptor.maximumTimestamp())
++                    timestampDifferences++;
++            }
++        }
++        java.util.TreeSet<Long> missing = new java.util.TreeSet<>(expected);
++        missing.removeAll(emitted);
++        java.util.TreeSet<Long> extra = new java.util.TreeSet<>(emitted);
++        extra.removeAll(expected);
++        return object("lane", label, "native_count", expected.size(), "descriptor_count", descriptorCount,
++                      "emitted_count", emitted.size(), "count_lost_at_inverse", descriptorCount - emitted.size(),
++                      "missing_keys", missing.size(), "extra_keys", extra.size(),
++                      "common_keys", expected.size() - missing.size(), "timestamp_differences", timestampDifferences,
++                      "first_missing_keys", new ArrayList<>(missing).subList(0, Math.min(8, missing.size())),
++                      "first_extra_keys", new ArrayList<>(extra).subList(0, Math.min(8, extra.size())),
++                      "descriptors", descriptors);
++    }
++
+     private List<List<Object>> rows(SSTableReader reader) throws Exception
+     {
+         List<List<Object>> result = new ArrayList<>();
+diff --git a/experiments/scripts/cassandra/run_bounded_workloads.sh b/experiments/scripts/cassandra/run_bounded_workloads.sh
+index 3e9600bb..4e34cec7 100644
+--- a/experiments/scripts/cassandra/run_bounded_workloads.sh
++++ b/experiments/scripts/cassandra/run_bounded_workloads.sh
+@@ -28,7 +28,7 @@ for name in OUT_ROOT BASELINE_SOURCE VCOMP_SOURCE BASELINE_KEYSPACE VCOMP_KEYSPA
+             DATASET_GIB KEY_SPACE KEY_BYTES VALUE_BYTES PARTITION_COUNT SEED UCS_PICKER_SEED \
+             THREADS DURATION_SECONDS OPERATIONS_PER_THREAD WORKLOADS DISK_DEVICE MAX_HEAP_SIZE \
+             FILE_CACHE_SIZE_MIB COMPACTION_DRAIN_TIMEOUT_SECONDS SKIP_CASSANDRA_BUILD \
+-            EXPECTED_RUNTIME_JAR_SHA256; do
++            EXPECTED_RUNTIME_JAR_SHA256 BASELINE_REFERENCE; do
+     if [[ -v "$name" ]]; then env_args+=("$name=${!name}"); fi
+ done
+ systemd-run --user --quiet --wait --pipe --collect --unit="$unit" \
+diff --git a/experiments/scripts/cassandra/run_differential_oracle.sh b/experiments/scripts/cassandra/run_differential_oracle.sh
+index 97694d3b..23b56373 100644
+--- a/experiments/scripts/cassandra/run_differential_oracle.sh
++++ b/experiments/scripts/cassandra/run_differential_oracle.sh
+@@ -53,6 +53,7 @@ if [[ ! -f build/test/classes/org/apache/cassandra/cql3/CQLTester.class ]]; then
+     ant build-test >>"$BUNDLE_ROOT/logs/build.log" 2>&1
+ fi
+ test_sources=(test/unit/org/apache/cassandra/db/compaction/vcomp/VCompNativeExactDifferentialTest.java
++              test/unit/org/apache/cassandra/db/compaction/vcomp/VCompModelStageProbe.java
+               test/unit/org/apache/cassandra/db/compaction/VCompNativePickerDifferentialTest.java)
+ "$JAVA_HOME/bin/javac" -cp 'build/classes/main:build/test/classes:build/lib/jars/*:build/test/lib/jars/*:test/conf' \
+     -d "$DIAGNOSTIC_ROOT/classes" "${test_sources[@]}" >"$BUNDLE_ROOT/logs/javac.log" 2>&1
+@@ -80,6 +81,11 @@ if (( test_status != 0 )); then
+     echo "Diagnostic execution failed; see $BUNDLE_ROOT/logs/junit.log" >&2
+     exit "$test_status"
+ fi
++"$JAVA_HOME/bin/java" -ea \
++    -cp "$DIAGNOSTIC_ROOT/classes:build/classes/main:build/lib/jars/*" \
++    org.apache.cassandra.db.compaction.vcomp.VCompModelStageProbe \
++    "$BUNDLE_ROOT/logs/native-exact-trace.json" "$BUNDLE_ROOT/logs/model-stage-probe.json" \
++    >"$BUNDLE_ROOT/logs/model-stage-probe.log" 2>&1
+ python3 "$REPO_ROOT/experiments/analysis/publish_cassandra_differential.py" "$BUNDLE_ROOT"
+ finished=true
+ echo "Diagnostic recorded: $BUNDLE_ROOT/results.md (JUnit success is not a fidelity pass)"

@@ -1,0 +1,3 @@
+bash experiments/scripts/cassandra/run_retained_scan_diagnostic.sh /tmp/vcomp-cassandra-native-event-20260914-210336/output
+SCAN_OPERATIONS=1000
+EVICT_DATA_CACHE=true

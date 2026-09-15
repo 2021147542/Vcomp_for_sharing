@@ -1,0 +1,705 @@
+[
+  {
+    "seq": 0,
+    "nano_time": 1746837213111147,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:1",
+    "live": [],
+    "eligible": [],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 0,
+    "base_density": 812646.4
+  },
+  {
+    "seq": 1,
+    "nano_time": 1746837213217244,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:1",
+    "live": [],
+    "eligible": [],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 0,
+    "base_density": 812646.4
+  },
+  {
+    "seq": 2,
+    "nano_time": 1746837427970359,
+    "kind": "flush_registered",
+    "thread": "MemtableFlushWriter:2",
+    "live": [
+      "F1"
+    ],
+    "eligible": [
+      "F1"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [
+      "F1"
+    ]
+  },
+  {
+    "seq": 3,
+    "nano_time": 1746837428324028,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:2",
+    "live": [
+      "F1"
+    ],
+    "eligible": [
+      "F1"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 4,
+    "nano_time": 1746837428407353,
+    "kind": "flush_return",
+    "thread": "main",
+    "live": [
+      "F1"
+    ],
+    "eligible": [
+      "F1"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "flush_number": 1
+  },
+  {
+    "seq": 5,
+    "nano_time": 1746837429459864,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:2",
+    "live": [
+      "F1"
+    ],
+    "eligible": [
+      "F1"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [
+      "F1"
+    ],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 6,
+    "nano_time": 1746837537126667,
+    "kind": "flush_registered",
+    "thread": "MemtableFlushWriter:1",
+    "live": [
+      "F1",
+      "F2"
+    ],
+    "eligible": [
+      "F1",
+      "F2"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [
+      "F2"
+    ]
+  },
+  {
+    "seq": 7,
+    "nano_time": 1746837537313956,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:3",
+    "live": [
+      "F1",
+      "F2"
+    ],
+    "eligible": [
+      "F1",
+      "F2"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 8,
+    "nano_time": 1746837537555125,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:3",
+    "live": [
+      "F1",
+      "F2"
+    ],
+    "eligible": [
+      "F1",
+      "F2"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [
+      "F1",
+      "F2"
+    ],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 9,
+    "nano_time": 1746837537618924,
+    "kind": "flush_return",
+    "thread": "main",
+    "live": [
+      "F1",
+      "F2"
+    ],
+    "eligible": [
+      "F1",
+      "F2"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "flush_number": 2
+  },
+  {
+    "seq": 10,
+    "nano_time": 1746837630961607,
+    "kind": "flush_registered",
+    "thread": "MemtableFlushWriter:2",
+    "live": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [
+      "F3"
+    ]
+  },
+  {
+    "seq": 11,
+    "nano_time": 1746837631120403,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:4",
+    "live": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 12,
+    "nano_time": 1746837631213667,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:4",
+    "live": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 13,
+    "nano_time": 1746837631686828,
+    "kind": "flush_return",
+    "thread": "main",
+    "live": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "flush_number": 3
+  },
+  {
+    "seq": 14,
+    "nano_time": 1746837710646282,
+    "kind": "flush_registered",
+    "thread": "MemtableFlushWriter:1",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [
+      "F4"
+    ]
+  },
+  {
+    "seq": 15,
+    "nano_time": 1746837710795400,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:1",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 16,
+    "nano_time": 1746837711316471,
+    "kind": "flush_return",
+    "thread": "main",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "flush_number": 4
+  },
+  {
+    "seq": 17,
+    "nano_time": 1746837712201470,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:1",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "eligible": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "added": [],
+    "strategy_candidates": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "view_stable_during_picker": true,
+    "selected_level": 0,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 18,
+    "nano_time": 1746837713421663,
+    "kind": "job_reserved",
+    "thread": "CompactionExecutor:1",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "eligible": [],
+    "in_flight_live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "tracker_compacting_separate_read": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "selected": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "added": []
+  },
+  {
+    "seq": 19,
+    "nano_time": 1746837799953786,
+    "kind": "flush_registered",
+    "thread": "MemtableFlushWriter:2",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "eligible": [
+      "F5"
+    ],
+    "in_flight_live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "tracker_compacting_separate_read": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "selected": [],
+    "added": [
+      "F5"
+    ]
+  },
+  {
+    "seq": 20,
+    "nano_time": 1746837800208621,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:2",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "eligible": [
+      "F5"
+    ],
+    "in_flight_live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "tracker_compacting_separate_read": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 21,
+    "nano_time": 1746837800246982,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:2",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "eligible": [
+      "F5"
+    ],
+    "in_flight_live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "tracker_compacting_separate_read": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 22,
+    "nano_time": 1746837800671203,
+    "kind": "flush_return",
+    "thread": "main",
+    "live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "eligible": [
+      "F5"
+    ],
+    "in_flight_live": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "tracker_compacting_separate_read": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "selected": [],
+    "added": [],
+    "flush_number": 5
+  },
+  {
+    "seq": 23,
+    "nano_time": 1746837921084676,
+    "kind": "job_commit_visible",
+    "thread": "CompactionExecutor:1",
+    "live": [
+      "J1.0",
+      "F5"
+    ],
+    "eligible": [
+      "F5"
+    ],
+    "in_flight_live": [
+      "J1.0"
+    ],
+    "tracker_compacting_separate_read": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "J1.0"
+    ],
+    "selected": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "added": [
+      "J1.0"
+    ]
+  },
+  {
+    "seq": 24,
+    "nano_time": 1746837926803051,
+    "kind": "job_complete",
+    "thread": "CompactionExecutor:1",
+    "live": [
+      "J1.0",
+      "F5"
+    ],
+    "eligible": [
+      "J1.0",
+      "F5"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "added": [],
+    "success": true
+  },
+  {
+    "seq": 25,
+    "nano_time": 1746837926951588,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:3",
+    "live": [
+      "J1.0",
+      "F5"
+    ],
+    "eligible": [
+      "J1.0",
+      "F5"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 26,
+    "nano_time": 1746837927031466,
+    "kind": "native_picker",
+    "thread": "CompactionExecutor:3",
+    "live": [
+      "J1.0",
+      "F5"
+    ],
+    "eligible": [
+      "J1.0",
+      "F5"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": [],
+    "strategy_candidates": [
+      "J1.0",
+      "F5"
+    ],
+    "view_stable_during_picker": true,
+    "selected_level": null,
+    "observed_flush_bytes": 5242880,
+    "base_density": 4063232.0
+  },
+  {
+    "seq": 27,
+    "nano_time": 1746837931451413,
+    "kind": "native_drained",
+    "thread": "main",
+    "live": [
+      "J1.0",
+      "F5"
+    ],
+    "eligible": [
+      "J1.0",
+      "F5"
+    ],
+    "in_flight_live": [],
+    "tracker_compacting_separate_read": [],
+    "selected": [],
+    "added": []
+  }
+]

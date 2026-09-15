@@ -1,0 +1,57 @@
+{
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-287361d5f9cb39f59fccc83efb388ae2/oa-4-big-Data.db" : {
+    "rows" : 92217,
+    "data_db_bytes" : 95444973,
+    "occupied_partitions" : 14
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-459ea329ce3c3638aad8d09e9c289614/oa-5-big-Data.db" : {
+    "rows" : 94987,
+    "data_db_bytes" : 98311923,
+    "occupied_partitions" : 14
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-61f57f13640b3436a23afa58efc16dd4/oa-6-big-Data.db" : {
+    "rows" : 64185,
+    "data_db_bytes" : 66431718,
+    "occupied_partitions" : 9
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-0e365102eac53b988341d403b2d60709/oa-7-big-Data.db" : {
+    "rows" : 64255,
+    "data_db_bytes" : 66504195,
+    "occupied_partitions" : 10
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-79c6839fef5a3b42987b5fc09ec04a78/oa-8-big-Data.db" : {
+    "rows" : 89785,
+    "data_db_bytes" : 92927826,
+    "occupied_partitions" : 13
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-5349b47978b33bd2a75638cdb5102fb3/oa-9-big-Data.db" : {
+    "rows" : 92772,
+    "data_db_bytes" : 96019371,
+    "occupied_partitions" : 13
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-c1475c9db2f1399f83dfb3a0bfc09cff/oa-10-big-Data.db" : {
+    "rows" : 94003,
+    "data_db_bytes" : 97293456,
+    "occupied_partitions" : 13
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-762c878f1b4738a0aa38b5e10852e5a9/oa-11-big-Data.db" : {
+    "rows" : 98790,
+    "data_db_bytes" : 102248028,
+    "occupied_partitions" : 14
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-9fea69c9962638fab4bea6dac8fc13fe/oa-12-big-Data.db" : {
+    "rows" : 63528,
+    "data_db_bytes" : 65754180,
+    "occupied_partitions" : 100
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-66402a4b41353c82a3ca91a0d352b70c/oa-13-big-Data.db" : {
+    "rows" : 63538,
+    "data_db_bytes" : 65764530,
+    "occupied_partitions" : 100
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-210948/output/materialized/vcomp_event_materialized/kv-d9cac6a78b273cf1964009d2f947d13f/oa-14-big-Data.db" : {
+    "rows" : 63582,
+    "data_db_bytes" : 65810070,
+    "occupied_partitions" : 100
+  }
+}

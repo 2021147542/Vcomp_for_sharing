@@ -1,0 +1,1621 @@
+[ {
+  "flush_number" : 1,
+  "live" : [ "run-0" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 11,
+      "key_max" : 1048574,
+      "rows" : 63597,
+      "bytes" : 65823315,
+      "max_timestamp" : 65536,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 2,
+  "live" : [ "run-0", "run-1" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 11,
+      "key_max" : 1048574,
+      "rows" : 63597,
+      "bytes" : 65823315,
+      "max_timestamp" : 65536,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 33,
+      "key_max" : 1048575,
+      "rows" : 63578,
+      "bytes" : 65803650,
+      "max_timestamp" : 131072,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 3,
+  "live" : [ "run-0", "run-1", "run-2" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 11,
+      "key_max" : 1048574,
+      "rows" : 63597,
+      "bytes" : 65823315,
+      "max_timestamp" : 65536,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 33,
+      "key_max" : 1048575,
+      "rows" : 63578,
+      "bytes" : 65803650,
+      "max_timestamp" : 131072,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-2",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-2",
+      "key_min" : 7,
+      "key_max" : 1048575,
+      "rows" : 63511,
+      "bytes" : 65734304,
+      "max_timestamp" : 196608,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 4,
+  "live" : [ "run-0", "run-1", "run-2", "run-3" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 11,
+      "key_max" : 1048574,
+      "rows" : 63597,
+      "bytes" : 65823315,
+      "max_timestamp" : 65536,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 33,
+      "key_max" : 1048575,
+      "rows" : 63578,
+      "bytes" : 65803650,
+      "max_timestamp" : 131072,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-2",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-2",
+      "key_min" : 7,
+      "key_max" : 1048575,
+      "rows" : 63511,
+      "bytes" : 65734304,
+      "max_timestamp" : 196608,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-3",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-3",
+      "key_min" : 11,
+      "key_max" : 1048567,
+      "rows" : 63558,
+      "bytes" : 65782949,
+      "max_timestamp" : 262144,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ "run-3", "run-2", "run-1", "run-0" ],
+  "output_level" : 1
+}, {
+  "flush_number" : 4,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 5,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-4" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-4",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-4",
+      "key_min" : 12,
+      "key_max" : 1048564,
+      "rows" : 63534,
+      "bytes" : 65758109,
+      "max_timestamp" : 327680,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 6,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-4", "run-5" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-4",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-4",
+      "key_min" : 12,
+      "key_max" : 1048564,
+      "rows" : 63534,
+      "bytes" : 65758109,
+      "max_timestamp" : 327680,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-5",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-5",
+      "key_min" : 2,
+      "key_max" : 1048561,
+      "rows" : 63539,
+      "bytes" : 65763284,
+      "max_timestamp" : 393216,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 7,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-4", "run-5", "run-6" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-4",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-4",
+      "key_min" : 12,
+      "key_max" : 1048564,
+      "rows" : 63534,
+      "bytes" : 65758109,
+      "max_timestamp" : 327680,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-5",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-5",
+      "key_min" : 2,
+      "key_max" : 1048561,
+      "rows" : 63539,
+      "bytes" : 65763284,
+      "max_timestamp" : 393216,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-6",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-6",
+      "key_min" : 6,
+      "key_max" : 1048564,
+      "rows" : 63539,
+      "bytes" : 65763284,
+      "max_timestamp" : 458752,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 8,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-4", "run-5", "run-6", "run-7" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-4",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-4",
+      "key_min" : 12,
+      "key_max" : 1048564,
+      "rows" : 63534,
+      "bytes" : 65758109,
+      "max_timestamp" : 327680,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-5",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-5",
+      "key_min" : 2,
+      "key_max" : 1048561,
+      "rows" : 63539,
+      "bytes" : 65763284,
+      "max_timestamp" : 393216,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-6",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-6",
+      "key_min" : 6,
+      "key_max" : 1048564,
+      "rows" : 63539,
+      "bytes" : 65763284,
+      "max_timestamp" : 458752,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-7",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-7",
+      "key_min" : 7,
+      "key_max" : 1048572,
+      "rows" : 63566,
+      "bytes" : 65791230,
+      "max_timestamp" : 524288,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ "run-7", "run-6", "run-5", "run-4" ],
+  "output_level" : 1
+}, {
+  "flush_number" : 8,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 9,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-8" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-8",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-8",
+      "key_min" : 17,
+      "key_max" : 1048569,
+      "rows" : 63519,
+      "bytes" : 65742584,
+      "max_timestamp" : 589824,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 10,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-8", "run-9" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-8",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-8",
+      "key_min" : 17,
+      "key_max" : 1048569,
+      "rows" : 63519,
+      "bytes" : 65742584,
+      "max_timestamp" : 589824,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-9",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-9",
+      "key_min" : 40,
+      "key_max" : 1048484,
+      "rows" : 63594,
+      "bytes" : 65820210,
+      "max_timestamp" : 655360,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 11,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-8", "run-9", "run-10" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-8",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-8",
+      "key_min" : 17,
+      "key_max" : 1048569,
+      "rows" : 63519,
+      "bytes" : 65742584,
+      "max_timestamp" : 589824,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-9",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-9",
+      "key_min" : 40,
+      "key_max" : 1048484,
+      "rows" : 63594,
+      "bytes" : 65820210,
+      "max_timestamp" : 655360,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-10",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-10",
+      "key_min" : 8,
+      "key_max" : 1048543,
+      "rows" : 63495,
+      "bytes" : 65717744,
+      "max_timestamp" : 720896,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 12,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-8", "run-9", "run-10", "run-11" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-8",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-8",
+      "key_min" : 17,
+      "key_max" : 1048569,
+      "rows" : 63519,
+      "bytes" : 65742584,
+      "max_timestamp" : 589824,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-9",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-9",
+      "key_min" : 40,
+      "key_max" : 1048484,
+      "rows" : 63594,
+      "bytes" : 65820210,
+      "max_timestamp" : 655360,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-10",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-10",
+      "key_min" : 8,
+      "key_max" : 1048543,
+      "rows" : 63495,
+      "bytes" : 65717744,
+      "max_timestamp" : 720896,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-11",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-11",
+      "key_min" : 20,
+      "key_max" : 1048558,
+      "rows" : 63439,
+      "bytes" : 65659784,
+      "max_timestamp" : 786432,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ "run-11", "run-10", "run-9", "run-8" ],
+  "output_level" : 1
+}, {
+  "flush_number" : 12,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-compaction-2-shard-0", "run-compaction-2-shard-1" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114132,
+      "bytes" : 118127373,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 13,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-compaction-2-shard-0", "run-compaction-2-shard-1", "run-12" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114132,
+      "bytes" : 118127373,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-12",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-12",
+      "key_min" : 28,
+      "key_max" : 1048567,
+      "rows" : 63615,
+      "bytes" : 65841945,
+      "max_timestamp" : 851968,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 14,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-compaction-2-shard-0", "run-compaction-2-shard-1", "run-12", "run-13" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114132,
+      "bytes" : 118127373,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-12",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-12",
+      "key_min" : 28,
+      "key_max" : 1048567,
+      "rows" : 63615,
+      "bytes" : 65841945,
+      "max_timestamp" : 851968,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-13",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-13",
+      "key_min" : 13,
+      "key_max" : 1048563,
+      "rows" : 63565,
+      "bytes" : 65790195,
+      "max_timestamp" : 917504,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 15,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-compaction-2-shard-0", "run-compaction-2-shard-1", "run-12", "run-13", "run-14" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114132,
+      "bytes" : 118127373,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-12",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-12",
+      "key_min" : 28,
+      "key_max" : 1048567,
+      "rows" : 63615,
+      "bytes" : 65841945,
+      "max_timestamp" : 851968,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-13",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-13",
+      "key_min" : 13,
+      "key_max" : 1048563,
+      "rows" : 63565,
+      "bytes" : 65790195,
+      "max_timestamp" : 917504,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-14",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-14",
+      "key_min" : 0,
+      "key_max" : 1048574,
+      "rows" : 63469,
+      "bytes" : 65690834,
+      "max_timestamp" : 983040,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 16,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-compaction-2-shard-0", "run-compaction-2-shard-1", "run-12", "run-13", "run-14", "run-15" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114132,
+      "bytes" : 118127373,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-12",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-12",
+      "key_min" : 28,
+      "key_max" : 1048567,
+      "rows" : 63615,
+      "bytes" : 65841945,
+      "max_timestamp" : 851968,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-13",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-13",
+      "key_min" : 13,
+      "key_max" : 1048563,
+      "rows" : 63565,
+      "bytes" : 65790195,
+      "max_timestamp" : 917504,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-14",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-14",
+      "key_min" : 0,
+      "key_max" : 1048574,
+      "rows" : 63469,
+      "bytes" : 65690834,
+      "max_timestamp" : 983040,
+      "coverage" : 0.9700019709018011
+    } ]
+  }, {
+    "id" : "run-15",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-15",
+      "key_min" : 16,
+      "key_max" : 1048569,
+      "rows" : 63555,
+      "bytes" : 65779844,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.9700019709018011
+    } ]
+  } ],
+  "selected" : [ "run-15", "run-14", "run-13", "run-12" ],
+  "output_level" : 1
+}, {
+  "flush_number" : 16,
+  "live" : [ "run-compaction-0-shard-0", "run-compaction-0-shard-1", "run-compaction-1-shard-0", "run-compaction-1-shard-1", "run-compaction-2-shard-0", "run-compaction-2-shard-1", "run-compaction-3-shard-0", "run-compaction-3-shard-1" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 7,
+      "key_max" : 555757,
+      "rows" : 136753,
+      "bytes" : 141540257,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-0",
+      "key_min" : 2,
+      "key_max" : 555757,
+      "rows" : 122936,
+      "bytes" : 127239571,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-0",
+      "key_min" : 8,
+      "key_max" : 555757,
+      "rows" : 114132,
+      "bytes" : 118127373,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-3-shard-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-3-0",
+      "key_min" : 0,
+      "key_max" : 555757,
+      "rows" : 119726,
+      "bytes" : 123917200,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.4911774442854806
+    } ]
+  }, {
+    "id" : "run-compaction-3-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-3-1",
+      "key_min" : 555758,
+      "key_max" : 1048574,
+      "rows" : 98161,
+      "bytes" : 101597283,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.4616380836494609
+    } ]
+  } ],
+  "selected" : [ "run-compaction-3-shard-0", "run-compaction-2-shard-0", "run-compaction-1-shard-0", "run-compaction-0-shard-0" ],
+  "output_level" : 2
+}, {
+  "flush_number" : 16,
+  "live" : [ "run-compaction-0-shard-1", "run-compaction-1-shard-1", "run-compaction-2-shard-1", "run-compaction-3-shard-1", "run-compaction-4-shard-0", "run-compaction-4-shard-1", "run-compaction-4-shard-2", "run-compaction-4-shard-3" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-1",
+      "key_min" : 555758,
+      "key_max" : 1048575,
+      "rows" : 117491,
+      "bytes" : 121603960,
+      "max_timestamp" : 262144,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-1-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-1-1",
+      "key_min" : 555758,
+      "key_max" : 1048572,
+      "rows" : 115874,
+      "bytes" : 119930354,
+      "max_timestamp" : 524288,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-2-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-2-1",
+      "key_min" : 555758,
+      "key_max" : 1048569,
+      "rows" : 99172,
+      "bytes" : 102643674,
+      "max_timestamp" : 786432,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-3-shard-1",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-3-1",
+      "key_min" : 555758,
+      "key_max" : 1048574,
+      "rows" : 98161,
+      "bytes" : 101597283,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.4616380836494609
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-0",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-0",
+      "key_min" : 0,
+      "key_max" : 136317,
+      "rows" : 89594,
+      "bytes" : 92730381,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10895937605618339
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-1",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-1",
+      "key_min" : 136318,
+      "key_max" : 272635,
+      "rows" : 92322,
+      "bytes" : 95553879,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.09451471420750313
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-2",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-2",
+      "key_min" : 272636,
+      "key_max" : 408953,
+      "rows" : 93732,
+      "bytes" : 97013238,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10873970836223945
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-3",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-3",
+      "key_min" : 408954,
+      "key_max" : 555757,
+      "rows" : 99702,
+      "bytes" : 103192228,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10992868746976486
+    } ]
+  } ],
+  "selected" : [ "run-compaction-3-shard-1", "run-compaction-2-shard-1", "run-compaction-1-shard-1", "run-compaction-0-shard-1" ],
+  "output_level" : 2
+}, {
+  "flush_number" : 16,
+  "live" : [ "run-compaction-4-shard-0", "run-compaction-4-shard-1", "run-compaction-4-shard-2", "run-compaction-4-shard-3", "run-compaction-5-shard-0", "run-compaction-5-shard-1", "run-compaction-5-shard-2", "run-compaction-5-shard-3" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-4-shard-0",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-0",
+      "key_min" : 0,
+      "key_max" : 136317,
+      "rows" : 89594,
+      "bytes" : 92730381,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10895937605618339
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-1",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-1",
+      "key_min" : 136318,
+      "key_max" : 272635,
+      "rows" : 92322,
+      "bytes" : 95553879,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.09451471420750313
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-2",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-2",
+      "key_min" : 272636,
+      "key_max" : 408953,
+      "rows" : 93732,
+      "bytes" : 97013238,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10873970836223945
+    } ]
+  }, {
+    "id" : "run-compaction-4-shard-3",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-4-3",
+      "key_min" : 408954,
+      "key_max" : 555757,
+      "rows" : 99702,
+      "bytes" : 103192228,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10992868746976486
+    } ]
+  }, {
+    "id" : "run-compaction-5-shard-0",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-5-0",
+      "key_min" : 555758,
+      "key_max" : 702561,
+      "rows" : 95175,
+      "bytes" : 98506753,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.10729126201865968
+    } ]
+  }, {
+    "id" : "run-compaction-5-shard-1",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-5-1",
+      "key_min" : 702562,
+      "key_max" : 849360,
+      "rows" : 93001,
+      "bytes" : 96256649,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.1114282648784668
+    } ]
+  }, {
+    "id" : "run-compaction-5-shard-2",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-5-2",
+      "key_min" : 849361,
+      "key_max" : 943725,
+      "rows" : 63859,
+      "bytes" : 66094486,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.1112796152959663
+    } ]
+  }, {
+    "id" : "run-compaction-5-shard-3",
+    "level" : 2,
+    "sstables" : [ {
+      "id" : "vsst-compaction-5-3",
+      "key_min" : 943726,
+      "key_max" : 1048575,
+      "rows" : 63609,
+      "bytes" : 65835735,
+      "max_timestamp" : 1048576,
+      "coverage" : 0.09411199678440052
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+} ]

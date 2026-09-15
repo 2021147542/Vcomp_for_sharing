@@ -1,0 +1,1267 @@
+{
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "seed": 20260909,
+  "domain": 1048576,
+  "requests_per_round_per_side": 10000,
+  "actual_requests_excluding_warmup": 80000,
+  "classification": "All four pre-fixed paired rounds, no selected passes; same-request hit groups computed after execution",
+  "limitations": "Actual engine local read path; one thread, warm OS cache after fixture scans, no CQL transport or contention; not 100GiB performance SST histogram counts merged SST iterators, not physical disk operations. Bloom is partition-level. Chunk counters are process-global deltas. Linux process read_bytes delta is attributed storage reads under warm OS cache and can be zero; rchar includes logical syscall bytes and instrumentation. Physical I/O latency is not measured.",
+  "histogram_note": "SSTablesPerReadHistogram records merged SST iterators. Bucket-upper mean is exact for singleton buckets and an upper-bound approximation otherwise; not candidate count or device I/O count.",
+  "paired_request_membership": {
+    "both_hit": 6194,
+    "native_only_hit": 0,
+    "vcomp_only_hit": 0,
+    "both_miss": 3806
+  },
+  "native_sstables": 8,
+  "vcomp_sstables": 8,
+  "rounds": [
+    {
+      "same_key_timestamp_differences": 0,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 1,
+      "first": "native",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_1",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 110915192,
+          "ops_per_second_including_setup": 90158.97479580615,
+          "command_latency_ns": {
+            "p50": 10930,
+            "p95": 13555,
+            "p99": 16530,
+            "mean": 10504.7626
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2150,
+            8171
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 535417564,
+            "syscr": 8179,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2150,
+            "chunk_cache_misses": 8171
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_1",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 118016563,
+          "ops_per_second_including_setup": 84733.86909259508,
+          "command_latency_ns": {
+            "p50": 11531,
+            "p95": 15830,
+            "p99": 19466,
+            "mean": 11222.2461
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2061,
+            8260
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 541250216,
+            "syscr": 8262,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2061,
+            "chunk_cache_misses": 8260
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 10.5047626,
+            "p50_us": 10.93,
+            "p95_us": 13.555,
+            "p99_us": 16.53
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 11.2222461,
+            "p50_us": 11.531,
+            "p95_us": 15.83,
+            "p99_us": 19.466
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.981060865353568,
+            "p50_us": 11.391,
+            "p95_us": 14.216,
+            "p99_us": 17.012
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 11.755602680012917,
+            "p50_us": 11.953,
+            "p95_us": 16.23,
+            "p99_us": 20.137
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 9.729620336311088,
+            "p50_us": 10.229,
+            "p95_us": 12.333,
+            "p99_us": 15.068
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 10.354245401996847,
+            "p50_us": 10.71,
+            "p95_us": 14.647,
+            "p99_us": 16.551
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 0,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 2,
+      "first": "vcomp",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_2",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 107082375,
+          "ops_per_second_including_setup": 93386.04975842196,
+          "command_latency_ns": {
+            "p50": 10709,
+            "p95": 13054,
+            "p99": 16281,
+            "mean": 10123.1016
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2037,
+            8284
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 542823080,
+            "syscr": 8286,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2037,
+            "chunk_cache_misses": 8284
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_2",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 108122468,
+          "ops_per_second_including_setup": 92487.714949311,
+          "command_latency_ns": {
+            "p50": 10870,
+            "p95": 12693,
+            "p99": 16812,
+            "mean": 10234.3021
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2290,
+            8031
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 526242494,
+            "syscr": 8035,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2290,
+            "chunk_cache_misses": 8031
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 10.1231016,
+            "p50_us": 10.709,
+            "p95_us": 13.054,
+            "p99_us": 16.281
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 10.2343021,
+            "p50_us": 10.87,
+            "p95_us": 12.693,
+            "p99_us": 16.812
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.647622699386504,
+            "p50_us": 11.181,
+            "p95_us": 13.715,
+            "p99_us": 16.751
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 10.674918146593479,
+            "p50_us": 11.392,
+            "p95_us": 13.315,
+            "p99_us": 17.081
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 9.269480031529165,
+            "p50_us": 9.969,
+            "p95_us": 11.692,
+            "p99_us": 14.927
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 9.517230162900683,
+            "p50_us": 10.199,
+            "p95_us": 11.401,
+            "p99_us": 15.328
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 0,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 3,
+      "first": "vcomp",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_3",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 106185946,
+          "ops_per_second_including_setup": 94174.42116115818,
+          "command_latency_ns": {
+            "p50": 10579,
+            "p95": 12563,
+            "p99": 16050,
+            "mean": 10023.8964
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2039,
+            8282
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 542692030,
+            "syscr": 8286,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2039,
+            "chunk_cache_misses": 8282
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_3",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 110141665,
+          "ops_per_second_including_setup": 90792.16298391712,
+          "command_latency_ns": {
+            "p50": 11041,
+            "p95": 13255,
+            "p99": 17182,
+            "mean": 10394.2906
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2064,
+            8257
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 541053608,
+            "syscr": 8259,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2064,
+            "chunk_cache_misses": 8257
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 10.0238964,
+            "p50_us": 10.579,
+            "p95_us": 12.563,
+            "p99_us": 16.05
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 10.3942906,
+            "p50_us": 11.041,
+            "p95_us": 13.255,
+            "p99_us": 17.182
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.577199386503068,
+            "p50_us": 11.031,
+            "p95_us": 12.935,
+            "p99_us": 16.48
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 10.942357927026155,
+            "p50_us": 11.542,
+            "p95_us": 13.705,
+            "p99_us": 17.572
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 9.123434314240672,
+            "p50_us": 9.868,
+            "p95_us": 11.381,
+            "p99_us": 14.557
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 9.502349185496586,
+            "p50_us": 10.319,
+            "p95_us": 11.832,
+            "p99_us": 15.379
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 0,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 4,
+      "first": "native",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_4",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 102234847,
+          "ops_per_second_including_setup": 97814.00660774697,
+          "command_latency_ns": {
+            "p50": 10280,
+            "p95": 12003,
+            "p99": 15719,
+            "mean": 9653.4588
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2181,
+            8140
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 533385900,
+            "syscr": 8143,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2181,
+            "chunk_cache_misses": 8140
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_4",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 110553992,
+          "ops_per_second_including_setup": 90453.54056504807,
+          "command_latency_ns": {
+            "p50": 11080,
+            "p95": 13395,
+            "p99": 17092,
+            "mean": 10485.7465
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2039,
+            8282
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 542692030,
+            "syscr": 8286,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2039,
+            "chunk_cache_misses": 8282
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 9.653458800000001,
+            "p50_us": 10.28,
+            "p95_us": 12.003,
+            "p99_us": 15.719
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 10.4857465,
+            "p50_us": 11.08,
+            "p95_us": 13.395,
+            "p99_us": 17.092
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.145393445269615,
+            "p50_us": 10.77,
+            "p95_us": 12.333,
+            "p99_us": 16.05
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 11.044205844365514,
+            "p50_us": 11.551,
+            "p95_us": 13.966,
+            "p99_us": 17.493
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 8.852869416710456,
+            "p50_us": 9.628,
+            "p95_us": 10.77,
+            "p99_us": 14.287
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 9.576892800840778,
+            "p50_us": 10.36,
+            "p95_us": 12.172,
+            "p99_us": 15.629
+          }
+        }
+      }
+    }
+  ],
+  "all_rounds_sst_groups": {
+    "all": {
+      "native": {
+        "count": 40000,
+        "sum": 40000,
+        "mean": 1.0,
+        "max": 1
+      },
+      "vcomp": {
+        "count": 40000,
+        "sum": 40000,
+        "mean": 1.0,
+        "max": 1
+      }
+    },
+    "both_hit": {
+      "native": {
+        "count": 24776,
+        "sum": 24776,
+        "mean": 1.0,
+        "max": 1
+      },
+      "vcomp": {
+        "count": 24776,
+        "sum": 24776,
+        "mean": 1.0,
+        "max": 1
+      }
+    },
+    "native_only_hit": {
+      "native": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      },
+      "vcomp": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      }
+    },
+    "vcomp_only_hit": {
+      "native": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      },
+      "vcomp": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      }
+    },
+    "both_miss": {
+      "native": {
+        "count": 15224,
+        "sum": 15224,
+        "mean": 1.0,
+        "max": 1
+      },
+      "vcomp": {
+        "count": 15224,
+        "sum": 15224,
+        "mean": 1.0,
+        "max": 1
+      }
+    }
+  },
+  "all_rounds_latency_groups": {
+    "all": {
+      "native": {
+        "count": 40000,
+        "mean_us": 10.07630485,
+        "p50_us": 10.61,
+        "p95_us": 12.954,
+        "p99_us": 16.18
+      },
+      "vcomp": {
+        "count": 40000,
+        "mean_us": 10.584146324999999,
+        "p50_us": 11.111,
+        "p95_us": 14.968,
+        "p99_us": 17.322
+      }
+    },
+    "both_hit": {
+      "native": {
+        "count": 24776,
+        "mean_us": 10.587819099128188,
+        "p50_us": 11.051,
+        "p95_us": 13.505,
+        "p99_us": 16.571
+      },
+      "vcomp": {
+        "count": 24776,
+        "mean_us": 11.104271149499516,
+        "p50_us": 11.562,
+        "p95_us": 15.599,
+        "p99_us": 17.733
+      }
+    },
+    "native_only_hit": {
+      "native": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      },
+      "vcomp": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      }
+    },
+    "vcomp_only_hit": {
+      "native": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      },
+      "vcomp": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      }
+    },
+    "both_miss": {
+      "native": {
+        "count": 15224,
+        "mean_us": 9.243851024697845,
+        "p50_us": 9.889,
+        "p95_us": 11.702,
+        "p99_us": 14.658
+      },
+      "vcomp": {
+        "count": 15224,
+        "mean_us": 9.737679387808722,
+        "p50_us": 10.369,
+        "p95_us": 13.806,
+        "p99_us": 15.639
+      }
+    }
+  }
+}

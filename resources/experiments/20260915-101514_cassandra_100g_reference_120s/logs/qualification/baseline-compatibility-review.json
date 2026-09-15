@@ -1,0 +1,12 @@
+{
+  "reference_sha256": "8daf8fcfdf7d116bc5bf3473424ac687c9752cf7f1bd0643993399dc34e0e619",
+  "sources": {
+    "cassandra_vcomp/src/java/org/apache/cassandra/db/compaction/vcomp/VCompCqlSstableMaterializer.java": {
+      "original_sha256": "ce2e093f842a85675523b0b3abad57e60ef18fe4575bd3ecca46ad92fba83c4f",
+      "current_sha256": "14e2e840e3e0d589b40550b900890e95d6a347619a3d32acd5736dba9bc97031",
+      "input_schema_semantics_unchanged": true,
+      "rationale": "Reviewed archived reference helper against current source: only java.util.Arrays import and new non-installed first-source-flush sizing probe added. Existing final materialization, value generation, key codec, partition mapping and schema are byte-for-byte unchanged. Probe reads one independently restarted source iterator and uses current buffered coordinates; input generator and other guarded helpers retain exact original hashes. Canonical baseline is never opened for writes.",
+      "validation": "Integrated JUnit 47 tests passed, including VCompFirstFlushSizingTest exact sparse key/timestamp roundtrip, source iterator preservation and Data.db-only accounting, and existing VCompCqlSstableMaterializerTest. Evidence: /home/dongju/vcomp/experiments/artifacts/cassandra-repair-qualification-20260915/junit.log"
+    }
+  }
+}

@@ -1,0 +1,505 @@
+{
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "seed": 20260909,
+  "domain": 104857600,
+  "generated_operations": 1000,
+  "executed_scans_per_phase": 947,
+  "skipped_insert_decisions_per_phase": 53,
+  "measurement_scope": "Actual local SinglePartitionReadCommand slices and CQL row limits, same next-partition fallback as workload; cache policy reported separately by cache_eviction_requested/eviction_scope; single thread, fixed warmup and all four ABBA rounds; 5% writes omitted from frozen states",
+  "source_measurement_scope": "Actual local SinglePartitionReadCommand slices and CQL row limits, same next-partition fallback as workload; cache policy reported separately by cache_eviction_requested/eviction_scope; single thread, fixed warmup and all four ABBA rounds; 5% writes omitted from frozen states",
+  "io_limits": "Per-scan SST counts are summed actual merged iterators over all partition commands, not distinct SSTs or physical I/O. Process read_bytes under warm OS can be zero. rchar includes logical syscall bytes and instrumentation. Physical I/O latency not measured.",
+  "cache_eviction_requested": false,
+  "eviction_scope": "Optional before each phase: invalidate Cassandra chunk-cache entries and best-effort POSIX_FADV_DONTNEED on this side fixture/checkpoint Data.db files only. Index/key cache unchanged, no global cache drop; Physical device is determined by the recorded fixture/checkpoint path.",
+  "native_sstables": 204,
+  "vcomp_sstables": 186,
+  "all_fixed_measured_phases": [
+    {
+      "side": "native",
+      "phase": "measured_1",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 970,
+      "sst_merged_iterators": 3876,
+      "elapsed_ns": 93523893,
+      "latency_ns_including_value_validation": {
+        "p50": 98994,
+        "p95": 155079,
+        "p99": 169456,
+        "mean": 98158.38120380147
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        3876,
+        0,
+        0,
+        3876,
+        3876,
+        8800,
+        8800,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 144,
+        "syscr": 5,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 3876,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 3876,
+        "key_cache_hits": 3876,
+        "chunk_cache_requests": 8800,
+        "chunk_cache_hits": 8800,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.092925026399155,
+      "mean_partition_commands_per_scan": 1.0242872228088702
+    },
+    {
+      "side": "vcomp",
+      "phase": "measured_1",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 971,
+      "sst_merged_iterators": 4211,
+      "elapsed_ns": 83459162,
+      "latency_ns_including_value_validation": {
+        "p50": 87994,
+        "p95": 140171,
+        "p99": 154898,
+        "mean": 87655.62935586061
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        4211,
+        0,
+        0,
+        4211,
+        4211,
+        8945,
+        8945,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 140,
+        "syscr": 4,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 4211,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 4211,
+        "key_cache_hits": 4211,
+        "chunk_cache_requests": 8945,
+        "chunk_cache_hits": 8945,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.446673706441394,
+      "mean_partition_commands_per_scan": 1.0253431890179514
+    },
+    {
+      "side": "native",
+      "phase": "measured_2",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 970,
+      "sst_merged_iterators": 3876,
+      "elapsed_ns": 95535260,
+      "latency_ns_including_value_validation": {
+        "p50": 94616,
+        "p95": 150290,
+        "p99": 159817,
+        "mean": 100379.69060190074
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        3876,
+        0,
+        0,
+        3876,
+        3876,
+        8800,
+        8800,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 162,
+        "syscr": 6,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 3876,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 3876,
+        "key_cache_hits": 3876,
+        "chunk_cache_requests": 8800,
+        "chunk_cache_hits": 8800,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.092925026399155,
+      "mean_partition_commands_per_scan": 1.0242872228088702
+    },
+    {
+      "side": "vcomp",
+      "phase": "measured_2",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 971,
+      "sst_merged_iterators": 4211,
+      "elapsed_ns": 81262630,
+      "latency_ns_including_value_validation": {
+        "p50": 85529,
+        "p95": 136955,
+        "p99": 150420,
+        "mean": 85364.89757127772
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        4211,
+        0,
+        0,
+        4211,
+        4211,
+        8945,
+        8945,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 140,
+        "syscr": 4,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 4211,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 4211,
+        "key_cache_hits": 4211,
+        "chunk_cache_requests": 8945,
+        "chunk_cache_hits": 8945,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.446673706441394,
+      "mean_partition_commands_per_scan": 1.0253431890179514
+    },
+    {
+      "side": "native",
+      "phase": "measured_3",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 970,
+      "sst_merged_iterators": 3876,
+      "elapsed_ns": 87480162,
+      "latency_ns_including_value_validation": {
+        "p50": 92933,
+        "p95": 147685,
+        "p99": 155680,
+        "mean": 91931.58500527983
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        3876,
+        0,
+        0,
+        3876,
+        3876,
+        8800,
+        8800,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 132,
+        "syscr": 2,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 3876,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 3876,
+        "key_cache_hits": 3876,
+        "chunk_cache_requests": 8800,
+        "chunk_cache_hits": 8800,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.092925026399155,
+      "mean_partition_commands_per_scan": 1.0242872228088702
+    },
+    {
+      "side": "vcomp",
+      "phase": "measured_3",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 971,
+      "sst_merged_iterators": 4211,
+      "elapsed_ns": 81436163,
+      "latency_ns_including_value_validation": {
+        "p50": 85920,
+        "p95": 136694,
+        "p99": 152183,
+        "mean": 85536.29567053854
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        4211,
+        0,
+        0,
+        4211,
+        4211,
+        8945,
+        8945,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 140,
+        "syscr": 4,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 4211,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 4211,
+        "key_cache_hits": 4211,
+        "chunk_cache_requests": 8945,
+        "chunk_cache_hits": 8945,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.446673706441394,
+      "mean_partition_commands_per_scan": 1.0253431890179514
+    },
+    {
+      "side": "native",
+      "phase": "measured_4",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 970,
+      "sst_merged_iterators": 3876,
+      "elapsed_ns": 90911356,
+      "latency_ns_including_value_validation": {
+        "p50": 92502,
+        "p95": 148877,
+        "p99": 158876,
+        "mean": 95555.29672650475
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        3876,
+        0,
+        0,
+        3876,
+        3876,
+        8800,
+        8800,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 154,
+        "syscr": 4,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 3876,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 3876,
+        "key_cache_hits": 3876,
+        "chunk_cache_requests": 8800,
+        "chunk_cache_hits": 8800,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.092925026399155,
+      "mean_partition_commands_per_scan": 1.0242872228088702
+    },
+    {
+      "side": "vcomp",
+      "phase": "measured_4",
+      "scans": 947,
+      "skipped_insert_decisions": 53,
+      "returned_rows": 48855,
+      "returned_logical_bytes": 50027520,
+      "partition_commands": 971,
+      "sst_merged_iterators": 4211,
+      "elapsed_ns": 81004800,
+      "latency_ns_including_value_validation": {
+        "p50": 85799,
+        "p95": 135993,
+        "p99": 150891,
+        "mean": 85098.42766631467
+      },
+      "counter_names": [
+        "bloom_true_positive",
+        "bloom_false_positive",
+        "bloom_true_negative",
+        "key_cache_requests",
+        "key_cache_hits",
+        "chunk_cache_requests",
+        "chunk_cache_hits",
+        "chunk_cache_misses"
+      ],
+      "counter_deltas": [
+        4211,
+        0,
+        0,
+        4211,
+        4211,
+        8945,
+        8945,
+        0
+      ],
+      "linux_process_io_deltas": {
+        "rchar": 133,
+        "syscr": 2,
+        "read_bytes": 0
+      },
+      "best_effort_data_cache_eviction_paths": [],
+      "counters": {
+        "bloom_true_positive": 4211,
+        "bloom_false_positive": 0,
+        "bloom_true_negative": 0,
+        "key_cache_requests": 4211,
+        "key_cache_hits": 4211,
+        "chunk_cache_requests": 8945,
+        "chunk_cache_hits": 8945,
+        "chunk_cache_misses": 0
+      },
+      "mean_sst_iterators_per_scan": 4.446673706441394,
+      "mean_partition_commands_per_scan": 1.0253431890179514
+    }
+  ],
+  "paired_differences": [
+    {
+      "round": 1,
+      "different_scan_counts_by_field": {
+        "rows": 0,
+        "partition_commands": 3,
+        "sst_merged_iterators": 228,
+        "first_key": 518,
+        "last_key": 898,
+        "row_keys_hash31": 940
+      }
+    },
+    {
+      "round": 2,
+      "different_scan_counts_by_field": {
+        "rows": 0,
+        "partition_commands": 3,
+        "sst_merged_iterators": 228,
+        "first_key": 518,
+        "last_key": 898,
+        "row_keys_hash31": 940
+      }
+    },
+    {
+      "round": 3,
+      "different_scan_counts_by_field": {
+        "rows": 0,
+        "partition_commands": 3,
+        "sst_merged_iterators": 228,
+        "first_key": 518,
+        "last_key": 898,
+        "row_keys_hash31": 940
+      }
+    },
+    {
+      "round": 4,
+      "different_scan_counts_by_field": {
+        "rows": 0,
+        "partition_commands": 3,
+        "sst_merged_iterators": 228,
+        "first_key": 518,
+        "last_key": 898,
+        "row_keys_hash31": 940
+      }
+    }
+  ],
+  "exactness_limit": "First/last keys and rolling row-key hash detect differences but a matching hash alone is not a proof of complete row equality."
+}

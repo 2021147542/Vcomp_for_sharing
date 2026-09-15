@@ -1,0 +1,20 @@
+{
+  "scope": "static exact SST key membership / partition presence; NOT actual read requests, SST accesses, Bloom checks or I/O",
+  "generator": "reference-streams-v3",
+  "requests": 10000,
+  "counts": {
+    "native": {
+      "misses": 9999,
+      "key_membership_ssts": 1,
+      "partition_presence_ssts": 11730,
+      "hits": 1
+    },
+    "vcomp": {
+      "misses": 9999,
+      "key_membership_ssts": 1,
+      "partition_presence_ssts": 13536,
+      "hits": 1
+    }
+  },
+  "hit_outcome_differences": 2
+}

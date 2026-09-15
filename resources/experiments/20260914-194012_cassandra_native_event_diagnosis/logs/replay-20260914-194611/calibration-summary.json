@@ -1,0 +1,17 @@
+{
+  "method" : "unchanged production calibrateSizeModel",
+  "probe_entries" : [ 4096, 8192 ],
+  "probes" : [ {
+    "data_db_path" : "/tmp/vcomp-cassandra-event-replay-20260914-194611/output/materialized/.vcomp-calibration/vcomp_event_replay/kv-d16403fca7da37a588e3bbd04ec7713f/oa-2-big-Data.db",
+    "data_db_bytes" : 4239387
+  }, {
+    "data_db_path" : "/tmp/vcomp-cassandra-event-replay-20260914-194611/output/materialized/.vcomp-calibration/vcomp_event_replay/kv-ee9cb3bb417b303fbbadf73e2a4a7c5b/oa-3-big-Data.db",
+    "data_db_bytes" : 8478774
+  } ],
+  "estimate_4096" : 4239387,
+  "estimate_8192" : 8478774,
+  "rounded_flush_bytes" : 5242880,
+  "plr_error" : 8,
+  "kmv_samples" : 512,
+  "kmv_ranges" : 8
+}

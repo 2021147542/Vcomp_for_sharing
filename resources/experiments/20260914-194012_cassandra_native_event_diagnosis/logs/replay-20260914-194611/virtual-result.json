@@ -1,0 +1,10 @@
+{
+  "diagnostic_only" : true,
+  "predicted_flush_bytes_rounded" : 5242880,
+  "predicted_data_bytes_for_4096" : 4239387,
+  "materialized" : [ "/tmp/vcomp-cassandra-event-replay-20260914-194611/output/materialized/vcomp_event_replay/kv-0b4249f63d423fdfa2dbe95af748a761", "/tmp/vcomp-cassandra-event-replay-20260914-194611/output/materialized/vcomp_event_replay/kv-5eadc77af1a634488364551550404c23" ],
+  "materialized_keys" : 19997,
+  "physical_scan_passed" : true,
+  "install_and_pipeline_verify_callbacks" : "no-op; not installed or workload-tested",
+  "production_settings" : "error8, KMV512, 8 ranges, production 4096/8192 calibration; no exact-vector production interventions"
+}

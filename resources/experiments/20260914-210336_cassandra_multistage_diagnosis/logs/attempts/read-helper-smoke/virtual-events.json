@@ -1,0 +1,193 @@
+[ {
+  "flush_number" : 1,
+  "live" : [ "run-0" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 6,
+      "key_max" : 32763,
+      "rows" : 3847,
+      "bytes" : 3981672,
+      "max_timestamp" : 4096,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 2,
+  "live" : [ "run-0", "run-1" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 6,
+      "key_max" : 32763,
+      "rows" : 3847,
+      "bytes" : 3981672,
+      "max_timestamp" : 4096,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 23,
+      "key_max" : 32763,
+      "rows" : 3848,
+      "bytes" : 3982707,
+      "max_timestamp" : 8192,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 3,
+  "live" : [ "run-0", "run-1", "run-2" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 6,
+      "key_max" : 32763,
+      "rows" : 3847,
+      "bytes" : 3981672,
+      "max_timestamp" : 4096,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 23,
+      "key_max" : 32763,
+      "rows" : 3848,
+      "bytes" : 3982707,
+      "max_timestamp" : 8192,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-2",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-2",
+      "key_min" : 1,
+      "key_max" : 32759,
+      "rows" : 3838,
+      "bytes" : 3972357,
+      "max_timestamp" : 12288,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 4,
+  "live" : [ "run-0", "run-1", "run-2", "run-3" ],
+  "descriptors" : [ {
+    "id" : "run-0",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-0",
+      "key_min" : 6,
+      "key_max" : 32763,
+      "rows" : 3847,
+      "bytes" : 3981672,
+      "max_timestamp" : 4096,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-1",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-1",
+      "key_min" : 23,
+      "key_max" : 32763,
+      "rows" : 3848,
+      "bytes" : 3982707,
+      "max_timestamp" : 8192,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-2",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-2",
+      "key_min" : 1,
+      "key_max" : 32759,
+      "rows" : 3838,
+      "bytes" : 3972357,
+      "max_timestamp" : 12288,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-3",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-3",
+      "key_min" : 7,
+      "key_max" : 32759,
+      "rows" : 3851,
+      "bytes" : 3985812,
+      "max_timestamp" : 16384,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "selected" : [ "run-3", "run-2", "run-1", "run-0" ],
+  "output_level" : 1
+}, {
+  "flush_number" : 4,
+  "live" : [ "run-compaction-0" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 1,
+      "key_max" : 32763,
+      "rows" : 12465,
+      "bytes" : 12901302,
+      "max_timestamp" : 16384,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+}, {
+  "flush_number" : 5,
+  "live" : [ "run-compaction-0", "run-4" ],
+  "descriptors" : [ {
+    "id" : "run-compaction-0",
+    "level" : 1,
+    "sstables" : [ {
+      "id" : "vsst-compaction-0-0",
+      "key_min" : 1,
+      "key_max" : 32763,
+      "rows" : 12465,
+      "bytes" : 12901302,
+      "max_timestamp" : 16384,
+      "coverage" : 0.7566051916676495
+    } ]
+  }, {
+    "id" : "run-4",
+    "level" : 0,
+    "sstables" : [ {
+      "id" : "vsst-4",
+      "key_min" : 1,
+      "key_max" : 32765,
+      "rows" : 3863,
+      "bytes" : 3998232,
+      "max_timestamp" : 20480,
+      "coverage" : 0.7566051916676495
+    } ]
+  } ],
+  "selected" : [ ],
+  "output_level" : null
+} ]

@@ -1,0 +1,3 @@
+INFO  [main] 2026-09-14T12:31:23,379 MonotonicClock.java:209 - Scheduling approximate time conversion task with an interval of 10000 milliseconds
+DEBUG [main] 2026-09-14T12:31:23,387 InternalLoggerFactory.java:63 - Using SLF4J as the default logging framework
+INFO  [main] 2026-09-14T12:31:23,388 MonotonicClock.java:345 - Scheduling approximate time-check task with a precision of 2 milliseconds

@@ -1,0 +1,26 @@
+{
+  "input" : "/tmp/vcomp-cassandra-native-event-20260914-205927/output",
+  "input_config" : {
+    "seed" : 20260909,
+    "domain" : 32768,
+    "partitions" : 4,
+    "flushes" : 5,
+    "writes_per_flush" : 4096,
+    "logical_inserted_bytes" : 20971520,
+    "key_bytes" : 24,
+    "value_bytes" : 1000,
+    "actual_native_background" : true,
+    "load_api" : "CQLTester internal CQL synchronous inserts; native background CompactionManager; explicit forceBlockingFlush",
+    "deviation" : "bounded domain/partition count and total load; internal synchronous CQL vs driver async; warm local read diagnostics, not a paper benchmark",
+    "target_sstable_bytes" : 67108864,
+    "storage_compatibility_mode" : "NONE",
+    "exact_native_final_rows" : 15221,
+    "completed_jobs" : 1
+  },
+  "native_data_paths" : [ "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-5-big-Data.db", "/tmp/vcomp-cassandra-native-event-20260914-205927/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-be304090b03311f1aad89d306684f7be/oa-6-big-Data.db" ],
+  "arms" : {
+    "model" : [ "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-0b4249f63d423fdfa2dbe95af748a761/oa-4-big-Data.db", "/tmp/vcomp-cassandra-native-event-20260914-205927/output/materialized/vcomp_event_materialized/kv-5eadc77af1a634488364551550404c23/oa-5-big-Data.db" ]
+  },
+  "diagnostic_only" : true,
+  "source_preservation" : "all source components have unchanged path, size, and mtime; source files not copied or mutated"
+}

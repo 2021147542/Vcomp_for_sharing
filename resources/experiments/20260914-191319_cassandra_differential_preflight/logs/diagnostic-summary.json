@@ -1,0 +1,52 @@
+{
+  "diagnostic_only": true,
+  "fixture": {
+    "domain": 4096,
+    "partitions": 64,
+    "flushes": 4,
+    "attempted_inserts_per_flush": 2048,
+    "forced_shards": 4,
+    "key_bytes": 24,
+    "value_bytes": 43,
+    "plr_error": 8.0,
+    "kmv_samples": 512,
+    "kmv_range_buckets": 8,
+    "timestamp_order": [
+      10300,
+      10100,
+      10400,
+      10200
+    ],
+    "scope": "insert-only, no TTL/tombstones; globally unique scalar ck maps to one partition"
+  },
+  "native_rows": 3558,
+  "approximate_rows": 3728,
+  "cardinality_error_percent": 4.777965148960095,
+  "native_only_keys": 310,
+  "approximate_only_keys": 480,
+  "common_keys": 3248,
+  "common_keys_with_timestamp_difference": 1773,
+  "first_common_timestamp_difference": {
+    "fields": [
+      "partition",
+      "ck",
+      "liveness_timestamp",
+      "cell_timestamp",
+      "value_hex"
+    ],
+    "native": [
+      "vcomp-partition-00000000",
+      3584,
+      10300,
+      10300,
+      "f925435f35d3bd78614c0a57d91f00306307090281bae7a3d9063506eda973f28004bebca14d67b231232a"
+    ],
+    "approximate": [
+      "vcomp-partition-00000000",
+      3584,
+      10400,
+      10400,
+      "f925435f35d3bd78614c0a57d91f00306307090281bae7a3d9063506eda973f28004bebca14d67b231232a"
+    ]
+  }
+}

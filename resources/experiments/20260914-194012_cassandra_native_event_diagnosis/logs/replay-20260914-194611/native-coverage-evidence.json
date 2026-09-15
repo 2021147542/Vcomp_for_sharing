@@ -1,0 +1,56 @@
+{
+  "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big" : {
+    "data_db_path" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-1-big-Data.db",
+    "stats_token_space_coverage" : "NaN",
+    "layout_endpoint_coverage" : 0.9989664918917154,
+    "native_effective_coverage" : 0.9989664918917153,
+    "native_full_ring_endpoint_span" : 0.9989664918917153,
+    "native_coverage_source" : "native Token.size(last.nextValidToken()) full-ring endpoint fallback",
+    "layout_coverage_equals_native" : false
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big" : {
+    "data_db_path" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-2-big-Data.db",
+    "stats_token_space_coverage" : "NaN",
+    "layout_endpoint_coverage" : 0.9992140036775838,
+    "native_effective_coverage" : 0.9992140036775838,
+    "native_full_ring_endpoint_span" : 0.9992140036775838,
+    "native_coverage_source" : "native Token.size(last.nextValidToken()) full-ring endpoint fallback",
+    "layout_coverage_equals_native" : true
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big" : {
+    "data_db_path" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-3-big-Data.db",
+    "stats_token_space_coverage" : "NaN",
+    "layout_endpoint_coverage" : 0.9993973241006793,
+    "native_effective_coverage" : 0.9993973241006794,
+    "native_full_ring_endpoint_span" : 0.9993973241006794,
+    "native_coverage_source" : "native Token.size(last.nextValidToken()) full-ring endpoint fallback",
+    "layout_coverage_equals_native" : false
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big" : {
+    "data_db_path" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-4-big-Data.db",
+    "stats_token_space_coverage" : "NaN",
+    "layout_endpoint_coverage" : 0.999296706482987,
+    "native_effective_coverage" : 0.999296706482987,
+    "native_full_ring_endpoint_span" : 0.999296706482987,
+    "native_coverage_source" : "native Token.size(last.nextValidToken()) full-ring endpoint fallback",
+    "layout_coverage_equals_native" : true
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-6-big" : {
+    "data_db_path" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-6-big-Data.db",
+    "stats_token_space_coverage" : "NaN",
+    "layout_endpoint_coverage" : 0.9989571236694741,
+    "native_effective_coverage" : 0.9989571236694741,
+    "native_full_ring_endpoint_span" : 0.9989571236694741,
+    "native_coverage_source" : "native Token.size(last.nextValidToken()) full-ring endpoint fallback",
+    "layout_coverage_equals_native" : true
+  },
+  "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-5-big" : {
+    "data_db_path" : "/tmp/vcomp-cassandra-native-event-20260914-194012/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-abbb5f40b02811f1aba34ff0866f7614/nb-5-big-Data.db",
+    "stats_token_space_coverage" : "NaN",
+    "layout_endpoint_coverage" : 0.9994582788553102,
+    "native_effective_coverage" : 0.9994582788553104,
+    "native_full_ring_endpoint_span" : 0.9994582788553104,
+    "native_coverage_source" : "native Token.size(last.nextValidToken()) full-ring endpoint fallback",
+    "layout_coverage_equals_native" : false
+  }
+}

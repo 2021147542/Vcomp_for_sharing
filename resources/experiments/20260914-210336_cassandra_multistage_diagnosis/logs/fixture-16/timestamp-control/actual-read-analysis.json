@@ -1,0 +1,1267 @@
+{
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "seed": 20260909,
+  "domain": 1048576,
+  "requests_per_round_per_side": 10000,
+  "actual_requests_excluding_warmup": 80000,
+  "classification": "All four pre-fixed paired rounds, no selected passes; same-request hit groups computed after execution",
+  "limitations": "Actual engine local read path; one thread, warm OS cache after fixture scans, no CQL transport or contention; not 100GiB performance SST histogram counts merged SST iterators, not physical disk operations. Bloom is partition-level. Chunk counters are process-global deltas. Linux process read_bytes delta is attributed storage reads under warm OS cache and can be zero; rchar includes logical syscall bytes and instrumentation. Physical I/O latency is not measured.",
+  "histogram_note": "SSTablesPerReadHistogram records merged SST iterators. Bucket-upper mean is exact for singleton buckets and an upper-bound approximation otherwise; not candidate count or device I/O count.",
+  "paired_request_membership": {
+    "both_hit": 6194,
+    "native_only_hit": 0,
+    "vcomp_only_hit": 0,
+    "both_miss": 3806
+  },
+  "native_sstables": 8,
+  "vcomp_sstables": 8,
+  "rounds": [
+    {
+      "same_key_timestamp_differences": 6194,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 1,
+      "first": "native",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_1",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 106122432,
+          "ops_per_second_including_setup": 94230.78430769472,
+          "command_latency_ns": {
+            "p50": 10770,
+            "p95": 12934,
+            "p99": 16180,
+            "mean": 10153.9306
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2049,
+            8272
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 542036648,
+            "syscr": 8274,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2049,
+            "chunk_cache_misses": 8272
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_1",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 115485099,
+          "ops_per_second_including_setup": 86591.2579769274,
+          "command_latency_ns": {
+            "p50": 11341,
+            "p95": 15559,
+            "p99": 18795,
+            "mean": 11090.8111
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10378,
+            2140,
+            8238
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 539810902,
+            "syscr": 8242,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10378,
+            "chunk_cache_hits": 2140,
+            "chunk_cache_misses": 8238
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 10.153930599999999,
+            "p50_us": 10.77,
+            "p95_us": 12.934,
+            "p99_us": 16.18
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 11.090811100000002,
+            "p50_us": 11.341,
+            "p95_us": 15.559,
+            "p99_us": 18.795
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.657992734904747,
+            "p50_us": 11.171,
+            "p95_us": 13.435,
+            "p99_us": 16.551
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 11.513565224410721,
+            "p50_us": 11.732,
+            "p95_us": 15.89,
+            "p99_us": 19.837
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 9.333604571728848,
+            "p50_us": 10.079,
+            "p95_us": 11.692,
+            "p99_us": 14.698
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 10.402808197582765,
+            "p50_us": 10.56,
+            "p95_us": 14.517,
+            "p99_us": 16.581
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 6194,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 2,
+      "first": "vcomp",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_2",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 103772351,
+          "ops_per_second_including_setup": 96364.78217593818,
+          "command_latency_ns": {
+            "p50": 10540,
+            "p95": 12734,
+            "p99": 16060,
+            "mean": 9930.1164
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2048,
+            8273
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 542102184,
+            "syscr": 8275,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2048,
+            "chunk_cache_misses": 8273
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_2",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 104446825,
+          "ops_per_second_including_setup": 95742.49863507101,
+          "command_latency_ns": {
+            "p50": 10730,
+            "p95": 12403,
+            "p99": 16521,
+            "mean": 9997.524
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10378,
+            2338,
+            8040
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 526834752,
+            "syscr": 8042,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10378,
+            "chunk_cache_hits": 2338,
+            "chunk_cache_misses": 8040
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 9.930116400000001,
+            "p50_us": 10.54,
+            "p95_us": 12.734,
+            "p99_us": 16.06
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 9.997524,
+            "p50_us": 10.73,
+            "p95_us": 12.403,
+            "p99_us": 16.521
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.41150129157249,
+            "p50_us": 10.95,
+            "p95_us": 13.224,
+            "p99_us": 16.491
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 10.463271391669357,
+            "p50_us": 11.191,
+            "p95_us": 12.764,
+            "p99_us": 16.741
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 9.146696006305833,
+            "p50_us": 9.869,
+            "p95_us": 11.572,
+            "p99_us": 14.578
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 9.239552548607461,
+            "p50_us": 10.129,
+            "p95_us": 11.321,
+            "p99_us": 15.148
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 6194,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 3,
+      "first": "vcomp",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_3",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 102372266,
+          "ops_per_second_including_setup": 97682.70636893004,
+          "command_latency_ns": {
+            "p50": 10409,
+            "p95": 12343,
+            "p99": 15820,
+            "mean": 9790.6037
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2048,
+            8273
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 542102184,
+            "syscr": 8275,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2048,
+            "chunk_cache_misses": 8273
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_3",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 107332032,
+          "ops_per_second_including_setup": 93168.83146309947,
+          "command_latency_ns": {
+            "p50": 10910,
+            "p95": 12984,
+            "p99": 16811,
+            "mean": 10290.1873
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10378,
+            2129,
+            8249
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 540531798,
+            "syscr": 8253,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10378,
+            "chunk_cache_hits": 2129,
+            "chunk_cache_misses": 8249
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 9.7906037,
+            "p50_us": 10.409,
+            "p95_us": 12.343,
+            "p99_us": 15.82
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 10.2901873,
+            "p50_us": 10.91,
+            "p95_us": 12.984,
+            "p99_us": 16.811
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.264590248627705,
+            "p50_us": 10.84,
+            "p95_us": 12.723,
+            "p99_us": 16.17
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 10.718083306425573,
+            "p50_us": 11.332,
+            "p95_us": 13.425,
+            "p99_us": 17.122
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 9.019223594324751,
+            "p50_us": 9.758,
+            "p95_us": 11.241,
+            "p99_us": 14.437
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 9.593816342616922,
+            "p50_us": 10.229,
+            "p95_us": 11.742,
+            "p99_us": 15.368
+          }
+        }
+      }
+    },
+    {
+      "same_key_timestamp_differences": 6194,
+      "sst_counts_by_same_request_group": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 10000,
+            "sum": 10000,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 6194,
+            "sum": 6194,
+            "mean": 1.0,
+            "max": 1
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          },
+          "vcomp": {
+            "count": 0,
+            "sum": null,
+            "mean": null,
+            "max": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          },
+          "vcomp": {
+            "count": 3806,
+            "sum": 3806,
+            "mean": 1.0,
+            "max": 1
+          }
+        }
+      },
+      "round": 4,
+      "first": "native",
+      "actual_read_phases": {
+        "native": {
+          "side": "native",
+          "phase": "measured_4",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 100615337,
+          "ops_per_second_including_setup": 99388.42623962984,
+          "command_latency_ns": {
+            "p50": 10179,
+            "p95": 11952,
+            "p99": 15599,
+            "mean": 9601.7274
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10321,
+            2203,
+            8118
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 531944126,
+            "syscr": 8122,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10321,
+            "chunk_cache_hits": 2203,
+            "chunk_cache_misses": 8118
+          }
+        },
+        "vcomp": {
+          "side": "vcomp",
+          "phase": "measured_4",
+          "requests": 10000,
+          "hits": 6194,
+          "misses": 3806,
+          "elapsed_ns_including_command_setup": 106726595,
+          "ops_per_second_including_setup": 93697.35818893126,
+          "command_latency_ns": {
+            "p50": 10920,
+            "p95": 12884,
+            "p99": 16771,
+            "mean": 10232.4419
+          },
+          "sst_histogram_count": 10000,
+          "sst_histogram_decaying_mean": 1.0,
+          "counter_names": [
+            "bloom_true_positive",
+            "bloom_false_positive",
+            "bloom_true_negative",
+            "key_cache_requests",
+            "key_cache_hits",
+            "chunk_cache_requests",
+            "chunk_cache_hits",
+            "chunk_cache_misses"
+          ],
+          "counter_deltas": [
+            10000,
+            0,
+            0,
+            10000,
+            10000,
+            10378,
+            2118,
+            8260
+          ],
+          "linux_process_io_deltas": {
+            "rchar": 541252672,
+            "syscr": 8262,
+            "read_bytes": 0
+          },
+          "sst_histogram_nonzero_buckets": {
+            "1": 10000
+          },
+          "sst_per_request_bucket_upper_mean": 1.0,
+          "counters": {
+            "bloom_true_positive": 10000,
+            "bloom_false_positive": 0,
+            "bloom_true_negative": 0,
+            "key_cache_requests": 10000,
+            "key_cache_hits": 10000,
+            "chunk_cache_requests": 10378,
+            "chunk_cache_hits": 2118,
+            "chunk_cache_misses": 8260
+          }
+        }
+      },
+      "same_request_groups": {
+        "all": {
+          "native": {
+            "count": 10000,
+            "mean_us": 9.6017274,
+            "p50_us": 10.179,
+            "p95_us": 11.952,
+            "p99_us": 15.599
+          },
+          "vcomp": {
+            "count": 10000,
+            "mean_us": 10.2324419,
+            "p50_us": 10.92,
+            "p95_us": 12.884,
+            "p99_us": 16.771
+          }
+        },
+        "both_hit": {
+          "native": {
+            "count": 6194,
+            "mean_us": 10.102837907652567,
+            "p50_us": 10.629,
+            "p95_us": 12.343,
+            "p99_us": 15.84
+          },
+          "vcomp": {
+            "count": 6194,
+            "mean_us": 10.713976590248627,
+            "p50_us": 11.351,
+            "p95_us": 13.275,
+            "p99_us": 17.122
+          }
+        },
+        "native_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "vcomp_only_hit": {
+          "native": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          },
+          "vcomp": {
+            "count": 0,
+            "mean_us": null,
+            "p50_us": null,
+            "p95_us": null,
+            "p99_us": null
+          }
+        },
+        "both_miss": {
+          "native": {
+            "count": 3806,
+            "mean_us": 8.786204939569101,
+            "p50_us": 9.567,
+            "p95_us": 10.81,
+            "p99_us": 14.367
+          },
+          "vcomp": {
+            "count": 3806,
+            "mean_us": 9.448777719390437,
+            "p50_us": 10.249,
+            "p95_us": 11.782,
+            "p99_us": 15.509
+          }
+        }
+      }
+    }
+  ],
+  "all_rounds_sst_groups": {
+    "all": {
+      "native": {
+        "count": 40000,
+        "sum": 40000,
+        "mean": 1.0,
+        "max": 1
+      },
+      "vcomp": {
+        "count": 40000,
+        "sum": 40000,
+        "mean": 1.0,
+        "max": 1
+      }
+    },
+    "both_hit": {
+      "native": {
+        "count": 24776,
+        "sum": 24776,
+        "mean": 1.0,
+        "max": 1
+      },
+      "vcomp": {
+        "count": 24776,
+        "sum": 24776,
+        "mean": 1.0,
+        "max": 1
+      }
+    },
+    "native_only_hit": {
+      "native": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      },
+      "vcomp": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      }
+    },
+    "vcomp_only_hit": {
+      "native": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      },
+      "vcomp": {
+        "count": 0,
+        "sum": null,
+        "mean": null,
+        "max": null
+      }
+    },
+    "both_miss": {
+      "native": {
+        "count": 15224,
+        "sum": 15224,
+        "mean": 1.0,
+        "max": 1
+      },
+      "vcomp": {
+        "count": 15224,
+        "sum": 15224,
+        "mean": 1.0,
+        "max": 1
+      }
+    }
+  },
+  "all_rounds_latency_groups": {
+    "all": {
+      "native": {
+        "count": 40000,
+        "mean_us": 9.869094525000001,
+        "p50_us": 10.45,
+        "p95_us": 12.573,
+        "p99_us": 15.9
+      },
+      "vcomp": {
+        "count": 40000,
+        "mean_us": 10.402741075,
+        "p50_us": 10.96,
+        "p95_us": 14.697,
+        "p99_us": 16.891
+      }
+    },
+    "both_hit": {
+      "native": {
+        "count": 24776,
+        "mean_us": 10.359230545689377,
+        "p50_us": 10.88,
+        "p95_us": 13.094,
+        "p99_us": 16.28
+      },
+      "vcomp": {
+        "count": 24776,
+        "mean_us": 10.852224128188569,
+        "p50_us": 11.371,
+        "p95_us": 15.289,
+        "p99_us": 17.262
+      }
+    },
+    "native_only_hit": {
+      "native": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      },
+      "vcomp": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      }
+    },
+    "vcomp_only_hit": {
+      "native": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      },
+      "vcomp": {
+        "count": 0,
+        "mean_us": null,
+        "p50_us": null,
+        "p95_us": null,
+        "p99_us": null
+      }
+    },
+    "both_miss": {
+      "native": {
+        "count": 15224,
+        "mean_us": 9.071432277982135,
+        "p50_us": 9.788,
+        "p95_us": 11.421,
+        "p99_us": 14.537
+      },
+      "vcomp": {
+        "count": 15224,
+        "mean_us": 9.671238702049395,
+        "p50_us": 10.259,
+        "p95_us": 13.685,
+        "p99_us": 15.519
+      }
+    }
+  }
+}

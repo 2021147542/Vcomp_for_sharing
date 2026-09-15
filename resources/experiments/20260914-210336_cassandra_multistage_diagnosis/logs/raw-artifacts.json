@@ -1,0 +1,27 @@
+{
+  "evidence_cases": {
+    "matched-materialization": "20260914-205956_cassandra_matched_materialization",
+    "fixture-16": "cassandra-full-diagnosis-20260914-210336",
+    "fixture-19": "cassandra-full-diagnosis-20260914-210948",
+    "scan-warm-16": "cassandra-retained-scan-20260914-210906",
+    "scan-cold-16": "cassandra-retained-scan-20260914-211413",
+    "scan-warm-19": "cassandra-retained-scan-20260914-211123",
+    "scan-cold-19": "cassandra-retained-scan-20260914-211146",
+    "checkpoint-100g-warm": "cassandra-checkpoint-read-20260914-212215",
+    "checkpoint-100g-cold": "cassandra-checkpoint-read-20260914-212300",
+    "attempts/calibration-domain-too-small": "cassandra-full-diagnosis-20260914-205842",
+    "attempts/read-helper-smoke": "cassandra-full-diagnosis-20260914-205927",
+    "attempts/scan-backup-setup": "cassandra-retained-scan-20260914-210758",
+    "attempts/scan-helper-smoke": "cassandra-retained-scan-20260914-210849"
+  },
+  "checkpoint_root": "/work/vcomp-pebble-1tb/vcomp-cassandra-read-diagnosis-20260914-211800",
+  "small_native_roots": [
+    "/tmp/vcomp-cassandra-native-event-20260914-210336",
+    "/tmp/vcomp-cassandra-native-event-20260914-210948"
+  ],
+  "original_baseline_unchanged": true,
+  "production_algorithm_changes": false,
+  "seed": 20260909,
+  "checkpoint_preparation_note": "First /work root mkdir failed Unix permission before creating files; used existing writable /work/vcomp-pebble-1tb instead. Independent copy, not hardlink; original reference unchanged.",
+  "measurement_selection": "All predeclared parameter lanes, all four ABBA rounds, all generated requests retained; no seed or best-pass selection."
+}

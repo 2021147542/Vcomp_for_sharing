@@ -1,0 +1,917 @@
+[ {
+  "event_seq" : 0,
+  "status" : "not_applicable_before_first_flush"
+}, {
+  "event_seq" : 1,
+  "status" : "not_applicable_before_first_flush"
+}, {
+  "event_seq" : 3,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 4,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 7,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 8,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 11,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 12,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 15,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 16,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-1-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-2-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-3-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-4-big" ],
+  "native_level" : 0,
+  "measured_control" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-1-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-2-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-3-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-4-big" ],
+    "level" : 0
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-1-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-2-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-3-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-4-big" ],
+    "level" : 0
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 20,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 21,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 25,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 26,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 28,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 29,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 32,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 33,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 36,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 37,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-10-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-7-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-8-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-9-big" ],
+  "native_level" : 0,
+  "measured_control" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-10-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-7-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-8-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-9-big" ],
+    "level" : 0
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-10-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-7-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-8-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-9-big" ],
+    "level" : 0
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 41,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 42,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 46,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 47,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 49,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 50,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 53,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 54,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 57,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 58,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-13-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-14-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-15-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-16-big" ],
+  "native_level" : 0,
+  "measured_control" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-13-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-14-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-15-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-16-big" ],
+    "level" : 0
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-13-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-14-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-15-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-16-big" ],
+    "level" : 0
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 63,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 64,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 66,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 67,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 70,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 71,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 74,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 75,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 78,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 79,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-19-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-20-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-21-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-22-big" ],
+  "native_level" : 0,
+  "measured_control" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-19-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-20-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-21-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-22-big" ],
+    "level" : 0
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-19-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-20-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-21-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-22-big" ],
+    "level" : 0
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 82,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 83,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 84,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 85,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 86,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 87,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 88,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 89,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 90,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 91,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 92,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 93,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 94,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 95,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 96,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 97,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 100,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 101,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-11-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-17-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-23-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-5-big" ],
+  "native_level" : 1,
+  "measured_control" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-11-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-17-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-23-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-5-big" ],
+    "level" : 1
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+    "level" : 1
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 103,
+  "view_stable" : true,
+  "native_selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+  "native_level" : 1,
+  "measured_control" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+    "level" : 1
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-12-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-18-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-24-big", "/tmp/vcomp-cassandra-native-event-20260914-210336/storage/data/cql_test_keyspace/table_observerealnativebackgroundandreplayvir_00-522943a0b03411f1b65b859e13c7c988/oa-6-big" ],
+    "level" : 1
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 107,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 108,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 111,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 112,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 113,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 114,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 115,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+}, {
+  "event_seq" : 116,
+  "view_stable" : true,
+  "native_selected" : [ ],
+  "native_level" : null,
+  "measured_control" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "predicted_size_same_availability" : {
+    "selected" : [ ],
+    "level" : null
+  },
+  "scope" : "predicted-size intervention retains exact native bounds/count/max timestamp; not full production metadata"
+} ]

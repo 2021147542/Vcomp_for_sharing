@@ -1,0 +1,252 @@
+{
+  "diagnostic_only" : true,
+  "schema_version" : 1,
+  "native_sstables" : 11,
+  "vcomp_sstables" : 11,
+  "phases" : [ {
+    "side" : "native",
+    "phase" : "warmup",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 952,
+    "sst_merged_iterators" : 3808,
+    "elapsed_ns" : 286896521,
+    "latency_ns_including_value_validation" : {
+      "p50" : 226322,
+      "p95" : 738244,
+      "p99" : 1783240,
+      "mean" : 301215.03273495246
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3808, 0, 0, 3808, 3408, 6362, 692, 5670 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 371539361,
+      "syscr" : 5801,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "vcomp",
+    "phase" : "warmup",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 951,
+    "sst_merged_iterators" : 3804,
+    "elapsed_ns" : 332043313,
+    "latency_ns_including_value_validation" : {
+      "p50" : 270984,
+      "p95" : 794199,
+      "p99" : 930813,
+      "mean" : 349452.7835269271
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3804, 0, 0, 3804, 3404, 4786, 514, 4272 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 279948182,
+      "syscr" : 4288,
+      "read_bytes" : 46116864
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "native",
+    "phase" : "measured_1",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 952,
+    "sst_merged_iterators" : 3808,
+    "elapsed_ns" : 167774937,
+    "latency_ns_including_value_validation" : {
+      "p50" : 179353,
+      "p95" : 284850,
+      "p99" : 348139,
+      "mean" : 176399.8827877508
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3808, 0, 0, 3808, 3808, 4802, 918, 3884 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 254493748,
+      "syscr" : 3893,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "vcomp",
+    "phase" : "measured_1",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 951,
+    "sst_merged_iterators" : 3804,
+    "elapsed_ns" : 119893231,
+    "latency_ns_including_value_validation" : {
+      "p50" : 118821,
+      "p95" : 227023,
+      "p99" : 281644,
+      "mean" : 126071.24709609292
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3804, 0, 0, 3804, 3804, 4786, 626, 4160 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 272608135,
+      "syscr" : 4167,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "vcomp",
+    "phase" : "measured_2",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 951,
+    "sst_merged_iterators" : 3804,
+    "elapsed_ns" : 105384286,
+    "latency_ns_including_value_validation" : {
+      "p50" : 112159,
+      "p95" : 169676,
+      "p99" : 193240,
+      "mean" : 110759.84899683211
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3804, 0, 0, 3804, 3804, 4786, 829, 3957 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 259304310,
+      "syscr" : 3963,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "native",
+    "phase" : "measured_2",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 952,
+    "sst_merged_iterators" : 3808,
+    "elapsed_ns" : 102645326,
+    "latency_ns_including_value_validation" : {
+      "p50" : 108302,
+      "p95" : 169606,
+      "p99" : 185756,
+      "mean" : 107895.20591341077
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3808, 0, 0, 3808, 3808, 4802, 791, 4011 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 262816805,
+      "syscr" : 4016,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "vcomp",
+    "phase" : "measured_3",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 951,
+    "sst_merged_iterators" : 3804,
+    "elapsed_ns" : 104905854,
+    "latency_ns_including_value_validation" : {
+      "p50" : 107551,
+      "p95" : 170818,
+      "p99" : 209350,
+      "mean" : 110306.88806758184
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3804, 0, 0, 3804, 3804, 4786, 838, 3948 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 258714505,
+      "syscr" : 3955,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "native",
+    "phase" : "measured_3",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 952,
+    "sst_merged_iterators" : 3808,
+    "elapsed_ns" : 102038275,
+    "latency_ns_including_value_validation" : {
+      "p50" : 107280,
+      "p95" : 172662,
+      "p99" : 226451,
+      "mean" : 107296.60190073917
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3808, 0, 0, 3808, 3808, 6668, 852, 5816 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 381109290,
+      "syscr" : 5822,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "native",
+    "phase" : "measured_4",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 952,
+    "sst_merged_iterators" : 3808,
+    "elapsed_ns" : 94357324,
+    "latency_ns_including_value_validation" : {
+      "p50" : 100347,
+      "p95" : 158636,
+      "p99" : 169094,
+      "mean" : 99201.35902851108
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3808, 0, 0, 3808, 3808, 4802, 944, 3858 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 252789790,
+      "syscr" : 3861,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  }, {
+    "side" : "vcomp",
+    "phase" : "measured_4",
+    "scans" : 947,
+    "skipped_insert_decisions" : 53,
+    "returned_rows" : 48855,
+    "returned_logical_bytes" : 50027520,
+    "partition_commands" : 951,
+    "sst_merged_iterators" : 3804,
+    "elapsed_ns" : 100416615,
+    "latency_ns_including_value_validation" : {
+      "p50" : 104615,
+      "p95" : 159738,
+      "p99" : 169897,
+      "mean" : 105587.4656810982
+    },
+    "counter_names" : [ "bloom_true_positive", "bloom_false_positive", "bloom_true_negative", "key_cache_requests", "key_cache_hits", "chunk_cache_requests", "chunk_cache_hits", "chunk_cache_misses" ],
+    "counter_deltas" : [ 3804, 0, 0, 3804, 3804, 4786, 594, 4192 ],
+    "linux_process_io_deltas" : {
+      "rchar" : 274705285,
+      "syscr" : 4198,
+      "read_bytes" : 0
+    },
+    "best_effort_data_cache_eviction_paths" : [ ]
+  } ],
+  "cache_eviction_requested" : false,
+  "eviction_scope" : "Optional before each phase: invalidate Cassandra chunk-cache entries and best-effort POSIX_FADV_DONTNEED on this side fixture Data.db files only. Index/key cache unchanged, no global cache drop; /tmp filesystem is not canonical /work device.",
+  "measurement_scope" : "Actual local SinglePartitionReadCommand slices and CQL row limits, same next-partition fallback as workload; warm OS, single thread, fixed warmup and all four ABBA rounds; 5% writes omitted from frozen states",
+  "io_limits" : "Per-scan SST counts are summed actual merged iterators over all partition commands, not distinct SSTs or physical I/O. Process read_bytes under warm OS can be zero. rchar includes logical syscall bytes and instrumentation. Physical I/O latency not measured.",
+  "integrity" : "Rows checked in ascending scalar order and correct partition; all values read and deterministic values checked. Row-key hashes and per-scan first/last keys retained; exact row lists not production algorithm."
+}

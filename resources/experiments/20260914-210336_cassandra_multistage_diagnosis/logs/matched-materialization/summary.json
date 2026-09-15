@@ -1,0 +1,52 @@
+{
+  "diagnostic_only": true,
+  "seed": 20260909,
+  "attempted_writes": 16384,
+  "domain": 8192,
+  "partitions": 64,
+  "unique_rows": 7075,
+  "forced_shards": 4,
+  "value_bytes": 1000,
+  "target_sstable_size": "64MiB",
+  "format_version": "oa",
+  "lanes": {
+    "native": {
+      "data_db_bytes": 7331416,
+      "all_component_bytes": 7471165,
+      "bloom_filter_bytes": 128
+    },
+    "same_rows_native_header": {
+      "data_db_bytes": 7331416,
+      "all_component_bytes": 7471069,
+      "bloom_filter_bytes": 144
+    },
+    "same_rows_exact_header": {
+      "data_db_bytes": 7331412,
+      "all_component_bytes": 7471063,
+      "bloom_filter_bytes": 144
+    },
+    "flat_timestamps": {
+      "data_db_bytes": 7324353,
+      "all_component_bytes": 7464004,
+      "bloom_filter_bytes": 144
+    },
+    "production_materializer_exact_key_control": {
+      "data_db_bytes": 7324353,
+      "all_component_bytes": 7464004,
+      "bloom_filter_bytes": 144
+    }
+  },
+  "flatten_timestamp_delta_percent": -0.09633882458722764,
+  "legacy_nb_minus_oa_bytes": 704,
+  "coverage_fallback_equal_all_shards": true,
+  "production_baseline_reference_formats": {
+    "oa_data_components": 204
+  },
+  "initial_setup_failure": "Descriptor parser required keyspace/table-id subdirectories; retained; no fixture/seed tuning",
+  "limitations": [
+    "Exact keys and forced same four output shards isolate writer effects; not production PLR/KMV fidelity",
+    "Tiny fixture has ~110 rows per partition; wider partitions need dense counterfactual",
+    "Legacy format was controlled diagnostic only; registered production baseline uses oa/NONE",
+    "Native-vs-CQL Bloom estimated count differs; this test does not attribute read performance to it"
+  ]
+}

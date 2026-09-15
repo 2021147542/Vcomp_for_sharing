@@ -1,0 +1,46 @@
+{
+  "schema_version" : 1,
+  "diagnostic_only" : true,
+  "seed" : 20260909,
+  "domain" : 104857600,
+  "partition_layout_count" : 10000,
+  "attempted_writes" : 65536,
+  "flush_unique_keys" : 65519,
+  "compression" : false,
+  "calibration" : [ {
+    "rows" : 8192,
+    "partitions" : 2,
+    "data_db_bytes" : 8478774,
+    "keys_sha256" : "89542cea151a26343bf92347addceda43f51a4668d109e6589b4678b3937b67b",
+    "data_file" : "/tmp/vcomp-timestamp-materialization-20260914-192004/output/calibration-one-flush/.vcomp-calibration/vcomp_size_diagnostic/kv-ee9cb3bb417b303fbbadf73e2a4a7c5b/oa-3-big-Data.db"
+  }, {
+    "rows" : 4096,
+    "partitions" : 1,
+    "data_db_bytes" : 4239387,
+    "keys_sha256" : "3f61951342feeeca1a74a30ff92e9e172623e903f294f194234ee49f2e8e2813",
+    "data_file" : "/tmp/vcomp-timestamp-materialization-20260914-192004/output/calibration-one-flush/.vcomp-calibration/vcomp_size_diagnostic/kv-d16403fca7da37a588e3bbd04ec7713f/oa-2-big-Data.db"
+  } ],
+  "outputs" : [ {
+    "rows" : 65519,
+    "partitions" : 9983,
+    "data_db_bytes" : 68081706,
+    "keys_sha256" : "f06fd30409fdab648ca6d4d676980a1d436bf439be302068c011424a97b7c394",
+    "data_file" : "/tmp/vcomp-timestamp-materialization-20260914-192004/output/calibration-one-flush/vcomp_size_diagnostic/kv-cbad3a96fa853185b2ceb06cc78c24f7/oa-4-big-Data.db",
+    "model_error" : 0.0,
+    "predicted_data_db_bytes" : 67812597,
+    "descriptor_bytes" : 67812597,
+    "control" : "exact-key diagnostic"
+  }, {
+    "rows" : 65519,
+    "partitions" : 9897,
+    "data_db_bytes" : 68079384,
+    "keys_sha256" : "7a18457947e4deb2095a9a11369f871a2f02cdf6c20379d48050f3d1bef2de28",
+    "data_file" : "/tmp/vcomp-timestamp-materialization-20260914-192004/output/calibration-one-flush/vcomp_size_diagnostic/kv-fa7475932bd33be490a71d430195a88c/oa-5-big-Data.db",
+    "model_error" : 8.0,
+    "predicted_data_db_bytes" : 67812597,
+    "descriptor_bytes" : 67812597,
+    "control" : "production-default PLR keys"
+  } ],
+  "scope" : "Only first 64MiB logical flush in 100GiB domain, offline CQL writer. No native flush, UCS scheduling, or benchmark",
+  "timestamp" : "All output rows use descriptor ordinal 65536, matching production materializer"
+}

@@ -1,0 +1,17 @@
+{
+  "seed" : 20260909,
+  "domain" : 32768,
+  "partitions" : 4,
+  "flushes" : 5,
+  "writes_per_flush" : 4096,
+  "logical_inserted_bytes" : 20971520,
+  "key_bytes" : 24,
+  "value_bytes" : 1000,
+  "actual_native_background" : true,
+  "load_api" : "CQLTester internal CQL synchronous inserts; native background CompactionManager; explicit forceBlockingFlush",
+  "deviation" : "bounded domain/partition count and total load; internal synchronous CQL vs driver async; warm local read diagnostics, not a paper benchmark",
+  "target_sstable_bytes" : 67108864,
+  "storage_compatibility_mode" : "NONE",
+  "exact_native_final_rows" : 15221,
+  "completed_jobs" : 1
+}
